@@ -1,0 +1,194 @@
+{
+  "Home": "Home",
+  "QuickMenu": "Quick",
+  "Logout": "Logout",
+  "Offline": "Offline",
+  "Online": "Online",
+  "CollapseRightSidebar": "Collapse right sidebar",
+  "ExpandRightSidebar": "Expand right sidebar",
+  "Fullscreen": "Full Screen",
+  "NormalScreen": "Normal Screen",
+  "NothingFound": "Nothing found ...",
+
+  "CreateAndSave": "Create & Save",
+  "EditAndSave": "Edit & Save",
+
+  "SearchButton" : "Search your desire particular",
+  "FilterButton": "Press the filter button for more advance search",
+  "ResetButton": "Press the reset button for clean data",
+
+  "EnterSearchAnyKeyword": "Enter search any keyword",
+  "FiledIsRequired": "This field is required value",
+  "FormConfirmationTitle": "Please confirm your action",
+  "FormConfirmationMessage": " This action is so important that you are required to confirm it with a\nmodal. Please click\none of these buttons to proceed.",
+
+
+  "MasterData": "Master Data",
+  "Customer": "Customer",
+  "ManageCustomer": "Manage Customers",
+  "CustomerInformation": "Customer Information",
+  "CustomerInformationFormDetails": "We'll always let you know about customer information",
+  "Name": "Name",
+  "CustomerName": "Customer Name",
+  "NameValidateMessage": "Name must be 2-20 characters long",
+  "CustomerGroup": "Customer Group",
+  "ChooseCustomerGroup": "Choose Customer Group",
+  "CreditLimit": "Credit Limit",
+  "CreditLimitValidateMessage": "Credit limit must be a number or fractional value",
+  "OLDReferenceNo": "OLD Reference No",
+  "Mobile": "Mobile",
+  "MobileValidateMessage": "Mobile must be digit",
+  "AlternativeMobile": "Alternative Mobile",
+  "Email": "Email",
+  "Location": "Location",
+  "ChooseLocation": "Choose Location",
+  "MarketingExecutive": "Marketing Executive",
+  "ChooseMarketingExecutive": "Choose Marketing Executive",
+  "Address": "Address",
+  "Status": "Status",
+  "Close": "Close",
+  "CustomerGroupModel": "Customer Group Model",
+  "InvalidEmail": "If exists , must be valid Email",
+  "CreateNewCustomer": "Create New Customer",
+  "UpdateCustomer": "Update Customer",
+  "CustomerDetailsData": "Customer Details Information",
+  "CustomerId": "Customer ID",
+  "Created": "Created",
+  "ReferenceId": "Reference ID",
+  "FilterData": "Filter Data",
+
+
+  "ManageUsers": "Manage Users",
+  "UserInformation": "Manage Users Information",
+  "UserFormDetails": "Manage Users Information Details",
+
+
+
+  "ShortCut": "SHORTCUT",
+  "Alt+f": "Alt + F",
+  "AltText": "Find the table value",
+  "Alt+s": "Alt + S",
+  "AltTextSave": "Save the form value (alt+ s)",
+  "Alt+n": "Alt + N",
+  "AltTextNew": "Enter the new form first field (alt+n)",
+  "Alt+r": "Alt + R",
+  "AltTextReset": "Reset the form (alt+r)",
+
+
+  "VendorInformation": "Manage Vendors Information",
+  "VendorFormDetails": "Manage Vendors Information Details",
+  "CompanyName": "Company Name",
+  "CompanyNameValidateMessage": "Company Name must be 2-20 characters long",
+  "VendorNameValidateMessage": "Vendor Name must be 2-20 characters long",
+  "VendorName": "Vendor Name",
+  "VendorMobile": "Vendor Mobile",
+  "TPPercent": "TP Percent",
+  "TPPercentValidateMessage": "TP Percent must be digit or fraction",
+  "ChooseCustomer": "Choose Customer",
+  "ManageVendors": "Manage Vendors",
+
+  "UserName": "User Name",
+  "UserNameValidateMessage": "User Name must be 2-20 characters long",
+  "RequiredAndInvalidEmail": "Email must be valid",
+  "Password": "Password",
+  "UserNameRequired": "Username field must be required",
+  "RequiredPassword": "Password field must be required",
+  "ConfirmPassword": "Confirm Password",
+  "UpdateSuccessfully": "Updated Successfully",
+  "CreateSuccessfully": "Created Successfully",
+
+
+  "ConfigurationInformation": "Configuration Information",
+  "ConfigurationInformationFormDetails": "Configuration Information Details",
+
+  "ChooseBusinessModel": "Choose business model",
+  "BusinessModel": "Business Model",
+  "ChooseStockFormat": "Choose stock format",
+  "StockFormat": "Stock format",
+  "VatPercent": "VAT percent",
+  "VatPercentValidateMessage": "VAT percent must be a number or fractional value",
+  "AITPercent": "AIT percent",
+  "AITPercentValidateMessage": "AIT percent must be a number or fractional value",
+  "AddressValidateMessage": "Address",
+  "InvoiceCommentValidateMessage": "Invoice comment",
+  "InvoiceComment": "Invoice comment",
+
+  "SetupInformation": "Setup Information",
+  "PrintSetup": "Print Setup",
+  "CustomInvoice": "Custom Invoice",
+  "BonusFromStock": "Bonus From Stock",
+  "IsUnitPrice": "Is Unit Price",
+  "IsDescription": "Is Description",
+  "ZeroStockAllowed": "Zero stock allowed",
+  "StockItem": "Stock item",
+  "CustomInvoicePrint": "Custom invoice print",
+  "StockHistory": "Stock history",
+  "ConditionSales": "Condition sales",
+  "StoreLedger": "Store ledger",
+  "FuelStation": "Fuel station",
+  "TLOCommission": "TLO commission",
+  "SalesReturn": "Sales return",
+  "SRCommission": "SR commission",
+
+  "BasicInformation": "Basic Information",
+  "BasicInformationDetails": "Basic Information Details",
+  "PrintInformation": "Print Information",
+  "PrintInformationDetails": "Print Information Details",
+  "ProductSetup": "Product Setup",
+  "ProductSetupDetails": "Product Setup Details",
+  "PriceInformation": "Price Information",
+  "PriceInformationDetails": "Price Information Details",
+
+  "CategoryGroupModel": "Category Group Model",
+  "CategoryGroup": "Category Group",
+  "CategoryGroupFormSubmitConfirm": "Please confirm your action",
+  "CategoryGroupFormSubmitConfirmDetails": "This action is so important that you are required to confirm it with a\nmodal. Please click\none of these buttons to proceed.",
+  "CategoryInformation": "Category Information",
+  "ChooseCategoryGroup": "Choose category group",
+  "CategoryNameValidateMessage": "Category name field must be required",
+  "CategoryName": "Category name",
+  "DeleteSuccessfully": "Delete Successfully",
+
+  "ManageCategoryGroupInformation": "Manage Category Group Information",
+  "CategoryGroupInformation": "Category Group Information",
+  "CategoryGroupName": "Category group name",
+  "CategoryGroupNameValidateMessage": "Category group name field must be required",
+  "CategoryGroupAlreadyExists": "Category group already exists",
+
+  "ManageProductInformation": "Manage Product Information",
+  "ProductInformation": "Product Information",
+  "ChooseProductType": "Choose product type",
+  "ProductType": "Product type",
+  "ChooseCategory": "Choose category",
+  "ProductName": "Product Name",
+  "ProductNameValidateMessage": "Product Name must be 2-20 characters long",
+  "AlternativeProductName": "Alternative product name",
+  "AlternativeProductNameValidateMessage": "Alternative product name must be 2-20 characters long",
+  "ProductUnit": "Product Unit",
+  "ChooseProductUnit": "Choose product unit",
+  "BarcodeValidateMessage": "Barcode must be 2-20 characters long",
+  "ProductSku": "Product Sku",
+  "ProductSkuValidateMessage": "Product Sku must be 2-20 characters long",
+  "ChooseBrand": "Choose Brand",
+  "OpeningQuantity": "Opening Quantity",
+  "SalesPrice": "Sales Price",
+  "SalesPriceValidateMessage": "Sales price must be digit & fraction",
+  "PurchasePrice": "Purchase price",
+  "MinimumQuantity": "Minimum quantity",
+  "ReorderQuantity": "Reorder quantity",
+
+
+  "" : ""
+
+
+
+
+
+
+
+
+
+
+
+
+}
