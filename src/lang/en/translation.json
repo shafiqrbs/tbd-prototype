@@ -9,20 +9,15 @@
   "Fullscreen": "Full Screen",
   "NormalScreen": "Normal Screen",
   "NothingFound": "Nothing found ...",
-
   "CreateAndSave": "Create & Save",
   "EditAndSave": "Edit & Save",
-
-  "SearchButton" : "Search your desire particular",
+  "SearchButton": "Search your desire particular",
   "FilterButton": "Press the filter button for more advance search",
   "ResetButton": "Press the reset button for clean data",
-
   "EnterSearchAnyKeyword": "Enter search any keyword",
   "FiledIsRequired": "This field is required value",
   "FormConfirmationTitle": "Please confirm your action",
   "FormConfirmationMessage": " This action is so important that you are required to confirm it with a\nmodal. Please click\none of these buttons to proceed.",
-
-
   "MasterData": "Master Data",
   "Customer": "Customer",
   "ManageCustomer": "Manage Customers",
@@ -56,14 +51,9 @@
   "Created": "Created",
   "ReferenceId": "Reference ID",
   "FilterData": "Filter Data",
-
-
   "ManageUsers": "Manage Users",
   "UserInformation": "Manage Users Information",
   "UserFormDetails": "Manage Users Information Details",
-
-
-
   "ShortCut": "SHORTCUT",
   "Alt+f": "Alt + F",
   "AltText": "Find the table value",
@@ -73,8 +63,6 @@
   "AltTextNew": "Enter the new form first field (alt+n)",
   "Alt+r": "Alt + R",
   "AltTextReset": "Reset the form (alt+r)",
-
-
   "VendorInformation": "Manage Vendors Information",
   "VendorFormDetails": "Manage Vendors Information Details",
   "CompanyName": "Company Name",
@@ -86,7 +74,6 @@
   "TPPercentValidateMessage": "TP Percent must be digit or fraction",
   "ChooseCustomer": "Choose Customer",
   "ManageVendors": "Manage Vendors",
-
   "UserName": "User Name",
   "UserNameValidateMessage": "User Name must be 2-20 characters long",
   "RequiredAndInvalidEmail": "Email must be valid",
@@ -96,11 +83,8 @@
   "ConfirmPassword": "Confirm Password",
   "UpdateSuccessfully": "Updated Successfully",
   "CreateSuccessfully": "Created Successfully",
-
-
   "ConfigurationInformation": "Configuration Information",
   "ConfigurationInformationFormDetails": "Configuration Information Details",
-
   "ChooseBusinessModel": "Choose business model",
   "BusinessModel": "Business Model",
   "ChooseStockFormat": "Choose stock format",
@@ -112,7 +96,6 @@
   "AddressValidateMessage": "Address",
   "InvoiceCommentValidateMessage": "Invoice comment",
   "InvoiceComment": "Invoice comment",
-
   "SetupInformation": "Setup Information",
   "PrintSetup": "Print Setup",
   "CustomInvoice": "Custom Invoice",
@@ -129,7 +112,6 @@
   "TLOCommission": "TLO commission",
   "SalesReturn": "Sales return",
   "SRCommission": "SR commission",
-
   "BasicInformation": "Basic Information",
   "BasicInformationDetails": "Basic Information Details",
   "PrintInformation": "Print Information",
@@ -138,7 +120,6 @@
   "ProductSetupDetails": "Product Setup Details",
   "PriceInformation": "Price Information",
   "PriceInformationDetails": "Price Information Details",
-
   "CategoryGroupModel": "Category Group Model",
   "CategoryGroup": "Category Group",
   "CategoryGroupFormSubmitConfirm": "Please confirm your action",
@@ -148,13 +129,11 @@
   "CategoryNameValidateMessage": "Category name field must be required",
   "CategoryName": "Category name",
   "DeleteSuccessfully": "Delete Successfully",
-
   "ManageCategoryGroupInformation": "Manage Category Group Information",
   "CategoryGroupInformation": "Category Group Information",
   "CategoryGroupName": "Category group name",
   "CategoryGroupNameValidateMessage": "Category group name field must be required",
   "CategoryGroupAlreadyExists": "Category group already exists",
-
   "ManageProductInformation": "Manage Product Information",
   "ProductInformation": "Product Information",
   "ChooseProductType": "Choose product type",
@@ -176,19 +155,17 @@
   "PurchasePrice": "Purchase price",
   "MinimumQuantity": "Minimum quantity",
   "ReorderQuantity": "Reorder quantity",
-
-
-  "" : ""
-
-
-
-
-
-
-
-
-
-
-
-
+  "": "",
+  "Damage": "Damage",
+  "AddDamage": "Damage Information",
+  "DamageGroupModal": "Damage Group Model",
+  "ManageDamage": "Manage Damage",
+  "DamageDetailsData": "Damage Details Information",
+  "Save": "Save",
+  "DamageValidateMessage": "Stock name must be valid",
+  "DamageLabel": "Stock Name",
+  "DamagePH": "Enter stock medicine name",
+  "DamageQuantitiy": "quantity",
+  "DamageNotes": "Notes",
+  "DamageNotesPH": "Enter notes"
 }

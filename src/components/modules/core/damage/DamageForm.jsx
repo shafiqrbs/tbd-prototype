@@ -1,38 +1,38 @@
-import React, {useEffect, useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import {
     Button,
     rem, Flex,
     Grid, Box, ScrollArea, Group, Text, Title, Alert, List,
 } from "@mantine/core";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
     IconCheck,
     IconDeviceFloppy, IconInfoCircle, IconPlus,
 } from "@tabler/icons-react";
-import {useDisclosure, useHotkeys} from "@mantine/hooks";
-import {useDispatch, useSelector} from "react-redux";
-import {hasLength, useForm} from "@mantine/form";
-import {modals} from "@mantine/modals";
-import {notifications} from "@mantine/notifications";
+import { useDisclosure, useHotkeys } from "@mantine/hooks";
+import { useDispatch, useSelector } from "react-redux";
+import { hasLength, useForm } from "@mantine/form";
+import { modals } from "@mantine/modals";
+import { notifications } from "@mantine/notifications";
 
 import {
     getExecutiveDropdown, getLocationDropdown,
 } from "../../../../store/core/utilitySlice";
-import {setEntityNewData, setFetching, setValidationData, storeEntityData} from "../../../../store/core/crudSlice.js";
+import { setEntityNewData, setFetching, setValidationData, storeEntityData } from "../../../../store/core/crudSlice.js";
 
 import Shortcut from "../../shortcut/Shortcut";
 import InputForm from "../../../form-builders/InputForm";
 import SelectForm from "../../../form-builders/SelectForm";
 import TextAreaForm from "../../../form-builders/TextAreaForm";
-import CustomerGroupModel from "./CustomerGroupModal.jsx";
+import DamageGroupModel from "./DamageGroupModal.jsx";
 
-function CustomerForm() {
-    const {t, i18n} = useTranslation();
+function DamageForm() {
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
-    const {isOnline, mainAreaHeight} = useOutletContext();
+    const { isOnline, mainAreaHeight } = useOutletContext();
     const height = mainAreaHeight - 80; //TabList height 104
-    const [opened, {open, close}] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
     const [customerGroupData, setCustomerGroupData] = useState(null);
@@ -47,10 +47,10 @@ function CustomerForm() {
 
 
     let locationDropdown = locationDropdownData && locationDropdownData.length > 0 ? locationDropdownData.map((type, index) => {
-        return ({'label': type.name, 'value': String(type.id)})
+        return ({ 'label': type.name, 'value': String(type.id) })
     }) : []
     let executiveDropdown = executiveDropdownData && executiveDropdownData.length > 0 ? executiveDropdownData.map((type, index) => {
-        return ({'label': type.name, 'value': String(type.id)})
+        return ({ 'label': type.name, 'value': String(type.id) })
     }) : []
 
     useEffect(() => {
@@ -85,7 +85,7 @@ function CustomerForm() {
             email: ''
         },
         validate: {
-            name: hasLength({min: 2, max: 20}),
+            name: hasLength({ min: 2, max: 20 }),
             mobile: (value) => (!/^\d+$/.test(value)),
             email: (value) => {
                 if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
@@ -125,14 +125,14 @@ function CustomerForm() {
             dispatch(setValidationData(false))
         }
 
-        if (entityNewData.message ==='success'){
+        if (entityNewData.message === 'success') {
             notifications.show({
                 color: 'teal',
                 title: t('CreateSuccessfully'),
-                icon: <IconCheck style={{width: rem(18), height: rem(18)}}/>,
+                icon: <IconCheck style={{ width: rem(18), height: rem(18) }} />,
                 loading: false,
                 autoClose: 700,
-                style: {backgroundColor: 'lightgray'},
+                style: { backgroundColor: 'lightgray' },
             });
 
             setTimeout(() => {
@@ -144,10 +144,10 @@ function CustomerForm() {
                 dispatch(setFetching(true))
             }, 700)
         }
-        }, [validation,validationMessage,form]);
+    }, [validation, validationMessage, form]);
 
     useHotkeys([['alt+n', () => {
-        document.getElementById('CustomerName').focus()
+        document.getElementById('DamageItemName').focus()
     }]], []);
 
     useHotkeys([['alt+r', () => {
@@ -155,7 +155,7 @@ function CustomerForm() {
     }]], []);
 
     useHotkeys([['alt+s', () => {
-        document.getElementById('CustomerFormSubmit').click()
+        document.getElementById('DamageFormSubmit').click()
     }]], []);
 
 
@@ -172,11 +172,11 @@ function CustomerForm() {
                             one of these buttons to proceed.
                         </Text>
                     ),
-                    labels: {confirm: 'Confirm', cancel: 'Cancel'},
+                    labels: { confirm: 'Confirm', cancel: 'Cancel' },
                     onCancel: () => console.log('Cancel'),
                     onConfirm: () => {
                         const value = {
-                            url: 'core/customer',
+                            url: 'core/damage',
                             data: values
                         }
                         dispatch(storeEntityData(value))
@@ -186,7 +186,7 @@ function CustomerForm() {
                 <Box pb={`xs`} pl={`xs`} pr={8}>
                     <Grid>
                         <Grid.Col span={6} h={54}>
-                            <Title order={6} mt={'xs'} pl={'6'}>{t('CreateNewCustomer')}</Title>
+                            <Title order={6} mt={'xs'} pl={'6'}>{t('AddDamage')}</Title>
                         </Grid.Col>
                         <Grid.Col span={6}>
                             <Group mr={'md'} pos={`absolute`} right={0} gap={0}>
@@ -197,15 +197,15 @@ function CustomerForm() {
                                         <Button
                                             size="xs"
                                             color={`indigo.6`}
-                                               type="submit"
+                                            type="submit"
                                             mt={4}
-                                            id="CustomerFormSubmit"
-                                            leftSection={<IconDeviceFloppy size={16}/>}
+                                            id="DamageFormSubmit"
+                                            leftSection={<IconDeviceFloppy size={16} />}
                                         >
 
                                             <Flex direction={`column`} gap={0}>
                                                 <Text fz={12} fw={400}>
-                                                    {t("CreateAndSave")}
+                                                    {t("Save")}
                                                 </Text>
                                             </Flex>
                                         </Button>
@@ -222,7 +222,7 @@ function CustomerForm() {
                             <ScrollArea h={height} scrollbarSize={2} type="never">
                                 <Box pl={'xs'} pb={'md'}>
                                     {
-                                        Object.keys(form.errors).length > 0 && validationMessage !=0 &&
+                                        Object.keys(form.errors).length > 0 && validationMessage != 0 &&
                                         <Alert variant="light" color="red" radius="md" title={
                                             <List withPadding size="sm">
                                                 {validationMessage.name && <List.Item>{t('NameValidateMessage')}</List.Item>}
@@ -232,20 +232,8 @@ function CustomerForm() {
                                         }></Alert>
                                     }
 
-                                    <InputForm
-                                        tooltip={t('NameValidateMessage')}
-                                        label={t('Name')}
-                                        placeholder={t('CustomerName')}
-                                        required={true}
-                                        nextField={'CustomerGroup'}
-                                        name={'name'}
-                                        form={form}
-                                        mt={0}
-                                        id={'CustomerName'}
-                                    />
 
-
-                                    <Grid gutter={{base: 6}}>
+                                    <Grid gutter={{ base: 6 }}>
                                         <Grid.Col span={10}>
                                             <SelectForm
                                                 tooltip={t('CustomerGroup')}
@@ -265,10 +253,10 @@ function CustomerForm() {
 
                                         </Grid.Col>
                                         <Grid.Col span={2}><Button mt={32} color={'gray'} variant={'outline'}
-                                                                   onClick={open}><IconPlus size={12}
-                                                                                            opacity={0.5}/></Button></Grid.Col>
+                                            onClick={open}><IconPlus size={12}
+                                                opacity={0.5} /></Button></Grid.Col>
                                         {opened &&
-                                            <CustomerGroupModel openedModel={opened} open={open} close={close}/>
+                                            <DamageGroupModel openedModel={opened} open={open} close={close} />
                                         }
                                     </Grid>
 
@@ -283,88 +271,6 @@ function CustomerForm() {
                                         mt={8}
                                         id={'CreditLimit'}
                                     />
-
-                                    <InputForm
-                                        tooltip={t('OLDReferenceNo')}
-                                        label={t('OLDReferenceNo')}
-                                        placeholder={t('OLDReferenceNo')}
-                                        requir jked={false}
-                                        nextField={'Mobile'}
-                                        name={'reference_id'}
-                                        form={form}
-                                        mt={8}
-                                        id={'OLDReferenceNo'}
-                                    />
-
-                                    <InputForm
-                                        tooltip={t('MobileValidateMessage')}
-                                        label={t('Mobile')}
-                                        placeholder={t('Mobile')}
-                                        required={true}
-                                        nextField={'AlternativeMobile'}
-                                        name={'mobile'}
-                                        form={form}
-                                        mt={8}
-                                        id={'Mobile'}
-                                    />
-
-                                    <InputForm
-                                        tooltip={t('MobileValidateMessage')}
-                                        label={t('AlternativeMobile')}
-                                        placeholder={t('AlternativeMobile')}
-                                        required={false}
-                                        nextField={'Email'}
-                                        name={'alternative_mobile'}
-                                        form={form}
-                                        mt={8}
-                                        id={'AlternativeMobile'}
-                                    />
-
-                                    <InputForm
-                                        tooltip={t('InvalidEmail')}
-                                        label={t('Email')}
-                                        placeholder={t('Email')}
-                                        required={false}
-                                        nextField={'Location'}
-                                        name={'email'}
-                                        form={form}
-                                        mt={8}
-                                        id={'Email'}
-                                    />
-
-                                    <SelectForm
-                                        tooltip={t('Location')}
-                                        label={t('Location')}
-                                        placeholder={t('ChooseLocation')}
-                                        required={false}
-                                        nextField={'MarketingExecutive'}
-                                        name={'location_id'}
-                                        form={form}
-                                        dropdownValue={locationDropdown}
-                                        mt={8}
-                                        id={'Location'}
-                                        searchable={true}
-                                        value={locationData}
-                                        changeValue={setLocationData}
-                                    />
-
-
-                                    <SelectForm
-                                        tooltip={t('MarketingExecutive')}
-                                        label={t('MarketingExecutive')}
-                                        placeholder={t('ChooseMarketingExecutive')}
-                                        required={false}
-                                        nextField={'Address'}
-                                        name={'marketing_id'}
-                                        form={form}
-                                        dropdownValue={executiveDropdown}
-                                        mt={8}
-                                        id={'MarketingExecutive'}
-                                        searchable={true}
-                                        value={marketingExeData}
-                                        changeValue={setMarketingExeData}
-                                    />
-
 
                                     <TextAreaForm
                                         tooltip={t('Address')}
@@ -395,4 +301,4 @@ function CustomerForm() {
     );
 }
 
-export default CustomerForm;
+export default DamageForm;

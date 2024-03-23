@@ -1,13 +1,13 @@
-import React  from 'react'
-import {  NavLink } from '@mantine/core';
+import React from 'react'
+import { NavLink } from '@mantine/core';
 import {
     IconGauge,
 } from '@tabler/icons-react';
-import {useNavigate} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function Navbar() {
     const navigate = useNavigate()
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
     return (
         <>
@@ -21,7 +21,13 @@ function Navbar() {
                     href="customer"
                     label={t('Customer')}
                     component="button"
-                    onClick={(e)=>{navigate('core/customer')}}
+                    onClick={(e) => { navigate('core/customer') }}
+                />
+                <NavLink
+                    href="damage"
+                    label={t('Damage')}
+                    component="button"
+                    onClick={(e) => { navigate('core/damage') }}
                 />
             </NavLink>
 
@@ -31,10 +37,10 @@ function Navbar() {
                 leftSection={<IconGauge size="1rem" stroke={1.5} />}
                 childrenOffset={28}
             >
-                <NavLink href="sample" label="sample" component="button" onClick={(e)=>{navigate('sample')}}  />
+                <NavLink href="sample" label="sample" component="button" onClick={(e) => { navigate('sample') }} />
             </NavLink>
         </>
-  )
+    )
 }
 
 export default Navbar
