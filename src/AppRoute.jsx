@@ -5,6 +5,7 @@ import SampleDashboard from "./components/modules/sample-module/DashBoard";
 import './lang/i18next';
 import CustomerIndex from "./components/modules/core/customer/CustomerIndex";
 import DamageIndex from './components/modules/core/damage/DamageIndex';
+import BankAccountIndex from './components/modules/core/bankAccount/BankAccountIndex';
 function AppRoute() {
 
     return (
@@ -17,6 +18,7 @@ function AppRoute() {
                 <Route path="/core/">
                     <Route path="customer" element={<CustomerIndex />} />
                     <Route path="damage" element={<DamageIndex />} />
+                    <Route path="bankAccount" element={<BankAccountIndex />} />
                 </Route>
             </Route>
         </Routes>

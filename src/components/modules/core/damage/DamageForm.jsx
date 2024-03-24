@@ -49,12 +49,12 @@ function DamageForm() {
     const form = useForm({
         initialValues: {
             stock_id: '',
-            quantity: '',
+            damage_quantity: '',
             damage_notes: '',
         },
         validate: {
             stock_id: hasLength({ min: 2, max: 20 }),
-            quantity: (value) => !(parseInt(value) > 0),
+            damage_quantity: (value) => !(parseInt(value) > 0),
         }
     });
 
@@ -62,7 +62,7 @@ function DamageForm() {
     useEffect(() => {
         if (validation) {
             validationMessage.stock_id && (form.setFieldError('stock_id', true));
-            validationMessage.quantity && (form.setFieldError('quantity', true));
+            validationMessage.quantity && (form.setFieldError('damage_quantity', true));
             dispatch(setValidationData(false))
         }
 
@@ -173,24 +173,24 @@ function DamageForm() {
                                         }></Alert>
                                     }
 
-
-                                    <Grid gutter={{ base: 6 }}>
+                                    <SelectForm
+                                        tooltip={t('StockValidateMessage')}
+                                        label={t('StockLabel')}
+                                        placeholder={t('StockName')}
+                                        required={true}
+                                        nextField={'damage_quantity'}
+                                        name={'stock_id'}
+                                        form={form}
+                                        dropdownValue={["Napa", "Ace"]}
+                                        mt={0}
+                                        id={'stock_id'}
+                                        searchable={false}
+                                        value={damageGroupData}
+                                        changeValue={setDamageGroupData}
+                                    />
+                                    {/* <Grid gutter={{ base: 6 }}>
                                         <Grid.Col span={10}>
-                                            <SelectForm
-                                                tooltip={t('StockValidateMessage')}
-                                                label={t('StockLabel')}
-                                                placeholder={t('StockName')}
-                                                required={true}
-                                                nextField={'DamageQuantitiy'}
-                                                name={'stock_id'}
-                                                form={form}
-                                                dropdownValue={["Napa", "Ace"]}
-                                                mt={8}
-                                                id={'stock_id'}
-                                                searchable={false}
-                                                value={damageGroupData}
-                                                changeValue={setDamageGroupData}
-                                            />
+
 
                                         </Grid.Col>
                                         <Grid.Col span={2}><Button mt={32} color={'gray'} variant={'outline'}
@@ -199,26 +199,27 @@ function DamageForm() {
                                         {opened &&
                                             <DamageGroupModel openedModel={opened} open={open} close={close} />
                                         }
-                                    </Grid>
+                                    </Grid> */}
 
                                     <InputForm
                                         tooltip={t('DamageQuantityValidateMessage')}
                                         label={t('DamageQuantitiy')}
                                         placeholder={t('DamageQunatityPH')}
                                         required={true}
-                                        nextField={'DamageNotes'}
-                                        name={'quantity'}
+                                        nextField={'damage_notes'}
+                                        name={'damage_quantity'}
                                         form={form}
                                         mt={8}
-                                        id={'quantity'}
+                                        id={'damage_quantity'}
                                     />
 
                                     <TextAreaForm
                                         tooltip={t('DamageNotesValidateMessage')}
                                         label={t('DamageNotes')}
-                                        placeholder={t('DamageNotesPH')}
+                                        placeholder={t('DamageNotesInformation')}
                                         required={false}
                                         name={'damage_notes'}
+                                        nextField={'Status'}
                                         form={form}
                                         mt={8}
                                         id={'damage_notes'}

@@ -29,6 +29,12 @@ function Navbar() {
                     component="button"
                     onClick={(e) => { navigate('core/damage') }}
                 />
+                <NavLink
+                    href="bankAccount"
+                    label={t('BankAccount')}
+                    component="button"
+                    onClick={(e) => { navigate('core/bankAccount') }}
+                />
             </NavLink>
 
             <NavLink
