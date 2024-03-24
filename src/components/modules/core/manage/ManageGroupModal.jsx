@@ -21,7 +21,7 @@ import 'mantine-react-table/styles.css'; //make sure MRT styles were imported in
 import { modals } from "@mantine/modals";
 import { hasLength, useForm } from "@mantine/form";
 
-function DamageGroupModel(props) {
+function ManageGroupModel(props) {
     const { openedModel, open, close } = props
     const { t, i18n } = useTranslation();
     const { isOnline, mainAreaHeight } = useOutletContext();
@@ -30,12 +30,11 @@ function DamageGroupModel(props) {
 
     const formModal = useForm({
         initialValues: {
-            damage_group_stock_id: '',
-            // damage_group_quantity: ''
+            customer_group_name: '', customer_group_status: ''
         },
         validate: {
-            damage_group_stock_id: hasLength({ min: 2, max: 20 }),
-            // damage_group_quantity: hasLength({ min: 11, max: 11 }),
+            customer_group_name: hasLength({ min: 2, max: 20 }),
+            customer_group_status: hasLength({ min: 11, max: 11 }),
         },
     });
 
@@ -44,7 +43,7 @@ function DamageGroupModel(props) {
             <Modal
                 opened={openedModel}
                 onClose={close}
-                title={t('DamageGroupModal')}
+                title={t('CustomerGroupModel')}
                 centered
                 overlayProps={{
                     backgroundOpacity: 0.55,
@@ -57,8 +56,8 @@ function DamageGroupModel(props) {
             >
 
                 <Tooltip
-                    label={t('StockValidateMessage')}
-                    opened={!!formModal.errors.damage_group_stock_id}
+                    label={t('NameValidateMessage')}
+                    opened={!!formModal.errors.customer_group_name}
                     // opened={true}
                     px={20}
                     py={3}
@@ -70,28 +69,28 @@ function DamageGroupModel(props) {
                 >
                     <TextInput
                         size="sm"
-                        label={t('StockModal')}
-                        placeholder={t('StockModalName')}
-                        {...formModal.getInputProps("damage_group_stock_id")}
+                        label={t('Name')}
+                        placeholder={t('CustomerName')}
+                        {...formModal.getInputProps("customer_group_name")}
                         onKeyDown={getHotkeyHandler([
                             ['Enter', (e) => {
                                 document.getElementById('CustomerGroupStatus').focus();
                             }],
                         ])}
                         rightSection={
-                            formModal.values.damage_group_stock_id ?
+                            formModal.values.customer_group_name ?
                                 <Tooltip
                                     label={t("Close")}
                                     withArrow
                                     bg={`red.5`}
                                 >
                                     <IconX color={`red`} size={16} opacity={0.5} onClick={() => {
-                                        formModal.setFieldValue('damage_group_stock_id', '');
+                                        formModal.setFieldValue('customer_group_name', '');
                                     }} />
                                 </Tooltip>
                                 :
                                 <Tooltip
-                                    label={t("DamageModalTT")}
+                                    label={t("NameValidateMessage")}
                                     withArrow
                                     bg={`blue.5`}
                                 >
@@ -101,9 +100,9 @@ function DamageGroupModel(props) {
                     />
                 </Tooltip>
 
-                {/* <Tooltip
+                <Tooltip
                     label={"Status"}
-                    opened={!!formModal.errors.damage_group_quantity}
+                    opened={!!formModal.errors.customer_group_status}
                     px={20}
                     py={3}
                     position="top-end"
@@ -121,15 +120,15 @@ function DamageGroupModel(props) {
                         size="md"
                         radius="sm"
                         id={"CustomerGroupStatus"}
-                        {...formModal.getInputProps("damage_group_quantity")}
+                        {...formModal.getInputProps("customer_group_status")}
                     />
-                </Tooltip> */}
+                </Tooltip>
 
                 <Group justify="flex-end" mt="md">
                     <Button disabled={!isOnline}
                         onClick={() => {
-                            if (!formModal.values.damage_group_stock_id) {
-                                formModal.setFieldError('damage_group_stock_id', true);
+                            if (!formModal.values.customer_group_name) {
+                                formModal.setFieldError('customer_group_name', true);
                             } else {
                                 modals.openConfirmModal({
                                     title: 'Please confirm your action',
@@ -166,4 +165,4 @@ function DamageGroupModel(props) {
     );
 }
 
-export default DamageGroupModel;
+export default ManageGroupModel;

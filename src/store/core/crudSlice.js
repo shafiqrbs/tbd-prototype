@@ -103,7 +103,7 @@ const crudSlice = createSlice({
         userFilterData: { name: '', mobile: '', email: '' },
 
         // temporary damage module code
-        damageFilterData: { name: '', mobile: '' },
+        damageFilterData: { stock_id: '', damage_quantity: '' },
     },
     reducers: {
         setFetching: (state, action) => {
@@ -134,8 +134,8 @@ const crudSlice = createSlice({
 
         // temp damage code 
         setDamageFilterData: (state, action) => {
-            state.damageFilterData.name = action.payload.name
-            state.damageFilterData.mobile = action.payload.mobile
+            state.damageFilterData.name = action.payload.stock_id
+            state.damageFilterData.mobile = action.payload.damage_quantity
         },
 
         setVendorFilterData: (state, action) => {

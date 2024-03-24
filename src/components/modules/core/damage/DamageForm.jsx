@@ -35,93 +35,34 @@ function DamageForm() {
     const [opened, { open, close }] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
-    const [customerGroupData, setCustomerGroupData] = useState(null);
-    const [locationData, setLocationData] = useState(null);
-    const [marketingExeData, setMarketingExeData] = useState(null);
+    // const [CustomerGroupData, setCustomerGroupData] = useState(null);
 
-    const locationDropdownData = useSelector((state) => state.utilitySlice.locationDropdownData)
+    const [damageGroupData, setDamageGroupData] = useState(null);
+
     const executiveDropdownData = useSelector((state) => state.utilitySlice.executiveDropdownData)
     const validationMessage = useSelector((state) => state.crudSlice.validationMessage)
     const validation = useSelector((state) => state.crudSlice.validation)
     const entityNewData = useSelector((state) => state.crudSlice.entityNewData)
 
 
-    let locationDropdown = locationDropdownData && locationDropdownData.length > 0 ? locationDropdownData.map((type, index) => {
-        return ({ 'label': type.name, 'value': String(type.id) })
-    }) : []
-    let executiveDropdown = executiveDropdownData && executiveDropdownData.length > 0 ? executiveDropdownData.map((type, index) => {
-        return ({ 'label': type.name, 'value': String(type.id) })
-    }) : []
-
-    useEffect(() => {
-        const valueForLocation = {
-            url: 'core/select/location',
-            param: {
-                term: ''
-            }
-        }
-        dispatch(getLocationDropdown(valueForLocation))
-
-        const valueForExecutive = {
-            url: 'core/select/executive',
-            param: {
-                term: ''
-            }
-        }
-        dispatch(getExecutiveDropdown(valueForExecutive))
-    }, []);
 
     const form = useForm({
         initialValues: {
-            location_id: '',
-            marketing_id: '',
-            name: '',
-            mobile: '',
-            customer_group: '',
-            credit_limit: '',
-            reference_id: '',
-            alternative_mobile: '',
-            address: '',
-            email: ''
+            stock_id: '',
+            quantity: '',
+            damage_notes: '',
         },
         validate: {
-            name: hasLength({ min: 2, max: 20 }),
-            mobile: (value) => (!/^\d+$/.test(value)),
-            email: (value) => {
-                if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    return true;
-                }
-                return null;
-            },
-            credit_limit: (value) => {
-                if (value) {
-                    const isNumberOrFractional = /^-?\d+(\.\d+)?$/.test(value);
-                    if (!isNumberOrFractional) {
-                        return true;
-                    }
-                }
-                return null;
-            },
-            alternative_mobile: (value) => {
-                if (value && value.trim()) {
-                    const isDigitsOnly = /^\d+$/.test(value);
-                    if (!isDigitsOnly) {
-                        return true;
-                    }
-                }
-                return null;
-            },
+            stock_id: hasLength({ min: 2, max: 20 }),
+            quantity: (value) => !(parseInt(value) > 0),
         }
     });
 
 
     useEffect(() => {
         if (validation) {
-            validationMessage.name && (form.setFieldError('name', true));
-            validationMessage.mobile && (form.setFieldError('mobile', true));
-            validationMessage.email && (form.setFieldError('email', true));
-            validationMessage.credit_limit && (form.setFieldError('credit_limit', true));
-            validationMessage.alternative_mobile && (form.setFieldError('alternative_mobile', true));
+            validationMessage.stock_id && (form.setFieldError('stock_id', true));
+            validationMessage.quantity && (form.setFieldError('quantity', true));
             dispatch(setValidationData(false))
         }
 
@@ -147,7 +88,7 @@ function DamageForm() {
     }, [validation, validationMessage, form]);
 
     useHotkeys([['alt+n', () => {
-        document.getElementById('DamageItemName').focus()
+        document.getElementById('stock_id').focus()
     }]], []);
 
     useHotkeys([['alt+r', () => {
@@ -155,7 +96,7 @@ function DamageForm() {
     }]], []);
 
     useHotkeys([['alt+s', () => {
-        document.getElementById('DamageFormSubmit').click()
+        document.getElementById('EntityFormSubmit').click()
     }]], []);
 
 
@@ -199,7 +140,7 @@ function DamageForm() {
                                             color={`indigo.6`}
                                             type="submit"
                                             mt={4}
-                                            id="DamageFormSubmit"
+                                            id="EntityFormSubmit"
                                             leftSection={<IconDeviceFloppy size={16} />}
                                         >
 
@@ -236,19 +177,19 @@ function DamageForm() {
                                     <Grid gutter={{ base: 6 }}>
                                         <Grid.Col span={10}>
                                             <SelectForm
-                                                tooltip={t('CustomerGroup')}
-                                                label={t('CustomerGroup')}
-                                                placeholder={t('ChooseCustomerGroup')}
-                                                required={false}
-                                                nextField={'CreditLimit'}
-                                                name={'customer_group'}
+                                                tooltip={t('StockValidateMessage')}
+                                                label={t('StockLabel')}
+                                                placeholder={t('StockName')}
+                                                required={true}
+                                                nextField={'DamageQuantitiy'}
+                                                name={'stock_id'}
                                                 form={form}
-                                                dropdownValue={["Family", "Local"]}
+                                                dropdownValue={["Napa", "Ace"]}
                                                 mt={8}
-                                                id={'CustomerGroup'}
+                                                id={'stock_id'}
                                                 searchable={false}
-                                                value={customerGroupData}
-                                                changeValue={setCustomerGroupData}
+                                                value={damageGroupData}
+                                                changeValue={setDamageGroupData}
                                             />
 
                                         </Grid.Col>
@@ -261,27 +202,26 @@ function DamageForm() {
                                     </Grid>
 
                                     <InputForm
-                                        tooltip={t('CreditLimitValidateMessage')}
-                                        label={t('CreditLimit')}
-                                        placeholder={t('CreditLimit')}
-                                        required={false}
-                                        nextField={'OLDReferenceNo'}
-                                        name={'credit_limit'}
+                                        tooltip={t('DamageQuantityValidateMessage')}
+                                        label={t('DamageQuantitiy')}
+                                        placeholder={t('DamageQunatityPH')}
+                                        required={true}
+                                        nextField={'DamageNotes'}
+                                        name={'quantity'}
                                         form={form}
                                         mt={8}
-                                        id={'CreditLimit'}
+                                        id={'quantity'}
                                     />
 
                                     <TextAreaForm
-                                        tooltip={t('Address')}
-                                        label={t('Address')}
-                                        placeholder={t('Address')}
+                                        tooltip={t('DamageNotesValidateMessage')}
+                                        label={t('DamageNotes')}
+                                        placeholder={t('DamageNotesPH')}
                                         required={false}
-                                        nextField={'Status'}
-                                        name={'address'}
+                                        name={'damage_notes'}
                                         form={form}
                                         mt={8}
-                                        id={'Address'}
+                                        id={'damage_notes'}
                                     />
 
                                 </Box>
@@ -290,8 +230,8 @@ function DamageForm() {
                         <Grid.Col span={3}>
                             <Shortcut
                                 form={form}
-                                FormSubmit={'CustomerFormSubmit'}
-                                Name={'CustomerName'}
+                                FormSubmit={'EntityFormSubmit'}
+                                Name={'stock_id'}
                             />
                         </Grid.Col>
                     </Grid>

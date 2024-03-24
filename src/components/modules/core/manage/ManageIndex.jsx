@@ -6,9 +6,9 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from "react-redux";
 
-import DamageForm from "./DamageForm.jsx";
-import DamageTable from "./DamageTable.jsx";
-import DamageUpdateForm from "./DamageUpdateForm.jsx";
+import ManageForm from "./ManageForm.jsx";
+import ManageTable from "./ManageTable.jsx";
+import ManageUpdateForm from "./ManageUpdateForm.jsx";
 import {
     setCustomerFilterData,
     setEntityNewData,
@@ -16,7 +16,7 @@ import {
     setSearchKeyword
 } from "../../../../store/core/crudSlice.js";
 
-function DamageIndex() {
+function ManageIndex() {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
@@ -58,18 +58,18 @@ function DamageIndex() {
                     <Box pl={`md`} pr={8} pb={'8'} pt={'6'} bg={'gray.1'}>
                         <Grid>
                             <Grid.Col span={12}>
-                                <Title order={6} pl={'md'} fz={'18'} c={'indigo.4'}>{t('DamageInformation')}</Title>
+                                <Title order={6} pl={'md'} fz={'18'} c={'indigo.4'}>{t('CustomerInformation')}</Title>
                             </Grid.Col>
                         </Grid>
                     </Box>
                     <Box pr={12} pl={'12'}>
                         <Grid>
                             <Grid.Col span={8}>
-                                <DamageTable />
+                                <CustomerTable />
                             </Grid.Col>
                             <Grid.Col span={4}>
                                 {
-                                    insertType === 'create' ? <DamageForm /> : <DamageUpdateForm />
+                                    insertType === 'create' ? <CustomerForm /> : <CustomerUpdateForm />
                                 }
                             </Grid.Col>
                         </Grid>
@@ -81,4 +81,4 @@ function DamageIndex() {
     );
 }
 
-export default DamageIndex;
+export default CustomerIndex;
