@@ -7,6 +7,7 @@ import CustomerIndex from "./components/modules/core/customer/CustomerIndex";
 import DamageIndex from './components/modules/core/damage/DamageIndex';
 import BankAccountIndex from './components/modules/core/bankAccount/BankAccountIndex';
 import MobileBankAccountIndex from './components/modules/core/mobileBankAccount/MobileBankAccounttIndex';
+import NewClientIndex from './components/modules/core/newClient/NewClientIndex';
 function AppRoute() {
 
     return (
@@ -21,6 +22,7 @@ function AppRoute() {
                     <Route path="damage" element={<DamageIndex />} />
                     <Route path="bankAccount" element={<BankAccountIndex />} />
                     <Route path="mobilebankaccount" element={<MobileBankAccountIndex />} />
+                    <Route path="newClient" element={<NewClientIndex />} />
                 </Route>
             </Route>
         </Routes>

@@ -41,6 +41,13 @@ function Navbar() {
                     component="button"
                     onClick={(e) => { navigate('core/mobilebankAccount') }}
                 />
+                <NavLink
+                    href="newClient"
+                    label={t('NewClient')}
+                    component="button"
+                    onClick={(e) => { navigate('core/newClient') }}
+                />
+
             </NavLink>
 
             <NavLink

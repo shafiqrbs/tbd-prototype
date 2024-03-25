@@ -6,9 +6,9 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from "react-redux";
 
-import MobileBankAccountForm from "./MobileBankAccountForm.jsx";
-import MobileBankAccountTable from "./MobileBankAccountTable.jsx";
-import MobileBankAccountUpdateForm from "./MobileBankAccountUpdateForm.jsx";
+import NewClientForm from "./NewClientForm.jsx";
+import NewClientTable from "./NewClientTable.jsx";
+import NewClientUpdateForm from "./NewClientUpdateForm.jsx";
 import {
     setCustomerFilterData,
     setEntityNewData,
@@ -16,7 +16,7 @@ import {
     setSearchKeyword
 } from "../../../../store/core/crudSlice.js";
 
-function MobileBankAccountIndex() {
+function NewClientIndex() {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
@@ -58,18 +58,18 @@ function MobileBankAccountIndex() {
                     <Box pl={`md`} pr={8} pb={'8'} pt={'6'} bg={'gray.1'}>
                         <Grid>
                             <Grid.Col span={12}>
-                                <Title order={6} pl={'md'} fz={'18'} c={'indigo.4'}>{t('MobileBankAccount')}</Title>
+                                <Title order={6} pl={'md'} fz={'18'} c={'indigo.4'}>{t('NewClient')}</Title>
                             </Grid.Col>
                         </Grid>
                     </Box>
                     <Box pr={12} pl={'12'}>
                         <Grid>
                             <Grid.Col span={8}>
-                                <MobileBankAccountTable />
+                                <NewClientTable />
                             </Grid.Col>
                             <Grid.Col span={4}>
                                 {
-                                    insertType === 'create' ? <MobileBankAccountForm /> : <MobileBankAccountUpdateForm />
+                                    insertType === 'create' ? <NewClientForm /> : <NewClientUpdateForm />
                                 }
                             </Grid.Col>
                         </Grid>
@@ -81,4 +81,4 @@ function MobileBankAccountIndex() {
     );
 }
 
-export default MobileBankAccountIndex;
+export default NewClientIndex;

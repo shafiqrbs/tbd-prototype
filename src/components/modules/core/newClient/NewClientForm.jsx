@@ -8,7 +8,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import {
     IconCheck,
-    IconDeviceFloppy, IconInfoCircle, IconPlus,
+    IconDeviceFloppy, IconInfoCircle, IconPlus, IconLetterA
 } from "@tabler/icons-react";
 import { useDisclosure, useHotkeys } from "@mantine/hooks";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,16 +18,16 @@ import { notifications } from "@mantine/notifications";
 
 import {
     getExecutiveDropdown, getLocationDropdown,
-} from "../../../../store/core/utilitySlice.js";
+} from "../../../../store/core/utilitySlice";
 import { setEntityNewData, setFetching, setValidationData, storeEntityData } from "../../../../store/core/crudSlice.js";
 
-import Shortcut from "../../shortcut/Shortcut.jsx";
-import InputForm from "../../../form-builders/InputForm.jsx";
-import SelectForm from "../../../form-builders/SelectForm.jsx";
-import TextAreaForm from "../../../form-builders/TextAreaForm.jsx";
-import MobileBankAccountGroupModal from "./MobileBankAccountGroupModal.jsx";
+import Shortcut from "../../shortcut/Shortcut";
+import InputForm from "../../../form-builders/InputForm";
+import SelectForm from "../../../form-builders/SelectForm";
+import TextAreaForm from "../../../form-builders/TextAreaForm";
+import NewClientGroupModel from "./NewClientGroupModal.jsx";
 
-function MobileBankAccountForm() {
+function NewClientForm() {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const { isOnline, mainAreaHeight } = useOutletContext();
@@ -35,7 +35,7 @@ function MobileBankAccountForm() {
     const [opened, { open, close }] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
-    const [mobileBankAccountGroupData, setMobileBankAccountGroupData] = useState(null);
+    const [newClientGroupData, setNewClientGroupData] = useState(null);
     const [locationData, setLocationData] = useState(null);
     const [marketingExeData, setMarketingExeData] = useState(null);
 
@@ -73,12 +73,13 @@ function MobileBankAccountForm() {
 
     const form = useForm({
         initialValues: {
-            mba_mobile: '',
-            mba_owner: '',
-            mba_authorized: '',
-            mba_service_name_id: '',
-            mba_type_id: '',
-            mba_service_charge: '',
+            company_name: '',
+            mobile: '',
+            location_id: '',
+            main_application_id: '',
+            business_model_id: '',
+            owner_name: '',
+            user_name: '',
         },
         validate: {
             name: hasLength({ min: 2, max: 20 }),
@@ -134,7 +135,7 @@ function MobileBankAccountForm() {
             setTimeout(() => {
                 form.reset()
                 setMarketingExeData(null)
-                setMbAccountGroupData(null)
+                setCustomerGroupData(null)
                 setLocationData(null)
                 dispatch(setEntityNewData([]))
                 dispatch(setFetching(true))
@@ -143,7 +144,7 @@ function MobileBankAccountForm() {
     }, [validation, validationMessage, form]);
 
     useHotkeys([['alt+n', () => {
-        document.getElementById('mba_mobile').focus()
+        document.getElementById('company_name').focus()
     }]], []);
 
     useHotkeys([['alt+r', () => {
@@ -172,17 +173,17 @@ function MobileBankAccountForm() {
                     onCancel: () => console.log('Cancel'),
                     onConfirm: () => {
                         const value = {
-                            url: 'core/mobileBankAccount',
+                            url: 'core/customer',
                             data: values
                         }
                         dispatch(storeEntityData(value))
                     },
                 });
             })}>
-                <Box pb={`xs`} pl={`xs`} pr={8} mb={8}>
+                <Box pb={`xs`} pl={`xs`} pr={8}>
                     <Grid>
                         <Grid.Col span={6} h={54}>
-                            <Title order={6} mt={'xs'} pl={'6'}>{t('MobileBankAccountInformation')}</Title>
+                            <Title order={6} mt={'xs'} pl={'6'}>{t('NewClientInfo')}</Title>
                         </Grid.Col>
                         <Grid.Col span={6}>
                             <Group mr={'md'} pos={`absolute`} right={0} gap={0}>
@@ -194,7 +195,7 @@ function MobileBankAccountForm() {
                                             size="xs"
                                             color={`indigo.6`}
                                             type="submit"
-                                            mt={12}
+                                            mt={4}
                                             id="EntityFormSubmit"
                                             leftSection={<IconDeviceFloppy size={16} />}
                                         >
@@ -229,88 +230,99 @@ function MobileBankAccountForm() {
                                     }
 
                                     <InputForm
-                                        tooltip={t('MBAMobileValidate')}
-                                        label={t('MBAMobile')}
-                                        placeholder={t('MBAMobileInformation')}
+                                        tooltip={t('CompanyNameValidate')}
+                                        label={t('CompanyName')}
+                                        placeholder={t('CompanyNameInformation')}
                                         required={true}
-                                        nextField={'mba_owner'}
-                                        name={'mba_mobile'}
+                                        leftSection={<IconDeviceFloppy size={16} />}
+                                        nextField={'mobile'}
+                                        name={'company_name'}
                                         form={form}
                                         mt={0}
-                                        id={'mba_mobile'}
+                                        id={'company_name'}
                                     />
 
                                     <InputForm
-                                        tooltip={t('MBAAccountOwnerValidate')}
-                                        label={t('MBAAccountOwner')}
-                                        placeholder={t('MBAAccountOwnerInformation')}
+                                        tooltip={t('MobileValidateMessage')}
+                                        label={t('Mobile')}
+                                        placeholder={t('Mobile')}
                                         required={true}
-                                        nextField={'mba_authorized'}
-                                        name={'mba_owner'}
+                                        nextField={'location_id'}
+                                        name={'mobile'}
                                         form={form}
                                         mt={8}
-                                        id={'mba_owner'}
+                                        id={'mobile'}
                                     />
-
-                                    <InputForm
-                                        tooltip={t('MBAAuthorizedValidation')}
-                                        label={t('MBAAuthorized')}
-                                        placeholder={t('MBAAuthorizedInformation')}
-                                        required={true}
-                                        nextField={'mba_service_name_id'}
-                                        name={'mba_authorized'}
-                                        form={form}
-                                        mt={8}
-                                        id={'mba_authorized'}
-                                    />
-
-
                                     <SelectForm
-                                        tooltip={t('MBAServiceValidate')}
-                                        label={t('MBAService')}
-                                        placeholder={t('MBAServiceInformation')}
+                                        tooltip={t('Location')}
+                                        label={t('Location')}
+                                        placeholder={t('ChooseLocation')}
                                         required={true}
-                                        nextField={'mba_type_id'}
-                                        name={'mba_service_name_id'}
+                                        nextField={'main_application_id'}
+                                        name={'location_id'}
                                         form={form}
                                         dropdownValue={locationDropdown}
                                         mt={8}
-                                        id={'mba_service_name_id'}
+                                        id={'location_id'}
                                         searchable={true}
                                         value={locationData}
                                         changeValue={setLocationData}
                                     />
 
-
                                     <SelectForm
-                                        tooltip={t('MBATypeValidate')}
-                                        label={t('MBAType')}
-                                        placeholder={t('MBATypeInformation')}
+                                        tooltip={t('MainApplicationValidate')}
+                                        label={t('MainApplication')}
+                                        placeholder={t('MainApplicationInfo')}
                                         required={true}
-                                        nextField={'mba_service_charge'}
-                                        name={'mba_type_id'}
+                                        nextField={'business_model_id'}
+                                        name={'main_application_id'}
                                         form={form}
                                         dropdownValue={executiveDropdown}
                                         mt={8}
-                                        id={'mba_type_id'}
+                                        id={'main_application_id'}
+                                        searchable={true}
+                                        value={marketingExeData}
+                                        changeValue={setMarketingExeData}
+                                    />
+                                    <SelectForm
+                                        tooltip={t('BusinessModelValidate')}
+                                        label={t('BusinessModel')}
+                                        placeholder={t('BusinessModelInfo')}
+                                        required={true}
+                                        nextField={'owner_name'}
+                                        name={'business_model_id'}
+                                        form={form}
+                                        dropdownValue={executiveDropdown}
+                                        mt={8}
+                                        id={'business_model_id'}
                                         searchable={true}
                                         value={marketingExeData}
                                         changeValue={setMarketingExeData}
                                     />
 
                                     <InputForm
-                                        tooltip={t('MBAChargeValidate')}
-                                        label={t('MBACharge')}
-                                        placeholder={t('MBAChargeInformation')}
-                                        required={false}
-                                        nextField={'Status'}
-                                        name={'mba_service_charge'}
+                                        tooltip={t('OwnerNameValidate')}
+                                        label={t('OwnerName')}
+                                        placeholder={t('OwnerNameInfo')}
+                                        required={true}
+                                        nextField={'user_name'}
+                                        name={'owner_name'}
                                         form={form}
                                         mt={8}
-                                        id={'mba_service_charge'}
+                                        id={'owner_name'}
                                     />
 
-
+                                    <InputForm
+                                        tooltip={t('OwnerNameValidate')}
+                                        label={t('OwnerName')}
+                                        placeholder={t('OwnerNameInfo')}
+                                        required={true}
+                                        nextField={'Status'}
+                                        name={'user_name'}
+                                        form={form}
+                                        mt={8}
+                                        id={'user_name'}
+                                    />
 
                                 </Box>
                             </ScrollArea>
@@ -319,7 +331,7 @@ function MobileBankAccountForm() {
                             <Shortcut
                                 form={form}
                                 FormSubmit={'EntityFormSubmit'}
-                                Name={'mba_mobile'}
+                                Name={'company_name'}
                             />
                         </Grid.Col>
                     </Grid>
@@ -329,4 +341,4 @@ function MobileBankAccountForm() {
     );
 }
 
-export default MobileBankAccountForm;
+export default NewClientForm;
