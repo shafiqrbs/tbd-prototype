@@ -6,6 +6,7 @@ import './lang/i18next';
 import CustomerIndex from "./components/modules/core/customer/CustomerIndex";
 import DamageIndex from './components/modules/core/damage/DamageIndex';
 import BankAccountIndex from './components/modules/core/bankAccount/BankAccountIndex';
+import MobileBankAccountIndex from './components/modules/core/mobileBankAccount/MobileBankAccounttIndex';
 function AppRoute() {
 
     return (
@@ -19,6 +20,7 @@ function AppRoute() {
                     <Route path="customer" element={<CustomerIndex />} />
                     <Route path="damage" element={<DamageIndex />} />
                     <Route path="bankAccount" element={<BankAccountIndex />} />
+                    <Route path="mobilebankaccount" element={<MobileBankAccountIndex />} />
                 </Route>
             </Route>
         </Routes>

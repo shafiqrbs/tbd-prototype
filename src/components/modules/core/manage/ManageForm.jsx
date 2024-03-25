@@ -155,7 +155,7 @@ function ManageForm() {
     }]], []);
 
     useHotkeys([['alt+s', () => {
-        document.getElementById('CustomerFormSubmit').click()
+        document.getElementById('EntityFormSubmit').click()
     }]], []);
 
 
@@ -199,7 +199,7 @@ function ManageForm() {
                                             color={`indigo.6`}
                                             type="submit"
                                             mt={4}
-                                            id="CustomerFormSubmit"
+                                            id="EntityFormSubmit"
                                             leftSection={<IconDeviceFloppy size={16} />}
                                         >
 
@@ -384,7 +384,7 @@ function ManageForm() {
                         <Grid.Col span={3}>
                             <Shortcut
                                 form={form}
-                                FormSubmit={'CustomerFormSubmit'}
+                                FormSubmit={'EntityFormSubmit'}
                                 Name={'CustomerName'}
                             />
                         </Grid.Col>

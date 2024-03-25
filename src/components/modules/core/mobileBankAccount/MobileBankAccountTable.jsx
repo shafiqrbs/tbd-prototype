@@ -16,10 +16,10 @@ import {
     setInsertType,
     showEntityData
 } from "../../../../store/core/crudSlice.js";
-import KeywordSearch from "../../filter/KeywordSearch";
+import KeywordSearch from "../../filter/KeywordSearch.jsx";
 import { modals } from "@mantine/modals";
-import { deleteEntityData } from "../../../../store/core/crudSlice";
-import DamageViewModel from "./DamageViewModel.jsx";
+import { deleteEntityData } from "../../../../store/core/crudSlice.js";
+import MobileBankAccountViewModel from "./MobileBankAccountViewModel.jsx";
 
 const data = [
     {
@@ -326,7 +326,7 @@ const data = [
 
 
 
-function DamageTable() {
+function MobileBankAccountTable() {
 
     const dispatch = useDispatch();
     const { t, i18n } = useTranslation();
@@ -335,12 +335,12 @@ function DamageTable() {
 
     const perPage = 50;
     const [page, setPage] = useState(1);
-    const [damageViewModel, setDamageViewModel] = useState(false)
+    const [mobileBankAccountViewModel, setMobileBankAccountViewModel] = useState(false)
 
     const fetching = useSelector((state) => state.crudSlice.fetching)
     const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword)
     const indexData = useSelector((state) => state.crudSlice.indexEntityData)
-    const damageFilterData = useSelector((state) => state.crudSlice.damageFilterData)
+    const customerFilterData = useSelector((state) => state.crudSlice.customerFilterData)
 
     useEffect(() => {
         setTimeout(() => {
@@ -350,11 +350,11 @@ function DamageTable() {
 
     useEffect(() => {
         const value = {
-            url: 'core/damage',
+            url: 'core/mobileBankAccount',
             param: {
                 term: searchKeyword,
-                name: damageFilterData.name,
-                mobile: damageFilterData.mobile,
+                name: customerFilterData.name,
+                mobile: customerFilterData.mobile,
                 page: page,
                 offset: perPage
             }
@@ -368,7 +368,7 @@ function DamageTable() {
                 <div radius="xl">
                     <Box bg={`white`}>
                         <Box pt={'xs'} pb={`xs`} pl={`md`} pr={'xl'}>
-                            <KeywordSearch module={'damage'} />
+                            <KeywordSearch module={'customer'} />
                         </Box>
                     </Box>
                     <Box bg={`white`}>
@@ -397,8 +397,8 @@ function DamageTable() {
                                                     variant="subtle"
                                                     color="green"
                                                     onClick={() => {
-                                                        setDamageViewModel(true)
-                                                        dispatch(showEntityData('core/damage/' + data.id))
+                                                        setMbAccountViewModel(true)
+                                                        dispatch(showEntityData('core/mobileBankAccount/' + data.id))
                                                     }}
                                                 >
                                                     <IconEye size={16} />
@@ -409,7 +409,7 @@ function DamageTable() {
                                                     color="blue"
                                                     onClick={() => {
                                                         dispatch(setInsertType('update'))
-                                                        dispatch(editEntityData('core/damage/' + data.id))
+                                                        dispatch(editEntityData('core/mobileBankAccount/' + data.id))
                                                         dispatch(setFormLoading(true))
                                                     }}
                                                 >
@@ -430,7 +430,7 @@ function DamageTable() {
                                                             labels: { confirm: 'Confirm', cancel: 'Cancel' },
                                                             onCancel: () => console.log('Cancel'),
                                                             onConfirm: () => {
-                                                                dispatch(deleteEntityData('core/damage/' + data.id))
+                                                                dispatch(deleteEntityData('core/mobileBankAccount/' + data.id))
                                                                 dispatch(setFetching(true))
                                                             },
                                                         });
@@ -461,11 +461,11 @@ function DamageTable() {
                 </div>
             </Box>
             {
-                DamageViewModel &&
-                <DamageViewModel damageViewModel={damageViewModel} setDamageViewModel={setDamageViewModel} />
+                MobileBankAccountViewModel &&
+                <MobileBankAccountViewModel mobileBankAccountViewModel={mobileBankAccountViewModel} setMobileBankAccountViewModel={setMobileBankAccountViewModel} />
             }
         </>
     );
 }
 
-export default DamageTable;
+export default MobileBankAccountTable;

@@ -196,7 +196,7 @@ function BankAccountForm() {
                                             color={`indigo.6`}
                                             type="submit"
                                             mt={4}
-                                            id="CustomerFormSubmit"
+                                            id="EntityFormSubmit"
                                             leftSection={<IconDeviceFloppy size={16} />}
                                         >
 

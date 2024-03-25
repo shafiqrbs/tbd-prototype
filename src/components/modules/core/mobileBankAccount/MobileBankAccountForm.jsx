@@ -18,16 +18,16 @@ import { notifications } from "@mantine/notifications";
 
 import {
     getExecutiveDropdown, getLocationDropdown,
-} from "../../../../store/core/utilitySlice";
+} from "../../../../store/core/utilitySlice.js";
 import { setEntityNewData, setFetching, setValidationData, storeEntityData } from "../../../../store/core/crudSlice.js";
 
-import Shortcut from "../../shortcut/Shortcut";
-import InputForm from "../../../form-builders/InputForm";
-import SelectForm from "../../../form-builders/SelectForm";
-import TextAreaForm from "../../../form-builders/TextAreaForm";
-import CustomerGroupModel from "./CustomerGroupModal.jsx";
+import Shortcut from "../../shortcut/Shortcut.jsx";
+import InputForm from "../../../form-builders/InputForm.jsx";
+import SelectForm from "../../../form-builders/SelectForm.jsx";
+import TextAreaForm from "../../../form-builders/TextAreaForm.jsx";
+import MobileBankAccountGroupModal from "./MobileBankAccountGroupModal.jsx";
 
-function CustomerForm() {
+function MobileBankAccountForm() {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const { isOnline, mainAreaHeight } = useOutletContext();
@@ -35,7 +35,7 @@ function CustomerForm() {
     const [opened, { open, close }] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
-    const [customerGroupData, setCustomerGroupData] = useState(null);
+    const [mobileBankAccountGroupData, setMobileBankAccountGroupData] = useState(null);
     const [locationData, setLocationData] = useState(null);
     const [marketingExeData, setMarketingExeData] = useState(null);
 
@@ -73,16 +73,12 @@ function CustomerForm() {
 
     const form = useForm({
         initialValues: {
-            location_id: '',
-            marketing_id: '',
-            name: '',
-            mobile: '',
-            customer_group: '',
-            credit_limit: '',
-            reference_id: '',
-            alternative_mobile: '',
-            address: '',
-            email: ''
+            mba_mobile: '',
+            mba_owner: '',
+            mba_authorized: '',
+            mba_service_name_id: '',
+            mba_type_id: '',
+            mba_service_charge: '',
         },
         validate: {
             name: hasLength({ min: 2, max: 20 }),
@@ -138,7 +134,7 @@ function CustomerForm() {
             setTimeout(() => {
                 form.reset()
                 setMarketingExeData(null)
-                setCustomerGroupData(null)
+                setMbAccountGroupData(null)
                 setLocationData(null)
                 dispatch(setEntityNewData([]))
                 dispatch(setFetching(true))
@@ -147,7 +143,7 @@ function CustomerForm() {
     }, [validation, validationMessage, form]);
 
     useHotkeys([['alt+n', () => {
-        document.getElementById('CustomerName').focus()
+        document.getElementById('mba_mobile').focus()
     }]], []);
 
     useHotkeys([['alt+r', () => {
@@ -155,7 +151,7 @@ function CustomerForm() {
     }]], []);
 
     useHotkeys([['alt+s', () => {
-        document.getElementById('CustomerFormSubmit').click()
+        document.getElementById('EntityFormSubmit').click()
     }]], []);
 
 
@@ -176,17 +172,17 @@ function CustomerForm() {
                     onCancel: () => console.log('Cancel'),
                     onConfirm: () => {
                         const value = {
-                            url: 'core/customer',
+                            url: 'core/mobileBankAccount',
                             data: values
                         }
                         dispatch(storeEntityData(value))
                     },
                 });
             })}>
-                <Box pb={`xs`} pl={`xs`} pr={8}>
+                <Box pb={`xs`} pl={`xs`} pr={8} mb={8}>
                     <Grid>
                         <Grid.Col span={6} h={54}>
-                            <Title order={6} mt={'xs'} pl={'6'}>{t('CreateNewCustomer')}</Title>
+                            <Title order={6} mt={'xs'} pl={'6'}>{t('MobileBankAccountInformation')}</Title>
                         </Grid.Col>
                         <Grid.Col span={6}>
                             <Group mr={'md'} pos={`absolute`} right={0} gap={0}>
@@ -198,14 +194,14 @@ function CustomerForm() {
                                             size="xs"
                                             color={`indigo.6`}
                                             type="submit"
-                                            mt={4}
-                                            id="CustomerFormSubmit"
+                                            mt={12}
+                                            id="EntityFormSubmit"
                                             leftSection={<IconDeviceFloppy size={16} />}
                                         >
 
                                             <Flex direction={`column`} gap={0}>
                                                 <Text fz={12} fw={400}>
-                                                    {t("CreateAndSave")}
+                                                    {t("Save")}
                                                 </Text>
                                             </Flex>
                                         </Button>
@@ -233,116 +229,53 @@ function CustomerForm() {
                                     }
 
                                     <InputForm
-                                        tooltip={t('NameValidateMessage')}
-                                        label={t('Name')}
-                                        placeholder={t('CustomerName')}
+                                        tooltip={t('MBAMobileValidate')}
+                                        label={t('MBAMobile')}
+                                        placeholder={t('MBAMobileInformation')}
                                         required={true}
-                                        nextField={'CustomerGroup'}
-                                        name={'name'}
+                                        nextField={'mba_owner'}
+                                        name={'mba_mobile'}
                                         form={form}
                                         mt={0}
-                                        id={'CustomerName'}
-                                    />
-
-
-                                    <Grid gutter={{ base: 6 }}>
-                                        <Grid.Col span={10}>
-                                            <SelectForm
-                                                tooltip={t('CustomerGroup')}
-                                                label={t('CustomerGroup')}
-                                                placeholder={t('ChooseCustomerGroup')}
-                                                required={false}
-                                                nextField={'CreditLimit'}
-                                                name={'customer_group'}
-                                                form={form}
-                                                dropdownValue={["Family", "Local"]}
-                                                mt={8}
-                                                id={'CustomerGroup'}
-                                                searchable={false}
-                                                value={customerGroupData}
-                                                changeValue={setCustomerGroupData}
-                                            />
-
-                                        </Grid.Col>
-                                        <Grid.Col span={2}><Button mt={32} color={'gray'} variant={'outline'}
-                                            onClick={open}><IconPlus size={12}
-                                                opacity={0.5} /></Button></Grid.Col>
-                                        {opened &&
-                                            <CustomerGroupModel openedModel={opened} open={open} close={close} />
-                                        }
-                                    </Grid>
-
-                                    <InputForm
-                                        tooltip={t('CreditLimitValidateMessage')}
-                                        label={t('CreditLimit')}
-                                        placeholder={t('CreditLimit')}
-                                        required={false}
-                                        nextField={'OLDReferenceNo'}
-                                        name={'credit_limit'}
-                                        form={form}
-                                        mt={8}
-                                        id={'CreditLimit'}
+                                        id={'mba_mobile'}
                                     />
 
                                     <InputForm
-                                        tooltip={t('OLDReferenceNo')}
-                                        label={t('OLDReferenceNo')}
-                                        placeholder={t('OLDReferenceNo')}
-                                        required={false}
-                                        nextField={'Mobile'}
-                                        name={'reference_id'}
-                                        form={form}
-                                        mt={8}
-                                        id={'OLDReferenceNo'}
-                                    />
-
-                                    <InputForm
-                                        tooltip={t('MobileValidateMessage')}
-                                        label={t('Mobile')}
-                                        placeholder={t('Mobile')}
+                                        tooltip={t('MBAAccountOwnerValidate')}
+                                        label={t('MBAAccountOwner')}
+                                        placeholder={t('MBAAccountOwnerInformation')}
                                         required={true}
-                                        nextField={'AlternativeMobile'}
-                                        name={'mobile'}
+                                        nextField={'mba_authorized'}
+                                        name={'mba_owner'}
                                         form={form}
                                         mt={8}
-                                        id={'Mobile'}
+                                        id={'mba_owner'}
                                     />
 
                                     <InputForm
-                                        tooltip={t('MobileValidateMessage')}
-                                        label={t('AlternativeMobile')}
-                                        placeholder={t('AlternativeMobile')}
-                                        required={false}
-                                        nextField={'Email'}
-                                        name={'alternative_mobile'}
+                                        tooltip={t('MBAAuthorizedValidation')}
+                                        label={t('MBAAuthorized')}
+                                        placeholder={t('MBAAuthorizedInformation')}
+                                        required={true}
+                                        nextField={'mba_service_name_id'}
+                                        name={'mba_authorized'}
                                         form={form}
                                         mt={8}
-                                        id={'AlternativeMobile'}
+                                        id={'mba_authorized'}
                                     />
 
-                                    <InputForm
-                                        tooltip={t('InvalidEmail')}
-                                        label={t('Email')}
-                                        placeholder={t('Email')}
-                                        required={false}
-                                        nextField={'Location'}
-                                        name={'email'}
-                                        form={form}
-                                        mt={8}
-                                        id={'Email'}
-                                    />
 
                                     <SelectForm
-                                        tooltip={t('Location')}
-                                        label={t('Location')}
-                                        placeholder={t('ChooseLocation')}
-                                        required={false}
-                                        nextField={'MarketingExecutive'}
-                                        name={'location_id'}
+                                        tooltip={t('MBAServiceValidate')}
+                                        label={t('MBAService')}
+                                        placeholder={t('MBAServiceInformation')}
+                                        required={true}
+                                        nextField={'mba_type_id'}
+                                        name={'mba_service_name_id'}
                                         form={form}
                                         dropdownValue={locationDropdown}
                                         mt={8}
-                                        id={'Location'}
+                                        id={'mba_service_name_id'}
                                         searchable={true}
                                         value={locationData}
                                         changeValue={setLocationData}
@@ -350,33 +283,34 @@ function CustomerForm() {
 
 
                                     <SelectForm
-                                        tooltip={t('MarketingExecutive')}
-                                        label={t('MarketingExecutive')}
-                                        placeholder={t('ChooseMarketingExecutive')}
+                                        tooltip={t('MBATypeValidate')}
+                                        label={t('MBAType')}
+                                        placeholder={t('MBATypeInformation')}
                                         required={false}
-                                        nextField={'Address'}
-                                        name={'marketing_id'}
+                                        nextField={'mba_service_charge'}
+                                        name={'mba_type_id'}
                                         form={form}
                                         dropdownValue={executiveDropdown}
                                         mt={8}
-                                        id={'MarketingExecutive'}
+                                        id={'mba_type_id'}
                                         searchable={true}
                                         value={marketingExeData}
                                         changeValue={setMarketingExeData}
                                     />
 
-
-                                    <TextAreaForm
-                                        tooltip={t('Address')}
-                                        label={t('Address')}
-                                        placeholder={t('Address')}
+                                    <InputForm
+                                        tooltip={t('MBAChargeValidate')}
+                                        label={t('MBACharge')}
+                                        placeholder={t('MBAChargeInformation')}
                                         required={false}
                                         nextField={'Status'}
-                                        name={'address'}
+                                        name={'mba_service_charge'}
                                         form={form}
                                         mt={8}
-                                        id={'Address'}
+                                        id={'mba_service_charge'}
                                     />
+
+
 
                                 </Box>
                             </ScrollArea>
@@ -384,8 +318,8 @@ function CustomerForm() {
                         <Grid.Col span={3}>
                             <Shortcut
                                 form={form}
-                                FormSubmit={'CustomerFormSubmit'}
-                                Name={'CustomerName'}
+                                FormSubmit={'EntityFormSubmit'}
+                                Name={'mba_mobile'}
                             />
                         </Grid.Col>
                     </Grid>
@@ -395,4 +329,4 @@ function CustomerForm() {
     );
 }
 
-export default CustomerForm;
+export default MobileBankAccountForm;
