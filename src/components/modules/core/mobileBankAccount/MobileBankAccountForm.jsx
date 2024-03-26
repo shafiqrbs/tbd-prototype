@@ -81,44 +81,64 @@ function MobileBankAccountForm() {
             mba_service_charge: '',
         },
         validate: {
-            name: hasLength({ min: 2, max: 20 }),
-            mobile: (value) => (!/^\d+$/.test(value)),
-            email: (value) => {
-                if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    return true;
+            mba_owner: (value) => {
+                if (!value) {
+                    return 'Owner name is required';
                 }
-                return null;
+                if (!/^[A-Za-z]+$/.test(value)) {
+                    return 'Owner name must contain only characters';
+                }
+                if (value.length < 2 || value.length > 20) {
+                    return 'Owner name must be between 2 and 20 characters';
+                }
+                return undefined;
             },
-            credit_limit: (value) => {
-                if (value) {
-                    const isNumberOrFractional = /^-?\d+(\.\d+)?$/.test(value);
-                    if (!isNumberOrFractional) {
-                        return true;
-                    }
+            mba_mobile: (value) => {
+                if (!value || !/^\d{11}$/.test(value) || !value.startsWith('01')) {
+                    return 'Mobile number must start with "01" and be 11 digits long';
                 }
-                return null;
+                return undefined;
             },
-            alternative_mobile: (value) => {
-                if (value && value.trim()) {
-                    const isDigitsOnly = /^\d+$/.test(value);
-                    if (!isDigitsOnly) {
-                        return true;
-                    }
+            mba_authorized: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
                 }
-                return null;
+                return undefined;
+            },
+            mba_service_name_id: (value) => {
+                if (!value) {
+                    return 'Service must be present';
+                }
+                return undefined;
+            },
+            mba_type_id: (value) => {
+                if (!value) {
+                    return 'Account type must be present';
+                }
+                return undefined;
+            },
+            mba_service_charge: (value) => {
+                if (value === '' || isNaN(value)) {
+                    return 'Service charge must be a number';
+                }
+                const numValue = parseFloat(value);
+                if (numValue < 0) {
+                    return 'Service charge must be positive';
+                }
+                return undefined;
             },
         }
     });
 
-
     useEffect(() => {
         if (validation) {
-            validationMessage.name && (form.setFieldError('name', true));
-            validationMessage.mobile && (form.setFieldError('mobile', true));
-            validationMessage.email && (form.setFieldError('email', true));
-            validationMessage.credit_limit && (form.setFieldError('credit_limit', true));
-            validationMessage.alternative_mobile && (form.setFieldError('alternative_mobile', true));
-            dispatch(setValidationData(false))
+            form.setFieldError('mba_owner', validationMessage.owner);
+            form.setFieldError('mba_mobile', validationMessage.mobile);
+            form.setFieldError('mba_authorized', validationMessage.authorized);
+            form.setFieldError('mba_service_name_id', validationMessage.service);
+            form.setFieldError('mba_type_id', validationMessage.type);
+            form.setFieldError('mba_service_charge', validationMessage.service_charge);
+            dispatch(setValidationData(false));
         }
 
         if (entityNewData.message === 'success') {
@@ -132,15 +152,16 @@ function MobileBankAccountForm() {
             });
 
             setTimeout(() => {
-                form.reset()
-                setMarketingExeData(null)
-                setMbAccountGroupData(null)
-                setLocationData(null)
-                dispatch(setEntityNewData([]))
-                dispatch(setFetching(true))
-            }, 700)
+                form.reset();
+                setMarketingExeData(null);
+                setMbAccountGroupData(null);
+                setLocationData(null);
+                dispatch(setEntityNewData([]));
+                dispatch(setFetching(true));
+            }, 700);
         }
-    }, [validation, validationMessage, form]);
+    }, [validation, validationMessage, entityNewData, form, dispatch]);
+
 
     useHotkeys([['alt+n', () => {
         document.getElementById('mba_mobile').focus()

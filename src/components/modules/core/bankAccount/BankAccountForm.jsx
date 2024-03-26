@@ -82,31 +82,51 @@ function BankAccountForm() {
             bank_account_address: '',
         },
         validate: {
-            name: hasLength({ min: 2, max: 20 }),
-            mobile: (value) => (!/^\d+$/.test(value)),
-            email: (value) => {
-                if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    return true;
+            bank_name_id: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
                 }
-                return null;
+                return undefined;
             },
-            credit_limit: (value) => {
-                if (value) {
-                    const isNumberOrFractional = /^-?\d+(\.\d+)?$/.test(value);
-                    if (!isNumberOrFractional) {
-                        return true;
-                    }
+            branch_name: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
                 }
-                return null;
+                return undefined;
             },
-            alternative_mobile: (value) => {
-                if (value && value.trim()) {
-                    const isDigitsOnly = /^\d+$/.test(value);
-                    if (!isDigitsOnly) {
-                        return true;
-                    }
+            account_owner: (value) => {
+                if (!value) {
+                    return 'Owner name is required';
                 }
-                return null;
+                if (!/^[A-Za-z]+$/.test(value)) {
+                    return 'Owner name must contain only characters';
+                }
+                if (value.length < 2 || value.length > 20) {
+                    return 'Owner name must be between 2 and 20 characters';
+                }
+                return undefined;
+            },
+            account_type_id: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
+                }
+                return undefined;
+            },
+            account_number: (value) => {
+                if (!value || !/^\d{11}$/.test(value)) {
+                    return 'Mobile number must start with "01" and be 11 digits long';
+                }
+                return undefined;
+            },
+            service_charge: (value) => {
+                if (value === '' || isNaN(value)) {
+                    return 'Service charge must be a number';
+                }
+                const numValue = parseFloat(value);
+                if (numValue < 0) {
+                    return 'Service charge must be positive';
+                }
+                return undefined;
             },
         }
     });
@@ -114,12 +134,13 @@ function BankAccountForm() {
 
     useEffect(() => {
         if (validation) {
-            validationMessage.name && (form.setFieldError('name', true));
-            validationMessage.mobile && (form.setFieldError('mobile', true));
-            validationMessage.email && (form.setFieldError('email', true));
-            validationMessage.credit_limit && (form.setFieldError('credit_limit', true));
-            validationMessage.alternative_mobile && (form.setFieldError('alternative_mobile', true));
-            dispatch(setValidationData(false))
+            form.setFieldError('bank_name_id', validationMessage.name);
+            form.setFieldError('branch_name', validationMessage.branch);
+            form.setFieldError('account_owner', validationMessage.owner);
+            form.setFieldError('account_type_id', validationMessage.type);
+            form.setFieldError('account_number', validationMessage.number);
+            form.setFieldError('service_charge', validationMessage.charge);
+            dispatch(setValidationData(false));
         }
 
         if (entityNewData.message === 'success') {
@@ -141,7 +162,7 @@ function BankAccountForm() {
                 dispatch(setFetching(true))
             }, 700)
         }
-    }, [validation, validationMessage, form]);
+    }, [validation, validationMessage, entityNewData, form, dispatch]);
 
     useHotkeys([['alt+n', () => {
         document.getElementById('bank_name_id').focus()

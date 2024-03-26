@@ -82,31 +82,53 @@ function NewClientForm() {
             user_name: '',
         },
         validate: {
-            name: hasLength({ min: 2, max: 20 }),
-            mobile: (value) => (!/^\d+$/.test(value)),
-            email: (value) => {
-                if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    return true;
+            owner_name: (value) => {
+                if (!value) {
+                    return 'Owner name is required';
                 }
-                return null;
+                if (!/^[A-Za-z]+$/.test(value)) {
+                    return 'Owner name must contain only characters';
+                }
+                if (value.length < 2 || value.length > 20) {
+                    return 'Owner name must be between 2 and 20 characters';
+                }
+                return undefined;
             },
-            credit_limit: (value) => {
-                if (value) {
-                    const isNumberOrFractional = /^-?\d+(\.\d+)?$/.test(value);
-                    if (!isNumberOrFractional) {
-                        return true;
-                    }
+            mobile: (value) => {
+                if (!value || !/^\d{11}$/.test(value)) {
+                    return 'Mobile number must start with "01" and be 11 digits long';
                 }
-                return null;
+                return undefined;
             },
-            alternative_mobile: (value) => {
-                if (value && value.trim()) {
-                    const isDigitsOnly = /^\d+$/.test(value);
-                    if (!isDigitsOnly) {
-                        return true;
-                    }
+            location_id: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
                 }
-                return null;
+                return undefined;
+            },
+            main_application_id: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
+                }
+                return undefined;
+            },
+            user_name: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
+                }
+                return undefined;
+            },
+            business_model_id: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
+                }
+                return undefined;
+            },
+            company_name: (value) => {
+                if (!value) {
+                    return 'Authorized must be present';
+                }
+                return undefined;
             },
         }
     });
@@ -114,12 +136,14 @@ function NewClientForm() {
 
     useEffect(() => {
         if (validation) {
-            validationMessage.name && (form.setFieldError('name', true));
-            validationMessage.mobile && (form.setFieldError('mobile', true));
-            validationMessage.email && (form.setFieldError('email', true));
-            validationMessage.credit_limit && (form.setFieldError('credit_limit', true));
-            validationMessage.alternative_mobile && (form.setFieldError('alternative_mobile', true));
-            dispatch(setValidationData(false))
+            // form.setFieldError('company_name', validationMessage.name);
+            // form.setFieldError('mobile', validationMessage.mobile);
+            // form.setFieldError('location_id', validationMessage.location);
+            // form.setFieldError('main_application_id', validationMessage.application);
+            // form.setFieldError('business_model_id', validationMessage.bModel);
+            // form.setFieldError('owner_name', validationMessage.owner);
+            // form.setFieldError('user_name', validationMessage.user);
+            dispatch(setValidationData(false));
         }
 
         if (entityNewData.message === 'success') {
@@ -141,7 +165,7 @@ function NewClientForm() {
                 dispatch(setFetching(true))
             }, 700)
         }
-    }, [validation, validationMessage, form]);
+    }, [validation, validationMessage, entityNewData, form, dispatch]);
 
     useHotkeys([['alt+n', () => {
         document.getElementById('company_name').focus()
@@ -218,16 +242,7 @@ function NewClientForm() {
                         <Grid.Col span={'auto'}>
                             <ScrollArea h={height} scrollbarSize={2} type="never">
                                 <Box pl={'xs'} pb={'md'}>
-                                    {
-                                        Object.keys(form.errors).length > 0 && validationMessage != 0 &&
-                                        <Alert variant="light" color="red" radius="md" title={
-                                            <List withPadding size="sm">
-                                                {validationMessage.name && <List.Item>{t('NameValidateMessage')}</List.Item>}
-                                                {validationMessage.mobile && <List.Item>{t('MobileValidateMessage')}</List.Item>}
-                                                {validationMessage.alternative_mobile && <List.Item>{t('AlternativeMobile')}</List.Item>}
-                                            </List>
-                                        }></Alert>
-                                    }
+
 
                                     <InputForm
                                         tooltip={t('CompanyNameValidate')}
@@ -314,7 +329,7 @@ function NewClientForm() {
 
                                     <InputForm
                                         tooltip={t('OwnerNameValidate')}
-                                        label={t('OwnerName')}
+                                        label={t('UserName')}
                                         placeholder={t('OwnerNameInfo')}
                                         required={true}
                                         nextField={'Status'}

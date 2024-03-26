@@ -3,15 +3,15 @@ import {
     Tooltip,
     TextInput
 } from "@mantine/core";
-import {useTranslation} from "react-i18next";
-import {IconInfoCircle, IconX} from "@tabler/icons-react";
-import {getHotkeyHandler} from "@mantine/hooks";
+import { useTranslation } from "react-i18next";
+import { IconInfoCircle, IconX } from "@tabler/icons-react";
+import { getHotkeyHandler } from "@mantine/hooks";
 
 function InputForm(props) {
 
-    const {label, placeholder, required, nextField, name, form, tooltip, mt, id} = props
+    const { label, placeholder, required, nextField, name, form, tooltip, mt, id } = props
 
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
     return (
         <>
@@ -27,7 +27,7 @@ function InputForm(props) {
                     withArrow
                     offset={2}
                     zIndex={999}
-                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                 >
                     <TextInput
                         id={id}
@@ -51,7 +51,7 @@ function InputForm(props) {
                                 >
                                     <IconX color={`red`} size={16} opacity={0.5} onClick={() => {
                                         form.setFieldValue(name, '');
-                                    }}/>
+                                    }} />
                                 </Tooltip>
                                 :
                                 <Tooltip
@@ -62,9 +62,9 @@ function InputForm(props) {
                                     position={"left"}
                                     c={'indigo'}
                                     bg={`gray.1`}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
-                                    <IconInfoCircle size={16} opacity={0.5}/>
+                                    <IconInfoCircle size={16} opacity={0.5} />
                                 </Tooltip>
                         }
                         withAsterisk={required}

@@ -53,16 +53,22 @@ function DamageForm() {
             damage_notes: '',
         },
         validate: {
-            stock_id: hasLength({ min: 2, max: 20 }),
-            damage_quantity: (value) => !(parseInt(value) > 0),
+            stock_id: (value) => !value ? 'Stock Name is required' : undefined,
+            damage_quantity: (value) => {
+                if (!value) {
+                    return 'Quantity is required';
+                } else if (isNaN(value) || parseInt(value) <= 0) {
+                    return 'Quantity must be a positive value';
+                }
+                return undefined;
+            },
         }
     });
 
-
     useEffect(() => {
         if (validation) {
-            validationMessage.stock_id && (form.setFieldError('stock_id', true));
-            validationMessage.quantity && (form.setFieldError('damage_quantity', true));
+            validationMessage.stock_id && form.setFieldError('stock_id', validationMessage.stock_id);
+            validationMessage.quantity && form.setFieldError('damage_quantity', validationMessage.quantity);
             dispatch(setValidationData(false))
         }
 
@@ -85,7 +91,7 @@ function DamageForm() {
                 dispatch(setFetching(true))
             }, 700)
         }
-    }, [validation, validationMessage, form]);
+    }, [validation, validationMessage, entityNewData, form, dispatch]);
 
     useHotkeys([['alt+n', () => {
         document.getElementById('stock_id').focus()
