@@ -1,10 +1,10 @@
-import React, {useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import {
     rem,
     Grid, Tooltip, TextInput, ActionIcon,
 } from "@mantine/core";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
     IconFilter,
     IconInfoCircle,
@@ -12,8 +12,8 @@ import {
     IconSearch,
     IconX,
 } from "@tabler/icons-react";
-import {useHotkeys} from "@mantine/hooks";
-import {useDispatch, useSelector} from "react-redux";
+import { useHotkeys } from "@mantine/hooks";
+import { useDispatch, useSelector } from "react-redux";
 import {
     setCustomerFilterData,
     setFetching,
@@ -21,12 +21,12 @@ import {
     setVendorFilterData
 } from "../../../store/core/crudSlice.js";
 import FilterModel from "./FilterModel.jsx";
-import {setProductFilterData} from "../../../store/inventory/crudSlice.js";
+import { setProductFilterData } from "../../../store/inventory/crudSlice.js";
 
 function KeywordSearch(props) {
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
-    const {isOnline} = useOutletContext();
+    const { isOnline } = useOutletContext();
 
     const [searchKeywordTooltip, setSearchKeywordTooltip] = useState(false)
     const [filterModel, setFilterModel] = useState(false)
@@ -48,7 +48,7 @@ function KeywordSearch(props) {
     return (
         <>
             <Grid justify="flex-end" align="flex-end">
-                <Grid.Col span={10}>
+                <Grid.Col span={9}>
                     <Tooltip
                         label={t('EnterSearchAnyKeyword')}
                         opened={searchKeywordTooltip}
@@ -59,10 +59,10 @@ function KeywordSearch(props) {
                         withArrow
                         offset={2}
                         zIndex={100}
-                        transitionProps={{transition: "pop-bottom-left", duration: 5000}}
+                        transitionProps={{ transition: "pop-bottom-left", duration: 5000 }}
                     >
                         <TextInput
-                            leftSection={<IconSearch size={16} opacity={0.5}/>}
+                            leftSection={<IconSearch size={16} opacity={0.5} />}
                             size="sm"
                             placeholder={t('EnterSearchAnyKeyword')}
                             onChange={(e) => {
@@ -85,7 +85,7 @@ function KeywordSearch(props) {
                                     >
                                         <IconX color={`red`} size={16} opacity={0.5} onClick={() => {
                                             dispatch(setSearchKeyword(''))
-                                        }}/>
+                                        }} />
                                     </Tooltip>
                                     :
                                     <Tooltip
@@ -95,25 +95,25 @@ function KeywordSearch(props) {
                                         c={'indigo'}
                                         bg={`indigo.1`}
                                     >
-                                        <IconInfoCircle size={16} opacity={0.5}/>
+                                        <IconInfoCircle size={16} opacity={0.5} />
                                     </Tooltip>
                             }
                         />
                     </Tooltip>
                 </Grid.Col>
-                <Grid.Col span={2}>
+                <Grid.Col span={3}>
                     <ActionIcon.Group mt={'1'}>
                         <ActionIcon variant="transparent" size="lg" mr={16} aria-label="Gallery"
-                                    onClick={() => {
-                                        searchKeyword.length > 0 ?
-                                            (dispatch(setFetching(true)),
-                                                setSearchKeywordTooltip(false))
-                                            :
-                                            (setSearchKeywordTooltip(true),
-                                                setTimeout(() => {
-                                                    setSearchKeywordTooltip(false)
-                                                }, 1500))
-                                    }}
+                            onClick={() => {
+                                searchKeyword.length > 0 ?
+                                    (dispatch(setFetching(true)),
+                                        setSearchKeywordTooltip(false))
+                                    :
+                                    (setSearchKeywordTooltip(true),
+                                        setTimeout(() => {
+                                            setSearchKeywordTooltip(false)
+                                        }, 1500))
+                            }}
                         >
                             <Tooltip
                                 label={t('SearchButton')}
@@ -123,9 +123,9 @@ function KeywordSearch(props) {
                                 position={"bottom"}
                                 c={'indigo'}
                                 bg={`gray.1`}
-                                transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                             >
-                                <IconSearch style={{width: rem(20)}} stroke={2.0}/>
+                                <IconSearch style={{ width: rem(20) }} stroke={2.0} />
                             </Tooltip>
                         </ActionIcon>
 
@@ -147,9 +147,9 @@ function KeywordSearch(props) {
                                 position={"bottom"}
                                 c={'indigo'}
                                 bg={`gray.1`}
-                                transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                             >
-                                <IconFilter style={{width: rem(20)}} stroke={2.0}/>
+                                <IconFilter style={{ width: rem(20) }} stroke={2.0} />
                             </Tooltip>
                         </ActionIcon>
 
@@ -164,9 +164,9 @@ function KeywordSearch(props) {
                                 position={"bottom"}
                                 c={'indigo'}
                                 bg={`gray.1`}
-                                transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                             >
-                                <IconRestore style={{width: rem(20)}} stroke={2.0} onClick={() => {
+                                <IconRestore style={{ width: rem(20) }} stroke={2.0} onClick={() => {
                                     dispatch(setSearchKeyword(''))
                                     dispatch(setFetching(true))
 
@@ -177,7 +177,7 @@ function KeywordSearch(props) {
                                             mobile: ''
                                         }));
                                     }
-                                }}/>
+                                }} />
                             </Tooltip>
                         </ActionIcon>
                     </ActionIcon.Group>
@@ -185,7 +185,7 @@ function KeywordSearch(props) {
             </Grid>
 
             {
-                filterModel && <FilterModel filterModel={filterModel} setFilterModel={setFilterModel} module={props.module}/>
+                filterModel && <FilterModel filterModel={filterModel} setFilterModel={setFilterModel} module={props.module} />
             }
         </>
     );

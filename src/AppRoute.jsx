@@ -8,6 +8,8 @@ import DamageIndex from './components/modules/core/damage/DamageIndex';
 import BankAccountIndex from './components/modules/core/bankAccount/BankAccountIndex';
 import MobileBankAccountIndex from './components/modules/core/mobileBankAccount/MobileBankAccounttIndex';
 import NewClientIndex from './components/modules/core/newClient/NewClientIndex';
+import Demo from './components/modules/core/modalWithThreeGrid/landing';
+import ThreeGrid from './components/modules/core/modalWithThreeGrid/Three';
 function AppRoute() {
 
     return (
@@ -23,6 +25,7 @@ function AppRoute() {
                     <Route path="bankAccount" element={<BankAccountIndex />} />
                     <Route path="mobilebankaccount" element={<MobileBankAccountIndex />} />
                     <Route path="newClient" element={<NewClientIndex />} />
+                    <Route path="modalWithThreeGrid" element={<Demo />} />
                 </Route>
             </Route>
         </Routes>

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import {
     Button,
     Group,
@@ -11,33 +11,33 @@ import {
     Title,
     TextInput, SimpleGrid, List, ColorInput, Select, ThemeIcon, Switch,
 } from "@mantine/core";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 import {
     IconCircleCheck,
     IconFilter, IconEyeSearch,
     IconUserCircle, IconInfoCircle, IconList, IconPlus,
 } from "@tabler/icons-react";
-import {getHotkeyHandler, useViewportSize} from "@mantine/hooks";
+import { getHotkeyHandler, useViewportSize } from "@mantine/hooks";
 
 import axios from "axios";
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css'; //if using mantine component features
 import 'mantine-react-table/styles.css'; //make sure MRT styles were imported in your app root (once)
-import {useMemo} from 'react';
+import { useMemo } from 'react';
 import {
     MantineReactTable,
     useMantineReactTable,
 } from 'mantine-react-table';
 
 function ThreeGrid(props) {
-    const {isFormSubmit, setFormSubmit, setFormSubmitData, form} = props
-    const iconStyle = {width: rem(12), height: rem(12)};
+    const { isFormSubmit, setFormSubmit, setFormSubmitData, form } = props
+    const iconStyle = { width: rem(12), height: rem(12) };
 
 
-    const {t, i18n} = useTranslation();
-    const {isOnline, mainAreaHeight} = useOutletContext();
+    const { t, i18n } = useTranslation();
+    const { isOnline, mainAreaHeight } = useOutletContext();
     const height = mainAreaHeight - 90; //TabList height 36
     const [fetching, setFetching] = useState(true)
     const [data, setRecords] = useState([]);
@@ -95,14 +95,14 @@ function ThreeGrid(props) {
                         <Box p={`md`}>
                             <Group right={0} gap={0}>
                                 <TextInput
-                                    leftSection={<IconUserCircle size={16} opacity={0.5}/>}
+                                    leftSection={<IconUserCircle size={16} opacity={0.5} />}
                                     rightSection={
                                         <Tooltip
                                             label={t("this_filed_is_required")}
                                             withArrow
                                             bg={`blue.5`}
                                         >
-                                            <IconInfoCircle size={16} opacity={0.5}/>
+                                            <IconInfoCircle size={16} opacity={0.5} />
                                         </Tooltip>
                                     }
                                     size="sm"
@@ -116,10 +116,10 @@ function ThreeGrid(props) {
                                     color={`blue.3`}
                                     withArrow
                                     position={"bottom"}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
                                     <Button size="sm" color={`blue.5`} variant="light" ml={4} mr={2}>
-                                        <IconEyeSearch size={18}/>
+                                        <IconEyeSearch size={18} />
                                     </Button>
                                 </Tooltip>
                                 <Tooltip
@@ -129,10 +129,10 @@ function ThreeGrid(props) {
                                     color={`green.3`}
                                     withArrow
                                     position={"bottom"}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
                                     <Button size="sm" variant="light" color={`green.5`}>
-                                        <IconFilter size={18}/>
+                                        <IconFilter size={18} />
                                     </Button>
                                 </Tooltip>
                             </Group>
@@ -141,10 +141,10 @@ function ThreeGrid(props) {
 
                         <Box h={1} bg={`gray.1`}></Box>
 
-                        <ScrollArea style={{height: '500px'}}>
+                        <ScrollArea style={{ height: '500px' }}>
                             {
                                 (data && data.length > 0) &&
-                                <MantineReactTable table={table}/>
+                                <MantineReactTable table={table} />
 
                             }
                         </ScrollArea>
@@ -165,7 +165,7 @@ function ThreeGrid(props) {
                                 center
                                 icon={
                                     <ThemeIcon color="teal" size={24} radius="xl">
-                                        <IconCircleCheck style={{width: rem(16), height: rem(16)}}/>
+                                        <IconCircleCheck style={{ width: rem(16), height: rem(16) }} />
                                     </ThemeIcon>
                                 }
                             >
@@ -220,7 +220,7 @@ function ThreeGrid(props) {
                                     withArrow
                                     offset={2}
                                     zIndex={0}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
 
                                     <TextInput
@@ -246,7 +246,7 @@ function ThreeGrid(props) {
                                     withArrow
                                     offset={2}
                                     zIndex={0}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
                                     <TextInput
                                         size="sm"
@@ -274,7 +274,7 @@ function ThreeGrid(props) {
                                     withArrow
                                     offset={2}
                                     zIndex={0}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
                                     <ColorInput
                                         size="sm"
@@ -301,7 +301,7 @@ function ThreeGrid(props) {
                                     withArrow
                                     offset={2}
                                     zIndex={0}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
                                     <Select
                                         id="programming"
@@ -326,7 +326,7 @@ function ThreeGrid(props) {
                                     withArrow
                                     offset={2}
                                     zIndex={0}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
                                     <Switch
                                         defaultChecked

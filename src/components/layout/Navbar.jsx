@@ -47,6 +47,12 @@ function Navbar() {
                     component="button"
                     onClick={(e) => { navigate('core/newClient') }}
                 />
+                <NavLink
+                    href="landing"
+                    label={t('landing')}
+                    component="button"
+                    onClick={(e) => { navigate('core/modalWithThreeGrid') }}
+                />
 
             </NavLink>
 
