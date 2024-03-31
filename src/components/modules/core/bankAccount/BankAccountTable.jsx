@@ -333,7 +333,7 @@ function BankAccountTable() {
     const { isOnline, mainAreaHeight } = useOutletContext();
     const height = mainAreaHeight - 80; //TabList height 104
 
-    const perPage = 50;
+    const perPage = 20;
     const [page, setPage] = useState(1);
     const [bankAccountViewModel, setBankAccountViewModel] = useState(false)
 

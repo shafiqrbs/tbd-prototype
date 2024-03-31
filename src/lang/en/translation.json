@@ -230,5 +230,20 @@
   "BusinessModelValidate": "business model is a must required field",
   "OwnerName": "Owner Name",
   "OwnerNameInfo": "Enter your full name",
-  "OwnerNameValidate": "owner name is a must required field"
+  "OwnerNameValidate": "owner name is a must required field",
+  "Print": "Print",
+  "TotalSales": "Total Sales",
+  "NumberOfSales": "Number of Sales",
+  "CustomerDetails": "Customer Details",
+  "PaymentDetails": "Payment Details",
+  "TotalBDT": "Total BDT",
+  "PaymentBDT": "Payment BDT",
+  "DiscountBDT": "Discount BDT",
+  "DueBDT": "Due BDT",
+  "PaymentStatus": "Payment Status",
+  "Process": "Process",
+  "PaymentMethod": "Payment Method",
+  "SalesBy": "Sales By",
+  "ConfirmedBy": "Confirmed By",
+  "InvoiceDetails": "Invoice Details"
 }

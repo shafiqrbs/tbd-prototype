@@ -33,6 +33,7 @@ import {
 import FormComp from "./FormComp";
 import TableComp from "./TableComp";
 import { HeaderSearch } from "./HeaderComp";
+import CustomerDetails from "./CustomerDetails";
 
 function ThreeGrid(props) {
     const { isFormSubmit, setFormSubmit, setFormSubmitData, form } = props
@@ -63,73 +64,35 @@ function ThreeGrid(props) {
 
     return (
         <>
-            <Container fluid h={100}>
+            <Container fluid h={50}>
                 <HeaderSearch />
             </Container>
 
-            <Box >
-                <SimpleGrid cols={3} bg={`white`} >
+            <Box pt={10} >
+                <SimpleGrid cols={3} bg={`white`}  >
 
+                    <div className="view-gird">
+                        <Box m={`sm`}>
+                            <Title order={5}>{t(`CustomerDetails`)}</Title>
+                            {/* <Text fz={`sm`}>Select a customer from the list to </Text> */}
+                        </Box>
+                        <Box bg={`white`} mt={`lg`}></Box>
 
-                    <div>
+                        <CustomerDetails />
 
+                    </div>
+
+                    <div className="view-gird">
                         <TableComp />
                     </div>
-                    <div className="view-gird">
-                        <Box p={`xs`}>
-                            <Title order={4}>Details Data</Title>
-                            <Text fz={`sm`}>We'll always let you know about important changes</Text>
+                    <div className="view-gird" >
+                        <Box m={`sm`}>
+                            <Title order={5}>{t('InvoiceDetails')}</Title>
+                            {/* <Text fz={`sm`}>Select a customer from the list to </Text> */}
                         </Box>
-                        <Box bg={`white`}></Box>
+                        <Box bg={`white`} mt={`lg`}></Box>
+                        <FormComp />
 
-                        <ScrollArea h={height} scrollbarSize={2} bg={`white`}>
-                            <List
-                                px={4}
-                                pt={10}
-                                spacing="xs"
-                                size="sm"
-                                center
-                                icon={
-                                    <ThemeIcon color="teal" size={24} radius="xl">
-                                        <IconCircleCheck style={{ width: rem(16), height: rem(16) }} />
-                                    </ThemeIcon>
-                                }
-                            >
-                                <List.Item>Clone or download repository from GitHub </List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                                <List.Item>Clone or download repository from GitHub</List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                                <List.Item>Clone or download repository from GitHub</List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                                <List.Item>Clone or download repository from GitHub</List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                                <List.Item>Clone or download repository from GitHub</List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                                <List.Item>Clone or download repository from GitHub</List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                                <List.Item>Clone or download repository from GitHub</List.Item>
-                                <List.Item>Install dependencies with yarn</List.Item>
-                                <List.Item>To start development server run npm start command</List.Item>
-                                <List.Item>Run tests to make sure your changes do not break the build</List.Item>
-                            </List>
-                        </ScrollArea>
-                    </div>
-                    <div className={"form-grid"} h={1}>
-                        <Box p={`xs`} pl={`md`}>
-                            <FormComp />
-                        </Box>
                     </div>
                 </SimpleGrid>
             </Box>
