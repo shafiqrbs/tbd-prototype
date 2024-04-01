@@ -157,17 +157,17 @@ function TableInvoice() {
                                 { accessor: 'SubTotal', title: "Sub-Total" },
                             ]}
                             fetching={fetching}
-                            totalRecords={indexData.total}
-                            recordsPerPage={perPage}
-                            page={page}
-                            onPageChange={(p) => {
-                                setPage(p)
-                                dispatch(setFetching(true))
-                            }}
+                            // totalRecords={indexData.total}
+                            // recordsPerPage={perPage}
+                            // page={page}
+                            // onPageChange={(p) => {
+                            //     setPage(p)
+                            //     dispatch(setFetching(true))
+                            // }}
                             loaderSize="xs"
                             loaderColor="grape"
                             height={height}
-                            scrollAreaProps={{ type: 'never' }}
+                        // scrollAreaProps={{ type: 'never' }}
                         />
                     </Box>
                 </Box>

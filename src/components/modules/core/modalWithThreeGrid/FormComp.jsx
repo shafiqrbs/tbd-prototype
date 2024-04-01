@@ -27,6 +27,17 @@ function FormComp(props) {
         props.setCustomerViewModel(false)
     }
 
+    function printDiv(divName) {
+        let printContents = document.getElementById(divName).innerHTML;
+        let originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
     return (
         // <Modal opened={props.customerViewModel} onClose={closeModel} title={t('CustomerDetailsData')} size="75%" overlayProps={{
         //     color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.dark[8],
@@ -34,121 +45,126 @@ function FormComp(props) {
         //     blur: 3,
         // }}>
         <>
-            < Paper style={{ border: '1.5px solid #e0e0e0' }} mb={`xs`}>
-                <Box mt={`sm`} ml={`sm`}>
-                    <Box >
-                        <Title order={5} size="h6" style={{ textAlign: 'left', fontSize: '12' }}>{t('CustomerDetails')}</Title>
-                    </Box>
-                    <Grid gutter={1} mt={`xs`}>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Customer')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.customerId && showEntityData.customerId}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Mobile')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.name && showEntityData.name}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Address')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.mobile && showEntityData.mobile}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Created')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
-                            </div>
-                        </GridCol>
-                    </Grid>
+            <ScrollArea id="print-area">
+                < Paper style={{ border: '1.5px solid #e0e0e0' }} mb={`xs`}>
+                    <Box mt={`sm`} ml={`sm`}>
+                        <Box >
+                            <Title order={5} size="h6" style={{ textAlign: 'left', fontSize: '12' }}>{t('CustomerDetails')}</Title>
+                        </Box>
+                        <Grid gutter={1} mt={`xs`}>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Customer')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.customerId && showEntityData.customerId}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Mobile')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.name && showEntityData.name}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Address')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.mobile && showEntityData.mobile}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Created')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
+                                </div>
+                            </GridCol>
+                        </Grid>
 
-                    {/* Payment Details */}
-                    <Box >
-                        <Title order={5} size="h6" mt={`md`} style={{ textAlign: 'left', fontSize: '12' }}>{t('PaymentDetails')}</Title>
-                    </Box>
-                    <Grid gutter={1} mt={`xs`}>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('TotalBDT')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.customerId && showEntityData.customerId}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('PaymentBDT')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.name && showEntityData.name}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('DiscountBDT')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.mobile && showEntityData.mobile}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('DueBDT')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('PaymentStatus')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
-                            </div>
-                        </GridCol>
-                    </Grid>
-                    {/* Payment Method */}
-                    <Box >
-                        <Title order={5} size="h6" mt={`md`} style={{ textAlign: 'left', fontSize: '12' }}>{t('TotalSales')}</Title>
-                    </Box>
+                        {/* Payment Details */}
+                        <Box >
+                            <Title order={5} size="h6" mt={`md`} style={{ textAlign: 'left', fontSize: '12' }}>{t('PaymentDetails')}</Title>
+                        </Box>
+                        <Grid gutter={1} mt={`xs`}>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('TotalBDT')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.customerId && showEntityData.customerId}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('PaymentBDT')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.name && showEntityData.name}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('DiscountBDT')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.mobile && showEntityData.mobile}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('DueBDT')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('PaymentStatus')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
+                                </div>
+                            </GridCol>
+                        </Grid>
+                        {/* Payment Method */}
+                        <Box >
+                            <Title order={5} size="h6" mt={`md`} style={{ textAlign: 'left', fontSize: '12' }}>{t('PaymentDetails')}</Title>
+                        </Box>
 
-                    <Grid gutter={1} mt={`xs`} >
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Process')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.customerId && showEntityData.customerId}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('PaymentMethod')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.name && showEntityData.name}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('SalesBy')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.mobile && showEntityData.mobile}</div>
-                            </div>
-                        </GridCol>
-                        <GridCol span={4} mb={`sm`}>
-                            <div style={{ display: 'flex', alignItems: 'center' }} >
-                                <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('ConfirmedBy')}</div>
-                                <div >:</div>
-                                <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
-                            </div>
-                        </GridCol>
-                    </Grid>
-                </Box>
-            </Paper>
-            <TableInvoice />
+                        <Grid gutter={1} mt={`xs`} >
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('Process')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.customerId && showEntityData.customerId}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('PaymentMethod')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.name && showEntityData.name}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('SalesBy')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.mobile && showEntityData.mobile}</div>
+                                </div>
+                            </GridCol>
+                            <GridCol span={4} mb={`sm`}>
+                                <div style={{ display: 'flex', alignItems: 'center' }} >
+                                    <div style={{ width: '60px', fontWeight: 400, fontSize: '10px' }}>{t('ConfirmedBy')}</div>
+                                    <div >:</div>
+                                    <div>{showEntityData && showEntityData.alternative_mobile && showEntityData.alternative_mobile}</div>
+                                </div>
+                            </GridCol>
+                        </Grid>
+                    </Box>
+                </Paper>
+                <ScrollArea >
+                    <TableInvoice />
+                </ScrollArea>
+
+            </ScrollArea>
             <Grid
                 m={`xs`}
                 mt={`md`}
@@ -161,9 +177,10 @@ function FormComp(props) {
                     size="xs"
                     color={`indigo.6`}
                     type="submit"
-                    mt={10}
+                    mt={`lg`}
                     id="EntityFormSubmit"
                     leftSection={<IconPrinter size={16} />}
+                    onClick={(Event) => printDiv('print-area')}
                 >
 
                     <Flex direction={`column`} gap={0}>

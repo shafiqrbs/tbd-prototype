@@ -72,7 +72,7 @@ function ThreeGrid(props) {
                 <SimpleGrid cols={3} bg={`white`}  >
 
                     <div className="view-gird">
-                        <Box m={`sm`}>
+                        <Box mt={`sm`} ml={`sm`}>
                             <Title order={5}>{t(`CustomerDetails`)}</Title>
                             {/* <Text fz={`sm`}>Select a customer from the list to </Text> */}
                         </Box>
@@ -86,7 +86,7 @@ function ThreeGrid(props) {
                         <TableComp />
                     </div>
                     <div className="view-gird" >
-                        <Box m={`sm`}>
+                        <Box mt={`sm`}>
                             <Title order={5}>{t('InvoiceDetails')}</Title>
                             {/* <Text fz={`sm`}>Select a customer from the list to </Text> */}
                         </Box>

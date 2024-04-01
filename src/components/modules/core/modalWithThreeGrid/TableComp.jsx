@@ -3,10 +3,15 @@ import { useOutletContext } from "react-router-dom";
 import {
     Group,
     Box,
-    ActionIcon, Text, Button, Grid, Flex
+    ActionIcon, Text, Button, Grid, Flex,
+    GridCol, Tooltip, rem
 } from "@mantine/core";
+import { DateInput } from '@mantine/dates';
 import { useTranslation } from "react-i18next";
-import { IconEye, IconEdit, IconTrash, IconPrinter } from "@tabler/icons-react";
+import {
+    IconEye, IconEdit, IconTrash, IconPrinter, IconSearch,
+    IconFilter, IconRestore
+} from "@tabler/icons-react";
 import { DataTable } from 'mantine-datatable';
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -82,16 +87,18 @@ function TableComp() {
     const dispatch = useDispatch();
     const { t, i18n } = useTranslation();
     const { isOnline, mainAreaHeight } = useOutletContext();
-    const height = mainAreaHeight - 160; //TabList height 104
+    const height = mainAreaHeight - 210; //TabList height 104
 
     const perPage = 20;
     const [page, setPage] = useState(1);
-    const [newClientViewModel, setNewClientViewModel] = useState(false)
+    const [newClientViewModel, setNewClientViewModel] = useState(false);
 
-    const fetching = useSelector((state) => state.crudSlice.fetching)
-    const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword)
-    const indexData = useSelector((state) => state.crudSlice.indexEntityData)
-    const customerFilterData = useSelector((state) => state.crudSlice.customerFilterData)
+    // const [value, setValue] = useState < Date | null > (null);
+
+    const fetching = useSelector((state) => state.crudSlice.fetching);
+    const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword);
+    const indexData = useSelector((state) => state.crudSlice.indexEntityData);
+    const customerFilterData = useSelector((state) => state.crudSlice.customerFilterData);
 
     useEffect(() => {
         setTimeout(() => {
@@ -117,9 +124,110 @@ function TableComp() {
         <>
             <Box>
                 <div radius="xl">
-                    <Box bg={`white`}>
-                        <Box pt={'xs'} pb={`xs`} pl={`md`} pr={'xl'}>
-                            <KeywordSearch module={'customer'} />
+                    <Box bg={`white`} ml={`md`} mt={`md`} mb={`sm`}>
+                        <Box >
+                            <Grid>
+                                <GridCol span={4}>
+                                    <DateInput
+                                        // value={value}
+                                        // onChange={setValue}
+                                        label="Start Date"
+                                        placeholder="Start Date"
+                                        mt={`md`}
+                                    />
+                                </GridCol>
+                                <GridCol span={4} >
+                                    <DateInput
+                                        // value={value}
+                                        // onChange={setValue}
+                                        label="End Date"
+                                        placeholder="End Date"
+                                        ml={`sm`}
+                                        mt={`md`}
+                                    />
+                                </GridCol>
+                                <Grid.Col span={4}  >
+                                    <Box mt={`md`} pt={"md"} pl={`lg`} >
+                                        <ActionIcon.Group mt={'xs'}>
+                                            <ActionIcon variant="transparent" size="lg" mr={16} aria-label="Gallery"
+                                                onClick={() => {
+                                                    searchKeyword.length > 0 ?
+                                                        (dispatch(setFetching(true)),
+                                                            setSearchKeywordTooltip(false))
+                                                        :
+                                                        (setSearchKeywordTooltip(true),
+                                                            setTimeout(() => {
+                                                                setSearchKeywordTooltip(false)
+                                                            }, 1500))
+                                                }}
+                                            >
+                                                <Tooltip
+                                                    label={t('SearchButton')}
+
+                                                    withArrow
+                                                    position={"bottom"}
+                                                    c={'indigo'}
+                                                    bg={`gray.1`}
+                                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
+                                                >
+                                                    <IconSearch style={{ width: rem(20) }} stroke={2.0} />
+                                                </Tooltip>
+                                            </ActionIcon>
+
+
+                                            <ActionIcon
+                                                variant="transparent"
+                                                size="lg"
+                                                mr={16}
+                                                aria-label="Settings"
+                                                onClick={(e) => {
+                                                    setFilterModel(true)
+                                                }}
+                                            >
+                                                <Tooltip
+                                                    label={t("FilterButton")}
+
+                                                    withArrow
+                                                    position={"bottom"}
+                                                    c={'indigo'}
+                                                    bg={`gray.1`}
+                                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
+                                                >
+                                                    <IconFilter style={{ width: rem(20) }} stroke={2.0} />
+                                                </Tooltip>
+                                            </ActionIcon>
+
+
+
+                                            <ActionIcon variant="transparent" size="lg" aria-label="Settings">
+                                                <Tooltip
+                                                    label={t("ResetButton")}
+
+                                                    withArrow
+                                                    position={"bottom"}
+                                                    c={'indigo'}
+                                                    bg={`gray.1`}
+                                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
+                                                >
+                                                    <IconRestore style={{ width: rem(20) }} stroke={2.0} onClick={() => {
+                                                        dispatch(setSearchKeyword(''))
+                                                        dispatch(setFetching(true))
+
+                                                        if (props.module === 'customer') {
+                                                            dispatch(setCustomerFilterData({
+                                                                ...customerFilterData,
+                                                                name: '',
+                                                                mobile: ''
+                                                            }));
+                                                        }
+                                                    }} />
+                                                </Tooltip>
+                                            </ActionIcon>
+                                        </ActionIcon.Group>
+                                    </Box>
+
+                                </Grid.Col>
+                            </Grid>
                         </Box>
                     </Box>
                     <Box bg={`white`}>
@@ -148,10 +256,10 @@ function TableComp() {
                                                     size="sm"
                                                     variant="subtle"
                                                     color="green"
-                                                    onClick={() => {
-                                                        setDamageViewModel(true)
-                                                        dispatch(showEntityData('core/damage/' + data.id))
-                                                    }}
+                                                // onClick={() => {
+                                                //     setDamageViewModel(true)
+                                                //     dispatch(showEntityData('core/damage/' + data.id))
+                                                // }}
                                                 >
                                                     <IconEye size={16} />
                                                 </ActionIcon>
@@ -196,13 +304,13 @@ function TableComp() {
                                 ]
                                 }
                                 fetching={fetching}
-                                totalRecords={indexData.total}
-                                recordsPerPage={perPage}
-                                page={page}
-                                onPageChange={(p) => {
-                                    setPage(p)
-                                    dispatch(setFetching(true))
-                                }}
+                                // totalRecords={indexData.total}
+                                // recordsPerPage={perPage}
+                                // page={page}
+                                // onPageChange={(p) => {
+                                //     setPage(p)
+                                //     dispatch(setFetching(true))
+                                // }}
                                 loaderSize="xs"
                                 loaderColor="grape"
                                 height={height}
