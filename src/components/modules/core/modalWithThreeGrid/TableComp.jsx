@@ -210,7 +210,7 @@ function TableComp() {
                                                     transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                                 >
                                                     <IconRestore style={{ width: rem(20) }} stroke={2.0} onClick={() => {
-                                                        dispatch(setSearchKeyword(''))
+                                                        // dispatch(setSearchKeyword(''))
                                                         dispatch(setFetching(true))
 
                                                         if (props.module === 'customer') {

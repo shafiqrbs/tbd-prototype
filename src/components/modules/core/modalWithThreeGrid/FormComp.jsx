@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import ReactToPrint from 'react-to-print';
 import {
     rem, Modal, List, ThemeIcon, Box, Grid, useMantineTheme,
     Paper, Flex, Text, Button, Title,
@@ -26,26 +27,12 @@ function FormComp(props) {
     const closeModel = () => {
         props.setCustomerViewModel(false)
     }
-
-    function printDiv(divName) {
-        let printContents = document.getElementById(divName).innerHTML;
-        let originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        document.body.innerHTML = originalContents;
-    }
+    const ref = useRef(null);
 
     return (
-        // <Modal opened={props.customerViewModel} onClose={closeModel} title={t('CustomerDetailsData')} size="75%" overlayProps={{
-        //     color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.dark[8],
-        //     opacity: 0.9,
-        //     blur: 3,
-        // }}>
         <>
-            <ScrollArea id="print-area">
+            <div ref={ref}>
+                {/* <div id="print-area"> */}
                 < Paper style={{ border: '1.5px solid #e0e0e0' }} mb={`xs`}>
                     <Box mt={`sm`} ml={`sm`}>
                         <Box >
@@ -160,11 +147,8 @@ function FormComp(props) {
                         </Grid>
                     </Box>
                 </Paper>
-                <ScrollArea >
-                    <TableInvoice />
-                </ScrollArea>
-
-            </ScrollArea>
+            </div>
+            <TableInvoice ref={ref} />
             <Grid
                 m={`xs`}
                 mt={`md`}
@@ -173,31 +157,31 @@ function FormComp(props) {
                 justify="end"
                 align="center"
             >
-                <Button
+                {/* <Button
                     size="xs"
                     color={`indigo.6`}
                     type="submit"
                     mt={`lg`}
                     id="EntityFormSubmit"
                     leftSection={<IconPrinter size={16} />}
-                    onClick={(Event) => printDiv('print-area')}
+
                 >
 
-                    <Flex direction={`column`} gap={0}>
-                        <Text fz={14} fw={400}>
-                            {t("Print")}
-                        </Text>
-                    </Flex>
-                </Button>
+                    <ReactToPrint
+                        trigger={() => (
+                            <Flex direction={`column`} gap={0}>
+                                <Text fz={14} fw={400}>
+                                    {t("Print")}
+                                </Text>
+                            </Flex>
+                        )}
+                        content={() => document.getElementById("print-area")}
+                    />
+
+
+                </Button> */}
             </Grid>
-
-
-
-
-
-
         </>
-        // </Modal>
 
     );
 }
