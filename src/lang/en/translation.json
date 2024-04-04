@@ -9,15 +9,20 @@
   "Fullscreen": "Full Screen",
   "NormalScreen": "Normal Screen",
   "NothingFound": "Nothing found ...",
+
   "CreateAndSave": "Create & Save",
   "EditAndSave": "Edit & Save",
-  "SearchButton": "Search your desire particular",
+
+  "SearchButton" : "Search your desire particular",
   "FilterButton": "Press the filter button for more advance search",
   "ResetButton": "Press the reset button for clean data",
+
   "EnterSearchAnyKeyword": "Enter search any keyword",
   "FiledIsRequired": "This field is required value",
   "FormConfirmationTitle": "Please confirm your action",
   "FormConfirmationMessage": " This action is so important that you are required to confirm it with a\nmodal. Please click\none of these buttons to proceed.",
+
+
   "MasterData": "Master Data",
   "Customer": "Customer",
   "ManageCustomer": "Manage Customers",
@@ -51,9 +56,14 @@
   "Created": "Created",
   "ReferenceId": "Reference ID",
   "FilterData": "Filter Data",
+
+
   "ManageUsers": "Manage Users",
   "UserInformation": "Manage Users Information",
   "UserFormDetails": "Manage Users Information Details",
+
+
+
   "ShortCut": "SHORTCUT",
   "Alt+f": "Alt + F",
   "AltText": "Find the table value",
@@ -63,6 +73,8 @@
   "AltTextNew": "Enter the new form first field (alt+n)",
   "Alt+r": "Alt + R",
   "AltTextReset": "Reset the form (alt+r)",
+
+
   "VendorInformation": "Manage Vendors Information",
   "VendorFormDetails": "Manage Vendors Information Details",
   "CompanyName": "Company Name",
@@ -74,6 +86,7 @@
   "TPPercentValidateMessage": "TP Percent must be digit or fraction",
   "ChooseCustomer": "Choose Customer",
   "ManageVendors": "Manage Vendors",
+
   "UserName": "User Name",
   "UserNameValidateMessage": "User Name must be 2-20 characters long",
   "RequiredAndInvalidEmail": "Email must be valid",
@@ -83,8 +96,11 @@
   "ConfirmPassword": "Confirm Password",
   "UpdateSuccessfully": "Updated Successfully",
   "CreateSuccessfully": "Created Successfully",
+
+
   "ConfigurationInformation": "Configuration Information",
   "ConfigurationInformationFormDetails": "Configuration Information Details",
+
   "ChooseBusinessModel": "Choose business model",
   "BusinessModel": "Business Model",
   "ChooseStockFormat": "Choose stock format",
@@ -96,6 +112,7 @@
   "AddressValidateMessage": "Address",
   "InvoiceCommentValidateMessage": "Invoice comment",
   "InvoiceComment": "Invoice comment",
+
   "SetupInformation": "Setup Information",
   "PrintSetup": "Print Setup",
   "CustomInvoice": "Custom Invoice",
@@ -112,6 +129,7 @@
   "TLOCommission": "TLO commission",
   "SalesReturn": "Sales return",
   "SRCommission": "SR commission",
+
   "BasicInformation": "Basic Information",
   "BasicInformationDetails": "Basic Information Details",
   "PrintInformation": "Print Information",
@@ -120,6 +138,7 @@
   "ProductSetupDetails": "Product Setup Details",
   "PriceInformation": "Price Information",
   "PriceInformationDetails": "Price Information Details",
+
   "CategoryGroupModel": "Category Group Model",
   "CategoryGroup": "Category Group",
   "CategoryGroupFormSubmitConfirm": "Please confirm your action",
@@ -129,11 +148,13 @@
   "CategoryNameValidateMessage": "Category name field must be required",
   "CategoryName": "Category name",
   "DeleteSuccessfully": "Delete Successfully",
+
   "ManageCategoryGroupInformation": "Manage Category Group Information",
   "CategoryGroupInformation": "Category Group Information",
   "CategoryGroupName": "Category group name",
   "CategoryGroupNameValidateMessage": "Category group name field must be required",
   "CategoryGroupAlreadyExists": "Category group already exists",
+
   "ManageProductInformation": "Manage Product Information",
   "ProductInformation": "Product Information",
   "ChooseProductType": "Choose product type",
@@ -151,99 +172,71 @@
   "ChooseBrand": "Choose Brand",
   "OpeningQuantity": "Opening Quantity",
   "SalesPrice": "Sales Price",
-  "SalesPriceValidateMessage": "Sales price must be digit & fraction",
   "PurchasePrice": "Purchase price",
   "MinimumQuantity": "Minimum quantity",
   "ReorderQuantity": "Reorder quantity",
-  "": "",
-  "Foysal": "/*FOYSAL TN DATA*/",
-  "Damage": "Damage",
-  "AddDamage": "Damage Information",
-  "DamageModalTT": "stock name required",
-  "DamageGroupModal": "Add new Stock",
-  "DamageInformation": "Manage Damage",
-  "DamageDetailsData": "Damage Details Information",
-  "Save": "Save",
-  "StockValidateMessage": "Stock name field must be selected",
-  "StockLabel": "Stock Name",
-  "StockModal": "Name",
-  "StockModalName": "Stock Name",
-  "StockName": "select Stock",
-  "DamageQuantitiy": "Quantity",
-  "DamageQunatityPH": "quantity",
-  "DamageQuantityValidateMessage": "Quantity field must be required",
-  "DamageNotes": "Notes",
-  "DamageNotesInformation": "Enter notes",
-  "DamageNotesValidateMessage": "Please enter remarks",
-  "BankAccount": "Bank Account",
-  "BankAccountInformation": "Bank Account",
-  "BankAccountInformationAdd": "Bank Account Information",
-  "BankName": "Bank Name",
-  "BankSelectValidate": "Bank name field must be required",
-  "BankSelectInformation": "--- Choose a bank ---",
-  "BranchName": "Branch Name",
-  "BranchNameInformation": "add branch name",
-  "BranchNameValidate": "Branch Name must be required",
-  "AccountOwner": "Account Owner",
-  "AccountOwnerInformation": "add account ownership",
-  "AccountOwnerValidate": "account owner field must be required",
+
+  "ChooseStockProduct": "Choose stock product",
+  "SalesPriceValidateMessage": "Sales price must be digit or fraction",
+  "PurchasePriceValidateMessage": "Purchase price must be digit or fraction",
+
+  "AreYouSureYouWantToDeleteThisItem": "Are you sure you want to delete this item?",
+  "DeleteDetails": "This action is so important that you are required to confirm it with a\nmodal. Please click\none of these buttons to proceed.",
+  "QuantityValidateMessage": "Quantity must be number or fractional value",
+  "PercentValidateMessage": "Percent must be number or fractional value",
+  "WeNotifyYouThat": "We notify you that !",
+  "ZeroQuantityNotAllow": "Zero quantity not allow",
+  "SubTotal": "Sub Total",
+
+  "InstantProductCreate": "Create instant product",
+  "InstantCustomerCreate": "Create instant customer",
+
+
+  "CreateNewDomain": "Create New Domain",
+  "CompanyStoreName": "Company store name",
+  "CompanyStoreNameValidateMessage": "Company store name must be 2-20 characters long",
+  "AlternativeMobileValidateMessage": "Alternative mobile must be digit",
+  "ClientName": "Client name",
+  "ClientNameValidateMessage": "Client name must be 2-20 characters long",
+  "DomainUser": "Domain user",
+  "DomainUserValidateMessage": "Domain user must be 2-20 characters long",
+
+  "ServiceCharge": "Service Charge",
+  "Authorised": "Authorised",
   "AccountType": "Account Type",
-  "AccountTypeInformation": "--- choose account type ---",
-  "AccountTypeValidate": "Account type field must be required",
-  "AccountNumber": "Account No.",
-  "AccountNumberInformation": "add account number",
-  "AccountNumberValidation": "account number field must be required",
-  "ServiceCharge": "Service Charge (%)",
-  "ServiceChargeInformation": "0",
-  "ServiceChargeValidation": "Add service charge validation message",
-  "BankAccountAddress": "Address",
-  "BankAccountAddressInformation": "add bank address",
-  "BankAccountAddressValidation": "add address validation",
-  "MobileBankAccountInformation": "Mobile Bank Account Information",
-  "MobileBankAccount": "Mobile Bank Account",
-  "MBAMobile": "Mobile",
-  "MBAMobileInformation": "add payment receive mobile number",
-  "MBAMobileValidate": "mobile field is a must required",
-  "MBAAccountOwner": "Account Owner",
-  "MBAAccountOwnerInformation": "add account ownership",
-  "MBAAccountOwnerValidate": "account owner is a must required field",
-  "MBAAuthorized": "Authorized",
-  "MBAAuthorizedInformation": "add authorized company",
-  "MBAAuthorizedValidation": "authorized is a must required field",
-  "MBAService": "Service Name",
-  "MBAServiceInformation": "--- choose mobile banking ---",
-  "MBAServiceValidate": "service name is a must required field",
-  "MBAType": "Account Type",
-  "MBATypeInformation": "--- choose your accont type ---",
-  "MBATypeValidate": "Account type is a must required field",
-  "MBACharge": "Service Charge(%)",
-  "MBAChargeInformation": "add a service charge",
-  "MBAChargeValidate": "Service charge is must required field",
-  "NewClient": "New Client Create",
-  "NewClientInfo": "Create new client",
-  "CompanyNameInformation": "Enter your business name",
-  "CompanyNameValidate": "company name is must required field",
-  "MainApplication": "Main Application",
-  "MainApplicationInfo": "--- Select Main Application",
-  "MainApplicationValidate": "main application is a must required field",
-  "BusinessModelInfo": "---> Advertising Agency",
-  "BusinessModelValidate": "business model is a must required field",
-  "OwnerName": "Owner Name",
-  "OwnerNameInfo": "Enter your full name",
-  "OwnerNameValidate": "owner name is a must required field",
-  "Print": "Print",
-  "TotalSales": "Total Sales",
-  "NumberOfSales": "Number of Sales",
-  "CustomerDetails": "Customer Details",
-  "PaymentDetails": "Payment Details",
-  "TotalBDT": "Total BDT",
-  "PaymentBDT": "Payment BDT",
-  "DiscountBDT": "Discount BDT",
-  "DueBDT": "Due BDT",
-  "PaymentStatus": "Payment Status",
-  "Process": "Process",
-  "PaymentMethod": "Payment Method",
-  "SalesBy": "Sales By",
-  "ConfirmedBy": "Confirmed By",
-  "InvoiceDetails": "Invoice Details"
+  "MethodName": "Method Name",
+  "CustomerValidateMessage": "Choose customer",
+  "ChooseTransactionMode": "Choose transaction mode",
+
+  "Accounting": "Accounting",
+  "TransactionMode": "Transaction Mode",
+  "CreateNewTransactionMode": "Create Transaction Mode",
+  "TransactionModeNameValidateMessage": "Transaction mode name must be 2-20 characters long",
+  "TransactionModeName": "Transaction Mode Name",
+  "ChooseAuthorised": "Choose Authorised",
+  "ChooseAccountType": "Choose Account Type",
+  "ServiceChargeValidationMessage": "Service charge must be digit or fraction",
+  "AccountOwner": "Account Owner",
+  "AccountOwnerValidateMessage": "Account Owner must be 2-20 characters long",
+  "ServiceName": "Service Name",
+  "ServiceNameValidateMessage": "Service Name must be 2-20 characters long",
+  "ChooseMethod": "Choose Method",
+  "Method": "Method",
+  "ChooseImage": "Choose Image",
+
+
+
+  "" : ""
+
+
+
+
+
+
+
+
+
+
+
+
 }

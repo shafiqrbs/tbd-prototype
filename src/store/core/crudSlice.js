@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {
     createData,
     deleteData,
@@ -80,93 +80,83 @@ export const deleteEntityData = createAsyncThunk("delete", async (value) => {
 
 
 const crudSlice = createSlice({
-    name: "crud",
-    initialState: {
-        isLoading: true,
-        fetching: true,
-        indexEntityData: [],
-        entityNewData: [],
-        validation: false,
-        validationMessage: [],
-        entityEditData: [],
-        updateEntityData: [],
-        showEntityData: [],
-        customerIndexData: [],
-        entityDataDelete: [],
-        formLoading: false,
-        insertType: 'create',
-        searchKeyword: '',
-        entityUpdateId: null,
-        entityIsUpdate: false,
-        customerFilterData: { name: '', mobile: '' },
-        vendorFilterData: { name: '', mobile: '', company_name: '' },
-        userFilterData: { name: '', mobile: '', email: '' },
-
-        // temporary damage module code
-        damageFilterData: { stock_id: '', damage_quantity: '' },
+    name : "crud",
+    initialState : {
+        isLoading : true,
+        fetching : true,
+        indexEntityData : [],
+        entityNewData : [],
+        validation : false,
+        validationMessage : [],
+        entityEditData : [],
+        updateEntityData : [],
+        showEntityData : [],
+        customerIndexData : [],
+        entityDataDelete : [],
+        formLoading : false,
+        insertType : 'create',
+        searchKeyword : '',
+        entityUpdateId : null,
+        entityIsUpdate : false,
+        customerFilterData : {name:'',mobile:''},
+        vendorFilterData : {name:'',mobile:'',company_name:''},
+        userFilterData : {name:'',mobile:'',email:''},
     },
-    reducers: {
-        setFetching: (state, action) => {
+    reducers : {
+        setFetching : (state,action) => {
             state.fetching = action.payload
         },
-        setFormLoading: (state, action) => {
+        setFormLoading : (state,action) => {
             state.formLoading = action.payload
         },
-        setInsertType: (state, action) => {
+        setInsertType : (state,action)=>{
             state.insertType = action.payload
         },
-        setSearchKeyword: (state, action) => {
+        setSearchKeyword : (state,action)=>{
             state.searchKeyword = action.payload
         },
-        setEntityUpdateId: (state, action) => {
+        setEntityUpdateId : (state,action)=>{
             state.entityUpdateId = action.payload
         },
-        setEntityIsUpdate: (state, action) => {
+        setEntityIsUpdate : (state,action)=>{
             state.entityIsUpdate = action.payload
         },
-        setEditEntityData: (state, action) => {
+        setEditEntityData : (state,action)=>{
             state.entityEditData = action.payload
         },
-        setCustomerFilterData: (state, action) => {
+        setCustomerFilterData : (state,action) => {
             state.customerFilterData.name = action.payload.name
             state.customerFilterData.mobile = action.payload.mobile
         },
-
-        // temp damage code 
-        setDamageFilterData: (state, action) => {
-            state.damageFilterData.name = action.payload.stock_id
-            state.damageFilterData.mobile = action.payload.damage_quantity
-        },
-
-        setVendorFilterData: (state, action) => {
+        setVendorFilterData : (state,action) => {
             state.vendorFilterData.name = action.payload.name
             state.vendorFilterData.mobile = action.payload.mobile
             state.vendorFilterData.company_name = action.payload.company_name
         },
-        setUserFilterData: (state, action) => {
+        setUserFilterData : (state,action) => {
             state.userFilterData.name = action.payload.name
             state.userFilterData.mobile = action.payload.mobile
             state.userFilterData.email = action.payload.email
         },
-        setValidationData: (state, action) => {
+        setValidationData : (state,action) => {
             state.validation = action.payload
         },
-        setEntityNewData: (state, action) => {
+        setEntityNewData : (state,action) => {
             state.entityNewData = action.payload
         }
     },
 
-    extraReducers: (builder) => {
+    extraReducers : (builder) => {
 
         builder.addCase(getIndexEntityData.fulfilled, (state, action) => {
             state.indexEntityData = action.payload
             state.fetching = false
         })
-
+        
         builder.addCase(storeEntityData.fulfilled, (state, action) => {
-            if ('success' === action.payload.data.message) {
+            if ('success' === action.payload.data.message){
                 state.entityNewData = action.payload.data
-            } else {
+            }else{
                 state.validationMessage = action.payload.data.data
                 state.validation = true
             }
@@ -192,6 +182,6 @@ const crudSlice = createSlice({
     }
 })
 
-export const { setFetching, setFormLoading, setInsertType, setSearchKeyword, setEntityUpdateId, setEntityIsUpdate, setEditEntityData, setCustomerFilterData, setVendorFilterData, setUserFilterData, setValidationData, setEntityNewData } = crudSlice.actions
+export const { setFetching,setFormLoading ,setInsertType,setSearchKeyword,setEntityUpdateId,setEntityIsUpdate,setEditEntityData,setCustomerFilterData,setVendorFilterData,setUserFilterData,setValidationData,setEntityNewData} = crudSlice.actions
 
 export default crudSlice.reducer;

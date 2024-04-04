@@ -56,13 +56,66 @@ export default function Login() {
 
     function login(data) {
         setSpinner(true);
+        axios({
+            method: 'POST',
+            url: `${import.meta.env.VITE_API_GATEWAY_URL+'user-login'}`,
+            headers: {
+                "Accept": `application/json`,
+                "Content-Type": `application/json`,
+                "Access-Control-Allow-Origin": '*',
+                "X-Api-Key": import.meta.env.VITE_API_KEY
+            },
+            data : data
+        })
+            .then(res => {
+                setTimeout(()=>{
+                    if (res.data.status === 200){
 
-        setTimeout(()=>{
-            navigate('/')
-        },1400)
+                        localStorage.setItem("user", JSON.stringify(res.data.data));
+
+                        axios({
+                            method: 'get',
+                            url: `${import.meta.env.VITE_API_GATEWAY_URL+'inventory/stock-item'}`,
+                            headers: {
+                                "Accept": `application/json`,
+                                "Content-Type": `application/json`,
+                                "Access-Control-Allow-Origin": '*',
+                                "X-Api-Key": import.meta.env.VITE_API_KEY,
+                                "X-Api-User": res.data.data.id
+                            }
+                        })
+                            .then(res => {
+                                if (res.data.data){
+                                    localStorage.setItem("user-products", JSON.stringify(res.data.data));
+                                }
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+
+                        setErrorMessage('')
+                        setSpinner(false)
+                        navigate('/')
+                    }
+                    setErrorMessage(res.data.message)
+                    setSpinner(false);
+                },500)
+            })
+            .catch(function (error) {
+                setTimeout(() => {
+                    setSpinner(false);
+                    console.log(error)
+                },500)
+            })
     }
 
-
+    /*useEffect(() => {
+        console.log('ok')
+        /!*if (spinner) {
+            console.log(indexData)
+            setSpinner(false);
+        }*!/
+    }, [spinner]);*/
 
     useHotkeys([['alt+n', () => {
         document.getElementById('Username').focus()
@@ -142,7 +195,7 @@ export default function Login() {
                     <Anchor c="dimmed" size="sm" className={LoginPage.control}>
                         <Center inline>
                             <IconArrowLeft style={{ width: rem(12), height: rem(12) }} stroke={1.5} />
-                            <Box ml={5}>Back to the signup page</Box>
+                            <Box ml={5}>Back to the sign-up page</Box>
                         </Center>
                     </Anchor>
                     <Button fullWidth mt="xl" size="md" type='submit' id={"LoginSubmit"} className={LoginPage.control} rightSection={<IconLogin/>}>

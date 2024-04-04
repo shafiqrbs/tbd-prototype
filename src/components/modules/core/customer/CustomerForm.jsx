@@ -1,75 +1,50 @@
-import React, { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useOutletContext} from "react-router-dom";
 import {
     Button,
     rem, Flex,
     Grid, Box, ScrollArea, Group, Text, Title, Alert, List,
 } from "@mantine/core";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import {
     IconCheck,
     IconDeviceFloppy, IconInfoCircle, IconPlus,
 } from "@tabler/icons-react";
-import { useDisclosure, useHotkeys } from "@mantine/hooks";
-import { useDispatch, useSelector } from "react-redux";
-import { hasLength, useForm } from "@mantine/form";
-import { modals } from "@mantine/modals";
-import { notifications } from "@mantine/notifications";
+import {useDisclosure, useHotkeys} from "@mantine/hooks";
+import {useDispatch, useSelector} from "react-redux";
+import {hasLength, useForm} from "@mantine/form";
+import {modals} from "@mantine/modals";
+import {notifications} from "@mantine/notifications";
 
-import {
-    getExecutiveDropdown, getLocationDropdown,
-} from "../../../../store/core/utilitySlice";
-import { setEntityNewData, setFetching, setValidationData, storeEntityData } from "../../../../store/core/crudSlice.js";
+import {setEntityNewData, setFetching, setValidationData, storeEntityData} from "../../../../store/core/crudSlice.js";
 
 import Shortcut from "../../shortcut/Shortcut";
 import InputForm from "../../../form-builders/InputForm";
 import SelectForm from "../../../form-builders/SelectForm";
 import TextAreaForm from "../../../form-builders/TextAreaForm";
 import CustomerGroupModel from "./CustomerGroupModal.jsx";
+import getLocationDropdownData from "../../../global-hook/dropdown/getLocationDropdownData.js";
+import getExecutiveDropdownData from "../../../global-hook/dropdown/getExecutiveDropdownData.js";
 
 function CustomerForm() {
-    const { t, i18n } = useTranslation();
+    const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
-    const { isOnline, mainAreaHeight } = useOutletContext();
+    const {isOnline, mainAreaHeight} = useOutletContext();
     const height = mainAreaHeight - 80; //TabList height 104
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, {open, close}] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
     const [customerGroupData, setCustomerGroupData] = useState(null);
     const [locationData, setLocationData] = useState(null);
     const [marketingExeData, setMarketingExeData] = useState(null);
 
-    const locationDropdownData = useSelector((state) => state.utilitySlice.locationDropdownData)
-    const executiveDropdownData = useSelector((state) => state.utilitySlice.executiveDropdownData)
     const validationMessage = useSelector((state) => state.crudSlice.validationMessage)
     const validation = useSelector((state) => state.crudSlice.validation)
     const entityNewData = useSelector((state) => state.crudSlice.entityNewData)
 
+    const locationDropdown = getLocationDropdownData();
+    const executiveDropdown = getExecutiveDropdownData();
 
-    let locationDropdown = locationDropdownData && locationDropdownData.length > 0 ? locationDropdownData.map((type, index) => {
-        return ({ 'label': type.name, 'value': String(type.id) })
-    }) : []
-    let executiveDropdown = executiveDropdownData && executiveDropdownData.length > 0 ? executiveDropdownData.map((type, index) => {
-        return ({ 'label': type.name, 'value': String(type.id) })
-    }) : []
-
-    useEffect(() => {
-        const valueForLocation = {
-            url: 'core/select/location',
-            param: {
-                term: ''
-            }
-        }
-        dispatch(getLocationDropdown(valueForLocation))
-
-        const valueForExecutive = {
-            url: 'core/select/executive',
-            param: {
-                term: ''
-            }
-        }
-        dispatch(getExecutiveDropdown(valueForExecutive))
-    }, []);
 
     const form = useForm({
         initialValues: {
@@ -85,7 +60,7 @@ function CustomerForm() {
             email: ''
         },
         validate: {
-            name: hasLength({ min: 2, max: 20 }),
+            name: hasLength({min: 2, max: 20}),
             mobile: (value) => (!/^\d+$/.test(value)),
             email: (value) => {
                 if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
@@ -125,14 +100,14 @@ function CustomerForm() {
             dispatch(setValidationData(false))
         }
 
-        if (entityNewData.message === 'success') {
+        if (entityNewData.message ==='success'){
             notifications.show({
                 color: 'teal',
                 title: t('CreateSuccessfully'),
-                icon: <IconCheck style={{ width: rem(18), height: rem(18) }} />,
+                icon: <IconCheck style={{width: rem(18), height: rem(18)}}/>,
                 loading: false,
                 autoClose: 700,
-                style: { backgroundColor: 'lightgray' },
+                style: {backgroundColor: 'lightgray'},
             });
 
             setTimeout(() => {
@@ -144,7 +119,7 @@ function CustomerForm() {
                 dispatch(setFetching(true))
             }, 700)
         }
-    }, [validation, validationMessage, form]);
+        }, [validation,validationMessage,form]);
 
     useHotkeys([['alt+n', () => {
         document.getElementById('CustomerName').focus()
@@ -172,7 +147,7 @@ function CustomerForm() {
                             one of these buttons to proceed.
                         </Text>
                     ),
-                    labels: { confirm: 'Confirm', cancel: 'Cancel' },
+                    labels: {confirm: 'Confirm', cancel: 'Cancel'},
                     onCancel: () => console.log('Cancel'),
                     onConfirm: () => {
                         const value = {
@@ -200,7 +175,7 @@ function CustomerForm() {
                                             type="submit"
                                             mt={4}
                                             id="CustomerFormSubmit"
-                                            leftSection={<IconDeviceFloppy size={16} />}
+                                            leftSection={<IconDeviceFloppy size={16}/>}
                                         >
 
                                             <Flex direction={`column`} gap={0}>
@@ -222,7 +197,7 @@ function CustomerForm() {
                             <ScrollArea h={height} scrollbarSize={2} type="never">
                                 <Box pl={'xs'} pb={'md'}>
                                     {
-                                        Object.keys(form.errors).length > 0 && validationMessage != 0 &&
+                                        Object.keys(form.errors).length > 0 && validationMessage !=0 &&
                                         <Alert variant="light" color="red" radius="md" title={
                                             <List withPadding size="sm">
                                                 {validationMessage.name && <List.Item>{t('NameValidateMessage')}</List.Item>}
@@ -245,7 +220,7 @@ function CustomerForm() {
                                     />
 
 
-                                    <Grid gutter={{ base: 6 }}>
+                                    <Grid gutter={{base: 6}}>
                                         <Grid.Col span={10}>
                                             <SelectForm
                                                 tooltip={t('CustomerGroup')}
@@ -265,10 +240,10 @@ function CustomerForm() {
 
                                         </Grid.Col>
                                         <Grid.Col span={2}><Button mt={32} color={'gray'} variant={'outline'}
-                                            onClick={open}><IconPlus size={12}
-                                                opacity={0.5} /></Button></Grid.Col>
+                                                                   onClick={open}><IconPlus size={12}
+                                                                                            opacity={0.5}/></Button></Grid.Col>
                                         {opened &&
-                                            <CustomerGroupModel openedModel={opened} open={open} close={close} />
+                                            <CustomerGroupModel openedModel={opened} open={open} close={close}/>
                                         }
                                     </Grid>
 
