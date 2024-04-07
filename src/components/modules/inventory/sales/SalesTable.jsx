@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import tableCss from '../../../../assets/css/Table.module.css';
 import {
     Group,
     Box,
     ActionIcon, Text, Grid, Stack, TextInput
 } from "@mantine/core";
-import {useTranslation} from "react-i18next";
-import {IconEye, IconEdit, IconTrash, IconSum, IconX} from "@tabler/icons-react";
-import {DataTable} from 'mantine-datatable';
-import {useDispatch, useSelector} from "react-redux";
+import { useTranslation } from "react-i18next";
+import { IconEye, IconEdit, IconTrash, IconSum, IconX } from "@tabler/icons-react";
+import { DataTable } from 'mantine-datatable';
+import { useDispatch, useSelector } from "react-redux";
 import {
     editEntityData,
     getIndexEntityData, setEditEntityData,
@@ -18,21 +18,21 @@ import {
     showEntityData
 } from "../../../../store/core/crudSlice.js";
 import KeywordSearch from "../../filter/KeywordSearch";
-import {modals} from "@mantine/modals";
-import {deleteEntityData} from "../../../../store/core/crudSlice";
+import { modals } from "@mantine/modals";
+import { deleteEntityData } from "../../../../store/core/crudSlice";
 import SalesViewModel from "./SalesViewModel.jsx";
 import ShortcutTable from "../../shortcut/ShortcutTable";
 function SalesTable() {
 
     const dispatch = useDispatch();
-    const {t, i18n} = useTranslation();
-    const {isOnline, mainAreaHeight} = useOutletContext();
+    const { t, i18n } = useTranslation();
+    const { isOnline, mainAreaHeight } = useOutletContext();
     const tableHeight = mainAreaHeight - 116; //TabList height 104
     const height = mainAreaHeight - 154; //TabList height 104
 
     const perPage = 50;
-    const [page,setPage] = useState(1);
-    const [vendorViewModel,setVendorViewModel] = useState(false)
+    const [page, setPage] = useState(1);
+    const [vendorViewModel, setVendorViewModel] = useState(false)
 
     const fetching = useSelector((state) => state.crudSlice.fetching)
     const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword)
@@ -50,7 +50,7 @@ function SalesTable() {
                 mobile: vendorFilterData.mobile,
                 company_name: vendorFilterData.company_name,
                 page: page,
-                offset : perPage
+                offset: perPage
             }
         }
         dispatch(getIndexEntityData(value))
@@ -59,13 +59,13 @@ function SalesTable() {
     return (
         <>
             <Box>
-                <Grid columns={24} gutter={{base: 8}}>
+                <Grid columns={24} gutter={{ base: 8 }}>
                     <Grid.Col span={24} >
                         <Box pl={`xs`} pb={'4'} pr={'xs'} pt={'4'} mb={'4'} className={'boxBackground borderRadiusAll'} >
                             <Grid>
                                 <Grid.Col>
                                     <Stack >
-                                        <KeywordSearch/>
+                                        <KeywordSearch />
                                     </Stack>
                                 </Grid.Col>
                             </Grid>
@@ -74,7 +74,7 @@ function SalesTable() {
                 </Grid>
             </Box>
             <Box>
-                <Grid columns={24} gutter={{base:8}}>
+                <Grid columns={24} gutter={{ base: 8 }}>
                     <Grid.Col span={9} >
                         <Box bg={'white'} p={'xs'} className={'borderRadiusAll'} >
                             <Box className={'borderRadiusAll'}>
@@ -94,9 +94,9 @@ function SalesTable() {
                                             textAlignment: 'right',
                                             render: (item) => (indexData.data.indexOf(item) + 1)
                                         },
-                                        { accessor: 'name',  title: "Name" },
-                                        { accessor: 'company_name',  title: "Company Name" },
-                                        { accessor: 'mobile',  title: "Mobile" },
+                                        { accessor: 'name', title: "Name" },
+                                        { accessor: 'company_name', title: "Company Name" },
+                                        { accessor: 'mobile', title: "Mobile" },
                                         {
                                             accessor: "action",
                                             title: "Action",
@@ -107,12 +107,12 @@ function SalesTable() {
                                                         size="sm"
                                                         variant="subtle"
                                                         color="green"
-                                                        onClick={()=>{
+                                                        onClick={() => {
                                                             setVendorViewModel(true)
                                                             dispatch(showEntityData('vendor/' + data.id))
                                                         }}
                                                     >
-                                                        <IconEye size={16}/>
+                                                        <IconEye size={16} />
                                                     </ActionIcon>
                                                     <ActionIcon
                                                         size="sm"
@@ -124,7 +124,7 @@ function SalesTable() {
                                                             dispatch(setFormLoading(true))
                                                         }}
                                                     >
-                                                        <IconEdit size={16}/>
+                                                        <IconEdit size={16} />
                                                     </ActionIcon>
                                                     <ActionIcon
                                                         size="sm"
@@ -138,7 +138,7 @@ function SalesTable() {
                                                                 children: (
                                                                     <Text size="sm"> {t("FormConfirmationMessage")}</Text>
                                                                 ),
-                                                                labels: {confirm: 'Confirm', cancel: 'Cancel'},
+                                                                labels: { confirm: 'Confirm', cancel: 'Cancel' },
                                                                 onCancel: () => console.log('Cancel'),
                                                                 onConfirm: () => {
                                                                     dispatch(deleteEntityData('vendor/' + data.id))
@@ -147,7 +147,7 @@ function SalesTable() {
                                                             });
                                                         }}
                                                     >
-                                                        <IconTrash size={16}/>
+                                                        <IconTrash size={16} />
                                                     </ActionIcon>
                                                 </Group>
                                             ),
@@ -170,7 +170,7 @@ function SalesTable() {
                             </Box>
                         </Box>
                         {
-                            vendorViewModel && <SalesViewModel vendorViewModel={vendorViewModel} setVendorViewModel={setVendorViewModel}/>
+                            vendorViewModel && <SalesViewModel vendorViewModel={vendorViewModel} setVendorViewModel={setVendorViewModel} />
                         }
                     </Grid.Col>
                     <Grid.Col span={6} >

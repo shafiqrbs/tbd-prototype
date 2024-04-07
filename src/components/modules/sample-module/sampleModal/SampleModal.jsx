@@ -5,12 +5,10 @@ import {
 } from "@mantine/core";
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from "react-redux";
-import { getShowEntityData } from "../../../../store/inventory/crudSlice.js";
-import SampleInvoiceItemForm from "./SampleInvoiceItemForm";
-import SampleHeaderNavbar from "./SampleHeaderNavbar";
-import SampleTableView from "./SampleTableView";
+import SampleModalTable from "./SampleModalTable.jsx";
+import ModalHeaderNavbar from "./ModalHeaderNavbar.jsx";
 import getConfigData from "../../../global-hook/config-data/getConfigData.js";
-function SampleInvoice() {
+function SampleModal() {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const [progress, setProgress] = useState(0);
@@ -24,8 +22,7 @@ function SampleInvoice() {
         const timer = setInterval(updateProgress, 100);
         return () => clearInterval(timer);
     }, []);
-    const configData = getConfigData()
-    // configData.business_model.slug
+    const configData = getConfigData
 
     return (
         <>
@@ -33,7 +30,7 @@ function SampleInvoice() {
                 <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200} />}
             {progress === 100 &&
                 <Box>
-                    <SampleHeaderNavbar
+                    <ModalHeaderNavbar
                         pageTitle={t('Domain Table Sample')}
                         roles={t('roles')}
                         allowZeroPercentage={configData.zero_stock}
@@ -42,7 +39,7 @@ function SampleInvoice() {
                     <Box p={'8'}>
                         {
                             // insertType === 'create' && configData.business_model.slug === 'general' &&
-                            <SampleTableView
+                            <SampleModalTable
                                 allowZeroPercentage={configData.zero_stock}
                                 currancySymbol={configData.currency && configData.currency.symbol}
                             />
@@ -54,4 +51,4 @@ function SampleInvoice() {
     );
 }
 
-export default SampleInvoice;
+export default SampleModal;

@@ -8,9 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getShowEntityData } from "../../../../store/inventory/crudSlice.js";
 import SampleInvoiceItemForm from "./SampleInvoiceItemForm";
 import SampleHeaderNavbar from "./SampleHeaderNavbar";
-import SampleTableView from "./SampleTableView";
-import getConfigData from "../../../global-hook/config-data/getConfigData.js";
-function SampleInvoice() {
+function SampleModalInvoice() {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const [progress, setProgress] = useState(0);
@@ -24,8 +22,10 @@ function SampleInvoice() {
         const timer = setInterval(updateProgress, 100);
         return () => clearInterval(timer);
     }, []);
-    const configData = getConfigData()
-    // configData.business_model.slug
+    const configData = useSelector((state) => state.inventoryCrudSlice.showEntityData)
+    useEffect(() => {
+        dispatch(getShowEntityData('inventory/config'))
+    }, []);
 
     return (
         <>
@@ -34,24 +34,25 @@ function SampleInvoice() {
             {progress === 100 &&
                 <Box>
                     <SampleHeaderNavbar
-                        pageTitle={t('Domain Table Sample')}
+                        pageTitle={t('PageName')}
                         roles={t('roles')}
                         allowZeroPercentage={configData.zero_stock}
-                        currancySymbol={configData.currency && configData.currency.symbol}
+                        currancySymbol={configData.currency.symbol}
                     />
                     <Box p={'8'}>
                         {
-                            // insertType === 'create' && configData.business_model.slug === 'general' &&
-                            <SampleTableView
+                            insertType === 'create' && configData.business_model.slug === 'general' &&
+                            <SampleInvoiceItemForm
                                 allowZeroPercentage={configData.zero_stock}
-                                currancySymbol={configData.currency && configData.currency.symbol}
+                                currencySymbol={configData.currency.symbol}
                             />
                         }
                     </Box>
+
                 </Box>
             }
         </>
     );
 }
 
-export default SampleInvoice;
+export default SampleModalInvoice;

@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Layout from './components/layout/Layout'
 import SampleDashboard from "./components/modules/sample-module/DashBoard";
@@ -19,37 +19,42 @@ import SampleIndex from "./components/modules/sample-module/sample-layout/Sample
 import DomainIndex from "./components/modules/domain/domain/DomainIndex";
 import TransactionModeIndex from "./components/modules/accounting/transaction-mode/TransactionModeIndex.jsx";
 import SalesInvoice from "./components/modules/inventory/sales/SalesInvoice";
+import SampleModalIndex from './components/modules/sample-module/sampleModal/SampleModalIndex.jsx';
+import SalesPrint from './components/modules/inventory/sales/SalesPrint.jsx';
+
 function AppRoute() {
 
     return (
         <Routes>
-            <Route path='/login' element={<Login/>}/>
-            <Route path="/" element={<Layout/>}>
+            <Route path='/login' element={<Login />} />
+            <Route path="/" element={<Layout />}>
                 <Route path="/sample/">
-                    <Route path="" element={<SampleDashboard/>}/>
-                    <Route path="invoice" element={<SampleInvoice/>}/>
-                    <Route path="index" element={<SampleIndex/>}/>
+                    <Route path="" element={<SampleDashboard />} />
+                    <Route path="invoice" element={<SampleInvoice />} />
+                    <Route path="index" element={<SampleIndex />} />
+                    <Route path='modal' element={<SampleModalIndex />} />
                 </Route>
                 <Route path="/core/">
-                    <Route path="customer" element={<CustomerIndex/>}/>
-                    <Route path="user" element={<UserIndex/>}/>
-                    <Route path="vendor" element={<VendorIndex/>}/>
+                    <Route path="customer" element={<CustomerIndex />} />
+                    <Route path="user" element={<UserIndex />} />
+                    <Route path="vendor" element={<VendorIndex />} />
                 </Route>
                 <Route path="/inventory/">
-                    <Route path="sales" element={<SalesIndex/>}/>
-                    <Route path="sales-invoice" element={<SalesInvoice/>}/>
-                    <Route path="purchase" element={<PurchaseIndex/>}/>
-                    <Route path="purchase-invoice" element={<PurchaseInvoice/>}/>
-                    <Route path="product" element={<ProductIndex/>}/>
-                    <Route path="category" element={<CategoryIndex/>}/>
-                    <Route path="category-group" element={<CategoryGroupIndex/>}/>
-                    <Route path="config" element={<ConfigurationIndex/>}/>
+                    <Route path="sales" element={<SalesIndex />} />
+                    <Route path="sales-invoice" element={<SalesInvoice />} />
+                    <Route path="purchase" element={<PurchaseIndex />} />
+                    <Route path="print" element={<SalesPrint />} />
+                    <Route path="purchase-invoice" element={<PurchaseInvoice />} />
+                    <Route path="product" element={<ProductIndex />} />
+                    <Route path="category" element={<CategoryIndex />} />
+                    <Route path="category-group" element={<CategoryGroupIndex />} />
+                    <Route path="config" element={<ConfigurationIndex />} />
                 </Route>
                 <Route path="/domain/">
-                    <Route path="" element={<DomainIndex/>}/>
+                    <Route path="" element={<DomainIndex />} />
                 </Route>
                 <Route path="/accounting/">
-                    <Route path="transaction-mode" element={<TransactionModeIndex/>}/>
+                    <Route path="transaction-mode" element={<TransactionModeIndex />} />
                 </Route>
             </Route>
         </Routes>
