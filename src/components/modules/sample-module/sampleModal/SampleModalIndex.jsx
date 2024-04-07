@@ -3,9 +3,13 @@ import { Modal, Button, Flex } from '@mantine/core';
 import SampleModal from './SampleModal';
 import { IconPrinter } from '@tabler/icons-react';
 import ReactToPrint from 'react-to-print';
+import SalesPrint from '../../inventory/sales/SalesPrint';
+import { useRef } from 'react';
+
 
 function SampleModalIndex() {
     const [opened, { open, close }] = useDisclosure(false);
+    const componentRef = useRef();
 
     return (
         <>
@@ -23,19 +27,18 @@ function SampleModalIndex() {
             >
                 <SampleModal />
             </Modal >
-
             <Button onClick={open} m={'lg'}>Open Modal</Button>
 
-            <Button
 
-                color={'indigo.6'}
-                type='submit'
-                m={'lg'}
-                leftSection={<IconPrinter size={16} />}>
-                <ReactToPrint
 
-                />
-            </Button>
+
+
+            <ReactToPrint
+                trigger={() => <button m={'lg'}>Print</button>}
+                content={() => componentRef.current}
+            />
+            <SalesPrint ref={componentRef} />
+
         </>
     );
 }

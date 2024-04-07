@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 import ReactToPrint from "react-to-print";
 
 import {
@@ -49,13 +49,12 @@ const data = [
 
 
 
-function SalesPrint(props) {
+function SalesPrint(props, ref) {
 
     const { t, i18n } = useTranslation();
     const theme = useMantineTheme();
     const { isOnline, mainAreaHeight } =
         useOutletContext();
-    const printRef = useRef(null);
 
     const rows = data.map((data) => (
         <Table.Tr key={data.id}>
@@ -65,7 +64,6 @@ function SalesPrint(props) {
             <Table.Td style={{ textAlign: 'right' }}>{data.SubTotal}</Table.Td>
         </Table.Tr>
     ));
-
     const row1 = 1234324;
     const row2 = 2234324;
     const row3 = 3234234;
@@ -75,7 +73,7 @@ function SalesPrint(props) {
     return (
 
         <>
-            <div ref={printRef}>
+            <div ref={ref}>
                 <Container  >
                     <Grid bg={'white'}>
                         <Grid.Col span={4} >
@@ -275,7 +273,9 @@ function SalesPrint(props) {
             </div >
         </>
 
+
+
     );
 }
 
-export default SalesPrint;
+export default forwardRef(SalesPrint);
