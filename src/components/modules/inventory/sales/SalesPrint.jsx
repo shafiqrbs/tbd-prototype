@@ -58,10 +58,10 @@ function SalesPrint(props, ref) {
 
     const rows = data.map((data) => (
         <Table.Tr key={data.id}>
-            <Table.Td >{data.Name}</Table.Td>
-            <Table.Td style={{ textAlign: 'center' }}>{data.SalesPrice}</Table.Td>
-            <Table.Td style={{ textAlign: 'center' }}>{data.Quantity}</Table.Td>
-            <Table.Td style={{ textAlign: 'right' }}>{data.SubTotal}</Table.Td>
+            <Table.Td style={{ border: '1px solid #ddd' }}>{data.Name}</Table.Td>
+            <Table.Td style={{ textAlign: 'center', border: '1px solid #ddd' }}>{data.SalesPrice}</Table.Td>
+            <Table.Td style={{ textAlign: 'center', border: '1px solid #ddd' }}>{data.Quantity}</Table.Td>
+            <Table.Td style={{ textAlign: 'right', border: '1px solid #ddd' }}>{data.SubTotal}</Table.Td>
         </Table.Tr>
     ));
     const row1 = 1234324;
@@ -112,19 +112,19 @@ function SalesPrint(props, ref) {
                             </Box>
 
                         </Grid.Col>
-                        <GridCol span={2}>
+                        <GridCol span={1}>
 
                         </GridCol>
-                        <Grid.Col span={6} >
+                        <Grid.Col span={7} mt={'lg'}>
                             <Grid>
-                                <GridCol span={6} style={{ textAlign: 'right' }}>
+                                <GridCol span={7} style={{ textAlign: 'right' }}>
                                     <Box style={{ textAlign: 'right' }} pl={'sm'} mt={'sm'} pt={'sm'} ml={'lg'}>
                                         <Text mt={'xs'} c={'blue.5'} fz={'14'} fw={'bold'}>{t('Invoice No :')}</Text>
                                         <Text mt={'xs'} c={'blue.5'} fz={'14'} fw={'bold'}>{t('Invoice Date :')}</Text>
                                         <Text mt={'xs'} c={'blue.5'} fz={'14'} fw={'bold'}>{t('Due Date :')}</Text>
                                     </Box>
                                 </GridCol>
-                                <GridCol span={6} style={{ textAlign: 'right' }}>
+                                <GridCol span={5} style={{ textAlign: 'right' }}>
                                     <Box style={{ textAlign: 'right' }} mt={'sm'} pt={'sm'} mr={'xl'}>
                                         <Text mt={'xs'} c={'blue.5'} fz={'14'} fw={'bold'}>225689/23</Text>
                                         <Text mt={'xs'} c={'blue.5'} fz={'14'} fw={'bold'}>01-05-2023</Text>
@@ -141,10 +141,10 @@ function SalesPrint(props, ref) {
                         <Table withTableBorder={true} withColumnBorders={true}  >
                             <Table.Thead>
                                 <Table.Tr>
-                                    <Table.Th w={'40%'} >Name</Table.Th>
-                                    <Table.Th w={'20%'} style={{ textAlign: 'center' }}>Sales Price</Table.Th>
-                                    <Table.Th w={'20%'} style={{ textAlign: 'center' }}>Quantity</Table.Th>
-                                    <Table.Th w={'20%'} style={{ textAlign: 'right' }}>Sub-Total</Table.Th>
+                                    <Table.Th w={'40%'} style={{ border: '1px solid #ddd' }}  >Name</Table.Th>
+                                    <Table.Th w={'20%'} style={{ textAlign: 'center', border: '1px solid #ddd' }}>Sales Price</Table.Th>
+                                    <Table.Th w={'20%'} style={{ textAlign: 'center', border: '1px solid #ddd' }}>Quantity</Table.Th>
+                                    <Table.Th w={'20%'} style={{ textAlign: 'right', border: '1px solid #ddd' }}>Sub-Total</Table.Th>
                                     {/* <Table.Th>Element name</Table.Th>
                             <Table.Th>Symbol</Table.Th>
                             <Table.Th>Atomic mass</Table.Th> */}
@@ -158,10 +158,10 @@ function SalesPrint(props, ref) {
                 </Container>
                 <Container >
                     <Grid columns={10} bg={'white'} gutter={0}>
-                        <GridCol span={4} style={{ display: 'flex', alignItems: 'center' }}>
-                            <Box bg={'white'} pb={'md'}>
-                                <Title ml={'sm'} c={'blue'} order={4}>Thank you for your business</Title>
-                                <Title mt={'lg'} ml={'sm'} style={{ textAlign: 'left' }} order={6} c={'blue'}>Terms & Conditions</Title>
+                        <GridCol span={4} mt={'sm'} style={{ display: 'flex', alignItems: 'center' }}>
+                            <Box bg={'white'} mt={'xl'} pb={0}>
+                                <Title mt={'xl'} ml={'sm'} c={'blue'} order={4}>Thank you for your business</Title>
+                                <Title mt={'xl'} pt={'lg'} ml={'sm'} style={{ textAlign: 'left' }} order={6} c={'blue'}>Terms & Conditions</Title>
                                 <Grid >
                                     <GridCol span={12} ml={'sm'}>
                                         <Box >
@@ -180,35 +180,35 @@ function SalesPrint(props, ref) {
 
                         <GridCol span={2}  >
 
-                            <Box mt={'2'}>
+                            <Box mt={'0'}>
                                 <Table withTableBorder={false} withRowBorders={false} >
                                     <Table.Tbody style={{ textAlign: 'right' }}>
-                                        <Table.Tr p={'xs'}>
+                                        <Table.Tr p={'xs'} style={{ borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd', }}>
                                             <Table.Td style={{ fontSize: '14 px', fontWeight: 'bold' }}>
                                                 {t('Subtotal')}
                                             </Table.Td>
                                         </Table.Tr >
-                                        <Table.Tr p={'xs'} >
+                                        <Table.Tr p={'xs'} style={{ borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd', }}>
                                             <Table.Td style={{ fontSize: '14 px', fontWeight: 'bold' }}>
                                                 {t('Discount')}
                                             </Table.Td>
                                         </Table.Tr>
-                                        <Table.Tr p={'xs'} >
+                                        <Table.Tr p={'xs'} style={{ borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd', }}>
                                             <Table.Td style={{ fontSize: '14 px', fontWeight: 'bold' }}>
                                                 {t('-Discount')}
                                             </Table.Td>
                                         </Table.Tr>
-                                        <Table.Tr p={'xs'}>
+                                        <Table.Tr p={'xs'} style={{ borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd', }}>
                                             <Table.Td style={{ fontSize: '14 px', fontWeight: 'bold' }}>
                                                 {t('Tax')}
                                             </Table.Td>
                                         </Table.Tr>
-                                        <Table.Tr p={'xs'} >
+                                        <Table.Tr p={'xs'} style={{ borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd', }}>
                                             <Table.Td style={{ fontSize: '14 px', fontWeight: 'bold' }}>
                                                 {t('TaxAmount')}
                                             </Table.Td>
                                         </Table.Tr>
-                                        <Table.Tr p={'xs'} >
+                                        <Table.Tr p={'xs'} style={{ borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd', }}>
                                             <Table.Td style={{ fontSize: '14 px', fontWeight: 'bold' }}>
                                                 {t('BalanceDue')}
                                             </Table.Td>
@@ -230,32 +230,50 @@ function SalesPrint(props, ref) {
                                 <Table withTableBorder={true} withColumnBorders={true}>
                                     <Table.Tbody>
                                         <Table.Tr>
-                                            <Table.Td style={{ border: '1px solid #ddd' }}>
+                                            <Table.Td style={{
+                                                borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd',
+                                                borderRight: '1px solid #ddd',
+                                            }}>
                                                 {row1}
                                             </Table.Td>
                                         </Table.Tr >
                                         <Table.Tr>
-                                            <Table.Td style={{ border: '1px solid #ddd' }}>
+                                            <Table.Td style={{
+                                                borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd',
+                                                borderRight: '1px solid #ddd',
+                                            }}>
                                                 {row1}
                                             </Table.Td>
                                         </Table.Tr>
                                         <Table.Tr>
-                                            <Table.Td style={{ border: '1px solid #ddd' }}>
+                                            <Table.Td style={{
+                                                borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd',
+                                                borderRight: '1px solid #ddd',
+                                            }}>
                                                 {row1}
                                             </Table.Td>
                                         </Table.Tr>
                                         <Table.Tr>
-                                            <Table.Td style={{ border: '1px solid #ddd' }}>
+                                            <Table.Td style={{
+                                                borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd',
+                                                borderRight: '1px solid #ddd',
+                                            }}>
                                                 {row1}
                                             </Table.Td>
                                         </Table.Tr>
                                         <Table.Tr>
-                                            <Table.Td style={{ border: '1px solid #ddd' }}>
+                                            <Table.Td style={{
+                                                borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd',
+                                                borderRight: '1px solid #ddd',
+                                            }}>
                                                 {row1}
                                             </Table.Td>
                                         </Table.Tr>
                                         <Table.Tr>
-                                            <Table.Td style={{ border: '1px solid #ddd' }}>
+                                            <Table.Td style={{
+                                                borderLeft: '1px solid #ddd', borderBottom: '1px solid #ddd',
+                                                borderRight: '1px solid #ddd',
+                                            }}>
                                                 {row1}
                                             </Table.Td>
                                         </Table.Tr>

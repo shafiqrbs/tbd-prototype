@@ -21,6 +21,7 @@ import TransactionModeIndex from "./components/modules/accounting/transaction-mo
 import SalesInvoice from "./components/modules/inventory/sales/SalesInvoice";
 import SampleModalIndex from './components/modules/sample-module/sampleModal/SampleModalIndex.jsx';
 import SalesPrint from './components/modules/inventory/sales/SalesPrint.jsx';
+import SalesPrintPos from './components/modules/inventory/sales/SalesPrintPos.jsx';
 
 function AppRoute() {
 
@@ -33,6 +34,7 @@ function AppRoute() {
                     <Route path="invoice" element={<SampleInvoice />} />
                     <Route path="index" element={<SampleIndex />} />
                     <Route path='modal' element={<SampleModalIndex />} />
+                    <Route path='pos' element={<SalesPrintPos />} />
                 </Route>
                 <Route path="/core/">
                     <Route path="customer" element={<CustomerIndex />} />
