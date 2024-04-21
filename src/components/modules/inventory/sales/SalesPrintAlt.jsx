@@ -44,103 +44,12 @@ const data = [
         "SalesPrice": "10",
         "Quantity": "60",
         "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
-    }, ,
-    {
-        "id": "04",
-        "Name": "Tablet Tofacent 5 5 mg",
-        "SalesPrice": "10",
-        "Quantity": "60",
-        "SubTotal": "600"
     },
 ]
 
 
 
-function SalesPrint(props, ref) {
+function SalesPrintAlt(props, ref) {
 
     const { t, i18n } = useTranslation();
     const theme = useMantineTheme();
@@ -165,8 +74,69 @@ function SalesPrint(props, ref) {
 
         <>
             <div ref={ref}>
-                
-                <Container  >
+
+                <Container >
+
+                    <Grid columns={18.5} bg={'white'} h={'auto'} >
+                        <Grid.Col mt={'xl'} span={2.5}  >
+                            <Flex
+                                h={100}
+                                style={{ background: '#DEBC5C', borderRadius: '0 15px 15px 0px' }}
+                                mih={50}
+                                justify="center"
+                                align="center"
+                                direction="row"
+                                wrap="wrap"
+                            >
+                            </Flex>
+                        </Grid.Col>
+                        <Grid.Col span={10}>
+                            <Grid style={{ textAlign: 'center', }}>
+                                <Grid.Col mt={'xl'} span={2} >
+                                    <Flex
+                                        h={100}
+                                        mih={50}
+                                        justify="center"
+                                        align="center"
+                                        direction="row"
+                                        wrap="wrap"
+                                    >
+                                        <Image
+                                            radius="50%"
+                                            // fit="contain"
+                                            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+                                        />
+                                    </Flex>
+                                </Grid.Col>
+                                <Grid.Col span={8} >
+                                    <Flex
+                                        h={100}
+                                        mt={'xl'}
+                                        mih={50}
+                                        bg="white"
+                                        gap="md"
+                                        justify='flex-start'
+                                        align="center"
+                                        direction="row"
+                                        wrap="nowrap"
+                                    >
+                                        <Title order={2} c={'red.5'}>{t('RightBrain Solutions')}</Title>
+                                    </Flex>
+                                </Grid.Col>
+
+                            </Grid>
+                        </Grid.Col>
+
+                        <Grid.Col span={2} style={{ textAlign: 'right' }}>
+
+                        </Grid.Col>
+                        <Grid.Col span={2} style={{ textAlign: 'right' }}>
+
+                        </Grid.Col>
+                    </Grid>
+                </Container>
+
+                {/* <Container  >
                     <Grid bg={'white'}>
                         <Grid.Col span={4} >
                             <Title mt={`xs`} order={2} pt={'xs'} ml={'lg'} c={'red.5'}>{t('RightBrain Solutions')}</Title>
@@ -184,12 +154,11 @@ function SalesPrint(props, ref) {
 
                         </Grid.Col>
                     </Grid>
-                </Container>
-                <Box h={'md'}></Box>
+                </Container> */}
                 <Container   >
                     <Grid bg={'white'} columns={16} style={{ textAlign: 'left' }}>
                         <Grid.Col span={4}  >
-                            <Title mt={`sm`} order={2} pt={'sm'} fz={'md'} ml={'lg'} c={'red.5'}>{t('BILL TO')}</Title>
+                            <Title mt={`sm`} order={2} pt={'sm'} fz={'md'} ml={'lg'} c={'red.5'}>{t('BillTo')}</Title>
                             <Box pt={'sm'} ml={'lg'}>
                                 <Text>Murad Bhai</Text>
                                 <Text>Client Company Name</Text>
@@ -228,10 +197,8 @@ function SalesPrint(props, ref) {
                             </Grid>
                         </Grid.Col>
                     </Grid>
-
                 </Container>
-                <Box mt={'xl'} bg={'white'}></Box>
-
+                <Box mt={'sm'} bg={'white'}></Box>
                 <Container  >
                     <Box bg={`white`} >
                         <Table withTableBorder={true} withColumnBorders={true}  >
@@ -378,12 +345,10 @@ function SalesPrint(props, ref) {
                             </Box>
 
                         </GridCol>
-
                     </Grid>
-
                 </Container>
                 <Container  >
-                    <Box mt={'md'}></Box>
+
                 </Container>
 
             </div >
@@ -394,4 +359,4 @@ function SalesPrint(props, ref) {
     );
 }
 
-export default forwardRef(SalesPrint);
+export default forwardRef(SalesPrintAlt);

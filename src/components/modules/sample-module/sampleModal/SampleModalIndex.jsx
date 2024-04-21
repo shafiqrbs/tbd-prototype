@@ -34,7 +34,7 @@ function SampleModalIndex() {
 
 
             <ReactToPrint
-                trigger={() => <button m={'lg'}>Print</button>}
+                trigger={() => <Button m={'lg'}>Print</Button>}
                 content={() => componentRef.current}
             />
             <SalesPrint ref={componentRef} />

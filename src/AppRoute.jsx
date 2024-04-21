@@ -21,7 +21,8 @@ import TransactionModeIndex from "./components/modules/accounting/transaction-mo
 import SalesInvoice from "./components/modules/inventory/sales/SalesInvoice";
 import SampleModalIndex from './components/modules/sample-module/sampleModal/SampleModalIndex.jsx';
 import SalesPrint from './components/modules/inventory/sales/SalesPrint.jsx';
-import SalesPrintPos from './components/modules/inventory/sales/SalesPrintPos.jsx';
+import SalesPrintAlt from './components/modules/inventory/sales/SalesPrintAlt.jsx';
+// import SalesPrintPos from './components/modules/inventory/sales/SalesPrintPos.jsx';
 
 function AppRoute() {
 
@@ -34,7 +35,7 @@ function AppRoute() {
                     <Route path="invoice" element={<SampleInvoice />} />
                     <Route path="index" element={<SampleIndex />} />
                     <Route path='modal' element={<SampleModalIndex />} />
-                    <Route path='pos' element={<SalesPrintPos />} />
+                    {/* <Route path='pos' element={<SalesPrintPos />} /> */}
                 </Route>
                 <Route path="/core/">
                     <Route path="customer" element={<CustomerIndex />} />
@@ -46,6 +47,7 @@ function AppRoute() {
                     <Route path="sales-invoice" element={<SalesInvoice />} />
                     <Route path="purchase" element={<PurchaseIndex />} />
                     <Route path="print" element={<SalesPrint />} />
+                    <Route path="printAlt" element={<SalesPrintAlt />} />
                     <Route path="purchase-invoice" element={<PurchaseInvoice />} />
                     <Route path="product" element={<ProductIndex />} />
                     <Route path="category" element={<CategoryIndex />} />
