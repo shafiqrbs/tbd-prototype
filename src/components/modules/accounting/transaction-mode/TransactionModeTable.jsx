@@ -1,36 +1,37 @@
-import React, {useEffect, useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import {
     Group,
-    Box,Grid,
-    ActionIcon, Text,Title,Stack
+    Box, Grid,
+    ActionIcon, Text, Title, Stack, Menu, rem
 } from "@mantine/core";
-import {useTranslation} from "react-i18next";
-import {IconEye, IconEdit, IconTrash} from "@tabler/icons-react";
-import {DataTable} from 'mantine-datatable';
-import {useDispatch, useSelector} from "react-redux";
+import { useTranslation } from "react-i18next";
+import { IconEye, IconEdit, IconTrash, IconTrashX, IconDotsVertical } from "@tabler/icons-react";
+import { DataTable } from 'mantine-datatable';
+import { useDispatch, useSelector } from "react-redux";
 import {
     editEntityData,
     getIndexEntityData,
     setFetching, setFormLoading,
     setInsertType,
     showEntityData
-} from "../../../../store/core/crudSlice.js";
+} from "../../../../store/accounting/crudSlice.js";
 import KeywordSearch from "../../filter/KeywordSearch";
-import {modals} from "@mantine/modals";
-import {deleteEntityData} from "../../../../store/core/crudSlice";
+import { modals } from "@mantine/modals";
+import { deleteEntityData } from "../../../../store/core/crudSlice";
 import ShortcutInvoice from "../../shortcut/ShortcutInvoice";
 import Shortcut from "../../shortcut/Shortcut";
+import tableCss from "../../../../assets/css/Table.module.css";
+import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 
 
 
 function TransactionModeTable(props) {
 
     const dispatch = useDispatch();
-    const {t, i18n} = useTranslation();
-    const {isOnline, mainAreaHeight} = useOutletContext();
-    const height = mainAreaHeight - 130; //TabList height 104
-
+    const { t, i18n } = useTranslation();
+    const { isOnline, mainAreaHeight } = useOutletContext();
+    const height = mainAreaHeight - 128; //TabList height 104
     const perPage = 50;
     const [page, setPage] = useState(1);
     const [customerViewModel, setCustomerViewModel] = useState(false)
@@ -42,7 +43,7 @@ function TransactionModeTable(props) {
 
     useEffect(() => {
         const value = {
-            url: 'domain/global',
+            url: 'accounting/transaction-mode',
             param: {
                 term: searchKeyword,
                 // name: customerFilterData.name,
@@ -57,74 +58,101 @@ function TransactionModeTable(props) {
     return (
 
         <>
-            <Box  pl={`xs`} pb={'xs'} pr={8} pt={'xs'} mb={'xs'} className={'boxBackground borderRadiusAll'} >
-                <KeywordSearch module={'customer'}/>
+            <Box pl={`xs`} pb={'xs'} pr={8} pt={'xs'} mb={'xs'} className={'boxBackground borderRadiusAll'} >
+                <KeywordSearch module={'customer'} />
             </Box>
             <Box className={'borderRadiusAll'}>
                 <DataTable
+                    classNames={{
+                        root: tableCss.root,
+                        table: tableCss.table,
+                        header: tableCss.header,
+                        footer: tableCss.footer,
+                        pagination: tableCss.pagination,
+                    }}
                     records={indexData.data}
                     columns={[
                         {
                             accessor: 'index',
-                            title: 'S/N',
+                            title: t('S/N'),
                             textAlignment: 'right',
                             render: (item) => (indexData.data.indexOf(item) + 1)
                         },
-                        {accessor: 'id', title: "ID"},
-                        {accessor: 'name', title: "Name"},
-                        {accessor: 'mobile', title: "Mobile"},
+                        { accessor: 'name', title: t('Name') },
+                        { accessor: 'short_name', title: t('ShortName') },
+                        { accessor: 'method_name', title: t('MethodName') },
+                        { accessor: 'authorized_name', title: t('Authorised') },
+                        { accessor: 'account_type_name', title: t('AccountType') },
+                        { accessor: 'service_charge', title: t('ServiceCharge') },
+                        { accessor: 'account_owner', title: t('AccountOwner') },
+
                         {
                             accessor: "action",
-                            title: "Action",
+                            title: t("Action"),
                             textAlign: "right",
                             render: (data) => (
                                 <Group gap={4} justify="right" wrap="nowrap">
-                                    <ActionIcon
-                                        size="sm"
-                                        variant="subtle"
-                                        color="green"
-                                        onClick={() => {
-                                            setCustomerViewModel(true)
-                                            dispatch(showEntityData('core/customer/' + data.id))
-                                        }}
-                                    >
-                                        <IconEye size={16}/>
-                                    </ActionIcon>
-                                    <ActionIcon
-                                        size="sm"
-                                        variant="subtle"
-                                        color="blue"
-                                        onClick={() => {
-                                            dispatch(setInsertType('update'))
-                                            dispatch(editEntityData('core/customer/' + data.id))
-                                            dispatch(setFormLoading(true))
-                                        }}
-                                    >
-                                        <IconEdit size={16}/>
-                                    </ActionIcon>
-                                    <ActionIcon
-                                        size="sm"
-                                        variant="subtle"
-                                        color="red"
-                                        onClick={() => {
-                                            modals.openConfirmModal({
-                                                title: (
-                                                    <Text size="md"> {t("FormConfirmationTitle")}</Text>
-                                                ),
-                                                children: (
-                                                    <Text size="sm"> {t("FormConfirmationMessage")}</Text>
-                                                ),
-                                                labels: {confirm: 'Confirm', cancel: 'Cancel'},
-                                                onCancel: () => console.log('Cancel'),
-                                                onConfirm: () => {
-                                                    dispatch(deleteEntityData('core/customer/' + data.id))
-                                                    dispatch(setFetching(true))
-                                                },
-                                            });
-                                        }}
-                                    >
-                                        <IconTrash size={16}/>
-                                    </ActionIcon>
+                                    <Menu position="bottom-end" offset={3} withArrow trigger="hover" openDelay={100} closeDelay={400}>
+                                        <Menu.Target>
+                                            <ActionIcon variant="outline" color="gray.6" radius="xl" aria-label="Settings">
+                                                <IconDotsVertical height={'18'} width={'18'} stroke={1.5} />
+                                            </ActionIcon>
+                                        </Menu.Target>
+                                        <Menu.Dropdown>
+                                            <Menu.Item
+                                                // href={`/inventory/sales/edit/${data.id}`}
+                                                onClick={() => {
+                                                    dispatch(setInsertType('update'))
+                                                    dispatch(editEntityData('accounting/transaction-mode/' + data.id))
+                                                    dispatch(setFormLoading(true))
+                                                }}
+                                            >
+                                                {t('Edit')}
+                                            </Menu.Item>
+
+                                            <Menu.Item
+                                                href={``}
+                                                onClick={() => {
+                                                    console.log('ok')
+                                                    // setCustomerViewModel(true)
+                                                    // dispatch(showEntityData('core/customer/' + data.id))
+                                                }}
+                                                target="_blank"
+                                                component="a"
+                                                w={'200'}
+                                            >
+                                                {t('Show')}
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                // href={``}
+                                                target="_blank"
+                                                component="a"
+                                                w={'200'}
+                                                mt={'2'}
+                                                bg={'red.1'}
+                                                c={'red.6'}
+                                                onClick={() => {
+                                                    modals.openConfirmModal({
+                                                        title: (
+                                                            <Text size="md"> {t("FormConfirmationTitle")}</Text>
+                                                        ),
+                                                        children: (
+                                                            <Text size="sm"> {t("FormConfirmationMessage")}</Text>
+                                                        ),
+                                                        labels: { confirm: 'Confirm', cancel: 'Cancel' },
+                                                        onCancel: () => console.log('Cancel'),
+                                                        onConfirm: () => {
+                                                            dispatch(deleteEntityData('core/customer/' + data.id))
+                                                            dispatch(setFetching(true))
+                                                        },
+                                                    });
+                                                }}
+                                                rightSection={<IconTrashX style={{ width: rem(14), height: rem(14) }} />}
+                                            >
+                                                {t('Delete')}
+                                            </Menu.Item>
+                                        </Menu.Dropdown>
+                                    </Menu>
                                 </Group>
                             ),
                         },
@@ -141,14 +169,15 @@ function TransactionModeTable(props) {
                     loaderSize="xs"
                     loaderColor="grape"
                     height={height}
-                    scrollAreaProps={{type: 'never'}}
+                    scrollAreaProps={{ type: 'never' }}
                 />
                 {
                     customerViewModel &&
-                    <CustomerViewModel customerViewModel={customerViewModel} setCustomerViewModel={setCustomerViewModel}/>
+                    <CustomerViewModel customerViewModel={customerViewModel} setCustomerViewModel={setCustomerViewModel} />
                 }
+
             </Box>
-            </>
+        </>
 
     );
 }

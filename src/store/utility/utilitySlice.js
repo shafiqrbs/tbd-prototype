@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getDataWithParam} from "../../services/utilityApiService.js";
+import {getDataWithParam, getDataWithParamForSettingDropdown} from "../../services/utilityApiService.js";
 
 
 export const getSettingDropdown = createAsyncThunk("setting/select", async (value) => {
     try {
-        const response = getDataWithParam(value);
+        const response = getDataWithParamForSettingDropdown(value);
         return response;
     } catch (error) {
         console.log('error', error.message);
@@ -28,7 +28,11 @@ const utilitySlice = createSlice({
     initialState : {
         isLoading : true,
         fetching : true,
-        settingDropdownData : [],
+        productDropdownData : [],
+        accountDropdownData : [],
+        authorizedDropdownData : [],
+        businessModelDropdownData : [],
+        salesProcessTypeDropdownData : [],
         productUnitDropdown : [],
     },
     reducers : {
@@ -40,7 +44,21 @@ const utilitySlice = createSlice({
     extraReducers : (builder) => {
 
         builder.addCase(getSettingDropdown.fulfilled, (state, action) => {
-            state.settingDropdown = action.payload.data
+            if (action.payload.type === 'product-type'){
+                state.productDropdownData = action.payload.data.data
+            }
+            if (action.payload.type === 'account-type'){
+                state.accountDropdownData = action.payload.data.data
+            }
+            if (action.payload.type === 'authorised-type'){
+                state.authorizedDropdownData = action.payload.data.data
+            }
+            if (action.payload.type === 'business-model'){
+                state.businessModelDropdownData = action.payload.data.data
+            }
+            if (action.payload.type === 'sales-process-type'){
+                state.salesProcessTypeDropdownData = action.payload.data.data
+            }
         })
 
         builder.addCase(getProductUnitDropdown.fulfilled, (state, action) => {
@@ -51,6 +69,6 @@ const utilitySlice = createSlice({
     }
 })
 
-export const { setFetching } = utilitySlice.actions
+export const { setFetching ,setSettingDropdownEmpty} = utilitySlice.actions
 
 export default utilitySlice.reducer;

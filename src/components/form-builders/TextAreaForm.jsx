@@ -3,30 +3,35 @@ import {
     Tooltip,
     Textarea
 } from "@mantine/core";
-import {useTranslation} from "react-i18next";
-import {IconInfoCircle, IconX} from "@tabler/icons-react";
-import {getHotkeyHandler} from "@mantine/hooks";
+import { useTranslation } from "react-i18next";
+import { IconInfoCircle, IconX } from "@tabler/icons-react";
+import { getHotkeyHandler } from "@mantine/hooks";
 
 function TextAreaForm(props) {
-    const {label, placeholder, required, nextField, name, form, tooltip, mt, id} = props
-    const {t, i18n} = useTranslation();
+    const { label, placeholder, required, nextField, name, form, tooltip, mt, id, minRows, autosize, maxRows } = props
+    const { t, i18n } = useTranslation();
     return (
         <>
             {
                 form &&
                 <Tooltip
+
                     label={tooltip}
                     opened={(name in form.errors) && !!form.errors[name]}
                     px={16}
                     py={2}
                     position="top-end"
-                    color="red"
+                    bg={`red.4`}
+                    c={'white'}
                     withArrow
                     offset={2}
                     zIndex={0}
-                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                 >
                     <Textarea
+                        maxRows={maxRows}
+                        autosize={autosize}
+                        minRows={minRows}
                         id={id}
                         size="sm"
                         label={label}
@@ -48,7 +53,7 @@ function TextAreaForm(props) {
                                 >
                                     <IconX color={`red`} size={16} opacity={0.5} onClick={() => {
                                         form.setFieldValue(name, '');
-                                    }}/>
+                                    }} />
                                 </Tooltip>
                                 :
                                 <Tooltip
@@ -57,11 +62,11 @@ function TextAreaForm(props) {
                                     py={2}
                                     withArrow
                                     position={"left"}
-                                    c={'indigo'}
+                                    c={'black'}
                                     bg={`gray.1`}
-                                    transitionProps={{transition: "pop-bottom-left", duration: 500}}
+                                    transitionProps={{ transition: "pop-bottom-left", duration: 500 }}
                                 >
-                                    <IconInfoCircle size={16} opacity={0.5}/>
+                                    <IconInfoCircle size={16} opacity={0.5} />
                                 </Tooltip>
                         }
                         withAsterisk={required}

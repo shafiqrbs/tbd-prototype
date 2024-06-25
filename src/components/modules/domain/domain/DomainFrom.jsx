@@ -31,7 +31,7 @@ function DomainForm(props) {
     const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const {isOnline, mainAreaHeight} = useOutletContext();
-    const height = mainAreaHeight - 132; //TabList height 104
+    const height = mainAreaHeight - 130; //TabList height 104
     const [opened, {open, close}] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
@@ -106,38 +106,6 @@ function DomainForm(props) {
         }
     });
 
-
-    /*useEffect(() => {
-        if (validation) {
-            validationMessage.name && (form.setFieldError('name', true));
-            validationMessage.mobile && (form.setFieldError('mobile', true));
-            validationMessage.email && (form.setFieldError('email', true));
-            validationMessage.credit_limit && (form.setFieldError('credit_limit', true));
-            validationMessage.alternative_mobile && (form.setFieldError('alternative_mobile', true));
-            dispatch(setValidationData(false))
-        }
-
-        if (entityNewData.message ==='success'){
-            notifications.show({
-                color: 'teal',
-                title: t('CreateSuccessfully'),
-                icon: <IconCheck style={{width: rem(18), height: rem(18)}}/>,
-                loading: false,
-                autoClose: 700,
-                style: {backgroundColor: 'lightgray'},
-            });
-
-            setTimeout(() => {
-                form.reset()
-                setMarketingExeData(null)
-                setCustomerGroupData(null)
-                setLocationData(null)
-                dispatch(setEntityNewData([]))
-                dispatch(setFetching(true))
-            }, 700)
-        }
-    }, [validation,validationMessage,form]);*/
-
     useHotkeys([['alt+n', () => {
         document.getElementById('company_name').focus()
     }]], []);
@@ -153,25 +121,19 @@ function DomainForm(props) {
 
     return (
         <Box>
-            <Grid columns={24} gutter={{base: 8}}>
-
-                <Grid.Col span={15} >
-                    <Box bg={'white'} p={'xs'} className={'borderRadiusAll'} >
-                        <DomainTable/>
-                    </Box>
-                </Grid.Col>
-
+            <Grid columns={9} gutter={{base: 8}}>
                 <Grid.Col span={8} >
                     <form onSubmit={form.onSubmit((values) => {
                         dispatch(setValidationData(false))
                         modals.openConfirmModal({
+                            centered: true,
                             title: (
                                 <Text size="md"> {t("FormConfirmationTitle")}</Text>
                             ),
                             children: (
                                 <Text size="sm"> {t("FormConfirmationMessage")}</Text>
                             ),
-                            labels: {confirm: 'Confirm', cancel: 'Cancel'},
+                            labels: {confirm: 'Submit', cancel: 'Cancel'},confirmProps: { color: 'red.5' },
                             onCancel: () => console.log('Cancel'),
                             onConfirm: () => {
                                 const value = {
@@ -179,7 +141,6 @@ function DomainForm(props) {
                                     data: values
                                 }
                                 dispatch(storeEntityData(value))
-
                                 notifications.show({
                                     color: 'teal',
                                     title: t('CreateSuccessfully'),
@@ -232,7 +193,7 @@ function DomainForm(props) {
                                 <Box pl={`xs`} pr={'xs'} mt={'xs'}  className={'borderRadiusAll'}>
                                     <Grid columns={24}>
                                         <Grid.Col span={'auto'} >
-                                            <ScrollArea h={height} scrollbarSize={2} type="never">
+                                            <ScrollArea h={height} scrollbarSize={2} scrollbars="y" type="never">
                                                 <Box  pb={'md'}>
                                                     {/*{
                                                         Object.keys(form.errors).length > 0 && validationMessage !=0 &&

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
     Box, Button,
     Grid, Progress, Title
 } from "@mantine/core";
-import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from "react-redux";
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from "react-redux";
 
 import VendorTable from "./VendorTable";
 import VendorForm from "./VendorForm";
@@ -15,10 +15,15 @@ import {
     setSearchKeyword,
     setVendorFilterData
 } from "../../../../store/core/crudSlice.js";
-import {getLoadingProgress} from "../../../global-hook/loading-progress/getLoadingProgress.js";
+import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
+import InventoryHeaderNavbar from "../../inventory/configuraton/InventoryHeaderNavbar";
+import CategoryTable from "../../inventory/category/CategoryTable";
+import CategoryForm from "../../inventory/category/CategoryForm";
+import CategoryUpdateForm from "../../inventory/category/CategoryUpdateForm";
+import CoreHeaderNavbar from "../CoreHeaderNavbar";
 
 function VendorIndex() {
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
     const insertType = useSelector((state) => state.crudSlice.insertType)
@@ -32,37 +37,38 @@ function VendorIndex() {
         dispatch(setVendorFilterData({
             ...vendorFilterData,
             ['name']: '',
-            ['mobile']:'',
-            ['company_name']:''
+            ['mobile']: '',
+            ['company_name']: ''
         }))
     }, [])
 
     return (
         <>
             {progress !== 100 &&
-                <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200}/>}
+                <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200} />}
             {progress === 100 &&
-                <Box>
-                    <Box pl={`md`} pr={8} pb={'8'} pt={'6'} bg={'gray.1'}>
-                        <Grid>
-                            <Grid.Col span={12}>
-                                <Title order={6} pl={'md'} fz={'18'} c={'indigo.4'}>{t('VendorInformation')}</Title>
+                <>
+                    <CoreHeaderNavbar
+                        pageTitle={t('ManageVendor')}
+                        roles={t('Roles')}
+                        allowZeroPercentage=''
+                        currencySymbol=''
+                    />
+                    <Box p={'8'}>
+                        <Grid columns={24} gutter={{ base: 8 }}>
+                            <Grid.Col span={15} >
+                                <Box bg={'white'} p={'xs'} className={'borderRadiusAll'} >
+                                    <VendorTable />
+                                </Box>
                             </Grid.Col>
-                        </Grid>
-                    </Box>
-                    <Box pr={'12'} pl={'12'}>
-                        <Grid>
-                            <Grid.Col span={8}>
-                                <VendorTable/>
-                            </Grid.Col>
-                            <Grid.Col span={4}>
+                            <Grid.Col span={9}>
                                 {
-                                    insertType === 'create' ? <VendorForm/> : <VendorUpdateForm/>
+                                    insertType === 'create' ? <VendorForm /> : <VendorUpdateForm />
                                 }
                             </Grid.Col>
                         </Grid>
                     </Box>
-                </Box>
+                </>
             }
         </>
     );

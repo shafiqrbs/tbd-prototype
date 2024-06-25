@@ -1,97 +1,65 @@
 import React, {useEffect, useState} from "react";
-import {Navigate, Outlet, useLocation} from "react-router-dom";
-import Header from "./Header";
-import {AppShell} from "@mantine/core";
+import {Navigate, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {useDisclosure, useViewportSize} from "@mantine/hooks";
-import Navbar from "./Navbar";
+import {AppShell} from "@mantine/core";
+import Header from "./Header";
 import Footer from "./Footer";
+import MainDashboard from "../modules/dashboard/MainDashboard";
 
-function Layout() {
-    const [mobileOpened, {toggle: toggleMobile}] = useDisclosure(false);
-    const [navbarOpened, {toggle: toggleNavbar}] = useDisclosure(true);
-    const [rightSidebarOpened, {toggle: toggleRightSideBar}] = useDisclosure(false);
-    const {height, width} = useViewportSize();
+const Layout = () => {
     const [isOnline, setNetworkStatus] = useState(navigator.onLine);
-
-    const user = localStorage.getItem("user");
+    const {height, width} = useViewportSize();
+    const navigate = useNavigate();
     const location = useLocation();
+    const paramPath = window.location.pathname;
 
-    if(!user){
-        return <Navigate replace to="/login"/>;
-    }else{
-        /*let userGroup = JSON.parse(user).user_group;
-
-        if (userGroup==='admin'){
-            return <Navigate replace to="/core/user"/>;
-        }else {
-            return <Navigate replace to="/"/>;
-        }*/
-
-
-        // const tempProducts = localStorage.getItem('temp-sales-products');
-        // setTempCardProducts(tempProducts ? JSON.parse(tempProducts) : [])
-
-        /*if(location.pathname === '/'){
-            return <Navigate replace to="/dashboard"/>;
-        }*/
+    // check authentication
+    const user = JSON.parse(localStorage.getItem("user") || '{}');
+    if (!user) {
+        return <Navigate replace to="/login" />;
     }
 
+    // Handle network status
     useEffect(() => {
+        const handleNetworkStatus = () => setNetworkStatus(window.navigator.onLine);
+        window.addEventListener('offline', handleNetworkStatus);
+        window.addEventListener('online', handleNetworkStatus);
         return () => {
-            window.addEventListener("online", () => setNetworkStatus(true));
-            window.addEventListener("offline", () => setNetworkStatus(false));
+            window.removeEventListener('online', handleNetworkStatus);
+            window.removeEventListener('offline', handleNetworkStatus);
         };
     }, []);
 
-    const headerHeight = 60;
-    const footerHeight = 42;
-    const mainAreaHeight = height - (headerHeight + footerHeight + 20); //default padding 20
+    // Automatically log the user out after 30 minute
+    /*useEffect(() => {
+        const timeout = setTimeout(() => {
+            localStorage.clear();
+            navigate("/login");
+        }, 1800000);
+        return () => clearTimeout(timeout);
+    }, [navigate]);*/
+
+
+
+    const headerHeight = 42;
+    const footerHeight = 58;
+    const padding = 0;
+    const mainAreaHeight = height - headerHeight - footerHeight - padding;
 
     return (
-        <>
-            <AppShell
-                header={{height: headerHeight}}
-                footer={{height: footerHeight}}
-                navbar={{
-                    width: 200,
-                    breakpoint: "sm",
-                    collapsed: {mobile: !mobileOpened, desktop: !navbarOpened},
-                }}
-                /*aside={{
-                    width: 88,
-                    breakpoint: "sm",
-                    collapsed: {mobile: !mobileOpened, desktop: rightSidebarOpened},
-                }}*/
-                padding="0"
-            >
-                <AppShell.Header bg={`gray.0`}>
-                    <Header
-                        isOnline={isOnline}
-                        navbarOpened={navbarOpened}
-                        toggleNavbar={toggleNavbar}
-                        rightSidebarOpened={rightSidebarOpened}
-                        toggleRightSideBar={toggleRightSideBar}
-                    />
-                </AppShell.Header>
-
-                <AppShell.Navbar p="xs">
-                    <Navbar/>
-                </AppShell.Navbar>
-
-                <AppShell.Main>
-                    <Outlet context={{isOnline, mainAreaHeight}}/>
-                </AppShell.Main>
-
-                {/*<AppShell.Shortcut p="xs">
-                    <Shortcut/>
-                </AppShell.Shortcut>*/}
-
-                <AppShell.Footer p="5">
-                    <Footer/>
-                </AppShell.Footer>
-            </AppShell>
-        </>
+        <AppShell padding="0">
+            <AppShell.Header height={headerHeight} bg='gray.0'>
+                <Header isOnline={isOnline} />
+            </AppShell.Header>
+            <AppShell.Main>
+                {paramPath !== '/' ? <Outlet context={{isOnline, mainAreaHeight}}/> : <MainDashboard height={mainAreaHeight} />}
+            </AppShell.Main>
+            <AppShell.Footer height={footerHeight}>
+                <Footer />
+            </AppShell.Footer>
+        </AppShell>
     );
-}
+};
 
 export default Layout;
+

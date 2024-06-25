@@ -68,6 +68,7 @@ function Navbar() {
                 childrenOffset={28}
             >
                 <NavLink href="accounting" label={t("TransactionMode")} component="button" onClick={(e) => { navigate('accounting/transaction-mode') }} />
+                <NavLink href="accounting/voucher-entry" label={t("VoucherEntry")} component="button" onClick={(e) => { navigate('accounting/voucher-entry') }} />
             </NavLink>
 
             <NavLink
@@ -79,7 +80,6 @@ function Navbar() {
                 <NavLink href="sample" label="sample" component="button" onClick={(e) => { navigate('sample') }} />
                 <NavLink href="sample/invoice" label="Invoice" component="button" onClick={(e) => { navigate('sample/invoice') }} />
                 <NavLink href="sample/index" label="Table" component="button" onClick={(e) => { navigate('sample/index') }} />
-                <NavLink href="sample/modal" label="Modal" component="button" onClick={(e) => { navigate('sample/modal') }} />
             </NavLink>
         </>
     )

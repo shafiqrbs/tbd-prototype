@@ -1,20 +1,24 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
     Box, Grid, Progress, Title
 } from "@mantine/core";
-import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from "react-redux";
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from "react-redux";
 
 import CategoryTable from "./CategoryTable";
 import CategoryForm from "./CategoryForm";
 import CategoryUpdateForm from "./CategoryUpdateForm.jsx";
-import {setSearchKeyword} from "../../../../store/core/crudSlice.js";
-import {setInsertType} from "../../../../store/inventory/crudSlice.js";
-import {getLoadingProgress} from "../../../global-hook/loading-progress/getLoadingProgress.js";
+import { setSearchKeyword } from "../../../../store/core/crudSlice.js";
+import { setInsertType } from "../../../../store/inventory/crudSlice.js";
+import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
 import getConfigData from "../../../global-hook/config-data/getConfigData.js";
+import InventoryHeaderNavbar from "../configuraton/InventoryHeaderNavbar";
+import CategoryGroupTable from "../category-group/CategoryGroupTable";
+import CategoryGroupForm from "../category-group/CategoryGroupForm";
+import CategoryGroupUpdateForm from "../category-group/CategoryGroupUpdateForm";
 
 function CategoryIndex() {
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
     const insertType = useSelector((state) => state.inventoryCrudSlice.insertType)
@@ -30,30 +34,35 @@ function CategoryIndex() {
     return (
         <>
             {progress !== 100 &&
-                <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200}/>}
+                <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200} />}
             {progress === 100 &&
                 <Box>
-                    <Box pl={`md`} pr={8} pb={'8'} pt={'6'} bg={'gray.1'}>
-                        <Grid>
-                            <Grid.Col span={12}>
-                                <Title order={6} pl={'md'} fz={'18'}
-                                       c={'indigo.4'}>{t('CategoryInformation')}</Title>
-                            </Grid.Col>
-                        </Grid>
-                    </Box>
-                    <Box pr={'12'} pl={'12'}>
-                        <Grid>
-                            <Grid.Col span={8}>
-                                <CategoryTable/>
-                            </Grid.Col>
-                            <Grid.Col span={4}>
-                                {
-                                    insertType === 'create' ? <CategoryForm/> : <CategoryUpdateForm/>
-                                }
-                            </Grid.Col>
-                        </Grid>
-                    </Box>
+                    {configData &&
+                        <>
+                            <InventoryHeaderNavbar
+                                pageTitle={t('ProductCategory')}
+                                roles={t('Roles')}
+                                allowZeroPercentage={configData.zero_stock}
+                                currencySymbol={configData.currency.symbol}
+                            />
+                            <Box p={'8'}>
+                                <Grid columns={24} gutter={{ base: 8 }}>
+                                    <Grid.Col span={15} >
+                                        <Box bg={'white'} p={'xs'} className={'borderRadiusAll'} >
+                                            <CategoryTable />
+                                        </Box>
+                                    </Grid.Col>
+                                    <Grid.Col span={9}>
+                                        {
+                                            insertType === 'create' ? <CategoryForm /> : <CategoryUpdateForm />
+                                        }
+                                    </Grid.Col>
+                                </Grid>
+                            </Box>
+                        </>
+                    }
                 </Box>
+
             }
         </>
     );

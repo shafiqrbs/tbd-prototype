@@ -1,32 +1,39 @@
-import React, {useEffect, useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import {
     Group,
     Box,
-    ActionIcon, Text
+    ActionIcon, Text,
+    Menu,
+    rem
 } from "@mantine/core";
-import {useTranslation} from "react-i18next";
-import {IconEye, IconEdit, IconTrash} from "@tabler/icons-react";
-import {DataTable} from 'mantine-datatable';
-import {useDispatch, useSelector} from "react-redux";
+import { useTranslation } from "react-i18next";
+import {
+    IconEye, IconEdit, IconTrash,
+    IconDotsVertical,
+    IconTrashX
+} from "@tabler/icons-react";
+import { DataTable } from 'mantine-datatable';
+import { useDispatch, useSelector } from "react-redux";
 import {
     editEntityData,
     getIndexEntityData,
     setFetching, setFormLoading,
     setInsertType,
-    showEntityData
+    showEntityData, deleteEntityData
 } from "../../../../store/core/crudSlice.js";
 import KeywordSearch from "../../filter/KeywordSearch";
-import {modals} from "@mantine/modals";
-import {deleteEntityData} from "../../../../store/core/crudSlice";
+import { modals } from "@mantine/modals";
+
 import ProductViewModel from "./ProductViewModel.jsx";
+import tableCss from "../../../../assets/css/Table.module.css";
 
 function ProductTable() {
 
     const dispatch = useDispatch();
-    const {t, i18n} = useTranslation();
-    const {isOnline, mainAreaHeight} = useOutletContext();
-    const height = mainAreaHeight - 100; //TabList height 104
+    const { t, i18n } = useTranslation();
+    const { isOnline, mainAreaHeight } = useOutletContext();
+    const height = mainAreaHeight - 128; //TabList height 104
 
     const perPage = 50;
     const [page, setPage] = useState(1);
@@ -55,64 +62,77 @@ function ProductTable() {
 
     return (
         <>
-            <Box>
-                <Box bg={`white`}>
-                    <Box pt={'xs'} pb={`xs`} pl={`md`} pr={'xl'}>
-                        <KeywordSearch module={'product'}/>
-                    </Box>
-                </Box>
-                <Box bg={`white`}>
 
-                    <Box pb={`xs`} pl={`md`} pr={'md'}>
-                        <DataTable
-                            withTableBorder
-                            records={indexData.data}
-                            columns={[
-                                {
-                                    accessor: 'index',
-                                    title: 'S/N',
-                                    textAlignment: 'right',
-                                    render: (item) => (indexData.data.indexOf(item) + 1)
-                                },
-                                {accessor: 'product_name', title: "Name"},
-                                {accessor: 'category_name', title: "Category"},
-                                {accessor: 'unit_name', title: "Unit"},
-                                {accessor: 'brand_name', title: "Brand"},
-                                {accessor: 'purchase_price', title: "Purchase Price"},
-                                {accessor: 'sales_price', title: "Sales Price"},
-                                {
-                                    accessor: "action",
-                                    title: "Action",
-                                    textAlign: "right",
-                                    render: (data) => (
-                                        <Group gap={4} justify="right" wrap="nowrap">
-                                            <ActionIcon
-                                                size="sm"
-                                                variant="subtle"
-                                                color="green"
-                                                onClick={() => {
-                                                    setProductViewModel(true)
-                                                    dispatch(showEntityData('inventory/product/' + data.id))
-                                                }}
-                                            >
-                                                <IconEye size={16}/>
+            <Box pl={`xs`} pb={'xs'} pr={8} pt={'xs'} mb={'xs'} className={'boxBackground borderRadiusAll'} >
+                <KeywordSearch module={'product'} />
+            </Box>
+            <Box className={'borderRadiusAll'}>
+                <DataTable
+                    classNames={{
+                        root: tableCss.root,
+                        table: tableCss.table,
+                        header: tableCss.header,
+                        footer: tableCss.footer,
+                        pagination: tableCss.pagination,
+                    }}
+                    records={indexData.data}
+                    columns={[
+                        {
+                            accessor: 'index',
+                            title: t('S/N'),
+                            textAlignment: 'right   ',
+                            render: (item) => (indexData.data.indexOf(item) + 1)
+                        },
+                        { accessor: 'product_name', title: t("Name") },
+                        { accessor: 'category_name', title: t("Category") },
+                        { accessor: 'unit_name', title: t("Unit") },
+                        { accessor: 'brand_name', title: t("Brand") },
+                        { accessor: 'purchase_price', title: t("PurchasePrice") },
+                        { accessor: 'sales_price', title: t("SalesPrice") },
+                        {
+                            accessor: "action",
+                            title: t("Action"),
+                            textAlign: "right",
+                            render: (data) => (
+                                <Group gap={4} justify="right" wrap="nowrap">
+                                    <Menu position="bottom-end" offset={3} withArrow trigger="hover" openDelay={100} closeDelay={400}>
+                                        <Menu.Target>
+                                            <ActionIcon variant="outline" color="gray.6" radius="xl" aria-label="Settings">
+                                                <IconDotsVertical height={'18'} width={'18'} stroke={1.5} />
                                             </ActionIcon>
-                                            <ActionIcon
-                                                size="sm"
-                                                variant="subtle"
-                                                color="blue"
+                                        </Menu.Target>
+                                        <Menu.Dropdown>
+                                            <Menu.Item
+                                                // href={`/inventory/sales/edit/${data.id}`}
                                                 onClick={() => {
                                                     dispatch(setInsertType('update'))
                                                     dispatch(editEntityData('inventory/product/' + data.id))
                                                     dispatch(setFormLoading(true))
                                                 }}
                                             >
-                                                <IconEdit size={16}/>
-                                            </ActionIcon>
-                                            <ActionIcon
-                                                size="sm"
-                                                variant="subtle"
-                                                color="red"
+                                                {t('Edit')}
+                                            </Menu.Item>
+
+                                            <Menu.Item
+                                                href={``}
+                                                onClick={() => {
+                                                    setProductViewModel(true)
+                                                    dispatch(showEntityData('inventory/product/' + data.id))
+                                                }}
+                                                target="_blank"
+                                                component="a"
+                                                w={'200'}
+                                            >
+                                                {t('Show')}
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                // href={``}
+                                                target="_blank"
+                                                component="a"
+                                                w={'200'}
+                                                mt={'2'}
+                                                bg={'red.1'}
+                                                c={'red.6'}
                                                 onClick={() => {
                                                     modals.openConfirmModal({
                                                         title: (
@@ -121,7 +141,7 @@ function ProductTable() {
                                                         children: (
                                                             <Text size="sm"> {t("FormConfirmationMessage")}</Text>
                                                         ),
-                                                        labels: {confirm: 'Confirm', cancel: 'Cancel'},
+                                                        labels: { confirm: 'Confirm', cancel: 'Cancel' },
                                                         onCancel: () => console.log('Cancel'),
                                                         onConfirm: () => {
                                                             dispatch(deleteEntityData('inventory/product/' + data.id))
@@ -129,33 +149,34 @@ function ProductTable() {
                                                         },
                                                     });
                                                 }}
+                                                rightSection={<IconTrashX style={{ width: rem(14), height: rem(14) }} />}
                                             >
-                                                <IconTrash size={16}/>
-                                            </ActionIcon>
-                                        </Group>
-                                    ),
-                                },
-                            ]
-                            }
-                            fetching={fetching}
-                            totalRecords={indexData.total}
-                            recordsPerPage={perPage}
-                            page={page}
-                            onPageChange={(p) => {
-                                setPage(p)
-                                dispatch(setFetching(true))
-                            }}
-                            loaderSize="xs"
-                            loaderColor="grape"
-                            height={height}
-                            scrollAreaProps={{type: 'never'}}
-                        />
-                    </Box>
-                </Box>
+                                                {t('Delete')}
+                                            </Menu.Item>
+                                        </Menu.Dropdown>
+                                    </Menu>
+                                </Group>
+                            ),
+                        },
+                    ]
+                    }
+                    fetching={fetching}
+                    totalRecords={indexData.total}
+                    recordsPerPage={perPage}
+                    page={page}
+                    onPageChange={(p) => {
+                        setPage(p)
+                        dispatch(setFetching(true))
+                    }}
+                    loaderSize="xs"
+                    loaderColor="grape"
+                    height={height}
+                    scrollAreaProps={{ type: 'never' }}
+                />
             </Box>
             {
                 productViewModel &&
-                <ProductViewModel productViewModel={productViewModel} setProductViewModel={setProductViewModel}/>
+                <ProductViewModel productViewModel={productViewModel} setProductViewModel={setProductViewModel} />
             }
         </>
     );

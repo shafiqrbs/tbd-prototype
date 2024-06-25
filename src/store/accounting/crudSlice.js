@@ -1,12 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {
-    createData,
+    createData, createDataWithFile,
     deleteData,
     editData,
     getDataWithoutParam,
     getDataWithParam, showData,
     updateData
-} from "../../services/inventoryApiService.js";
+} from "../../services/accountingApiService.js";
 
 export const getIndexEntityData = createAsyncThunk("index", async (value) => {
     try {
@@ -20,6 +20,15 @@ export const getIndexEntityData = createAsyncThunk("index", async (value) => {
 export const storeEntityData = createAsyncThunk("store", async (value) => {
     try {
         const response = createData(value);
+        return response;
+    } catch (error) {
+        console.log('error', error.message);
+        throw error;
+    }
+});
+export const storeEntityDataWithFile = createAsyncThunk("store", async (value) => {
+    try {
+        const response = createDataWithFile(value);
         return response;
     } catch (error) {
         console.log('error', error.message);
@@ -142,6 +151,15 @@ const crudSlice = createSlice({
         })
 
         builder.addCase(storeEntityData.fulfilled, (state, action) => {
+            if ('success' === action.payload.data.message){
+                state.entityNewData = action.payload.data
+            }else{
+                state.validationMessage = action.payload.data.data
+                state.validation = true
+            }
+        })
+
+        builder.addCase(storeEntityDataWithFile.fulfilled, (state, action) => {
             if ('success' === action.payload.data.message){
                 state.entityNewData = action.payload.data
             }else{

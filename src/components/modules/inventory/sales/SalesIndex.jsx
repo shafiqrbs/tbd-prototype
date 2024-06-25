@@ -7,10 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from "react-redux";
 import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
 import getConfigData from "../../../global-hook/config-data/getConfigData.js";
-import SampleHeaderNavbar from "../../sample-module/sample-layout/SampleHeaderNavbar";
-import SampleTableView from "../../sample-module/sample-layout/SampleTableView";
-import SalesHeaderNavbar from "../../sample-module/sample-layout/SampleHeaderNavbar";
-import SalesTable from "./SalesTable";
+import _SalesTable from "./_SalesTable.jsx";
+import _SalesPurchaseHeaderNavbar from "../configuraton/_SalesPurchaseHeaderNavbar.jsx";
 
 function SalesIndex() {
     const { t, i18n } = useTranslation();
@@ -27,18 +25,24 @@ function SalesIndex() {
                 <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200} />}
             {progress === 100 &&
                 <Box>
-                    <SalesHeaderNavbar
-                        pageTitle={t('Sales')}
-                        roles={t('roles')}
-                        allowZeroPercentage={configData.zero_stock}
-                    // currancySymbol={configData.currency.symbol}
-                    />
-                    <Box p={'8'}>
-                        <SalesTable
-                            allowZeroPercentage={configData.zero_stock}
-                            currancySymbol={configData.currency.symbol}
-                        />
-                    </Box>
+                    {
+                        configData &&
+                        <>
+                            <_SalesPurchaseHeaderNavbar
+                                pageTitle={t('Sales')}
+                                roles={t('Roles')}
+                                allowZeroPercentage={configData?.zero_stock}
+                                currancySymbol={configData?.currency?.symbol}
+                            />
+                            <Box p={'8'}>
+                                <_SalesTable
+                                    allowZeroPercentage={configData?.zero_stock}
+                                    currancySymbol={configData?.currency?.symbol}
+                                />
+                            </Box>
+
+                        </>
+                    }
                 </Box>
             }
         </>

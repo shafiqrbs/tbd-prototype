@@ -1,53 +1,46 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {
-    Box, Button,
-    Grid, Progress, Title,Group,Burger,Menu,rem,ActionIcon
+    Box, Progress
 } from "@mantine/core";
-import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from "react-redux";
-import {getShowEntityData} from "../../../../store/inventory/crudSlice.js";
-import GeneralPurchaseForm from "./GeneralPurchaseForm";
-import PurchaseHeaderNavbar from "./PurchaseHeaderNavbar";
+import { useTranslation } from 'react-i18next';
+import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
+import getConfigData from "../../../global-hook/config-data/getConfigData.js";
+import _SalesPurchaseHeaderNavbar from "../configuraton/_SalesPurchaseHeaderNavbar.jsx";
+import _GenericInvoiceForm from "./_GenericInvoiceForm.jsx";
+
 function PurchaseInvoice() {
-    const {t, i18n} = useTranslation();
-    const dispatch = useDispatch();
-    const [progress, setProgress] = useState(0);
-    const insertType = useSelector((state) => state.crudSlice.insertType)
-    useEffect(() => {
-        const updateProgress = () => setProgress((oldProgress) => {
-            if (oldProgress === 100) return 100;
-            const diff = Math.random() * 20;
-            return Math.min(oldProgress + diff, 100);
-        });
-        const timer = setInterval(updateProgress, 100);
-        return () => clearInterval(timer);
-    }, []);
-    const configData = useSelector((state) => state.inventoryCrudSlice.showEntityData)
-    useEffect(() => {
-        dispatch(getShowEntityData('inventory/config'))
-    }, []);
+    const { t, i18n } = useTranslation();
+    const progress = getLoadingProgress()
+    const configData = getConfigData()
 
     return (
         <>
             {progress !== 100 &&
-                <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200}/>}
+                <Progress color="red" size={"xs"} striped animated value={progress} transitionDuration={200} />}
             {progress === 100 &&
                 <Box>
-                    <PurchaseHeaderNavbar
-                        pageTitle = {t('PageName')}
-                        roles = {t('roles')}
-                        allowZeroPercentage = {configData.zero_stock}
-                        currancySymbol = {configData.currency.symbol}
-                    />
-                    <Box p={'8'}>
-                        {
-                            insertType === 'create' && configData.business_model.slug==='general' &&
-                            <GeneralPurchaseForm
-                                allowZeroPercentage = {configData.zero_stock}
-                                currancySymbol = {configData.currency.symbol}
+                    {
+                        configData &&
+                        <>
+                            <_SalesPurchaseHeaderNavbar
+                                pageTitle={t('PurchaseInvoice')}
+                                roles={t('Roles')}
+                                allowZeroPercentage={configData.zero_stock}
+                                currencySymbol={configData.currency.symbol}
                             />
-                        }
-                    </Box>
+                            <Box p={'8'}>
+                                {
+                                    configData.business_model.slug === 'general' &&
+                                    <_GenericInvoiceForm
+                                        allowZeroPercentage={configData.zero_stock}
+                                        currencySymbol={configData.currency.symbol}
+                                        isPurchaseByPurchasePrice={configData.is_purchase_by_purchase_price}
+                                    />
+                                }
+                            </Box>
+                        </>
+                    }
+
                 </Box>
             }
         </>

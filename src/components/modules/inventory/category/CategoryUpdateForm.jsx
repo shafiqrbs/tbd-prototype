@@ -1,26 +1,27 @@
-import React, {useEffect, useState} from "react";
-import {useOutletContext} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import {
-    Button, rem, Grid, Box, ScrollArea, Group, Text, Title, Flex,
+    Button, rem, Grid, Box, ScrollArea, Group, Text, Title, Flex, Stack, Tooltip, ActionIcon, LoadingOverlay,
 } from "@mantine/core";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
-    IconCheck, IconPencilBolt, IconPlus
+    IconCategoryPlus,
+    IconCheck, IconDeviceFloppy, IconPencilBolt, IconPlus
 } from "@tabler/icons-react";
-import {useDisclosure, useHotkeys} from "@mantine/hooks";
+import { useDisclosure, useHotkeys } from "@mantine/hooks";
 import InputForm from "../../../form-builders/InputForm";
-import {useDispatch, useSelector} from "react-redux";
-import {hasLength, isNotEmpty, useForm} from "@mantine/form";
-import {notifications} from "@mantine/notifications";
-import {modals} from "@mantine/modals";
+import { useDispatch, useSelector } from "react-redux";
+import { hasLength, isNotEmpty, useForm } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
+import { modals } from "@mantine/modals";
 
 import {
     setEditEntityData,
     setFetching, setFormLoading, setInsertType,
     updateEntityData
 } from "../../../../store/inventory/crudSlice.js";
-import {getCategoryDropdown} from "../../../../store/inventory/utilitySlice.js";
-import {setDropdownLoad} from "../../../../store/inventory/crudSlice.js";
+import { getCategoryDropdown } from "../../../../store/inventory/utilitySlice.js";
+import { setDropdownLoad } from "../../../../store/inventory/crudSlice.js";
 
 import Shortcut from "../../shortcut/Shortcut.jsx";
 import SelectForm from "../../../form-builders/SelectForm.jsx";
@@ -28,14 +29,14 @@ import CategoryGroupModal from "./CategoryGroupModal.jsx";
 import SwitchForm from "../../../form-builders/SwitchForm.jsx";
 
 function CategoryUpdateForm() {
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
-    const {isOnline, mainAreaHeight} = useOutletContext();
+    const { isOnline, mainAreaHeight } = useOutletContext();
     const height = mainAreaHeight - 116; //TabList height 104
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
     const [setFormData, setFormDataForUpdate] = useState(false);
-    const [opened, {open, close}] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false);
     const [categoryGroupData, setCategoryGroupData] = useState(null);
 
     const entityEditData = useSelector((state) => state.inventoryCrudSlice.entityEditData)
@@ -45,7 +46,7 @@ function CategoryUpdateForm() {
     const dropdownLoad = useSelector((state) => state.inventoryCrudSlice.dropdownLoad)
     let groupCategoryDropdown = groupCategoryDropdownData && groupCategoryDropdownData.length > 0 ?
         groupCategoryDropdownData.map((type, index) => {
-            return ({'label': type.name, 'value': String(type.id)})
+            return ({ 'label': type.name, 'value': String(type.id) })
         }) : []
 
     useEffect(() => {
@@ -64,7 +65,7 @@ function CategoryUpdateForm() {
         },
         validate: {
             parent: isNotEmpty(),
-            name: hasLength({min: 2, max: 20}),
+            name: hasLength({ min: 2, max: 20 }),
         }
     });
 
@@ -102,153 +103,177 @@ function CategoryUpdateForm() {
 
 
     return (
-        <Box bg={"white"} mt={`xs`}>
-            <form onSubmit={form.onSubmit((values) => {
-                modals.openConfirmModal({
-                    title: (
-                        <Text size="md"> {t("FormConfirmationTitle")}</Text>
-                    ),
-                    children: (
-                        <Text size="sm"> {t("FormConfirmationMessage")}</Text>
-                    ),
-                    labels: {confirm: 'Confirm', cancel: 'Cancel'},
-                    onCancel: () => console.log('Cancel'),
-                    onConfirm: () => {
-                        setSaveCreateLoading(true)
-                        const value = {
-                            url: 'inventory/category-group/' + entityEditData.id,
-                            data: values
-                        }
+        <>
+            <Box>
+                <form onSubmit={form.onSubmit((values) => {
+                    modals.openConfirmModal({
+                        title: (
+                            <Text size="md"> {t("FormConfirmationTitle")}</Text>
+                        ),
+                        children: (
+                            <Text size="sm"> {t("FormConfirmationMessage")}</Text>
+                        ),
+                        labels: { confirm: 'Submit', cancel: 'Cancel' }, confirmProps: { color: 'red' },
+                        onCancel: () => console.log('Cancel'),
+                        onConfirm: () => {
+                            setSaveCreateLoading(true)
+                            const value = {
+                                url: 'inventory/category-group/' + entityEditData.id,
+                                data: values
+                            }
+                            dispatch(updateEntityData(value))
+                            notifications.show({
+                                color: 'teal',
+                                title: t('UpdateSuccessfully'),
+                                icon: <IconCheck style={{ width: rem(18), height: rem(18) }} />,
+                                loading: false,
+                                autoClose: 700,
+                                style: { backgroundColor: 'lightgray' },
+                            });
 
-                        dispatch(updateEntityData(value))
+                            setTimeout(() => {
+                                form.reset()
+                                dispatch(setInsertType('create'))
+                                dispatch(setEditEntityData([]))
+                                dispatch(setFetching(true))
+                                setSaveCreateLoading(false)
+                            }, 700)
+                        },
+                    });
+                })}>
 
-                        notifications.show({
-                            color: 'teal',
-                            title: t('UpdateSuccessfully'),
-                            icon: <IconCheck style={{width: rem(18), height: rem(18)}}/>,
-                            loading: false,
-                            autoClose: 700,
-                            style: {backgroundColor: 'lightgray'},
-                        });
+                    <Grid columns={9} gutter={{ base: 8 }}>
+                        <Grid.Col span={8} >
+                            <Box bg={'white'} p={'xs'} className={'borderRadiusAll'} >
+                                <Box bg={"white"} >
+                                    <Box pl={`xs`} pb={'xs'} pr={8} pt={'xs'} mb={'xs'} className={'boxBackground borderRadiusAll'} >
+                                        <Grid>
+                                            <Grid.Col span={6} h={54}>
+                                                <Title order={6} mt={'xs'} pl={'6'}>{t('CreateCategoryGroup')}</Title>
+                                            </Grid.Col>
+                                            <Grid.Col span={6}>
+                                                <Stack right align="flex-end">
+                                                    <>
+                                                        {
+                                                            !saveCreateLoading && isOnline &&
+                                                            <Button
+                                                                size="xs"
+                                                                color={`red.6`}
+                                                                type="submit"
+                                                                mt={4}
+                                                                id="EntityFormSubmit"
+                                                                leftSection={<IconDeviceFloppy size={16} />}
+                                                            >
 
-                        setTimeout(() => {
-                            form.reset()
-                            dispatch(setInsertType('create'))
-                            dispatch(setEditEntityData([]))
-                            dispatch(setFetching(true))
-                            setSaveCreateLoading(false)
-                        }, 700)
-                    },
-                });
-            })}>
-                <Box pb={`xs`} pl={`xs`} pr={8}>
-                    <Grid>
-                        <Grid.Col span={6} h={54}>
-                            <Title order={6} mt={'xs'} pl={'6'}>{t('CategoryInformation')}</Title>
-                        </Grid.Col>
-                        <Grid.Col span={6}>
-                            <Group mr={'md'} pos={`absolute`} right={0} gap={0}>
-                                <>
-                                    {!saveCreateLoading && isOnline &&
-                                        <Button
-                                            size="xs"
-                                            color={`indigo.6`}
-                                            type="submit"
-                                            mt={4}
-                                            mr={'xs'}
-                                            id="CategoryFormSubmit"
-                                            leftSection={<IconPencilBolt size={16}/>}
-                                        >
+                                                                <Flex direction={`column`} gap={0}>
+                                                                    <Text fz={12} fw={400}>
+                                                                        {t("UpdateAndSave")}
+                                                                    </Text>
+                                                                </Flex>
+                                                            </Button>
+                                                        }
+                                                    </></Stack>
+                                            </Grid.Col>
+                                        </Grid>
+                                    </Box>
+                                    <Box pl={`xs`} pr={'xs'} mt={'xs'} className={'borderRadiusAll'}>
+                                        <ScrollArea h={height} scrollbarSize={2} scrollbars="y" type="never">
+                                            <Box>
+                                                <LoadingOverlay visible={formLoad} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+                                                <Box mt={'xs'}>
+                                                    <Grid gutter={{ base: 6 }}>
+                                                        <Grid.Col span={11} >
+                                                            <Box mt={'8'}>
+                                                                <SelectForm
+                                                                    tooltip={t('ChooseCategoryGroup')}
+                                                                    label={t('CategoryGroup')}
+                                                                    placeholder={t('ChooseCategoryGroup')}
+                                                                    required={true}
+                                                                    nextField={'name'}
+                                                                    name={'parent'}
+                                                                    form={form}
+                                                                    dropdownValue={groupCategoryDropdown}
+                                                                    mt={8}
+                                                                    id={'category_group'}
+                                                                    searchable={false}
+                                                                    value={categoryGroupData ? String(categoryGroupData) : (entityEditData.parent ? String(entityEditData.parent) : null)}
+                                                                    changeValue={setCategoryGroupData}
+                                                                />
+                                                            </Box>
+                                                        </Grid.Col>
+                                                        <Grid.Col span={1}>
+                                                            <Box pt={'xl'}>
+                                                                <Tooltip
+                                                                    multiline
+                                                                    w={420}
+                                                                    withArrow
+                                                                    transitionProps={{ duration: 200 }}
+                                                                    label={t('QuickCategoryGroup')}
+                                                                >
+                                                                    <ActionIcon fullWidth variant="outline" bg={'white'} size={'lg'} color="red.5" mt={'1'} aria-label="Settings" onClick={open}>
+                                                                        <IconCategoryPlus style={{ width: '100%', height: '70%' }} stroke={1.5} />
+                                                                    </ActionIcon>
+                                                                </Tooltip>
+                                                            </Box>
 
-                                            <Flex direction={`column`} gap={0}>
-                                                <Text fz={12} fw={400}>
-                                                    {t("EditAndSave")}
-                                                </Text>
-                                            </Flex>
-                                        </Button>
-                                    }
-                                </>
-                            </Group>
-                        </Grid.Col>
-                    </Grid>
-                </Box>
-                <Box h={1} bg={`gray.3`}></Box>
-                <Box m={'md'}>
-                    <Grid columns={24}>
-                        <Grid.Col span={'auto'}>
-                            <ScrollArea h={height} scrollbarSize={2} type="never">
-                                <Box pb={'md'}>
-                                    <Grid gutter={{base: 6}}>
-                                        <Grid.Col span={10}>
-                                            <SelectForm
-                                                tooltip={t('ChooseCategoryGroup')}
-                                                label={t('CategoryGroup')}
-                                                placeholder={t('ChooseCategoryGroup')}
-                                                required={true}
-                                                nextField={'name'}
-                                                name={'parent'}
-                                                form={form}
-                                                dropdownValue={groupCategoryDropdown}
-                                                mt={8}
-                                                id={'category_group'}
-                                                searchable={false}
-                                                value={categoryGroupData ? String(categoryGroupData) : (entityEditData.parent ? String(entityEditData.parent) : null)}
-                                                changeValue={setCategoryGroupData}
-                                            />
-
-                                        </Grid.Col>
-                                        <Grid.Col span={2}>
-                                            <Button
-                                                mt={32}
-                                                color={'gray'}
-                                                variant={'outline'}
-                                                onClick={open}>
-                                                <IconPlus size={12} opacity={0.5}
-                                                /></Button>
-                                        </Grid.Col>
-                                        {opened &&
-                                            <CategoryGroupModal openedModel={opened} open={open} close={close}/>
-                                        }
-                                    </Grid>
-                                    <InputForm
-                                        tooltip={t('CategoryNameValidateMessage')}
-                                        label={t('CategoryName')}
-                                        placeholder={t('CategoryName')}
-                                        required={true}
-                                        nextField={'status'}
-                                        form={form}
-                                        name={'name'}
-                                        mt={8}
-                                        id={'name'}
-                                    />
-
-                                    <SwitchForm
-                                        tooltip={t('Status')}
-                                        label={t('Status')}
-                                        nextField={'CategoryFormSubmit'}
-                                        name={'status'}
-                                        form={form}
-                                        mt={12}
-                                        id={'status'}
-                                        position={'left'}
-                                        checked={form.values.status}
-                                    />
-
+                                                        </Grid.Col>
+                                                        {opened &&
+                                                            <CategoryGroupModal openedModel={opened} open={open} close={close} />
+                                                        }
+                                                    </Grid>
+                                                </Box>
+                                                <Box mt={'xs'}>
+                                                    <InputForm
+                                                        tooltip={t('CategoryNameValidateMessage')}
+                                                        label={t('CategoryName')}
+                                                        placeholder={t('CategoryName')}
+                                                        required={true}
+                                                        nextField={'status'}
+                                                        form={form}
+                                                        name={'name'}
+                                                        mt={50}
+                                                        id={'name'}
+                                                    />
+                                                </Box>
+                                                <Box mt={'md'}>
+                                                    <Grid gutter={{ base: 1 }}>
+                                                        <Grid.Col span={2}>
+                                                            <SwitchForm
+                                                                tooltip={t('Status')}
+                                                                label=''
+                                                                nextField={'CategoryFormSubmit'}
+                                                                name={'status'}
+                                                                form={form}
+                                                                color="red"
+                                                                id={'status'}
+                                                                position={'left'}
+                                                                defaultChecked={1}
+                                                            />
+                                                        </Grid.Col>
+                                                        <Grid.Col span={6} fz={'sm'} pt={'6'}>Status</Grid.Col>
+                                                    </Grid>
+                                                </Box>
+                                            </Box>
+                                        </ScrollArea>
+                                    </Box>
                                 </Box>
-                            </ScrollArea>
+                            </Box>
                         </Grid.Col>
-                        <Grid.Col span={3}>
-                            <Shortcut
-                                form={form}
-                                FormSubmit={'CategoryFormSubmit'}
-                                Name={'category_group'}
-                                inputType={'select'}
-                            />
+                        <Grid.Col span={1} >
+                            <Box bg={'white'} className={'borderRadiusAll'} pt={'16'}>
+                                <Shortcut
+                                    form={form}
+                                    FormSubmit={'EntityFormSubmit'}
+                                    Name={'name'}
+                                    inputType="select"
+                                />
+                            </Box>
                         </Grid.Col>
                     </Grid>
-                </Box>
-            </form>
-        </Box>
+                </form>
+            </Box>
+
+        </>
     )
 }
 
