@@ -159,14 +159,14 @@ function _SalesTable() {
                                             title: t('S/N'),
                                             textAlignment: 'right',
                                             render: (item) => (
-                                                <Tooltip label={item.invoice + ' - ' + item.customerName}>
+                                                <Tooltip  color="green" withArrow={'center'} label={item.invoice + ' - ' + item.customerName}>
                                                     <Checkbox
                                                         value={item.id}
                                                         checked={!!checkList?.[item.id]}
-                                                        variant="outline"
-                                                        radius="xl"
+                                                        variant="filled"
+                                                        radius="xs"
                                                         size="md"
-                                                        color="red"
+                                                        color="green"
                                                         onChange={(e) => CheckItemsHandel(e, item)}
                                                     />
                                                 </Tooltip>
@@ -242,7 +242,6 @@ function _SalesTable() {
                                                         <Menu.Dropdown>
                                                             <Menu.Item
                                                                 href={`/inventory/sales/edit/${data.id}`}
-                                                                target="_blank"
                                                                 component="a"
                                                                 w={'200'}
                                                             >
@@ -251,7 +250,11 @@ function _SalesTable() {
 
                                                             <Menu.Item
                                                                 href={``}
-                                                                target="_blank"
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    setLoading(true)
+                                                                    setSalesViewData(item)
+                                                                }}
                                                                 component="a"
                                                                 w={'200'}
                                                             >
@@ -259,7 +262,6 @@ function _SalesTable() {
                                                             </Menu.Item>
                                                             <Menu.Item
                                                                 href={``}
-                                                                target="_blank"
                                                                 component="a"
                                                                 w={'200'}
                                                                 mt={'2'}
