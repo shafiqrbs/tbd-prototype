@@ -2,156 +2,156 @@ const getSpotlightDropdownData = (t) => {
 
     return ([
         {
-            group: t('Core'),
+            group: 'Core',
             actions: [
                 {
                     id: 'customer',
-                    label: t('Customer'),
-                    description: t('WhereWePresentTheCustomerInformation'),
+                    label: t('CustomerN'),
+                    description: t('WhereWePresentTheCustomerInformationN'),
 
                 },
                 {
                     id: 'user',
-                    label: t('User'),
-                    description: t('WhereWePresentTheUserInformation'),
+                    label: t('UserN'),
+                    description: t('WhereWePresentTheUserInformationN'),
 
 
                 },
                 {
                     id: 'vendor',
-                    label: t('Vendor'),
-                    description: t('WhereWePresentTheVendorInformation'),
+                    label: t('VendorN'),
+                    description: t('WhereWePresentTheVendorInformationN'),
 
                 },
             ],
         },
 
         {
-            group: t('Inventory'),
+            group: 'Inventory',
             actions: [
                 {
                     id: 'category',
-                    label: t('Category'),
-                    description: t('WhereWePresentTheCategoryInformation'),
+                    label: t('CategoryN'),
+                    description: t('WhereWePresentTheCategoryInformationN'),
 
                 },
                 {
                     id: 'category-group',
-                    label: t('CategoryGroup'),
-                    description: t('WhereWePresentTheCategoryGroupInformation'),
+                    label: t('CategoryGroupnN'),
+                    description: t('WhereWePresentTheCategoryGroupInformationN'),
 
                 },
                 {
                     id: 'product',
-                    label: t('Product'),
-                    description: t('WhereWePresentTheProductInformation'),
+                    label: t('ProductN'),
+                    description: t('WhereWePresentTheProductInformationN'),
 
                 },
                 {
                     id: 'config',
-                    label: t('Configuration'),
-                    description: t('WhereWePresentTheConfigurationInformation'),
+                    label: t('ConfigurationN'),
+                    description: t('WhereWePresentTheConfigurationInformationN'),
 
                 },
                 {
                     id: 'sales',
-                    label: t('Sales'),
-                    description: t('WhereWePresentTheSalesInformation'),
+                    label: t('SalesN'),
+                    description: t('WhereWePresentTheSalesInformationN'),
 
                 },
                 {
                     id: 'sales-invoice',
-                    label: t('NewSales'),
-                    description: t('WhereWePresentTheSalesInvoiceInformation'),
+                    label: t('NewSalesN'),
+                    description: t('WhereWePresentTheSalesInvoiceInformationN'),
 
                 },
                 {
                     id: 'purchase',
-                    label: t('Purchase'),
-                    description: t('WhereWePresentThePurchaseInformation'),
+                    label: t('PurchaseN'),
+                    description: t('WhereWePresentThePurchaseInformationN'),
 
                 },
                 {
                     id: 'purchase-invoice',
-                    label: t('NewPurchase'),
-                    description: t('WhereWePresentThePurchaseInvoiceInformation'),
+                    label: t('NewPurchaseN'),
+                    description: t('WhereWePresentThePurchaseInvoiceInformationN'),
 
                 },
                 {
                     id: 'invoice-batch',
-                    label: t('InvoiceBatch'),
-                    description: t('WhereWePresentTheInvoiceBatchInformation'),
+                    label: t('InvoiceBatchN'),
+                    description: t('WhereWePresentTheInvoiceBatchInformationN'),
 
                 },
             ],
         },
         {
-            group: t('Production'),
+            group: 'Production',
             actions: [
                 {
                     id: 'production',
-                    label: t('Production'),
-                    description: t('WhereWePresentTheProductionInformation'),
+                    label: t('ProductionN'),
+                    description: t('WhereWePresentTheProductionInformationN'),
 
                 },
                 {
                     id: 'production-inhouse',
-                    label: t('ProductionInhouse'),
-                    description: t('WhereWePresentTheProductionInformation'),
+                    label: t('ProductionInhouseN'),
+                    description: t('WhereWePresentTheProductionInhouseInformationN'),
 
 
                 },
                 {
                     id: 'production-receipe',
-                    label: t('ProductionReceipe'),
-                    description: t('WhereWePresentTheProductionInformation'),
+                    label: t('ProductionReceipeN'),
+                    description: t('WhereWePresentTheProductionReceipeInformationN'),
 
 
                 },
             ],
         },
         {
-            group: t('Domain'),
+            group: 'Domain',
             actions: [
                 {
                     id: '',
-                    label: t('Domain'),
-                    description: t('WhereWePresentTheDomainInformation'),
+                    label: t('DomainN'),
+                    description: t('WhereWePresentTheDomainInformationN'),
 
                 },
             ],
         },
         {
-            group: t('Accounting'),
+            group: 'Accounting',
             actions: [
                 {
                     id: 'transaction-mode',
-                    label: t('TransactionMode'),
-                    description: t('WhereWePresentTheTransactionModeInformation'),
+                    label: t('TransactionModeN'),
+                    description: t('WhereWePresentTheTransactionModeInformationN'),
 
                 },
                 {
                     id: 'voucher-entry',
-                    label: t('VoucherEntry'),
-                    description: t('WhereWePresentTheVoucherInformation'),
+                    label: t('VoucherEntryN'),
+                    description: t('WhereWePresentTheVoucherInformationN'),
 
                 },
                 {
                     id: 'ledger',
-                    label: t('Ledger'),
-                    description: t('WhereWePresentTheLedgerInformation'),
+                    label: t('LedgerN'),
+                    description: t('WhereWePresentTheLedgerInformationN'),
 
                 },
                 {
                     id: 'head-group',
-                    label: t('HeadGroup'),
-                    description: t('WhereWePresentTheHeadGroupInformation'),
+                    label: t('HeadGroupN'),
+                    description: t('WhereWePresentTheHeadGroupInformationN'),
 
                 },
                 {
                     id: 'head-subgroup',
-                    label: t('HeadSubGroup'),
-                    description: t('WhereWePresentTheHeadSubGroupInformation'),
+                    label: t('HeadSubGroupN'),
+                    description: t('WhereWePresentTheHeadSubGroupInformationN'),
 
                 },
             ],

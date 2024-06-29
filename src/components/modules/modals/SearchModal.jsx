@@ -73,9 +73,16 @@ function SearchModal({ onClose }) {
         } else if (event.key === 'Enter' && selectedIndex >= 0) {
             const selectedAction = filteredItems[selectedIndex];
             if (selectedAction) {
-                const path = selectedAction.group === 'Production'
+                const path = (selectedAction.group === 'Production' || selectedAction.group === 'প্রোডাকশন')
                     ? `inventory/${selectedAction.id}`
-                    : `${selectedAction.group.toLowerCase()}/${selectedAction.id}`;
+                    : (selectedAction.group === 'Core' || selectedAction.group === 'কেন্দ্র') ? `core/${selectedAction.id}`
+                        : (selectedAction.group === 'Inventory' || selectedAction.group === 'ইনভেন্টরি')
+                            ? `inventory/${selectedAction.id}`
+                            : (selectedAction.group === 'Domain' || selectedAction.group === 'ডোমেইন')
+                                ? `domain/${selectedAction.id}`
+                                : (selectedAction.group === 'Accounting' || selectedAction.group === 'একাউন্টিং')
+                                    ? `accounting/${selectedAction.id}`
+                                    : `/sitemap`;
                 navigate(path);
                 onClose();
             }
@@ -154,16 +161,31 @@ function SearchModal({ onClose }) {
                                     {groupData.items.map((action, itemIndex) => (
                                         <GridCol key={itemIndex} span={6}>
                                             <Link
+                                                // `${action.group.toLowerCase()}/${action.id}` 
                                                 to={
-                                                    action.group === 'Production'
+                                                    (action.group === 'Production' || action.group === 'প্রোডাকশন')
                                                         ? `inventory/${action.id}`
-                                                        : `${action.group.toLowerCase()}/${action.id}`
+                                                        : (action.group === 'Core' || action.group === 'কেন্দ্র') ? `core/${action.id}`
+                                                            : (action.group === 'Inventory' || action.group === 'ইনভেন্টরি')
+                                                                ? `inventory/${action.id}`
+                                                                : (action.group === 'Domain' || action.group === 'ডোমেইন')
+                                                                    ? `domain/${action.id}`
+                                                                    : (action.group === 'Accounting' || action.group === 'একাউন্টিং')
+                                                                        ? `accounting/${action.id}`
+                                                                        : `/sitemap`
                                                 }
                                                 onClick={(e) => {
                                                     e.preventDefault();
-                                                    navigate(action.group === 'Production'
+                                                    navigate((action.group === 'Production' || action.group === 'প্রোডাকশন')
                                                         ? `inventory/${action.id}`
-                                                        : `${action.group.toLowerCase()}/${action.id}`);
+                                                        : (action.group === 'Core' || action.group === 'কেন্দ্র') ? `core/${action.id}`
+                                                            : (action.group === 'Inventory' || action.group === 'ইনভেন্টরি')
+                                                                ? `inventory/${action.id}`
+                                                                : (action.group === 'Domain' || action.group === 'ডোমেইন')
+                                                                    ? `domain/${action.id}`
+                                                                    : (action.group === 'Accounting' || action.group === 'একাউন্টিং')
+                                                                        ? `accounting/${action.id}`
+                                                                        : `/sitemap`);
                                                     onClose();
                                                 }}
                                                 style={{ textDecoration: 'none', color: 'inherit' }}
@@ -197,7 +219,7 @@ function SearchModal({ onClose }) {
                     )
                         : (
                             <Text align="center" size="md" c="#828282" mt="md">
-                                {t('NoResultsFound.TryDifferentSearchTerm.')}
+                                {t('NoResultsFoundTryDifferentSearchTerm.')}
                             </Text>
                         )
                     }

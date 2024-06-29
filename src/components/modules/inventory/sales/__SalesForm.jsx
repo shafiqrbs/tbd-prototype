@@ -13,7 +13,7 @@ import {
     IconPercentage,
     IconCurrencyTaka,
     IconMessage,
-    IconEyeEdit, IconDiscountOff, IconCurrency, IconPlusMinus, IconCheck, IconTallymark1,
+    IconEyeEdit, IconDiscountOff, IconCurrency, IconPlusMinus, IconCheck, IconTallymark1,IconCalendar
 
 } from "@tabler/icons-react";
 import { useHotkeys, useToggle } from "@mantine/hooks";
@@ -32,6 +32,7 @@ import _SmsPurchaseModel from "./modal/_SmsPurchaseModel.jsx";
 import _CustomerViewModel from "./modal/_CustomerViewModel.jsx";
 import customerDataStoreIntoLocalStorage from "../../../global-hook/local-storage/customerDataStoreIntoLocalStorage.js";
 import _addCustomer from "../../popover-form/_addCustomer.jsx";
+import DatePickerForm from "../../../form-builders/DatePicker";
 
 function __SalesForm(props) {
 
@@ -285,6 +286,11 @@ function __SalesForm(props) {
                     }
                 });
 
+                const options = {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                };
                 const formValue = {}
                 formValue['customer_id'] = form.values.customer_id ? form.values.customer_id : defaultCustomerId;
                 formValue['sub_total'] = salesSubTotalAmount;
@@ -299,6 +305,8 @@ function __SalesForm(props) {
                 formValue['created_by_id'] = Number(createdBy['id']);
                 formValue['process'] = form.values.order_process;
                 formValue['narration'] = form.values.narration;
+                formValue['invoice_date'] = form.values.invoice_date && new Date(form.values.invoice_date).toLocaleDateString("en-CA", options)
+                ;
                 formValue['items'] = transformedArray ? transformedArray : [];
 
                 const hasReceiveAmount = form.values.receive_amount;
@@ -564,6 +572,7 @@ function __SalesForm(props) {
 
                                 <Box p={'xs'} className={'boxBackground'} mt={'4'} pt={'xs'} mb={'xs'} pb={'xs'} >
                                     <Grid gutter={{ base: 2 }}>
+
                                         <Grid.Col span={2}>
                                             <Switch
                                                 fullWidth
@@ -582,7 +591,23 @@ function __SalesForm(props) {
                                             <Center fz={'md'} mt={'4'}
                                                 c={'black.5'}>{currencySymbol} {profitShow && salesProfitAmount}</Center>
                                         </Grid.Col>
-                                        <Grid.Col span={8}>
+                                        <Grid.Col span={4}>
+                                            <DatePickerForm
+                                                tooltip={t('InvoiceDateValidateMessage')}
+                                                label=''
+                                                placeholder={t('InvoiceDate')}
+                                                required={false}
+                                                nextField={'discount'}
+                                                form={form}
+                                                name={'invoice_date'}
+                                                id={'invoice_date'}
+                                                leftSection={<IconCalendar size={16} opacity={0.5} />}
+                                                rightSection={<IconCalendar size={16} opacity={0.5} />}
+                                                rightSectionWidth={30}
+                                                closeIcon={true}
+                                            />
+                                        </Grid.Col>
+                                        <Grid.Col span={4}>
                                             <Box fz={'xl'} pr={'8'} mt={'4'} c={'red'} style={{ textAlign: 'right', float: 'right' }} fw={'800'}>
                                                 {returnOrDueText} {currencySymbol} {salesDueAmount.toFixed(2)}
                                             </Box>
