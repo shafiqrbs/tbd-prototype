@@ -35,10 +35,10 @@ import {
 import KeywordSearch from "../../filter/KeywordSearch.jsx";
 import { modals } from "@mantine/modals";
 import { deleteEntityData } from "../../../../store/core/crudSlice.js";
-import LabUserViewModel from "./LabUserViewModel.jsx";
+import DoctorViewModel from "./DoctorViewModel.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
 
-function LabUserTable() {
+function DoctorTable() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -46,7 +46,7 @@ function LabUserTable() {
 
   const perPage = 50;
   const [page, setPage] = useState(1);
-  const [LabUserViewModel, setLabUserViewModel] = useState(false);
+  const [DoctorViewModel, setDoctorViewModel] = useState(false);
 
   const fetching = useSelector((state) => state.crudSlice.fetching);
   const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword);
@@ -192,111 +192,14 @@ function LabUserTable() {
       </Box>
       {/*  */}
 
-      {LabUserViewModel && (
-        <LabUserViewModel
-          LabUserViewModel={LabUserViewModel}
-          setLabUserViewModel={setLabUserViewModel}
+      {DoctorViewModel && (
+        <DoctorViewModel
+          DoctorViewModel={DoctorViewModel}
+          setDoctorViewModel={setDoctorViewModel}
         />
       )}
     </>
   );
 }
 
-export default LabUserTable;
-
-{
-  /* <Box className={"borderRadiusAll border-top-none"}>
-  <DataTable
-    classNames={{
-      root: tableCss.root,
-      table: tableCss.table,
-      header: tableCss.header,
-      footer: tableCss.footer,
-      pagination: tableCss.pagination,
-    }}
-    records={indexData.data}
-    columns={[
-      {
-        accessor: "index",
-        title: t("S/N"),
-        textAlignment: "right",
-        render: (item) => indexData.data.indexOf(item) + 1,
-      },
-      { accessor: "id", title: t("ID") },
-      { accessor: "name", title: t("Name") },
-      { accessor: "mobile", title: t("Mobile") },
-      {
-        accessor: "action",
-        title: t("Action"),
-        textAlign: "right",
-        render: (data) => (
-          <Group gap={4} justify="right" wrap="nowrap">
-            <Menu
-              position="bottom-end"
-              offset={3}
-              withArrow
-              trigger="hover"
-              openDelay={100}
-              closeDelay={400}>
-              <Menu.Target>
-                <ActionIcon
-                  variant="outline"
-                  color="gray.6"
-                  radius="xl"
-                  aria-label="Settings">
-                  <IconDotsVertical
-                    height={"18"}
-                    width={"18"}
-                    stroke={1.5}
-                  />
-                </ActionIcon>
-              </Menu.Target>
-              <Menu.Dropdown>
-                <Menu.Item
-                  w={"200"}
-                  href="/inventory/config"
-                  title="Status">
-                  {t("Status")}
-                </Menu.Item>
-                <Menu.Item w={"200"} href="/inventory/config">
-                  {t("Edit")}
-                </Menu.Item>
-                <Menu.Item href="/inventory/config">
-                  {t("Show")}
-                </Menu.Item>
-                <Menu.Item
-                  href={``}
-                  target="_blank"
-                  component="a"
-                  w={"200"}
-                  mt={"2"}
-                  bg={"red.1"}
-                  c={"red.6"}
-                  rightSection={
-                    <IconTrashX
-                      style={{ width: rem(14), height: rem(14) }}
-                    />
-                  }>
-                  {t("Delete")}
-                </Menu.Item>
-              </Menu.Dropdown>
-            </Menu>
-          </Group>
-        ),
-      },
-    ]}
-    fetching={fetching}
-    totalRecords={indexData.total}
-    recordsPerPage={perPage}
-    page={page}
-    onPageChange={(p) => {
-      setPage(p);
-      dispatch(setFetching(true));
-    }}
-    loaderSize="xs"
-    loaderColor="grape"
-    height={height}
-    scrollAreaProps={{ type: "never" }}
-  />
-</Box> */
-}
+export default DoctorTable;

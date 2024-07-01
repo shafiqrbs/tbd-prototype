@@ -11,12 +11,12 @@ import {
 } from "../../../../store/core/crudSlice.js";
 import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
 
-import LabUserForm from "./LabUserForm.jsx";
-import LabUserTable from "./LabUserTable.jsx";
-import LabUserUpdateForm from "./LabUserUpdateForm.jsx";
+import DoctorForm from "./DoctorForm.jsx";
+import DoctorTable from "./DoctorTable.jsx";
+import DoctorUpdateForm from "./DoctorUpdateForm.jsx";
 import HealthHeaderNavbar from "../../inventory/configuraton/HealthHeaderNavbar.jsx";
 
-function LabUserIndex() {
+function DoctorIndex() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
 
@@ -59,14 +59,14 @@ function LabUserIndex() {
             <Grid columns={24} gutter={{ base: 8 }}>
               <Grid.Col span={15}>
                 <Box bg={"white"} p={"xs"} className={"borderRadiusAll"}>
-                  <LabUserTable />
+                  <DoctorTable />
                 </Box>
               </Grid.Col>
               <Grid.Col span={9}>
                 {insertType === "create" ? (
-                  <LabUserForm />
+                  <DoctorForm />
                 ) : (
-                  <LabUserUpdateForm />
+                  <DoctorUpdateForm />
                 )}
               </Grid.Col>
             </Grid>
@@ -77,4 +77,4 @@ function LabUserIndex() {
   );
 }
 
-export default LabUserIndex;
+export default DoctorIndex;

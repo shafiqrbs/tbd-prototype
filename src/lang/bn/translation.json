@@ -337,6 +337,12 @@
   "ApprovedBy": "এপ্রুভড বাই",
   "VoucherDetails": "ভাউচার ডিটেইলস",
 
+  "---Asraf_code---": "---Asraf_code---",
+
+  "Edit": "সম্পাদনা করুন",
+  "Show": "প্রদর্শন করুন",
+  "Delete": "ডিলিট করুন",
+
   "PathologyTest": "প্যাথলজি পরীক্ষা",
   "Doctor": "ডাক্তার",
   "LabUser": "ল্যাব ব্যবহারকারী",
@@ -362,5 +368,29 @@
   "PersonName": "নাম",
   "RefVoucher": "রেফারেন্স ভাউচার",
   "VoucherType": "ভাউচার ধরণ",
-  "Amount": "পরিমাণ"
+  "Amount": "পরিমাণ",
+
+  "ReferredCode": "সুপারিশ কোড",
+  "ReferredName": "সুপারিশকারীর নাম",
+  "Signature": "স্বাক্ষর",
+  "IsDoctor": "আপনি কি ডাক্তার",
+  "AddressPlaceholder": "আপনার ঠিকানা লিখুন",
+
+  "Cabin": "বেড/কেবিন/ওয়ার্ড",
+  "AccountHead": "হিসাব প্রধান",
+  "RoomNo": "কক্ষ নম্বর",
+  "RoomNoPlaceholder": "রুম/কেবিনের নাম বা নম্বর লিখুন",
+  "PerDayPrice": "প্রতি দিনের মূল্য",
+  "PerDayPricePlaceholder": "মূল্য লিখুন",
+  "Details": "বিস্তারিত",
+  "DetailsPlaceholder": "বিষয়বস্তু লিখুন",
+  "Code": "কোড",
+
+  "SurgeryDepartment": "সার্জারি বিভাগ",
+  "MinimumPrice": "সর্বনিম্ন মূল্য",
+  "MinimumPricePlaceholder": "সর্বনিম্ন মূল্য লিখুন",
+  "FeesPlaceholder": "ফি লিখুন",
+  "DoctorCharge": "ডাক্তার চার্জ",
+  "SurgeryPlaceholder": "অস্ত্রোপচারের নাম লিখুন",
+  "DrCharge": "ডাক্তারের চার্জ"
 }

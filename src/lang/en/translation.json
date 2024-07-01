@@ -472,6 +472,12 @@
   "HeadSubGroupN": "Head Sub-Group",
   "WhereWePresentTheHeadSubGroupInformationN": "Account Head Sub-group detailed informationa and manage",
 
+  "---Asraf_code---": "---Asraf_code---",
+
+  "Edit": "Edit",
+  "Show": "Show",
+  "Delete": "Delete",
+
   "PathologyTest": "Pathology test",
   "Doctor": "Doctor",
   "LabUser": "Lab user",
@@ -483,7 +489,13 @@
   "ServiceGroup": "Service group",
   "Commission": "Commission",
 
+  "PathologyGroupModel": "Pathology Group Model",
+  "DoctorGroupModel": "Doctor Group Model",
   "LabUserGroupModel": "Lab User Group Model",
+  "ReferredGroupModel": "Referred Group Model",
+  "CabinGroupModel": "Cabin/Ward Group Model",
+  "SurgeryGroupModel": "Surgery Group Model",
+  "MarketingExecutiveGroupModel": "Marketing Executive Group Model",
 
   "LabUserName": "Lab User Name",
   "LabUserNamePlaceholder": "Enter Lab User Name",
@@ -497,5 +509,29 @@
   "PersonName": "Name",
   "RefVoucher": "Ref Voucher",
   "VoucherType": "Voucher Type",
-  "Amount": "Amount"
+  "Amount": "Amount",
+
+  "ReferredCode": "Referred Code",
+  "ReferredName": "Referred Name",
+  "Signature": "Signature",
+  "IsDoctor": "Is Doctor",
+  "AddressPlaceholder": "Enter Your Address",
+
+  "Cabin": "Bed/Cabin/Ward",
+  "AccountHead": "Account Head",
+  "RoomNo": "Room No",
+  "RoomNoPlaceholder": "Enter room/cabin name or no",
+  "PerDayPrice": "Per Day Price",
+  "PerDayPricePlaceholder": "Enter Price",
+  "Details": "Details",
+  "DetailsPlaceholder": "Enter content",
+  "Code": "Code",
+
+  "SurgeryDepartment": "Surgery Department",
+  "MinimumPrice": "Mininmum Price",
+  "MinimumPricePlaceholder": "Enter Mininmum Price",
+  "FeesPlaceholder": "Enter Fees",
+  "DoctorCharge": "Doctor Charge",
+  "SurgeryPlaceholder": "Enter surgery name",
+  "DrCharge": "Dr Charge"
 }

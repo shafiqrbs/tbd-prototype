@@ -44,9 +44,9 @@ import SelectForm from "../../../form-builders/SelectForm.jsx";
 import TextAreaForm from "../../../form-builders/TextAreaForm.jsx";
 import getLocationDropdownData from "../../../global-hook/dropdown/getLocationDropdownData.js";
 import getExecutiveDropdownData from "../../../global-hook/dropdown/getExecutiveDropdownData.js";
-import LabUserGroupModel from "./LabUserGroupModal.jsx";
+import SurgeryGroupModel from "./SurgeryGroupModal.jsx";
 
-function LabUserUpdateForm() {
+function SurgeryUpdateForm() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -317,7 +317,7 @@ function LabUserUpdateForm() {
                             </Box>
                           </Grid.Col>
                           {opened && (
-                            <LabUserGroupModel
+                            <SurgeryGroupModel
                               openedModel={opened}
                               open={open}
                               close={close}
@@ -472,4 +472,4 @@ function LabUserUpdateForm() {
   );
 }
 
-export default LabUserUpdateForm;
+export default SurgeryUpdateForm;

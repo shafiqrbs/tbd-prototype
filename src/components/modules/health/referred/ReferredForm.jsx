@@ -15,6 +15,8 @@ import {
   Tooltip,
   ActionIcon,
   FileInput,
+  Select,
+  Checkbox,
 } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import {
@@ -44,9 +46,9 @@ import getExecutiveDropdownData from "../../../global-hook/dropdown/getExecutive
 import getCoreSettingCustomerGroupDropdownData from "../../../global-hook/dropdown/getCoreSettingCustomerGroupDropdownData.js";
 import PhoneNumber from "../../../form-builders/PhoneNumberInput.jsx";
 import InputNumberForm from "../../../form-builders/InputNumberForm.jsx";
-import LabUserGroupModal from "./LabUserGroupModal.jsx";
+import ReferredGroupModal from "./ReferredGroupModal.jsx";
 
-function LabUserForm() {
+function ReferredForm() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -267,68 +269,24 @@ function LabUserForm() {
                               </List>
                             }></Alert>
                         )}
-                      <Box>
-                        <Grid gutter={{ base: 6 }}>
-                          <Grid.Col span={11}>
-                            <Box mt={"8"}>
-                              <SelectForm
-                                tooltip={t("CustomerGroup")}
-                                label={t("CustomerGroup")}
-                                placeholder={t("ChooseCustomerGroup")}
-                                required={false}
-                                nextField={"name"}
-                                name={"customer_group"}
-                                form={form}
-                                dropdownValue={getCoreSettingCustomerGroupDropdownData()}
-                                mt={8}
-                                id={"customer_group"}
-                                searchable={false}
-                                value={customerGroupData}
-                                changeValue={setCustomerGroupData}
-                              />
-                            </Box>
-                          </Grid.Col>
-                          <Grid.Col span={1}>
-                            <Box pt={"xl"}>
-                              <Tooltip
-                                ta="center"
-                                multiline
-                                bg={"orange.8"}
-                                offset={{ crossAxis: "-110", mainAxis: "5" }}
-                                withArrow
-                                transitionProps={{ duration: 200 }}
-                                label={t("QuickCustomerGroup")}>
-                                <ActionIcon
-                                  fullWidth
-                                  variant="outline"
-                                  bg={"white"}
-                                  size={"lg"}
-                                  color="red.5"
-                                  mt={"1"}
-                                  aria-label="Settings"
-                                  onClick={open}>
-                                  <IconUsersGroup
-                                    style={{ width: "100%", height: "70%" }}
-                                    stroke={1.5}
-                                  />
-                                </ActionIcon>
-                              </Tooltip>
-                            </Box>
-                          </Grid.Col>
-                          {opened && (
-                            <LabUserGroupModal
-                              openedModel={opened}
-                              open={open}
-                              close={close}
-                            />
-                          )}
-                        </Grid>
+                      <Box mt={"xs"} mb={"xs"}>
+                        <InputNumberForm
+                          tooltip={t("MobileValidateMessage")}
+                          label={t("ReferredCode")}
+                          placeholder={t("ReferredCode")}
+                          required={true}
+                          nextField={"referred_name"}
+                          name={"referred_code"}
+                          form={form}
+                          mt={8}
+                          id={"referred_code"}
+                        />
                       </Box>
                       <Box mt={"xs"}>
                         <InputForm
                           tooltip={t("NameValidateMessage")}
-                          label={t("LabUserName")}
-                          placeholder={t("LabUserNamePlaceholder")}
+                          label={t("ReferredName")}
+                          placeholder={t("ReferredName")}
                           required={true}
                           nextField={"mobile"}
                           name={"name"}
@@ -340,10 +298,59 @@ function LabUserForm() {
                       <Box mt={"xs"} mb={"xs"}>
                         <InputNumberForm
                           tooltip={t("MobileValidateMessage")}
+                          label={t("Commission")}
+                          placeholder={t("Commission")}
+                          required={true}
+                          nextField={"commission"}
+                          name={"commission"}
+                          form={form}
+                          mt={8}
+                          id={"commission"}
+                        />
+                      </Box>
+                      <InputForm
+                        tooltip={t("NameValidateMessage")}
+                        label={t("Signature")}
+                        placeholder={t("Signature")}
+                        required={true}
+                        nextField={"location"}
+                        name={"signature"}
+                        form={form}
+                        mt={0}
+                        id={"signature"}
+                      />
+                      <Select
+                        tooltip={t("NameValidateMessage")}
+                        label={t("Location")}
+                        placeholder={t("Location")}
+                        required={true}
+                        nextField={"address"}
+                        name={"location"}
+                        form={form}
+                        mt={0}
+                        id={"name"}
+                        data={["React", "Angular", "Vue", "Svelte"]}
+                      />
+                      <Box mt={"xs"} mb={"xs"}>
+                        <TextAreaForm
+                          tooltip={t("Address")}
+                          label={t("Address")}
+                          placeholder={t("AddressPlaceholder")}
+                          required={false}
+                          nextField={"mobile"}
+                          name={"address"}
+                          form={form}
+                          mt={8}
+                          id={"address"}
+                        />
+                      </Box>
+                      <Box mt={"xs"} mb={"xs"}>
+                        <InputNumberForm
+                          tooltip={t("MobileValidateMessage")}
                           label={t("MobileNo")}
                           placeholder={t("MobileNamePlaceholder")}
                           required={true}
-                          nextField={"alternative_mobile"}
+                          nextField={"doctor_checkbox"}
                           name={"mobile"}
                           form={form}
                           mt={8}
@@ -351,42 +358,17 @@ function LabUserForm() {
                         />
                       </Box>
                       <Box mt={"xs"} mb={"xs"}>
-                        <InputNumberForm
-                          tooltip={t("MobileValidateMessage")}
-                          label={t("AlternativeMobile")}
-                          placeholder={t("AlternativeMobile")}
-                          required={false}
-                          nextField={"email"}
-                          name={"alternative_mobile"}
-                          form={form}
-                          mt={8}
-                          id={"alternative_mobile"}
-                        />
-                      </Box>
-                      <Box mt={"xs"} mb={"xs"}>
-                        <TextAreaForm
-                          tooltip={t("Address")}
-                          label={t("LabSignature")}
-                          placeholder={t("LabSignaturePlaceholder")}
+                        <Checkbox
+                          defaultChecked
+                          label={t("IsDoctor")}
+                          color="gray"
+                          tooltip={t("IsDoctor")}
                           required={false}
                           nextField={"EntityFormSubmit"}
-                          name={"address"}
                           form={form}
                           mt={8}
-                          id={"address"}
-                        />
-                      </Box>
-                      <Box mt={"xs"} mb={"xs"}>
-                        <FileInput
-                          tooltip={t("Address")}
-                          label={t("LabFileInput")}
-                          placeholder={t("LabFileInput")}
-                          required={false}
-                          nextField={"EntityFormSubmit"}
-                          name={"address"}
-                          form={form}
-                          mt={8}
-                          id={"address"}
+                          name={"doctor_checkbox"}
+                          id={"doctor_checkbox"}
                         />
                       </Box>
                     </Box>
@@ -411,4 +393,4 @@ function LabUserForm() {
   );
 }
 
-export default LabUserForm;
+export default ReferredForm;

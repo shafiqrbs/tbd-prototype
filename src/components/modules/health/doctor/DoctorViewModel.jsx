@@ -13,7 +13,7 @@ import { IconCircleCheck } from "@tabler/icons-react";
 
 import { useSelector } from "react-redux";
 
-function LabUserViewModel(props) {
+function DoctorViewModel(props) {
   const { t, i18n } = useTranslation();
   const showEntityData = useSelector((state) => state.crudSlice.showEntityData);
   const theme = useMantineTheme();
@@ -115,4 +115,4 @@ function LabUserViewModel(props) {
   );
 }
 
-export default LabUserViewModel;
+export default DoctorViewModel;

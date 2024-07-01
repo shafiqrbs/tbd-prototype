@@ -22,7 +22,7 @@ import "mantine-react-table/styles.css"; //make sure MRT styles were imported in
 import { modals } from "@mantine/modals";
 import { hasLength, useForm } from "@mantine/form";
 
-function LabUserGroupModel(props) {
+function ReferredGroupModel(props) {
   const { openedModel, open, close } = props;
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -45,7 +45,7 @@ function LabUserGroupModel(props) {
       <Modal
         opened={openedModel}
         onClose={close}
-        title={t("LabUserGroupModel")}
+        title={t("ReferredGroupModel")}
         centered
         overlayProps={{
           backgroundOpacity: 0.55,
@@ -167,4 +167,4 @@ function LabUserGroupModel(props) {
   );
 }
 
-export default LabUserGroupModel;
+export default ReferredGroupModel;
