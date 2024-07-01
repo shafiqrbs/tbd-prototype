@@ -492,5 +492,10 @@
   "LabSignature": "Lab Signature",
   "LabSignaturePlaceholder": "Enter Signature",
   "DigitalSignature": "Digital Signature",
-  "LabFileInput": "Select Image"
+  "LabFileInput": "Select Image",
+
+  "PersonName": "Name",
+  "RefVoucher": "Ref Voucher",
+  "VoucherType": "Voucher Type",
+  "Amount": "Amount"
 }

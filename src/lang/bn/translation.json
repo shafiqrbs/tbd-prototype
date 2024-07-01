@@ -357,5 +357,10 @@
   "LabSignature": "ল্যাব স্বাক্ষর",
   "LabSignaturePlaceholder": "স্বাক্ষর লিখুন",
   "DigitalSignature": "ডিজিটাল স্বাক্ষর",
-  "LabFileInput": "ছবি নির্বাচন করুন"
+  "LabFileInput": "ছবি নির্বাচন করুন",
+
+  "PersonName": "নাম",
+  "RefVoucher": "রেফারেন্স ভাউচার",
+  "VoucherType": "ভাউচার ধরণ",
+  "Amount": "পরিমাণ"
 }

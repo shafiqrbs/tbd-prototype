@@ -71,51 +71,6 @@ function LabUserTable() {
       designation: "Medical Technologist (Lab)",
       mobile: "01700000098",
     },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
-    {
-      person_name: "Foysal Mahmud",
-      designation: "Medical Technologist (Lab)",
-      mobile: "01700000098",
-    },
   ];
 
   useEffect(() => {

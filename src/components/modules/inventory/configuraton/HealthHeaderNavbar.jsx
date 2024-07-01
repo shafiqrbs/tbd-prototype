@@ -37,9 +37,6 @@ function HealthHeaderNavbar(props) {
   const [opened, { toggle }] = useDisclosure(false);
   const navigate = useNavigate();
   const links = [
-    // { link: "/inventory/product", label: t("Products") },
-    // { link: "/inventory/category", label: t("Category") },
-    // { link: "/inventory/category-group", label: t("CategoryGroup") },
     { link: "/health/pathology-test", label: t("PathologyTest") },
     { link: "/health/doctor", label: t("Doctor") },
     { link: "/health/lab-user", label: t("LabUser") },
