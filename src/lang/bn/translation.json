@@ -335,5 +335,27 @@
   "TransactionNumber": "ট্রানজেক্শন নম্বর",
   "CreatedBy": "ক্রিয়েটেড বাই",
   "ApprovedBy": "এপ্রুভড বাই",
-  "VoucherDetails": "ভাউচার ডিটেইলস"
+  "VoucherDetails": "ভাউচার ডিটেইলস",
+
+  "PathologyTest": "প্যাথলজি পরীক্ষা",
+  "Doctor": "ডাক্তার",
+  "LabUser": "ল্যাব ব্যবহারকারী",
+  "Referred": "সুপারিশ",
+  "CabinWard": "কেবিন/ওয়ার্ড",
+  "Surgery": "অস্ত্রোপচার",
+  "Services": "সেবা",
+  "EmergencyServices": "জরুরী সেবা",
+  "ServiceGroup": "সেবা গ্রুপ",
+  "Commission": "কমিশন",
+
+  "LabUserGroupModel": "ল্যাব ব্যবহারকারী গ্রুপ মডেল",
+
+  "LabUserName": "ল্যাব ব্যবহারকারীর নাম",
+  "LabUserNamePlaceholder": "ল্যাব ব্যবহারকারীর নাম লিখুন",
+  "MobileNo": "মোবাইল নাম্বার",
+  "MobileNamePlaceholder": "মোবাইল নম্বর লিখুন",
+  "LabSignature": "ল্যাব স্বাক্ষর",
+  "LabSignaturePlaceholder": "স্বাক্ষর লিখুন",
+  "DigitalSignature": "ডিজিটাল স্বাক্ষর",
+  "LabFileInput": "ছবি নির্বাচন করুন"
 }
