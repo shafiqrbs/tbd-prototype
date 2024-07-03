@@ -37,7 +37,7 @@ function ComissionIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageCommission")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

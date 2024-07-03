@@ -37,7 +37,7 @@ function MarketingIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageMarketingExecutive")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

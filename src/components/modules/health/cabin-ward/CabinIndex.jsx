@@ -50,7 +50,7 @@ function CabinIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageBedCabin")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

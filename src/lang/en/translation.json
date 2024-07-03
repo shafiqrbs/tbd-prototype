@@ -551,5 +551,20 @@
   "ComissionName": "Comission Name",
   "ComissionNamePlaceholder": "Enter Comission Name",
   "ComissionType": "Comission Type",
-  "ComissionTypePlaceholder": "Enter Comission Type Name"
+  "ComissionTypePlaceholder": "Enter Comission Type Name",
+
+  "ManageDiagnosticReports": "Manage Diagnostic Reports",
+  "ManageDiagnosticTest": "Manage Diagnostic Test",
+  "ManageDoctor": "Manage Doctor",
+  "ManageLabUser": "Manage Lab User",
+  "ManageReferredDoctor": "Manage Referred Doctor",
+  "ManageReferred": "Manage Referred",
+  "ManageBedCabin": "Manage Bed/Cabin",
+  "ManageSurgery": "Manage Surgery",
+  "ManageMarketingExecutive": "Manage Marketing Executive",
+  "ManageServicesProcedures": "Manage Services & Procedures",
+  "ManageEmergencyServices": "Manage Emergency Services",
+  "ManageServiceGroup": "Manage Service Group",
+  "ManageCommission": "Manage Commission",
+  "DiagnosticConfiguration": "Diagnostic Configuration"
 }

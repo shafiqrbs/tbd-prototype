@@ -37,7 +37,7 @@ function EmergencyServicesIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageEmergencyServices")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

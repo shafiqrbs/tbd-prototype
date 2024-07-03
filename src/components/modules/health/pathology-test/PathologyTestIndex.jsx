@@ -50,7 +50,7 @@ function PathologyTestIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageDiagnosticReports")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

@@ -50,7 +50,7 @@ function ReferredIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageReferredDoctor")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

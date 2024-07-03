@@ -215,7 +215,7 @@ function ReferredForm() {
                   <Grid>
                     <Grid.Col span={6}>
                       <Title order={6} pt={"6"}>
-                        {t("CreateCustomer")}
+                        {t("ManageReferred")}
                       </Title>
                     </Grid.Col>
                     <Grid.Col span={6}>

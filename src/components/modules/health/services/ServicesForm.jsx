@@ -215,7 +215,7 @@ function ServicesForm() {
                   <Grid>
                     <Grid.Col span={6}>
                       <Title order={6} pt={"6"}>
-                        {t("CreateCustomer")}
+                        {t("ManageServicesProcedures")}
                       </Title>
                     </Grid.Col>
                     <Grid.Col span={6}>

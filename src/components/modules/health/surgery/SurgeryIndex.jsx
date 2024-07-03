@@ -50,7 +50,7 @@ function SurgeryIndex() {
       {progress === 100 && (
         <>
           <HealthHeaderNavbar
-            pageTitle={t("ManageCustomer")}
+            pageTitle={t("ManageSurgery")}
             roles={t("Roles")}
             allowZeroPercentage=""
             currencySymbol=""

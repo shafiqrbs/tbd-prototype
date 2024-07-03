@@ -45,7 +45,7 @@ function PathologyTestGroupModel(props) {
       <Modal
         opened={openedModel}
         onClose={close}
-        title={t("PathologyTestGroupModel")}
+        title={t("PathologyGroupModel")}
         centered
         overlayProps={{
           backgroundOpacity: 0.55,

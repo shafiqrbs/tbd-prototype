@@ -410,5 +410,20 @@
   "ComissionType": "কমিশনের ধরন",
   "ComissionTypePlaceholder": "কমিশন টাইপ নাম লিখুন",
 
-  "ServiceName": "কাজের নাম"
+  "ServiceName": "কাজের নাম",
+
+  "ManageDiagnosticReports": "ডায়াগনস্টিক রিপোর্ট পরিচালনা করুন",
+  "ManageDiagnosticTest": "ডায়াগনস্টিক টেস্ট পরিচালনা করুন",
+  "ManageDoctor": "ম্যানেজ ডাক্তার",
+  "ManageLabUser": "ল্যাব ব্যবহারকারী পরিচালনা করুন",
+  "ManageReferredDoctor": "রেফার করা ডাক্তার পরিচালনা করুন",
+  "ManageReferred": "ম্যানেজ রেফারড",
+  "ManageBedCabin": "বিছানা/কেবিন পরিচালনা করুন",
+  "ManageSurgery": "সার্জারি পরিচালনা করুন",
+  "ManageMarketingExecutive": "মার্কেটিং এক্সিকিউটিভ পরিচালনা করুন",
+  "ManageServicesProcedures": "পরিষেবা এবং পদ্ধতি পরিচালনা করুন",
+  "ManageEmergencyServices": "জরুরী পরিষেবা পরিচালনা করুন",
+  "ManageServiceGroup": "সার্ভিস গ্রুপ পরিচালনা করুন",
+  "ManageCommission": "কমিশন পরিচালনা করুন",
+  "DiagnosticConfiguration": "ডায়াগনস্টিক কনফিগারেশন"
 }

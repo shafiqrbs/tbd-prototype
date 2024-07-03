@@ -62,6 +62,42 @@ function MarketingTable() {
       designation: "General Marketing",
       mobile: "01783049808",
     },
+    {
+      code: "2011",
+      person_name: "Foysal Mahmud",
+      designation: "General Marketing",
+      mobile: "01783049808",
+    },
+    {
+      code: "2011",
+      person_name: "Foysal Mahmud",
+      designation: "General Marketing",
+      mobile: "01783049808",
+    },
+    {
+      code: "2011",
+      person_name: "Foysal Mahmud",
+      designation: "General Marketing",
+      mobile: "01783049808",
+    },
+    {
+      code: "2011",
+      person_name: "Foysal Mahmud",
+      designation: "General Marketing",
+      mobile: "01783049808",
+    },
+    {
+      code: "2011",
+      person_name: "Foysal Mahmud",
+      designation: "General Marketing",
+      mobile: "01783049808",
+    },
+    {
+      code: "2011",
+      person_name: "Foysal Mahmud",
+      designation: "General Marketing",
+      mobile: "01783049808",
+    },
   ];
 
   useEffect(() => {

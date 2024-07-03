@@ -213,7 +213,7 @@ function LabUserForm() {
                   <Grid>
                     <Grid.Col span={6}>
                       <Title order={6} pt={"6"}>
-                        {t("CreateCustomer")}
+                        {t("ManageLabUser")}
                       </Title>
                     </Grid.Col>
                     <Grid.Col span={6}>
