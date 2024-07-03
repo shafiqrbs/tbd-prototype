@@ -41,6 +41,11 @@ import DoctorIndex from "./components/modules/health/doctor/DoctorIndex.jsx";
 import ReferredIndex from "./components/modules/health/referred/ReferredIndex.jsx";
 import CabinIndex from "./components/modules/health/cabin-ward/CabinIndex.jsx";
 import SurgeryIndex from "./components/modules/health/surgery/SurgeryIndex.jsx";
+import MarketingIndex from "./components/modules/health/marketing-executive/MarketingIndex.jsx";
+import ServicesIndex from "./components/modules/health/services/ServicesIndex.jsx";
+import EmergencyServicesIndex from "./components/modules/health/emergency-services/EmergencyServicesIndex.jsx";
+import ServiceGroupIndex from "./components/modules/health/services-group/ServiceGroupIndex.jsx";
+import ComissionIndex from "./components/modules/health/comission/ComissionIndex.jsx";
 
 function AppRoute() {
   return (
@@ -97,11 +102,14 @@ function AppRoute() {
           <Route path="referred" element={<ReferredIndex />} />
           <Route path="cabin-ward" element={<CabinIndex />} />
           <Route path="surgery" element={<SurgeryIndex />} />
-          <Route path="marketing-executive" element={<PathologyTestIndex />} />
-          <Route path="services" element={<PathologyTestIndex />} />
-          <Route path="emergency-services" element={<PathologyTestIndex />} />
-          <Route path="service-group" element={<PathologyTestIndex />} />
-          <Route path="commission" element={<PathologyTestIndex />} />
+          <Route path="marketing-executive" element={<MarketingIndex />} />
+          <Route path="services" element={<ServicesIndex />} />
+          <Route
+            path="emergency-services"
+            element={<EmergencyServicesIndex />}
+          />
+          <Route path="service-group" element={<ServiceGroupIndex />} />
+          <Route path="commission" element={<ComissionIndex />} />
           <Route path="congiguration" element={<PathologyTestIndex />} />
         </Route>
         <Route path="/test" element={<TestIndex />} />

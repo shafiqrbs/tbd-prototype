@@ -44,7 +44,7 @@ function HealthHeaderNavbar(props) {
     { link: "/health/cabin-ward", label: t("CabinWard") },
     { link: "/health/surgery", label: t("Surgery") },
     { link: "/health/marketing-executive", label: t("MarketingExecutive") },
-    { link: "/health/services", label: t("Services") },
+    { link: "/health/services", label: t("ServicesProcedures") },
     { link: "/health/emergency-services", label: t("EmergencyServices") },
     { link: "/health/service-group", label: t("ServiceGroup") },
     { link: "/health/commission", label: t("Commission") },
@@ -70,7 +70,7 @@ function HealthHeaderNavbar(props) {
             <Text>{pageTitle}</Text>
           </Group>
           <Group>
-            <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
+            <Group ml={50} gap={2} className={classes.links} visibleFrom="sm">
               {items}
             </Group>
             <Menu

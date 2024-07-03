@@ -349,7 +349,7 @@
   "Referred": "সুপারিশ",
   "CabinWard": "কেবিন/ওয়ার্ড",
   "Surgery": "অস্ত্রোপচার",
-  "Services": "সেবা",
+  "ServicesProcedures": "সেবা/পদ্ধতি",
   "EmergencyServices": "জরুরী সেবা",
   "ServiceGroup": "সেবা গ্রুপ",
   "Commission": "কমিশন",
@@ -392,5 +392,23 @@
   "FeesPlaceholder": "ফি লিখুন",
   "DoctorCharge": "ডাক্তার চার্জ",
   "SurgeryPlaceholder": "অস্ত্রোপচারের নাম লিখুন",
-  "DrCharge": "ডাক্তারের চার্জ"
+  "DrCharge": "ডাক্তারের চার্জ",
+
+  "MarketingDepartment": "বিপণন বিভাগ",
+
+  "ServicesProceduresName": "পরিষেবা এবং পদ্ধতির নাম",
+  "AdmissionDefault": "সাধারণ ভর্তি",
+
+  "EmergencyServicesName": "পরিষেবার নাম",
+  "EmergencyServicesNamePlaceholder": "পরিষেবার নাম লিখুন",
+  "PricePlaceholder": "রুম ভাড়া লিখুন",
+  "MinPricePlaceholder": "সর্বনিম্ন মূল্য লিখুন",
+
+  "ServiceGroupName": "সার্ভিস গ্রুপ",
+  "ServiceGroupNamePlaceholder": "পরিষেবা গ্রুপের নাম লিখুন",
+
+  "ComissionType": "কমিশনের ধরন",
+  "ComissionTypePlaceholder": "কমিশন টাইপ নাম লিখুন",
+
+  "ServiceName": "কাজের নাম"
 }

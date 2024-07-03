@@ -484,7 +484,7 @@
   "Referred": "Referred",
   "CabinWard": "Cabin/Ward",
   "Surgery": "Surgery",
-  "Services": "services",
+  "ServicesProcedures": "Services/Procedures",
   "EmergencyServices": "Emergency services",
   "ServiceGroup": "Service group",
   "Commission": "Commission",
@@ -533,5 +533,23 @@
   "FeesPlaceholder": "Enter Fees",
   "DoctorCharge": "Doctor Charge",
   "SurgeryPlaceholder": "Enter surgery name",
-  "DrCharge": "Dr Charge"
+  "DrCharge": "Dr Charge",
+
+  "MarketingDepartment": "Marketing Department",
+
+  "ServicesProceduresName": "Services & Procedures Name",
+  "AdmissionDefault": "Admission Default",
+
+  "EmergencyServicesName": "Services Name",
+  "EmergencyServicesNamePlaceholder": "Enter Services Name",
+  "PricePlaceholder": "Enter Room Rent",
+  "MinPricePlaceholder": "Enter Minimum Price",
+
+  "ServiceGroupName": "Service Group",
+  "ServiceGroupNamePlaceholder": "Enter Service Group Name",
+
+  "ComissionName": "Comission Name",
+  "ComissionNamePlaceholder": "Enter Comission Name",
+  "ComissionType": "Comission Type",
+  "ComissionTypePlaceholder": "Enter Comission Type Name"
 }
