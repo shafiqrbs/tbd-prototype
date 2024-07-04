@@ -46,6 +46,7 @@ import ServicesIndex from "./components/modules/health/services/ServicesIndex.js
 import EmergencyServicesIndex from "./components/modules/health/emergency-services/EmergencyServicesIndex.jsx";
 import ServiceGroupIndex from "./components/modules/health/services-group/ServiceGroupIndex.jsx";
 import ComissionIndex from "./components/modules/health/comission/ComissionIndex.jsx";
+import HealthConfigurationIndex from "./components/modules/health/configuraton/HealthConfigurationIndex.jsx";
 
 function AppRoute() {
   return (
@@ -110,7 +111,7 @@ function AppRoute() {
           />
           <Route path="service-group" element={<ServiceGroupIndex />} />
           <Route path="commission" element={<ComissionIndex />} />
-          <Route path="congiguration" element={<PathologyTestIndex />} />
+          <Route path="configuration" element={<HealthConfigurationIndex />} />
         </Route>
         <Route path="/test" element={<TestIndex />} />
       </Route>

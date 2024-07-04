@@ -11,7 +11,6 @@ import {
   rem,
   ActionIcon,
   Text,
-  NavLink,
 } from "@mantine/core";
 import {
   getHotkeyHandler,
@@ -27,29 +26,23 @@ import {
   IconTrash,
   IconSearch,
   IconSettings,
+  IconTable,
 } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
-function HealthHeaderNavbar(props) {
-  const { pageTitle, roles, currancySymbol, allowZeroPercentage } = props;
+function HealthSalesPurchaseHeaderNavbar(props) {
   const { t, i18n } = useTranslation();
+  const links = [
+    { link: "/inventory/invoice-batch", label: t("InvoiceBatch") },
+    { link: "/inventory/sales", label: t("Sales") },
+    { link: "/inventory/sales-invoice", label: t("NewSales") },
+    { link: "/inventory/purchase", label: t("Purchase") },
+    { link: "/inventory/purchase-invoice", label: t("NewPurchase") },
+  ];
+  const { pageTitle } = props;
   const dispatch = useDispatch();
   const [opened, { toggle }] = useDisclosure(false);
   const navigate = useNavigate();
-  const links = [
-    { link: "/health/pathology-test", label: t("PathologyTest") },
-    { link: "/health/doctor", label: t("Doctor") },
-    { link: "/health/lab-user", label: t("LabUser") },
-    { link: "/health/referred", label: t("Referred") },
-    { link: "/health/cabin-ward", label: t("CabinWard") },
-    { link: "/health/surgery", label: t("Surgery") },
-    { link: "/health/marketing-executive", label: t("MarketingExecutive") },
-    { link: "/health/services", label: t("ServicesProcedures") },
-    { link: "/health/emergency-services", label: t("EmergencyServices") },
-    { link: "/health/service-group", label: t("ServiceGroup") },
-    { link: "/health/commission", label: t("Commission") },
-    { link: "/health/configuration", label: t("Configuration") },
-  ];
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -66,11 +59,11 @@ function HealthHeaderNavbar(props) {
     <>
       <header className={classes.header}>
         <div className={classes.inner}>
-          <Group ml={10}>
+          <Group>
             <Text>{pageTitle}</Text>
           </Group>
           <Group>
-            <Group ml={50} gap={2} className={classes.links} visibleFrom="sm">
+            <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
               {items}
             </Group>
             <Menu
@@ -91,6 +84,28 @@ function HealthHeaderNavbar(props) {
               </Menu.Target>
               <Menu.Dropdown>
                 <Menu.Item
+                  href="/inventory/opening-stock"
+                  component="button"
+                  onClick={(e) => {
+                    navigate("/inventory/opening-stock");
+                  }}
+                  leftSection={
+                    <IconTable style={{ width: rem(14), height: rem(14) }} />
+                  }>
+                  {t("OpeningStock")}
+                </Menu.Item>
+                <Menu.Item
+                  href="/inventory/opening-approve-stock"
+                  component="button"
+                  onClick={(e) => {
+                    navigate("/inventory/opening-approve-stock");
+                  }}
+                  leftSection={
+                    <IconTable style={{ width: rem(14), height: rem(14) }} />
+                  }>
+                  {t("ApproveOpeningStock")}
+                </Menu.Item>
+                <Menu.Item
                   href="/inventory/config"
                   component="button"
                   onClick={(e) => {
@@ -110,4 +125,4 @@ function HealthHeaderNavbar(props) {
   );
 }
 
-export default HealthHeaderNavbar;
+export default HealthSalesPurchaseHeaderNavbar;
