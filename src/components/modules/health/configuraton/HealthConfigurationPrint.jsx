@@ -32,10 +32,10 @@ import { isNotEmpty, useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
 
-import Shortcut from "../../shortcut/Shortcut.jsx";
-import InputForm from "../../../form-builders/InputForm.jsx";
-import SelectForm from "../../../form-builders/SelectForm.jsx";
-import TextAreaForm from "../../../form-builders/TextAreaForm.jsx";
+import Shortcut from "../../shortcut/Shortcut";
+import InputForm from "../../../form-builders/InputForm";
+import SelectForm from "../../../form-builders/SelectForm";
+import TextAreaForm from "../../../form-builders/TextAreaForm";
 import {
   setFormLoading,
   setValidationData,
@@ -48,7 +48,7 @@ import ImageUploadDropzone from "../../../form-builders/ImageUploadDropzone.jsx"
 import InputNumberForm from "../../../form-builders/InputNumberForm.jsx";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 
-function HealthConfigurationForm() {
+function ConfigurationForm() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -797,4 +797,4 @@ function HealthConfigurationForm() {
     </>
   );
 }
-export default HealthConfigurationForm;
+export default ConfigurationForm;
