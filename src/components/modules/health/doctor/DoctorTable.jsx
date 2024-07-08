@@ -60,16 +60,22 @@ function DoctorTable() {
       person_name: "Foysal Mahmud",
       designation: "Medical Technologist (Lab)",
       mobile: "01700000098",
+      department: "Medical department",
+      fees: "123",
     },
     {
       person_name: "Foysal Mahmud",
       designation: "Medical Technologist (Lab)",
       mobile: "01700000098",
+      department: "Medical department",
+      fees: "123",
     },
     {
       person_name: "Foysal Mahmud",
       designation: "Medical Technologist (Lab)",
       mobile: "01700000098",
+      department: "Medical department",
+      fees: "123",
     },
   ];
 
@@ -119,6 +125,8 @@ function DoctorTable() {
             { accessor: "person_name", title: t("PersonName") },
             { accessor: "designation", title: t("Designation") },
             { accessor: "mobile", title: t("Mobile") },
+            { accessor: "department", title: t("Department") },
+            { accessor: "fees", title: t("Fees") },
             {
               accessor: "action",
               title: t("Action"),

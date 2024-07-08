@@ -46,6 +46,59 @@ function PathologyTestTable() {
     (state) => state.crudSlice.customerFilterData
   );
 
+  const data = [
+    {
+      code: 111,
+      person_name: "Foysal Mahmud",
+      category: "Biochemistry",
+      department: "Medical department",
+      over_head: "0",
+      price: "170",
+      min_price: "123",
+      commission: "0",
+    },
+    {
+      code: 222,
+      person_name: "Foysal Mahmud",
+      category: "Biochemistry",
+      department: "Medical department",
+      over_head: "0",
+      price: "170",
+      min_price: "123",
+      commission: "0",
+    },
+    {
+      code: 333,
+      person_name: "Foysal Mahmud",
+      category: "Biochemistry",
+      department: "Medical department",
+      over_head: "0",
+      price: "170",
+      min_price: "123",
+      commission: "0",
+    },
+    {
+      code: 444,
+      person_name: "Foysal Mahmud",
+      category: "Biochemistry",
+      department: "Medical department",
+      over_head: "0",
+      price: "170",
+      min_price: "123",
+      commission: "0",
+    },
+    {
+      code: 555,
+      person_name: "Foysal Mahmud",
+      category: "Biochemistry",
+      department: "Medical department",
+      over_head: "0",
+      price: "170",
+      min_price: "123",
+      commission: "0",
+    },
+  ];
+
   useEffect(() => {
     const value = {
       url: "core/customer",
@@ -79,17 +132,22 @@ function PathologyTestTable() {
             footer: tableCss.footer,
             pagination: tableCss.pagination,
           }}
-          records={indexData.data}
+          records={data}
           columns={[
             {
               accessor: "index",
               title: t("S/N"),
               textAlignment: "right",
-              render: (item) => indexData.data.indexOf(item) + 1,
+              render: (item) => data.indexOf(item) + 1,
             },
-            { accessor: "id", title: t("ID") },
-            { accessor: "name", title: t("Name") },
-            { accessor: "mobile", title: t("Mobile") },
+            { accessor: "code", title: t("Code") },
+            { accessor: "person_name", title: t("PersonName") },
+            { accessor: "category", title: t("Category") },
+            { accessor: "department", title: t("Department") },
+            { accessor: "over_head", title: t("OverHead") },
+            { accessor: "price", title: t("Price") },
+            { accessor: "min_price", title: t("MinimumPrice") },
+            { accessor: "commission", title: t("Commission") },
             {
               accessor: "action",
               title: t("Action"),
@@ -117,6 +175,9 @@ function PathologyTestTable() {
                       </ActionIcon>
                     </Menu.Target>
                     <Menu.Dropdown>
+                      <Menu.Item w={"200"} href="/inventory/config">
+                        {t("Status")}
+                      </Menu.Item>
                       <Menu.Item w={"200"} href="/inventory/config">
                         {t("Edit")}
                       </Menu.Item>

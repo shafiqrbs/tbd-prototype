@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import "@mantine/tiptap/styles.css";
-import { createStyles } from "@mantine/core";
-import { RichTextEditor } from "@mantine/rte";
+// import "@mantine/tiptap/styles.css";
+// import { createStyles } from "@mantine/core";
+// import { RichTextEditor } from "@mantine/rte";
 
 const CkEditor = () => {
-  const initialValue =
-    "<p>Your initial <b>html value</b> or an empty string to init editor without value</p>";
-  const [value, onChange] = useState(initialValue);
+  // const initialValue =
+  //   "<p>Your initial <b>html value</b> or an empty string to init editor without value</p>";
+  // const [value, onChange] = useState(initialValue);
   return (
     <>
-      <RichTextEditor
+      {/* <RichTextEditor
         sticky={false}
         controls={[
           ["bold", "italic", "underline", "link", "image"],
@@ -19,7 +19,7 @@ const CkEditor = () => {
         ]}
         value={value}
         onChange={onChange}
-      />
+      /> */}
     </>
   );
 };

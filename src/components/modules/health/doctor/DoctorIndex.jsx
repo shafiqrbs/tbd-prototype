@@ -27,19 +27,6 @@ function DoctorIndex() {
 
   const progress = getLoadingProgress();
 
-  /* useEffect(() => {
-    dispatch(setInsertType("create"));
-    dispatch(setSearchKeyword(""));
-    dispatch(setEntityNewData([]));
-    dispatch(
-      setCustomerFilterData({
-        ...customerFilterData,
-        ["name"]: "",
-        ["mobile"]: "",
-      })
-    );
-  }, []); */
-
   const user = localStorage.getItem("user");
 
   return (

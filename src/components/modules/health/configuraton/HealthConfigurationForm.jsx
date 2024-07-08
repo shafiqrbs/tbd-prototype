@@ -758,7 +758,7 @@ function HealthConfigurationForm() {
                               <SwitchForm
                                 tooltip={t("LabUser")}
                                 label=""
-                                nextField={"marketing_executive"}
+                                nextField={"accessories_marketing_executive"}
                                 name={"lab_user"}
                                 form={form}
                                 color="red"
@@ -780,10 +780,10 @@ function HealthConfigurationForm() {
                                 tooltip={t("MarketingExecutive")}
                                 label=""
                                 nextField={"medicine"}
-                                name={"marketing_executive"}
+                                name={"accessories_marketing_executive"}
                                 form={form}
                                 color="red"
-                                id={"marketing_executive"}
+                                id={"accessories_marketing_executive"}
                                 position={"left"}
                                 defaultChecked={0}
                               />
