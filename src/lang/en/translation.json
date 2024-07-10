@@ -626,5 +626,7 @@
   "HeaderAndFooter": "Header and Footer",
   "HeaderBanner": "Header Banner",
   "FooterBanner": "Footer Banner",
-  "Messages": "Messages"
+  "Messages": "Messages",
+
+  "BookingMode": "Booking Mode"
 }
