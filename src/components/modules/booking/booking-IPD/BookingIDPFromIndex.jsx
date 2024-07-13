@@ -39,14 +39,14 @@ import {
 import tableCss from "../../../../assets/css/Table.module.css";
 
 import ShortcutVoucher from "../../shortcut/ShortcutVoucher.jsx";
-import BookingDetailSection from "./BookingDetailSection.jsx";
-import BookingFormSection from "./BookingFormSection.jsx";
+import BookingIDPDetailSection from "./BookingIDPDetailSection.jsx";
+import BookingIDPFormSection from "./BookingIDPFormSection.jsx";
 import SwitchForm from "../../../form-builders/SwitchForm.jsx";
 import { DateInput } from "@mantine/dates";
 import InputNumberForm from "../../../form-builders/InputNumberForm.jsx";
 import TextAreaForm from "../../../form-builders/TextAreaForm.jsx";
 
-function BookingFormIndex(props) {
+function BookingIDPFormIndex(props) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { mainAreaHeight, isOnline } = useOutletContext();
@@ -287,13 +287,13 @@ function BookingFormIndex(props) {
           <Grid columns={24} gutter={{ base: 6 }}>
             <Grid.Col span={2.5}>
               <Box bg={"white"}>
-                <BookingDetailSection />
+                <BookingIDPDetailSection />
               </Box>
             </Grid.Col>
             <Grid.Col span={6.5}>
               <Box>
                 <Box bg={"white"}>
-                  <BookingFormSection />
+                  <BookingIDPFormSection />
                 </Box>
               </Box>
             </Grid.Col>
@@ -400,9 +400,9 @@ function BookingFormIndex(props) {
                       <Box className="borderRadiusAll" p={"xs"} bg={"white"}>
                         <Box>
                           <InputNumberForm
-                            tooltip={t("BookingRefNo")}
-                            label={t("BookingRefNo")}
-                            placeholder={t("BookingRefNo")}
+                            tooltip={t("BookingOTRefNo")}
+                            label={t("BookingOTRefNo")}
+                            placeholder={t("BookingOTRefNo")}
                             required={true}
                             nextField={"pay_mode"}
                             name={"cheque_no"}
@@ -419,29 +419,11 @@ function BookingFormIndex(props) {
                             clearable
                             onChange={setValue}
                             value={value}
-                            label={t("ReceiveBookingDate")}
+                            label={t("ReceiveBookingOTDate")}
                             placeholder={t("StartDate")}
                             nextField={"payment_mode"}
                           />
                         </Box>
-                        {/* <Box mt={'sm'} pb={4}>
-                                                    <Grid gutter={{ base: 1 }}>
-                                                        <Grid.Col span={2}>
-                                                            <SwitchForm
-                                                                tooltip={t('IsSignature')}
-                                                                label=''
-                                                                nextField={'EntityFormSubmit'}
-                                                                name={'is_ignature'}
-                                                                form={form}
-                                                                color="red"
-                                                                id={'is_ignature'}
-                                                                position={'left'}
-                                                                defaultChecked={0}
-                                                            />
-                                                        </Grid.Col>
-                                                        <Grid.Col span={6} fz={'sm'} pt={2} >{t('IsSignature')}</Grid.Col>
-                                                    </Grid>
-                                                </Box> */}
                       </Box>
                     </Grid.Col>
                     <Grid.Col span={6}>
@@ -491,7 +473,7 @@ function BookingFormIndex(props) {
                                 leftSection={<IconDeviceFloppy size={16} />}>
                                 <Flex direction={"column"} gap={0}>
                                   <Text fz={12} fw={400}>
-                                    {t("AddBooking")}
+                                    {t("AddBookingOT")}
                                   </Text>
                                 </Flex>
                               </Button>
@@ -521,4 +503,4 @@ function BookingFormIndex(props) {
   );
 }
 
-export default BookingFormIndex;
+export default BookingIDPFormIndex;

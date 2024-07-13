@@ -19,16 +19,16 @@ import { setInsertType } from "../../../../store/inventory/crudSlice.js";
 import { setSearchKeyword } from "../../../../store/core/crudSlice.js";
 import getConfigData from "../../../global-hook/config-data/getConfigData.js";
 import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
-import BookingFormIndex from "./BookingFromIndex.jsx";
-import BookingTableNew from "./BookingTableNew.jsx";
+import BookingIDPFormIndex from "./BookingIDPFromIndex.jsx";
+import BookingIDPTableNew from "./BookingIDPTableNew.jsx";
 import BookingHeaderNavbar from "../BookingHeaderNavbar.jsx";
 import { useOutletContext } from "react-router-dom";
-import BookingTableInProgress from "./BookingTableInProgress.jsx";
-import BookingTableApprove from "./BookingTableApprove.jsx";
-import BookingTableArchive from "./BookingTableArchive.jsx";
+import BookingIDPTableInProgress from "./BookingIDPTableInProgress.jsx";
+import BookingIDPTableApprove from "./BookingIDPTableApprove.jsx";
+import BookingIDPTableArchive from "./BookingIDPTableArchive.jsx";
 import { Tooltip } from "recharts";
-import styles from "../../../../assets/css/BookingIndex.module.css";
-function BookingIndex() {
+import styles from "../../../../assets/css/BookingIDPIndex.module.css";
+function BookingIDPIndex() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const insertType = useSelector((state) => state.crudSlice.insertType);
@@ -122,27 +122,27 @@ function BookingIndex() {
 
                   <Tabs.Panel value="New">
                     <Box>
-                      <BookingTableNew />
+                      <BookingIDPTableNew />
                     </Box>
                   </Tabs.Panel>
                   <Tabs.Panel value="InProgress">
                     <Box>
-                      <BookingTableInProgress />
+                      <BookingIDPTableInProgress />
                     </Box>
                   </Tabs.Panel>
                   <Tabs.Panel value="Approve">
                     <Box>
-                      <BookingTableApprove />
+                      <BookingIDPTableApprove />
                     </Box>
                   </Tabs.Panel>
                   <Tabs.Panel value="Archive">
                     <Box>
-                      <BookingTableArchive />
+                      <BookingIDPTableArchive />
                     </Box>
                   </Tabs.Panel>
                   <Tabs.Panel value="BookingEntry">
                     <Box bg={"white"}>
-                      <BookingFormIndex />
+                      <BookingIDPFormIndex />
                     </Box>
                   </Tabs.Panel>
                 </Tabs>
@@ -155,4 +155,4 @@ function BookingIndex() {
   );
 }
 
-export default BookingIndex;
+export default BookingIDPIndex;

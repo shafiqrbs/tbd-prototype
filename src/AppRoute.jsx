@@ -48,6 +48,10 @@ import ServiceGroupIndex from "./components/modules/health/services-group/Servic
 import ComissionIndex from "./components/modules/health/comission/ComissionIndex.jsx";
 import HealthConfigurationIndex from "./components/modules/health/configuraton/HealthConfigurationIndex.jsx";
 import BookingIndex from "./components/modules/booking/booking-entry/BookingIndex.jsx";
+import BookingOTIndex from "./components/modules/booking/booking-OT/BookingOTIndex.jsx";
+import BookingIDPIndex from "./components/modules/booking/booking-IPD/BookingIDPIndex.jsx";
+import BookingVisitIndex from "./components/modules/booking/booking-visit/BookingVisitIndex.jsx";
+import BookingUDPIndex from "./components/modules/booking/booking-UDP/BookingUDPIndex.jsx";
 
 function AppRoute() {
   return (
@@ -116,7 +120,10 @@ function AppRoute() {
         </Route>
         <Route path="/booking/">
           <Route path="booking-entry" element={<BookingIndex />} />
-          {/* <Route path="booking-ledger" element={<LedgerIndex />} /> */}
+          <Route path="booking-OT" element={<BookingOTIndex />} />
+          <Route path="booking-IPD" element={<BookingIDPIndex />} />
+          <Route path="booking-visit" element={<BookingVisitIndex />} />
+          <Route path="booking-UDP" element={<BookingUDPIndex />} />
         </Route>
         <Route path="/test" element={<TestIndex />} />
       </Route>

@@ -28,9 +28,19 @@ import { modals } from "@mantine/modals";
 import { deleteEntityData } from "../../../../store/core/crudSlice.js";
 import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
-import BookingSearch from "./BookingSearch.jsx";
+import BookingIDPSearch from "./BookingIDPSearch.jsx";
+const data = [
+  {
+    issue_date: "12/06/24",
+    ref_Booking: "rfiusdhf985644",
+    Booking_type: "Booking",
+    amount: 50000,
+    status: "new",
+    approved_by: "foysal",
+  },
+];
 
-function BookingTableApprove() {
+function BookingIDPTableArchive() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -46,17 +56,6 @@ function BookingTableApprove() {
   const customerFilterData = useSelector(
     (state) => state.crudSlice.customerFilterData
   );
-
-  const data = [
-    {
-      issue_date: "12/06/24",
-      ref_Booking: "rfiusdhf985644",
-      Booking_type: "Booking",
-      amount: 50000,
-      status: "new",
-      approved_by: "foysal",
-    },
-  ];
 
   useEffect(() => {
     const value = {
@@ -83,7 +82,7 @@ function BookingTableApprove() {
             pr={8}
             pt={"xs"}
             bg={"white"}>
-            <BookingSearch module={"customer"} />
+            <BookingIDPSearch module={"customer"} />
           </Box>
         </Box>
         <Box className={"borderRadiusAllVoucher"} p={"xs"} bg={"white"}>
@@ -190,4 +189,4 @@ function BookingTableApprove() {
   );
 }
 
-export default BookingTableApprove;
+export default BookingIDPTableArchive;

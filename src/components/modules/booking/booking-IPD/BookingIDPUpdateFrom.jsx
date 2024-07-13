@@ -53,7 +53,7 @@ import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import getSettingAuthorizedTypeDropdownData from "../../../global-hook/dropdown/getSettingAuthorizedTypeDropdownData.js";
 import getSettingAccountTypeDropdownData from "../../../global-hook/dropdown/getSettingAccountTypeDropdownData.js";
 
-function BookingUpdateFrom(props) {
+function BookingIDPUpdateFrom(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -469,4 +469,4 @@ function BookingUpdateFrom(props) {
     </Box>
   );
 }
-export default BookingUpdateFrom;
+export default BookingIDPUpdateFrom;

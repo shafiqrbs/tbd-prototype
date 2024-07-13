@@ -1,7 +1,7 @@
 import { Box, Tabs } from "@mantine/core";
 import React from "react";
-import BookingOTCard from "./BookingOTCard";
-import styles from "../../../../assets/css/BookingOTIndex.module.css";
+import BookingIDPCard from "./BookingIDPCard";
+import styles from "../../../../assets/css/BookingIDPIndex.module.css";
 import { IconBed, IconFirstAidKit, IconHospital } from "@tabler/icons-react";
 import { IconAmbulance } from "@tabler/icons-react";
 import { IconActivityHeartbeat } from "@tabler/icons-react";
@@ -385,7 +385,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.free_bg} key={data.index}>
-                  <BookingOTCard
+                  <BookingIDPCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -406,7 +406,7 @@ const NavTabs = () => {
               .map((data) => {
                 return (
                   <Box key={data.index} className={styles.booked_bg}>
-                    <BookingOTCard
+                    <BookingIDPCard
                       title={data.title}
                       icon={data.icon}
                       price={data.price}
@@ -427,7 +427,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.hold_bg} key={data.index}>
-                  <BookingOTCard
+                  <BookingIDPCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -448,7 +448,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.maintaince_bg} key={data.index}>
-                  <BookingOTCard
+                  <BookingIDPCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -469,7 +469,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.reserved_bg} key={data.index}>
-                  <BookingOTCard
+                  <BookingIDPCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -501,7 +501,7 @@ const NavTabs = () => {
                       : ""
                   }
                   key={data.index}>
-                  <BookingOTCard
+                  <BookingIDPCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}

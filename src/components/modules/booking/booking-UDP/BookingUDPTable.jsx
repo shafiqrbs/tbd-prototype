@@ -29,7 +29,7 @@ import Shortcut from "../../shortcut/Shortcut.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
 import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 
-function VoucherTable(props) {
+function BookingUDPTable(props) {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -176,4 +176,4 @@ function VoucherTable(props) {
     </>
   );
 }
-export default VoucherTable;
+export default BookingUDPTable;

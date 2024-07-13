@@ -28,9 +28,19 @@ import { modals } from "@mantine/modals";
 import { deleteEntityData } from "../../../../store/core/crudSlice.js";
 import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
-import BookingSearch from "./BookingSearch.jsx";
+import BookingOTSearch from "./BookingOTSearch.jsx";
+const data = [
+  {
+    issue_date: "12/06/24",
+    ref_Booking: "rfiusdhf985644",
+    Booking_type: "Booking",
+    amount: 50000,
+    status: "new",
+    approved_by: "foysal",
+  },
+];
 
-function BookingTableNew() {
+function BookingOTTableArchive() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -46,16 +56,6 @@ function BookingTableNew() {
   const customerFilterData = useSelector(
     (state) => state.crudSlice.customerFilterData
   );
-  const data = [
-    {
-      issue_date: "12/06/24",
-      ref_Booking: "rfiusdhf985644",
-      Booking_type: "Booking",
-      amount: 50000,
-      status: "new",
-      approved_by: "foysal",
-    },
-  ];
 
   useEffect(() => {
     const value = {
@@ -73,7 +73,7 @@ function BookingTableNew() {
 
   return (
     <>
-      <Box className={"borderRadiusAllVoucherNew"} bg={"white"}>
+      <Box className={" borderRadiusAllVoucherNew"} bg={"white"}>
         <Box bg="white" className="borderRadiusAll" m={"xs"}>
           <Box
             className="boxBackground"
@@ -82,7 +82,7 @@ function BookingTableNew() {
             pr={8}
             pt={"xs"}
             bg={"white"}>
-            <BookingSearch module={"customer"} />
+            <BookingOTSearch module={"customer"} />
           </Box>
         </Box>
         <Box className={"borderRadiusAllVoucher"} p={"xs"} bg={"white"}>
@@ -189,4 +189,4 @@ function BookingTableNew() {
   );
 }
 
-export default BookingTableNew;
+export default BookingOTTableArchive;

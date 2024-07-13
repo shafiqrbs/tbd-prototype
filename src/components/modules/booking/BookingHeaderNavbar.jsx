@@ -30,7 +30,7 @@ import {
 } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
-function AccountingHeaderNavbar(props) {
+function BookingHeaderNavbar(props) {
   const { pageTitle, roles, currancySymbol, allowZeroPercentage } = props;
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -140,4 +140,4 @@ function AccountingHeaderNavbar(props) {
   );
 }
 
-export default AccountingHeaderNavbar;
+export default BookingHeaderNavbar;

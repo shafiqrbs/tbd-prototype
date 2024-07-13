@@ -29,9 +29,9 @@ import { modals } from "@mantine/modals";
 import { deleteEntityData } from "../../../../store/core/crudSlice.js";
 import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
-import BookingSearch from "./BookingSearch.jsx";
+import BookingVisitSearch from "./BookingVisitSearch.jsx";
 
-function BookingTableInProgress() {
+function BookingVisitTableInProgress() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -84,7 +84,7 @@ function BookingTableInProgress() {
             pr={8}
             pt={"xs"}
             bg={"white"}>
-            <BookingSearch module={"customer"} />
+            <BookingVisitSearch module={"customer"} />
           </Box>
         </Box>
         <Box className={"borderRadiusAllVoucher"} p={"xs"} bg={"white"}>
@@ -206,4 +206,4 @@ function BookingTableInProgress() {
   );
 }
 
-export default BookingTableInProgress;
+export default BookingVisitTableInProgress;

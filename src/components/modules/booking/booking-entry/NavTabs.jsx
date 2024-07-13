@@ -34,259 +34,317 @@ const tabName = [
     buttonValue: "All",
   },
 ];
-const freeBed = [
+
+const bookingAllData = [
   {
-    header: "Free bed",
     title: "ICU - 302",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconAmbulance />,
     desc: "Single bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconActivityHeartbeat />,
     desc: "Double bed, no AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconFirstAidKit />,
     desc: "Single bed, no AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconReportMedical />,
     desc: "Double bed, Water Filter",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconVaccine />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
-    header: "Free bed",
     title: "ICU - 302",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconAmbulance />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconActivityHeartbeat />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconFirstAidKit />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconReportMedical />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconVaccine />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
   {
     title: "ICU - 302",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Free",
   },
-];
-const booked = [
   {
     header: "booked",
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 304",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
-  },
-];
-const hold = [
-  {
-    title: "ICU - 306",
-    icon: <IconBed />,
-    desc: "Double bed with AC",
-    price: "550 taka",
-  },
-  {
-    title: "ICU - 306",
-    icon: <IconBed />,
-    desc: "Double bed with AC",
-    price: "550 taka",
+    status: "Booked",
   },
   {
     title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Hold",
   },
   {
     title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Hold",
   },
   {
     title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Hold",
   },
   {
     title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Hold",
   },
   {
     title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Hold",
   },
-];
-const maintaince = [
   {
-    title: "ICU - 308",
+    title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Hold",
   },
   {
-    title: "ICU - 308",
+    title: "ICU - 306",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
-  },
-  {
-    title: "ICU - 308",
-    icon: <IconBed />,
-    desc: "Double bed with AC",
-    price: "550 taka",
-  },
-  {
-    title: "ICU - 308",
-    icon: <IconBed />,
-    desc: "Double bed with AC",
-    price: "550 taka",
+    status: "Hold",
   },
   {
     title: "ICU - 308",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
-  },
-];
-const reserved = [
-  {
-    title: "ICU - 308",
-    icon: <IconBed />,
-    desc: "Double bed with AC",
-    price: "550 taka",
+    status: "Maintaince",
   },
   {
     title: "ICU - 308",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Maintaince",
   },
   {
     title: "ICU - 308",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Maintaince",
   },
   {
     title: "ICU - 308",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Maintaince",
   },
   {
     title: "ICU - 308",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
+    status: "Maintaince",
   },
-];
-const all = [
-  { ...freeBed },
-  { ...booked },
-  { ...hold },
-  { ...maintaince },
-  { ...reserved },
+  {
+    title: "ICU - 308",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Reserved",
+  },
+  {
+    title: "ICU - 308",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Reserved",
+  },
+  {
+    title: "ICU - 308",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Reserved",
+  },
+  {
+    title: "ICU - 308",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Reserved",
+  },
+  {
+    title: "ICU - 308",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Reserved",
+  },
+  {
+    title: "ICU - 312",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Free",
+  },
+  {
+    title: "ICU - 312",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Free",
+  },
+  {
+    title: "ICU - 312",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Hold",
+  },
+  {
+    title: "ICU - 312",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "Maintaince",
+  },
+  {
+    title: "ICU - 312",
+    icon: <IconBed />,
+    desc: "Double bed with AC",
+    price: "550 taka",
+    status: "hold",
+  },
 ];
 
 const NavTabs = () => {
@@ -321,157 +379,134 @@ const NavTabs = () => {
 
         <Tabs.Panel value="free" mt={15}>
           <Box className={styles.all_card_wrapper}>
-            {freeBed.map((data) => {
-              return (
-                <Box
-                  key={data.index}
-                  className={
-                    freeBed[0]?.header == "Free bed" ? styles.free_bg : ""
-                  }>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="booked" mt={15}>
-          <Box className={styles.all_card_wrapper}>
-            {booked.map((data) => {
-              return (
-                <Box
-                  key={data.index}
-                  className={
-                    booked[0]?.header == "booked"
-                      ? styles.booked_bg
-                      : styles.free_bg
-                  }>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="hold" mt={15}>
-          <Box className={styles.all_card_wrapper}>
-            {hold.map((data) => {
-              return (
-                <Box className={styles.hold_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="maintaince" mt={15}>
-          <Box className={styles.all_card_wrapper}>
-            {maintaince.map((data) => {
-              return (
-                <Box className={styles.maintaince_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="reserved" mt={15}>
-          <Box className={styles.all_card_wrapper}>
-            {reserved.map((data) => {
-              return (
-                <Box className={styles.reserved_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="all" mt={15}>
-          <Box className={styles.all_card_wrapper}>
-            {freeBed.map((data) => {
-              return (
+            {bookingAllData
+              .filter(
+                (data) => data.status === "Free" || data.status === "free"
+              )
+              .map((data) => (
                 <Box className={styles.free_bg} key={data.index}>
                   <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
                     desc={data.desc}
+                    status={data.status}
                   />
                 </Box>
-              );
-            })}
-            {booked.map((data) => {
-              return (
-                <Box className={styles.booked_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                  />
-                </Box>
-              );
-            })}
-            {hold.map((data) => {
-              return (
+              ))}
+          </Box>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="booked" mt={15}>
+          <Box className={styles.all_card_wrapper}>
+            {bookingAllData
+              .filter(
+                (data) => data.status === "Booked" || data.status === "booked"
+              )
+              .map((data) => {
+                return (
+                  <Box key={data.index} className={styles.booked_bg}>
+                    <BookingCard
+                      title={data.title}
+                      icon={data.icon}
+                      price={data.price}
+                      desc={data.desc}
+                      status={data.status}
+                    />
+                  </Box>
+                );
+              })}
+          </Box>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="hold" mt={15}>
+          <Box className={styles.all_card_wrapper}>
+            {bookingAllData
+              .filter(
+                (data) => data.status === "Hold" || data.status === "hold"
+              )
+              .map((data) => (
                 <Box className={styles.hold_bg} key={data.index}>
                   <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
                     desc={data.desc}
+                    status={data.status}
                   />
                 </Box>
-              );
-            })}
-            {maintaince.map((data) => {
-              return (
+              ))}
+          </Box>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="maintaince" mt={15}>
+          <Box className={styles.all_card_wrapper}>
+            {bookingAllData
+              .filter(
+                (data) =>
+                  data.status === "Maintaince" || data.status === "maintaince"
+              )
+              .map((data) => (
                 <Box className={styles.maintaince_bg} key={data.index}>
                   <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
                     desc={data.desc}
+                    status={data.status}
                   />
                 </Box>
-              );
-            })}
-            {maintaince.map((data) => {
-              return (
+              ))}
+          </Box>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="reserved" mt={15}>
+          <Box className={styles.all_card_wrapper}>
+            {bookingAllData
+              .filter(
+                (data) =>
+                  data.status === "Reserved" || data.status === "reserved"
+              )
+              .map((data) => (
                 <Box className={styles.reserved_bg} key={data.index}>
                   <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
                     desc={data.desc}
+                    status={data.status}
+                  />
+                </Box>
+              ))}
+          </Box>
+        </Tabs.Panel>
+
+        <Tabs.Panel value="all" mt={15}>
+          <Box className={styles.all_card_wrapper}>
+            {bookingAllData.map((data) => {
+              return (
+                <Box
+                  className={
+                    data.status == "Free" || data.status === "free"
+                      ? styles.free_bg
+                      : data.status == "Booked" || data.status === "booked"
+                      ? styles.booked_bg
+                      : data.status == "Hold" || data.status === "hold"
+                      ? styles.hold_bg
+                      : data.status == "Maintaince" ||
+                        data.status === "maintaince"
+                      ? styles.maintaince_bg
+                      : data.status == "Reserved" || data.status === "reserved"
+                      ? styles.reserved_bg
+                      : ""
+                  }
+                  key={data.index}>
+                  <BookingCard
+                    title={data.title}
+                    icon={data.icon}
+                    price={data.price}
+                    desc={data.desc}
+                    status={data.status}
                   />
                 </Box>
               );

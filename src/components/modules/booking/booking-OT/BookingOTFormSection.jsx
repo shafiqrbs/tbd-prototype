@@ -18,7 +18,6 @@ import {
   IconDeviceFloppy,
   IconCalendar,
   IconHospital,
-  IconDots,
 } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
 import SelectForm from "../../../form-builders/SelectForm";
@@ -29,11 +28,12 @@ import InputForm from "../../../form-builders-filter/InputForm";
 import InputNumberForm from "../../../form-builders/InputNumberForm";
 import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
-import BookingCard from "./BookingCard";
-import styles from "../../../../assets/css/BookingIndex.module.css";
+import BookingOTCard from "./BookingOTCard";
+import styles from "../../../../assets/css/BookingOTIndex.module.css";
 import NavTabs from "./NavTabs";
+import { IconDots } from "@tabler/icons-react";
 
-export default function BookingFormSection(props) {
+export default function BookingOTFormSection(props) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -156,7 +156,7 @@ export default function BookingFormSection(props) {
             <Grid>
               <Grid.Col span={9}>
                 <Title order={6} pl={"6"}>
-                  {t("CreateNewBooking")}
+                  {t("CreateNewOTBooking")}
                 </Title>
               </Grid.Col>
             </Grid>
@@ -192,6 +192,7 @@ export default function BookingFormSection(props) {
               </Box>
             </Box>
           </Box>
+
           <Box bg={"white"}>
             <Box pl={"xs"} pr={"xs"} className={"borderRadiusAll"}>
               <Grid columns={24}>
@@ -243,7 +244,7 @@ export default function BookingFormSection(props) {
                       leftSection={<IconDeviceFloppy size={16} />}>
                       <Flex direction={"column"} gap={0}>
                         <Text fz={12} fw={400}>
-                          {t("AddBooking")}
+                          {t("AddBookingOT")}
                         </Text>
                       </Flex>
                     </Button>

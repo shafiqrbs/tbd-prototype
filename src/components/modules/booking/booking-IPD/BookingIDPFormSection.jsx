@@ -9,6 +9,7 @@ import {
   Flex,
   ScrollArea,
   Tabs,
+  TextInput,
 } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -27,11 +28,12 @@ import InputForm from "../../../form-builders-filter/InputForm";
 import InputNumberForm from "../../../form-builders/InputNumberForm";
 import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
-import BookingCard from "./BookingCard";
-import styles from "../../../../assets/css/BookingIndex.module.css";
+import BookingIDPCard from "./BookingIDPCard";
+import styles from "../../../../assets/css/BookingIDPIndex.module.css";
 import NavTabs from "./NavTabs";
+import { IconDots } from "@tabler/icons-react";
 
-export default function BookingFormSection(props) {
+export default function BookingIDPFormSection(props) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -124,6 +126,18 @@ export default function BookingFormSection(props) {
     }
   };
 
+  const [bookingUDPDropdown, setBookingUDPDropdown] = useState(false);
+  const dropdownLists = [
+    "IPD",
+    "OPD",
+    "Diagnostic",
+    "Doctor Visit",
+    "Billing",
+    "Accounts",
+    "Pharmacy",
+    "Human Resources",
+  ];
+
   return (
     <Box>
       <form
@@ -138,15 +152,47 @@ export default function BookingFormSection(props) {
             pt={"8"}
             mb={"xs"}
             mt={"xs"}
-            className={"boxBackground borderRadiusAll"}>
+            className={`boxBackground borderRadiusAll ${styles.flex_box}`}>
             <Grid>
               <Grid.Col span={9}>
                 <Title order={6} pl={"6"}>
-                  {t("CreateNewBooking")}
+                  {t("CreateNewOTBooking")}
                 </Title>
               </Grid.Col>
             </Grid>
+
+            <Box>
+              <TextInput placeholder={t("SearchForBed")} />
+            </Box>
+
+            <Box pos={"relative"}>
+              <Button
+                className={styles.toggle_btn_style}
+                onClick={() => {
+                  setBookingUDPDropdown(!bookingUDPDropdown);
+                }}>
+                <IconDots />
+              </Button>
+
+              <Box
+                className={`${
+                  bookingUDPDropdown === false ? styles.d_none : styles.d_block
+                } ${styles.booking_udp_dropdown_buttons_box}`}>
+                {dropdownLists.map((data) => {
+                  return (
+                    <Box w={"100%"}>
+                      <Button
+                        className={`${styles.booking_udp_dropdown_buttons}`}
+                        w={"100%"}>
+                        {data}
+                      </Button>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
           </Box>
+
           <Box bg={"white"}>
             <Box pl={"xs"} pr={"xs"} className={"borderRadiusAll"}>
               <Grid columns={24}>
@@ -198,7 +244,7 @@ export default function BookingFormSection(props) {
                       leftSection={<IconDeviceFloppy size={16} />}>
                       <Flex direction={"column"} gap={0}>
                         <Text fz={12} fw={400}>
-                          {t("AddBooking")}
+                          {t("AddBookingOT")}
                         </Text>
                       </Flex>
                     </Button>

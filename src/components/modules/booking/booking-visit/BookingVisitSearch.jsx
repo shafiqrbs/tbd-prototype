@@ -30,7 +30,7 @@ import {
 } from "../../../../store/inventory/crudSlice.js";
 import { DateInput } from "@mantine/dates";
 
-function BookingSearch(props) {
+function BookingVisitSearch(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline } = useOutletContext();
@@ -99,7 +99,7 @@ function BookingSearch(props) {
             <TextInput
               leftSection={<IconSearch size={16} opacity={0.5} />}
               size="sm"
-              placeholder={t("ChooseBookingType")}
+              placeholder={t("ChooseBookingOTType")}
               onChange={(e) => {
                 dispatch(
                   setSalesFilterData({
@@ -150,7 +150,7 @@ function BookingSearch(props) {
         <Grid.Col span={3}>
           <TextInput
             size="sm"
-            placeholder={t("EnterBookingNo")}
+            placeholder={t("EnterBookingOTNo")}
             onChange={(e) => {
               dispatch(
                 setSalesFilterData({
@@ -397,4 +397,4 @@ function BookingSearch(props) {
   );
 }
 
-export default BookingSearch;
+export default BookingVisitSearch;

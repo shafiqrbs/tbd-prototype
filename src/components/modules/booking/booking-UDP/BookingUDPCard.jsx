@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Text } from "@mantine/core";
-import styles from "../../../../assets/css/BookingIndex.module.css";
+import styles from "../../../../assets/css/BookingUDPIndex.module.css";
 
-const BookingCard = (props) => {
+const BookingUDPCard = (props) => {
   const { title, icon, price, desc, status } = props;
   return (
     <>
@@ -29,4 +29,4 @@ const BookingCard = (props) => {
   );
 };
 
-export default BookingCard;
+export default BookingUDPCard;

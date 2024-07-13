@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text } from "@mantine/core";
-import styles from "../../../../assets/css/BookingIndex.module.css";
+import styles from "../../../../assets/css/BookingOTIndex.module.css";
 
 const BookingCard = (props) => {
   const { title, icon, price, desc, status } = props;
