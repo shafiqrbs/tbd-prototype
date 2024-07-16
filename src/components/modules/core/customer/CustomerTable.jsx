@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import {
     Group,
     Box,
@@ -19,8 +19,8 @@ import {
 import KeywordSearch from "../../filter/KeywordSearch";
 import { modals } from "@mantine/modals";
 import { deleteEntityData } from "../../../../store/core/crudSlice";
-import CustomerViewModel from "./CustomerViewModel.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
+import CustomerViewDrawer from "./CustomerViewDrawer.jsx";
 
 function CustomerTable() {
 
@@ -31,12 +31,15 @@ function CustomerTable() {
 
     const perPage = 50;
     const [page, setPage] = useState(1);
-    const [customerViewModel, setCustomerViewModel] = useState(false)
 
     const fetching = useSelector((state) => state.crudSlice.fetching)
     const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword)
     const indexData = useSelector((state) => state.crudSlice.indexEntityData)
     const customerFilterData = useSelector((state) => state.crudSlice.customerFilterData)
+
+    const [viewDrawer, setViewDrawer] = useState(false)
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const value = {
@@ -75,9 +78,11 @@ function CustomerTable() {
                             textAlignment: 'right',
                             render: (item) => (indexData.data.indexOf(item) + 1)
                         },
-                        { accessor: 'id', title: t("ID") },
-                        { accessor: 'name', title: t("Name") },
-                        { accessor: 'mobile', title: t("Mobile") },
+                        { accessor: 'id', title: t("ID"), width: 100 },
+                        { accessor: 'name', title: t("Name"), width: 200 },
+                        { accessor: 'mobile', title: t("Mobile"), width: 200 },
+                        { accessor: 'customer_group', title: t("CustomerGroup") },
+                        { accessor: 'credit_limit', title: t("CreditLimit") },
                         {
                             accessor: "action",
                             title: t("Action"),
@@ -86,26 +91,59 @@ function CustomerTable() {
                                 <Group gap={4} justify="right" wrap="nowrap">
                                     <Menu position="bottom-end" offset={3} withArrow trigger="hover" openDelay={100} closeDelay={400}>
                                         <Menu.Target>
-                                            <ActionIcon variant="outline" color="gray.6" radius="xl" aria-label="Settings">
-                                                <IconDotsVertical height={'18'} width={'18'} stroke={1.5} />
+                                            <ActionIcon size="sm" variant="outline" color="red" radius="xl" aria-label="Settings">
+                                                <IconDotsVertical height={'16'} width={'16'} stroke={1.5} />
                                             </ActionIcon>
                                         </Menu.Target>
                                         <Menu.Dropdown>
-                                            <Menu.Item w={'200'} href="/inventory/config" >
+                                            <Menu.Item
+                                                onClick={() => {
+                                                    dispatch(setInsertType('update'))
+                                                    dispatch(editEntityData('core/customer/' + data.id))
+                                                    dispatch(setFormLoading(true))
+                                                    navigate(`/core/customer/${data.id}`);
+                                                }}
+                                                target="_blank"
+                                                component="a"
+                                                w={'200'}
+                                            >
                                                 {t('Edit')}
                                             </Menu.Item>
-                                            <Menu.Item href="/inventory/config"
+                                            <Menu.Item
+                                                onClick={() => {
+                                                    setViewDrawer(true)
+                                                    dispatch(editEntityData('core/customer/' + data.id))
+                                                }}
+                                                target="_blank"
+                                                component="a"
+                                                w={'200'}
                                             >
                                                 {t('Show')}
                                             </Menu.Item>
                                             <Menu.Item
-                                                href={``}
                                                 target="_blank"
                                                 component="a"
                                                 w={'200'}
                                                 mt={'2'}
                                                 bg={'red.1'}
                                                 c={'red.6'}
+                                                onClick={() => {
+                                                    modals.openConfirmModal({
+                                                        title: (
+                                                            <Text size="md"> {t("FormConfirmationTitle")}</Text>
+                                                        ),
+                                                        children: (
+                                                            <Text size="sm"> {t("FormConfirmationMessage")}</Text>
+                                                        ),
+                                                        confirmProps: { color: 'red.6' },
+                                                        labels: { confirm: 'Confirm', cancel: 'Cancel' },
+                                                        onCancel: () => console.log('Cancel'),
+                                                        onConfirm: () => {
+                                                            dispatch(deleteEntityData('core/customer/' + data.id))
+                                                            dispatch(setFetching(true))
+                                                        },
+                                                    });
+                                                }}
                                                 rightSection={<IconTrashX style={{ width: rem(14), height: rem(14) }} />}
                                             >
                                                 {t('Delete')}
@@ -133,8 +171,8 @@ function CustomerTable() {
                 />
             </Box>
             {
-                customerViewModel &&
-                <CustomerViewModel customerViewModel={customerViewModel} setCustomerViewModel={setCustomerViewModel} />
+                viewDrawer &&
+                <CustomerViewDrawer viewDrawer={viewDrawer} setViewDrawer={setViewDrawer} />
             }
         </>
     );

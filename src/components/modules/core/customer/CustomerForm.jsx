@@ -18,17 +18,16 @@ import { notifications } from "@mantine/notifications";
 
 import { setEntityNewData, setFetching, setValidationData, storeEntityData } from "../../../../store/core/crudSlice.js";
 
-import Shortcut from "../../shortcut/Shortcut";
 import InputForm from "../../../form-builders/InputForm";
 import SelectForm from "../../../form-builders/SelectForm";
 import TextAreaForm from "../../../form-builders/TextAreaForm";
-import CustomerGroupModel from "./CustomerGroupModal.jsx";
 import getLocationDropdownData from "../../../global-hook/dropdown/getLocationDropdownData.js";
 import getExecutiveDropdownData from "../../../global-hook/dropdown/getExecutiveDropdownData.js";
 import getCoreSettingCustomerGroupDropdownData
     from "../../../global-hook/dropdown/getCoreSettingCustomerGroupDropdownData.js";
 import PhoneNumber from "../../../form-builders/PhoneNumberInput.jsx";
-import InputNumberForm from "../../../form-builders/InputNumberForm";
+import CustomerGroupDrawer from "./CustomerGroupDrawer.jsx";
+import Shortcut from "../../shortcut/Shortcut.jsx";
 
 
 function CustomerForm() {
@@ -36,7 +35,6 @@ function CustomerForm() {
     const dispatch = useDispatch();
     const { isOnline, mainAreaHeight } = useOutletContext();
     const height = mainAreaHeight - 100; //TabList height 104
-    const [opened, { open, close }] = useDisclosure(false);
 
     const [saveCreateLoading, setSaveCreateLoading] = useState(false);
     const [customerGroupData, setCustomerGroupData] = useState(null);
@@ -53,7 +51,7 @@ function CustomerForm() {
     const form = useForm({
         initialValues: {
             name: '',
-            customer_group: '',
+            customer_group_id: '',
             credit_limit: '',
             reference_id: '',
             mobile: '',
@@ -65,7 +63,7 @@ function CustomerForm() {
         },
         validate: {
             name: hasLength({ min: 2, max: 20 }),
-            mobile: (value) => (!/^\d+$/.test(value)),
+            mobile: (value) => (!/^\+?\d+$/.test(value)),
             email: (value) => {
                 if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
                     return true;
@@ -125,23 +123,46 @@ function CustomerForm() {
         }
     }, [validation, validationMessage, form]);
 
+    const [groupDrawer, setGroupDrawer] = useState(false)
+
+
     useHotkeys([['alt+n', () => {
-        document.getElementById('customer_group').focus()
+        !groupDrawer && document.getElementById('customer_group_id').click()
     }]], []);
 
+
     useHotkeys([['alt+r', () => {
-        form.reset()
+        handleFormReset()
     }]], []);
 
     useHotkeys([['alt+s', () => {
-        document.getElementById('EntityFormSubmit').click()
+        !groupDrawer && document.getElementById('EntityFormSubmit').click()
     }]], []);
 
+    const handleFormReset = () => {
+
+        const originalValues = {
+            name: '',
+            customer_group_id: '',
+            credit_limit: '',
+            reference_id: '',
+            mobile: '',
+            alternative_mobile: '',
+            email: '',
+            location_id: '',
+            marketing_id: '',
+            address: '',
+        };
+        form.setValues(originalValues);
+    }
+
+    const marKValues = [
+        'test', 'test2'
+    ]
 
     return (
         <Box>
             <form onSubmit={form.onSubmit((values) => {
-
                 dispatch(setValidationData(false))
                 modals.openConfirmModal({
                     title: (
@@ -213,11 +234,11 @@ function CustomerForm() {
                                                                 placeholder={t('ChooseCustomerGroup')}
                                                                 required={false}
                                                                 nextField={'name'}
-                                                                name={'customer_group'}
+                                                                name={'customer_group_id'}
                                                                 form={form}
                                                                 dropdownValue={getCoreSettingCustomerGroupDropdownData()}
                                                                 mt={8}
-                                                                id={'customer_group'}
+                                                                id={'customer_group_id'}
                                                                 searchable={false}
                                                                 value={customerGroupData}
                                                                 changeValue={setCustomerGroupData}
@@ -235,16 +256,15 @@ function CustomerForm() {
                                                                 transitionProps={{ duration: 200 }}
                                                                 label={t('QuickCustomerGroup')}
                                                             >
-                                                                <ActionIcon fullWidth variant="outline" bg={'white'} size={'lg'} color="red.5" mt={'1'} aria-label="Settings" onClick={open}>
+                                                                <ActionIcon fullWidth variant="outline" bg={'white'} size={'lg'} color="red.5" mt={'1'} aria-label="Settings" onClick={() => {
+                                                                    setGroupDrawer(true)
+                                                                }}>
                                                                     <IconUsersGroup style={{ width: '100%', height: '70%' }} stroke={1.5} />
                                                                 </ActionIcon>
                                                             </Tooltip>
                                                         </Box>
-
                                                     </Grid.Col>
-                                                    {opened &&
-                                                        <CustomerGroupModel openedModel={opened} open={open} close={close} />
-                                                    }
+
                                                 </Grid>
                                             </Box>
                                             <Box mt={'xs'}>
@@ -264,7 +284,7 @@ function CustomerForm() {
                                                 <Grid gutter={{ base: 6 }}>
                                                     <Grid.Col span={6} >
                                                         <Box>
-                                                            <InputNumberForm
+                                                            <PhoneNumber
                                                                 tooltip={t('MobileValidateMessage')}
                                                                 label={t('Mobile')}
                                                                 placeholder={t('Mobile')}
@@ -273,17 +293,17 @@ function CustomerForm() {
                                                                 name={'mobile'}
                                                                 form={form}
                                                                 mt={8}
-                                                                id={'mobile'}
-                                                            />
+                                                                id={'mobile'} />
+
                                                         </Box>
                                                     </Grid.Col>
                                                     <Grid.Col span={6}>
                                                         <Box>
-                                                            <InputNumberForm
+                                                            <PhoneNumber
                                                                 tooltip={t('MobileValidateMessage')}
                                                                 label={t('AlternativeMobile')}
                                                                 placeholder={t('AlternativeMobile')}
-                                                                required={false}
+                                                                required={true}
                                                                 nextField={'email'}
                                                                 name={'alternative_mobile'}
                                                                 form={form}
@@ -369,7 +389,6 @@ function CustomerForm() {
                                                     name={'marketing_id'}
                                                     form={form}
                                                     dropdownValue={executiveDropdown}
-                                                    mt={8}
                                                     id={'marketing_id'}
                                                     searchable={true}
                                                     value={marketingExeData}
@@ -401,14 +420,16 @@ function CustomerForm() {
                             <Shortcut
                                 form={form}
                                 FormSubmit={'EntityFormSubmit'}
-                                Name={'name'}
+                                Name={'customer_group_id'}
                                 inputType="select"
                             />
                         </Box>
                     </Grid.Col>
                 </Grid>
-
             </form>
+            {groupDrawer &&
+                <CustomerGroupDrawer groupDrawer={groupDrawer} setGroupDrawer={setGroupDrawer} saveId={'EntityDrawerSubmit'} />
+            }
         </Box>
     );
 }
