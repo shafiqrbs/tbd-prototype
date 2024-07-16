@@ -57,7 +57,9 @@ export const DashboardCard = (props) => {
   const { title, icon, price, buttonValue } = props;
   return (
     <>
-      <Box className={`${styles.dashboard_card_style}`} h={220}>
+      <Box
+        className={`${styles.dashboard_card_style}`}
+        h={{ xl: 220, lg: 190 }}>
         <Flex
           className={styles.dashboard_card_header}
           w={"100%"}
@@ -67,20 +69,25 @@ export const DashboardCard = (props) => {
           direction="row"
           bg={"#ff6b6b"}
           c={"white"}>
-          <Text fz={"h3"} fw={"bold"}>
+          <Text fz={{ xl: "h3", lg: "h5" }} fw={"bold"}>
             {title}
           </Text>
         </Flex>
 
-        <Text fz={"h3"} fw={"bold"}>
+        <Text fw={"bold"} className={styles.dashboard_icon}>
           {icon}
         </Text>
-        <Text fw={"bold"} fz={"h3"} mt={5} ta={"center"}>
+        <Text fw={"bold"} fz={{ xl: "h3", lg: "h6" }} mt={5} ta={"center"}>
           Total Balance: {price} BDT
         </Text>
 
         <Box ta={"center"}>
-          <Button bg={"#40C057"} fz={"h6"} px={5} py={2} mt={5}>
+          <Button
+            bg={"#40C057"}
+            fz={{ xl: "h6", lg: "12px" }}
+            px={5}
+            mt={5}
+            display={"inline-block"}>
             {buttonValue} ≫
           </Button>
         </Box>

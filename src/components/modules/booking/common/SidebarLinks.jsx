@@ -125,7 +125,11 @@ export default function SidebarLinks() {
           className={"boxBackground borderRadiusAll"}>
           <Grid>
             <Grid.Col span={9}>
-              <Title order={6} pl={"6"}>
+              <Title
+                order={6}
+                w={"max-content"}
+                pl={"6"}
+                fz={{ xl: "h6", lg: "15px" }}>
                 {t("BookingItems")}
               </Title>
             </Grid.Col>
@@ -147,7 +151,9 @@ export default function SidebarLinks() {
                       className={styles.sidebar_links}
                       to={data.href}>
                       <IconBrandBooking />{" "}
-                      <Text fz={13}>{t(`${data.linkName}`)}</Text>
+                      <Text fz={{ xl: 13, lg: 12 }}>
+                        {t(`${data.linkName}`)}
+                      </Text>
                     </NavLink>
                   </Tooltip>
                 </Box>

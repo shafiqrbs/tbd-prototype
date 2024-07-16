@@ -99,13 +99,18 @@ function BookingDashboardIndex() {
                   onChange={(value) => setActiveTab(value)}>
                   <Tabs.List pos={"relative"}>
                     <Box>
-                      <Tabs.Tab m={2} value="New" className={styles.cross_tabs}>
+                      <Tabs.Tab
+                        fz={{ xl: 14, lg: 13 }}
+                        m={2}
+                        value="New"
+                        className={styles.cross_tabs}>
                         {t("Free")}
                       </Tabs.Tab>
                     </Box>
 
                     <Box pos={"relative"}>
                       <Tabs.Tab
+                        fz={{ xl: 14, lg: 13 }}
                         m={2}
                         value="InProgress"
                         className={styles.cross_tabs}>
@@ -118,6 +123,7 @@ function BookingDashboardIndex() {
 
                     <Box pos={"relative"}>
                       <Tabs.Tab
+                        fz={{ xl: 14, lg: 13 }}
                         m={2}
                         value="Approve"
                         className={styles.cross_tabs}>
@@ -130,6 +136,7 @@ function BookingDashboardIndex() {
 
                     <Box pos={"relative"}>
                       <Tabs.Tab
+                        fz={{ xl: 14, lg: 13 }}
                         m={2}
                         value="Archive"
                         className={styles.cross_tabs}>

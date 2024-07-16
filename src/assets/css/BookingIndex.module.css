@@ -222,6 +222,13 @@
   border-radius: 8px;
 }
 
+.dashboard_icon {
+  svg {
+    height: 40px;
+    width: 40px;
+  }
+}
+
 .dashboard_card_header {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -232,4 +239,32 @@
   grid-template-columns: repeat(2, auto);
   align-items: flex-start;
   gap: 5px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .grid_2 {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .toggle_btn_style {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .dashboard_icon {
+    svg {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .cross_tabs {
+    padding: 10px 30px 10px 10px;
+  }
 }

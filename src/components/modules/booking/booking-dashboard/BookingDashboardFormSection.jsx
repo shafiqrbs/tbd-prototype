@@ -160,10 +160,6 @@ export default function BookingDashboardFormSection() {
               </Grid.Col>
             </Grid>
 
-            <Box>
-              <TextInput placeholder={t("SearchForBed")} />
-            </Box>
-
             <Box pos={"relative"}>
               <Button
                 className={styles.toggle_btn_style}
