@@ -1,12 +1,13 @@
 import { Box, Tabs } from "@mantine/core";
 import React from "react";
-import BookingIDPCard from "./BookingIDPCard";
+import BookingCard from "../common/BookingCard";
 import styles from "../../../../assets/css/BookingIDPIndex.module.css";
 import { IconBed, IconFirstAidKit, IconHospital } from "@tabler/icons-react";
 import { IconAmbulance } from "@tabler/icons-react";
 import { IconActivityHeartbeat } from "@tabler/icons-react";
 import { IconReportMedical } from "@tabler/icons-react";
 import { IconVaccine } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const tabName = [
   {
@@ -348,6 +349,7 @@ const bookingAllData = [
 ];
 
 const NavTabs = () => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <Tabs keepMounted={false} defaultValue="free">
@@ -358,7 +360,7 @@ const NavTabs = () => {
               <TabButton
                 key={tabData.index}
                 tabValue={tabData.tabValue}
-                buttonValue={tabData.buttonValue}
+                buttonValue={t(tabData.buttonValue)}
                 conditionalStyle={
                   tabData.tabValue === "free"
                     ? styles.free_bg
@@ -385,7 +387,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.free_bg} key={data.index}>
-                  <BookingIDPCard
+                  <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -406,7 +408,7 @@ const NavTabs = () => {
               .map((data) => {
                 return (
                   <Box key={data.index} className={styles.booked_bg}>
-                    <BookingIDPCard
+                    <BookingCard
                       title={data.title}
                       icon={data.icon}
                       price={data.price}
@@ -427,7 +429,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.hold_bg} key={data.index}>
-                  <BookingIDPCard
+                  <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -448,7 +450,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.maintaince_bg} key={data.index}>
-                  <BookingIDPCard
+                  <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -469,7 +471,7 @@ const NavTabs = () => {
               )
               .map((data) => (
                 <Box className={styles.reserved_bg} key={data.index}>
-                  <BookingIDPCard
+                  <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}
@@ -501,7 +503,7 @@ const NavTabs = () => {
                       : ""
                   }
                   key={data.index}>
-                  <BookingIDPCard
+                  <BookingCard
                     title={data.title}
                     icon={data.icon}
                     price={data.price}

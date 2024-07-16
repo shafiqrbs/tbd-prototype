@@ -28,6 +28,7 @@ import BookingTableApprove from "./BookingTableApprove.jsx";
 import BookingTableArchive from "./BookingTableArchive.jsx";
 import { Tooltip } from "recharts";
 import styles from "../../../../assets/css/BookingIndex.module.css";
+import { IconX } from "@tabler/icons-react";
 function BookingIndex() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -97,18 +98,48 @@ function BookingIndex() {
                   radius="sm"
                   onChange={(value) => setActiveTab(value)}>
                   <Tabs.List pos={"relative"}>
-                    <Tabs.Tab m={2} value="New">
-                      {t("Free")}
-                    </Tabs.Tab>
-                    <Tabs.Tab m={2} value="InProgress">
-                      {t("Booked")}
-                    </Tabs.Tab>
-                    <Tabs.Tab m={2} value="Approve">
-                      {t("Hold")}
-                    </Tabs.Tab>
-                    <Tabs.Tab m={2} value="Archive">
-                      {t("Maintaince")}
-                    </Tabs.Tab>
+                    <Box>
+                      <Tabs.Tab m={2} value="New" className={styles.cross_tabs}>
+                        {t("Free")}
+                      </Tabs.Tab>
+                    </Box>
+
+                    <Box pos={"relative"}>
+                      <Tabs.Tab
+                        m={2}
+                        value="InProgress"
+                        className={styles.cross_tabs}>
+                        {t("Booked")}
+                      </Tabs.Tab>
+                      <Button className={styles.cross_icon_style}>
+                        <IconX />
+                      </Button>
+                    </Box>
+
+                    <Box pos={"relative"}>
+                      <Tabs.Tab
+                        m={2}
+                        value="Approve"
+                        className={styles.cross_tabs}>
+                        {t("Hold")}
+                      </Tabs.Tab>
+                      <Button className={styles.cross_icon_style}>
+                        <IconX />
+                      </Button>
+                    </Box>
+
+                    <Box pos={"relative"}>
+                      <Tabs.Tab
+                        m={2}
+                        value="Archive"
+                        className={styles.cross_tabs}>
+                        {t("Maintaince")}
+                      </Tabs.Tab>
+                      <Button className={styles.cross_icon_style}>
+                        <IconX />
+                      </Button>
+                    </Box>
+
                     {activeTab !== "BookingEntry" && activeTab !== "" && (
                       <Tabs.Tab
                         m={2}

@@ -28,7 +28,6 @@ import InputForm from "../../../form-builders-filter/InputForm";
 import InputNumberForm from "../../../form-builders/InputNumberForm";
 import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
-import BookingIDPCard from "./BookingIDPCard";
 import styles from "../../../../assets/css/BookingIDPIndex.module.css";
 import NavTabs from "./NavTabs";
 import { IconDots } from "@tabler/icons-react";

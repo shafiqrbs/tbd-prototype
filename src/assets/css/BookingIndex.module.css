@@ -82,6 +82,9 @@
   justify-content: space-between;
   gap: 0px;
 }
+.gap5 {
+  gap: 5px;
+}
 
 .sticky_top_position {
   position: sticky;
@@ -89,7 +92,9 @@
 }
 
 .sidebar_links {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   text-align: left;
   background-color: #ffeded;
   text-decoration: none;
@@ -100,6 +105,51 @@
   &:hover {
     color: white;
     background-color: #ff6b6b;
+  }
+  &:focus {
+    color: white;
+    background-color: #ff6b6b;
+  }
+  &:active {
+    color: white;
+    background-color: #ff6b6b;
+  }
+}
+
+.cross_tabs {
+  padding-right: 30px;
+  border: 1px solid lightgray;
+  background-color: #edf0f3;
+
+  &:hover {
+    background-color: #cccbcb;
+  }
+  &:focus {
+    background-color: #cccbcb;
+  }
+  &:active {
+    background-color: #cccbcb;
+  }
+}
+.cross_icon_style {
+  width: 25px;
+  position: absolute;
+  top: 2px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: black;
+  padding: 0;
+
+  svg {
+    width: 15px;
+  }
+
+  &:hover {
+    background-color: #cccbcb;
+    color: #000000;
   }
 }
 
@@ -158,4 +208,28 @@
 }
 .d_none {
   display: none;
+}
+
+.dashboard_card_style {
+  width: 100%;
+  padding: 10px 5px;
+  background-color: #fcbdbd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+
+.dashboard_card_header {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.grid_2 {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: flex-start;
+  gap: 5px;
 }

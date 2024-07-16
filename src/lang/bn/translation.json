@@ -442,8 +442,6 @@
   "PrescriptionBuilder": "প্রেসক্রিপশন নির্মাতা",
   "AppointmentPrescription": "অ্যাপয়েন্টমেন্ট প্রেসক্রিপশন",
   "IsInventory": "ইনভেন্টরি হয়",
-  "OPD": "ওপিডি",
-  "IPD": "আইপিডি",
   "Visit": "ভিজিট করুন",
   "Emergency": "জরুরী অবস্থা",
   "OthersInvoice": "অন্যদের চালান",
@@ -489,5 +487,41 @@
   "HeaderAndFooter": "উপরের এবং নিচের অংশ",
   "HeaderBanner": "হেডার ব্যানার",
   "FooterBanner": "ফুটার ব্যানার",
-  "Messages": "বার্তা"
+  "Messages": "বার্তা",
+
+  "__BookingSideBar__": "__Booking Side Bar__",
+  "ManageBooking": "বুকিং পরিচালনা করুন",
+  "CreateNewBooking": "নতুন বুকিং তৈরি করুন",
+
+  "Free": "ফ্রি",
+  "Booked": "বুক করা হয়েছে",
+  "Hold": "রাখা",
+  "Maintaince": "রক্ষণাবেক্ষণ",
+  "Reserved": "সংরক্ষিত",
+  "All": "সব",
+
+  "BookingItems": "বুকিং আইটেম",
+  "Booking": "সংরক্ষণ",
+  "IPD": "আইপিডি",
+  "OPD": "ওপিডি",
+  "DoctorVisit": "ডাক্তার দেখা",
+  "Billing": "বিল সংক্রান্ত তথ্য",
+  "Accounts": "হিসাব",
+  "Pharmacy": "ফার্মেসি",
+  "HumanResource": "মানব সম্পদ",
+  "MedicalRecords": "মেডিকেল রেকর্ড",
+  "SampleCollection": "নমুনা সংগ্রহ",
+  "NotesMessaging": "নোট এবং মেসেজিং",
+  "RefferelCommission": "রেফারেল/কমিশন",
+  "AssetsPurchase": "সম্পদ এবং ক্রয়",
+  "Reports": "রিপোর্ট",
+
+  "Mode": "মোড",
+  "AddBooking": "বুকিং যোগ করুন",
+
+  "CreateNewOTBooking": "নতুন ওটি বুকিং তৈরি করুন",
+  "AddBookingOT": "নতুন ওটি যুক্ত করুন",
+  "SearchForBed": "বিছানার সন্ধান করুন",
+
+  "LedgerName": "খাতার নাম"
 }

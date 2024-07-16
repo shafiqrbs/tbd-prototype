@@ -1,12 +1,13 @@
 import { Box, Tabs } from "@mantine/core";
 import React from "react";
-import BookingCard from "./BookingCard";
+import BookingCard from "../common/BookingCard";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 import { IconBed, IconFirstAidKit, IconHospital } from "@tabler/icons-react";
 import { IconAmbulance } from "@tabler/icons-react";
 import { IconActivityHeartbeat } from "@tabler/icons-react";
 import { IconReportMedical } from "@tabler/icons-react";
 import { IconVaccine } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const tabName = [
   {
@@ -37,7 +38,7 @@ const tabName = [
 
 const bookingAllData = [
   {
-    title: "ICU - 302",
+    title: "ICU - 301",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
@@ -51,77 +52,77 @@ const bookingAllData = [
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 303",
     icon: <IconActivityHeartbeat />,
     desc: "Double bed, no AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 304",
     icon: <IconFirstAidKit />,
     desc: "Single bed, no AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 305",
     icon: <IconReportMedical />,
     desc: "Double bed, Water Filter",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 306",
     icon: <IconVaccine />,
     desc: "Double bed with AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "OT - 307",
     icon: <IconBed />,
-    desc: "Double bed with AC",
-    price: "550 taka",
-    status: "Free",
+    desc: "Single bed with AC",
+    price: "700 taka",
+    status: "Booked",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 308",
     icon: <IconAmbulance />,
     desc: "Double bed with AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 309",
     icon: <IconActivityHeartbeat />,
     desc: "Double bed with AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 310",
     icon: <IconFirstAidKit />,
     desc: "Double bed with AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 311",
     icon: <IconReportMedical />,
     desc: "Double bed with AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 312",
     icon: <IconVaccine />,
     desc: "Double bed with AC",
     price: "550 taka",
     status: "Free",
   },
   {
-    title: "ICU - 302",
+    title: "ICU - 401",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
@@ -129,18 +130,18 @@ const bookingAllData = [
   },
   {
     header: "booked",
-    title: "ICU - 304",
+    title: "ICU - 402",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
-    status: "Booked",
+    status: "Hold",
   },
   {
-    title: "ICU - 304",
+    title: "ICU - 403",
     icon: <IconBed />,
     desc: "Double bed with AC",
     price: "550 taka",
-    status: "Booked",
+    status: "Maintaince",
   },
   {
     title: "ICU - 304",
@@ -348,6 +349,7 @@ const bookingAllData = [
 ];
 
 const NavTabs = () => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <Tabs keepMounted={false} defaultValue="free">
@@ -358,7 +360,7 @@ const NavTabs = () => {
               <TabButton
                 key={tabData.index}
                 tabValue={tabData.tabValue}
-                buttonValue={tabData.buttonValue}
+                buttonValue={t(`${tabData.buttonValue}`)}
                 conditionalStyle={
                   tabData.tabValue === "free"
                     ? styles.free_bg

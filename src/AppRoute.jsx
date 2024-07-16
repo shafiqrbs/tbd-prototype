@@ -48,10 +48,22 @@ import ServiceGroupIndex from "./components/modules/health/services-group/Servic
 import ComissionIndex from "./components/modules/health/comission/ComissionIndex.jsx";
 import HealthConfigurationIndex from "./components/modules/health/configuraton/HealthConfigurationIndex.jsx";
 import BookingIndex from "./components/modules/booking/booking-entry/BookingIndex.jsx";
-import BookingOTIndex from "./components/modules/booking/booking-OT/BookingOTIndex.jsx";
-import BookingIDPIndex from "./components/modules/booking/booking-IPD/BookingIDPIndex.jsx";
-import BookingVisitIndex from "./components/modules/booking/booking-visit/BookingVisitIndex.jsx";
-import BookingUDPIndex from "./components/modules/booking/booking-UDP/BookingUDPIndex.jsx";
+import BookingIPDIndex from "./components/modules/booking/booking-IPD/BookingIPDIndex.jsx";
+import BookingOPDIndex from "./components/modules/booking/booking-opd/BookingOPDIndex.jsx";
+import BookingDiagnosticIndex from "./components/modules/booking/booking-diagnostic/BookingDiagnosticIndex.jsx";
+import BookingDoctorVisitIndex from "./components/modules/booking/booking-doctor-visit/BookingDoctorVisitIndex.jsx";
+import BookingBillingIndex from "./components/modules/booking/booking-billing/BookingBillingIndex.jsx";
+import BookingAccountsIndex from "./components/modules/booking/booking-accounts/BookingAccountsIndex.jsx";
+import BookingPharmacyIndex from "./components/modules/booking/booking-pharmacy/BookingPharmacyIndex.jsx";
+import BookingHumanResourceIndex from "./components/modules/booking/booking-human-resource/BookingHumanResourceIndex.jsx";
+import BookingInventoryIndex from "./components/modules/booking/booking-inventory/BookingInventoryIndex.jsx";
+import BookingMedicalRecordIndex from "./components/modules/booking/booking-medical-record/BookingMedicalRecordIndex.jsx";
+import BookingSampleCollectionIndex from "./components/modules/booking/booking-sample-collection/BookingSampleCollectionIndex.jsx";
+import BookingNotesMessagingIndex from "./components/modules/booking/booking-notes-messaging/BookingNotesMessagingIndex.jsx";
+import BookingReferrelCommissionIndex from "./components/modules/booking/booking-refferel-commission/BookingReferrelCommissionIndex.jsx";
+import BookingAssetsPurchaseIndex from "./components/modules/booking/booking-assets-purchase/BookingAssetsPurchaseIndex.jsx";
+import BookingReportsIndex from "./components/modules/booking/booking-reports/BookingReportsIndex.jsx";
+import BookingDashboardIndex from "./components/modules/booking/booking-dashboard/BookingDashboardIndex.jsx";
 
 function AppRoute() {
   return (
@@ -118,13 +130,53 @@ function AppRoute() {
           <Route path="commission" element={<ComissionIndex />} />
           <Route path="configuration" element={<HealthConfigurationIndex />} />
         </Route>
+
+        {/* booking routes start */}
         <Route path="/booking/">
+          <Route path="booking-dashboard" element={<BookingDashboardIndex />} />
           <Route path="booking-entry" element={<BookingIndex />} />
-          <Route path="booking-OT" element={<BookingOTIndex />} />
-          <Route path="booking-IPD" element={<BookingIDPIndex />} />
-          <Route path="booking-visit" element={<BookingVisitIndex />} />
-          <Route path="booking-UDP" element={<BookingUDPIndex />} />
+          <Route path="booking-ipd" element={<BookingIPDIndex />} />
+          <Route path="booking-opd" element={<BookingOPDIndex />} />
+          <Route
+            path="booking-diagnostic"
+            element={<BookingDiagnosticIndex />}
+          />
+          <Route
+            path="booking-doctor-visit"
+            element={<BookingDoctorVisitIndex />}
+          />
+          <Route path="booking-billing" element={<BookingBillingIndex />} />
+          <Route path="booking-accounts" element={<BookingAccountsIndex />} />
+          <Route path="booking-pharmacy" element={<BookingPharmacyIndex />} />
+          <Route
+            path="booking-human-resource"
+            element={<BookingHumanResourceIndex />}
+          />
+          <Route path="booking-inventory" element={<BookingInventoryIndex />} />
+          <Route
+            path="booking-medical-record"
+            element={<BookingMedicalRecordIndex />}
+          />
+          <Route
+            path="booking-sample-collection"
+            element={<BookingSampleCollectionIndex />}
+          />
+          <Route
+            path="booking-notes-messaging"
+            element={<BookingNotesMessagingIndex />}
+          />
+          <Route
+            path="booking-refferal-commission"
+            element={<BookingReferrelCommissionIndex />}
+          />
+          <Route
+            path="booking-assets-purchase"
+            element={<BookingAssetsPurchaseIndex />}
+          />
+          <Route path="booking-reports" element={<BookingReportsIndex />} />
         </Route>
+        {/* booking routes end */}
+
         <Route path="/test" element={<TestIndex />} />
       </Route>
     </Routes>

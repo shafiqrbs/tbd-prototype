@@ -39,7 +39,8 @@ import {
 import tableCss from "../../../../assets/css/Table.module.css";
 
 import ShortcutVoucher from "../../shortcut/ShortcutVoucher.jsx";
-import BookingDetailSection from "./BookingDetailSection.jsx";
+// import BookingDetailSection from "./BookingDetailSection.jsx";
+import SidebarLinks from "../common/SidebarLinks.jsx";
 import BookingFormSection from "./BookingFormSection.jsx";
 import SwitchForm from "../../../form-builders/SwitchForm.jsx";
 import { DateInput } from "@mantine/dates";
@@ -287,7 +288,7 @@ function BookingFormIndex(props) {
           <Grid columns={24} gutter={{ base: 6 }}>
             <Grid.Col span={2.5}>
               <Box bg={"white"}>
-                <BookingDetailSection />
+                <SidebarLinks />
               </Box>
             </Grid.Col>
             <Grid.Col span={6.5}>

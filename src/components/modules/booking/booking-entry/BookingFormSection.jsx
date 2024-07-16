@@ -29,7 +29,6 @@ import InputForm from "../../../form-builders-filter/InputForm";
 import InputNumberForm from "../../../form-builders/InputNumberForm";
 import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
-import BookingCard from "./BookingCard";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 import NavTabs from "./NavTabs";
 

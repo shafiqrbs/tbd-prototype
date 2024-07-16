@@ -88,20 +88,63 @@
   top: 0;
 }
 
-.circle_link {
+.sidebar_links {
+  display: block;
+  text-align: left;
+  background-color: #ffeded;
+  text-decoration: none;
+  width: 100%;
+  padding: 5px;
+  color: black;
+
+  &:hover {
+    color: white;
+    background-color: #ff6b6b;
+  }
+  &:focus {
+    color: white;
+    background-color: #ff6b6b;
+  }
+  &:active {
+    color: white;
+    background-color: #ff6b6b;
+  }
+}
+
+.cross_tabs {
+  padding-right: 30px;
+  border: 1px solid lightgray;
+  background-color: #edf0f3;
+
+  &:hover {
+    background-color: #cccbcb;
+  }
+  &:focus {
+    background-color: #cccbcb;
+  }
+  &:active {
+    background-color: #cccbcb;
+  }
+}
+.cross_icon_style {
+  width: 25px;
+  position: absolute;
+  top: 2px;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff6b6b;
-  text-decoration: none;
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  padding: 5px;
-  color: white;
+  background-color: transparent;
+  color: black;
+  padding: 0;
+
+  svg {
+    width: 15px;
+  }
 
   &:hover {
-    background-color: #e73333;
+    background-color: #cccbcb;
+    color: #000000;
   }
 }
 

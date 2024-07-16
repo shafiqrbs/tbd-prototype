@@ -39,7 +39,7 @@ import {
 import tableCss from "../../../../assets/css/Table.module.css";
 
 import ShortcutVoucher from "../../shortcut/ShortcutVoucher.jsx";
-import BookingIDPDetailSection from "./BookingIDPDetailSection.jsx";
+import SidebarLinks from "../common/SidebarLinks.jsx";
 import BookingIDPFormSection from "./BookingIDPFormSection.jsx";
 import SwitchForm from "../../../form-builders/SwitchForm.jsx";
 import { DateInput } from "@mantine/dates";
@@ -287,7 +287,7 @@ function BookingIDPFormIndex(props) {
           <Grid columns={24} gutter={{ base: 6 }}>
             <Grid.Col span={2.5}>
               <Box bg={"white"}>
-                <BookingIDPDetailSection />
+                <SidebarLinks />
               </Box>
             </Grid.Col>
             <Grid.Col span={6.5}>

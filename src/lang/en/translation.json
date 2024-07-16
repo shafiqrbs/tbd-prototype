@@ -579,9 +579,6 @@
   "PrescriptionBuilder": "Prescription Builder",
   "AppointmentPrescription": "Appointment Prescription",
   "IsInventory": "Is Inventory",
-  "OPD": "OPD",
-  "IPD": "IPD",
-  "Visit": "Visit",
   "Emergency": "Emergency",
   "OthersInvoice": "Others Invoice",
   "AdvanceSearchParticular": "Advance Search Particular",
@@ -628,5 +625,38 @@
   "FooterBanner": "Footer Banner",
   "Messages": "Messages",
 
-  "BookingMode": "Booking Mode"
+  "__BookingSideBar__": "__Booking Side Bar__",
+  "ManageBooking": "Manage Booking",
+  "CreateNewBooking": "Create New Booking",
+
+  "Free": "Free",
+  "Booked": "Booked",
+  "Hold": "Hold",
+  "Maintaince": "Maintaince",
+  "Reserved": "Reserved",
+  "All": "All",
+
+  "BookingItems": "Booking Items",
+  "Booking": "Booking",
+  "IPD": "IPD",
+  "OPD": "OPD",
+  "DoctorVisit": "Doctor Visit",
+  "Billing": "Billing",
+  "Accounts": "Accounts",
+  "Pharmacy": "Pharmacy",
+  "HumanResource": "Human Resource",
+  "MedicalRecords": "Medical Records",
+  "SampleCollection": "Sample Collection",
+  "NotesMessaging": "Notes & Messaging",
+  "RefferelCommission": "Refferel / Commission",
+  "AssetsPurchase": "Assets & Purchase",
+  "Reports": "Reports",
+
+  "Mode": "Mode",
+  "AddBooking": "Add Booking",
+  "CreateNewOTBooking": "Create New OT Booking",
+  "AddBookingOT": "Add OT Booking",
+  "SearchForBed": "Search for bed",
+
+  "LedgerName": "Ledger Name"
 }
