@@ -5,14 +5,15 @@ import { useTranslation } from "react-i18next";
 import { useWindowScroll } from '@mantine/hooks';
 import { useOutletContext } from "react-router-dom";
 
-function Shortcut(props) {
+function _ShortcutMasterData(props) {
+    const { adjustment } = props
     const { t, i18n } = useTranslation();
     const { isOnline, mainAreaHeight } = useOutletContext();
     const formHeight = mainAreaHeight - 46; //TabList height 104
     return (
         <>
             <Stack
-                h={formHeight}
+                h={formHeight - (adjustment ? adjustment : 0)}
                 bg="var(--mantine-color-body)"
                 align="center"
             >
@@ -118,4 +119,4 @@ function Shortcut(props) {
     )
 }
 
-export default Shortcut
+export default _ShortcutMasterData
