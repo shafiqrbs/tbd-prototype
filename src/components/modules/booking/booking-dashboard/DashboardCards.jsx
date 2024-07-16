@@ -35,10 +35,10 @@ const DashboardCards = () => {
   const { t, i18n } = useTranslation();
   return (
     <>
-      <Box>
+      <Box mt={15}>
         <Box className={styles.grid_2}>
           {bookingAllData.map((data) => (
-            <Box key={data.index} mb={"10px"}>
+            <Box key={data.index}>
               <DashboardCard
                 icon={data.icon}
                 title={data.header}
@@ -59,7 +59,7 @@ export const DashboardCard = (props) => {
     <>
       <Box
         className={`${styles.dashboard_card_style}`}
-        h={{ xl: 220, lg: 190 }}>
+        h={{ xl: 230, lg: 190 }}>
         <Flex
           className={styles.dashboard_card_header}
           w={"100%"}
@@ -77,15 +77,23 @@ export const DashboardCard = (props) => {
         <Text fw={"bold"} className={styles.dashboard_icon}>
           {icon}
         </Text>
-        <Text fw={"bold"} fz={{ xl: "h3", lg: "h6" }} mt={5} ta={"center"}>
-          Total Balance: {price} BDT
+        <Text
+          fw={"bold"}
+          fz={{ xl: "h4", lg: "h6" }}
+          mt={5}
+          ta={"center"}
+          c={"rgb(51 65 85)"}>
+          Total Balance:{" "}
+          <Text fw={"bold"} fz={{ xl: "h2", lg: "h2" }}>
+            {price} BDT
+          </Text>
         </Text>
 
         <Box ta={"center"}>
           <Button
             bg={"#40C057"}
             fz={{ xl: "h6", lg: "12px" }}
-            px={5}
+            px={10}
             mt={5}
             display={"inline-block"}>
             {buttonValue} ≫

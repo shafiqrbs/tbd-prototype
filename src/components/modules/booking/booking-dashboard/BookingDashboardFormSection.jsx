@@ -160,7 +160,7 @@ export default function BookingDashboardFormSection() {
               </Grid.Col>
             </Grid>
 
-            <Box pos={"relative"}>
+            {/* <Box pos={"relative"}>
               <Button
                 className={styles.toggle_btn_style}
                 onClick={() => {
@@ -185,7 +185,7 @@ export default function BookingDashboardFormSection() {
                   );
                 })}
               </Box>
-            </Box>
+            </Box> */}
           </Box>
           <Box bg={"white"}>
             <Box pl={"xs"} pr={"xs"} className={"borderRadiusAll"}>
