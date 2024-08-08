@@ -380,7 +380,7 @@ const NavTabs = () => {
         </Tabs.List>
 
         <Tabs.Panel value="free" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData
               .filter(
                 (data) => data.status === "Free" || data.status === "free"
@@ -400,7 +400,7 @@ const NavTabs = () => {
         </Tabs.Panel>
 
         <Tabs.Panel value="booked" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData
               .filter(
                 (data) => data.status === "Booked" || data.status === "booked"
@@ -422,7 +422,7 @@ const NavTabs = () => {
         </Tabs.Panel>
 
         <Tabs.Panel value="hold" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData
               .filter(
                 (data) => data.status === "Hold" || data.status === "hold"
@@ -442,7 +442,7 @@ const NavTabs = () => {
         </Tabs.Panel>
 
         <Tabs.Panel value="maintaince" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData
               .filter(
                 (data) =>
@@ -463,7 +463,7 @@ const NavTabs = () => {
         </Tabs.Panel>
 
         <Tabs.Panel value="reserved" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData
               .filter(
                 (data) =>
@@ -484,7 +484,7 @@ const NavTabs = () => {
         </Tabs.Panel>
 
         <Tabs.Panel value="all" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData.map((data) => {
               return (
                 <Box
@@ -526,7 +526,7 @@ export const TabButton = (props) => {
     <Tabs.Tab value={tabValue} m={0} p={3} fz={14}>
       <button
         type="button"
-        className={`${styles.button_style} ${conditionalStyle}`}>
+        className={`${styles.button_style} ${conditionalStyle} ${styles.tab_button}`}>
         {buttonValue}
       </button>
     </Tabs.Tab>

@@ -56,6 +56,22 @@ function BookingDashboardTableApprove() {
       status: "new",
       approved_by: "foysal",
     },
+    {
+      issue_date: "12/06/24",
+      ref_Booking: "rfiusdhf985644",
+      Booking_type: "Booking",
+      amount: 50000,
+      status: "new",
+      approved_by: "foysal",
+    },
+    {
+      issue_date: "12/06/24",
+      ref_Booking: "rfiusdhf985644",
+      Booking_type: "Booking",
+      amount: 50000,
+      status: "new",
+      approved_by: "foysal",
+    },
   ];
 
   useEffect(() => {

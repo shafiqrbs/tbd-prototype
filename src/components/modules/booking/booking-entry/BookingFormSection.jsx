@@ -31,6 +31,7 @@ import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 import NavTabs from "./NavTabs";
+import ModalFilter from "../common/ModalFilter";
 
 export default function BookingFormSection(props) {
   const { t } = useTranslation();
@@ -127,14 +128,38 @@ export default function BookingFormSection(props) {
 
   const [bookingUDPDropdown, setBookingUDPDropdown] = useState(false);
   const dropdownLists = [
-    "IPD",
-    "OPD",
-    "Diagnostic",
-    "Doctor Visit",
-    "Billing",
-    "Accounts",
-    "Pharmacy",
-    "Human Resources",
+    {
+      name: "IPD",
+      href: "#",
+    },
+    {
+      name: "OPD",
+      href: "#",
+    },
+    {
+      name: "Diagnostic",
+      href: "#",
+    },
+    {
+      name: "Doctor Visit",
+      href: "#",
+    },
+    {
+      name: "Billing",
+      href: "#",
+    },
+    {
+      name: "Accounts",
+      href: "#",
+    },
+    {
+      name: "Pharmacy",
+      href: "#",
+    },
+    {
+      name: "Human Resources",
+      href: "#",
+    },
   ];
 
   return (
@@ -146,24 +171,27 @@ export default function BookingFormSection(props) {
         <Box p={"xs"} pt={"0"} className={"borderRadiusAll"}>
           <Box
             pl={"xs"}
-            pb={"8"}
+            pb={"0.4rem"}
             pr={8}
-            pt={"8"}
+            pt={"0.4rem"}
             mb={"xs"}
             mt={"xs"}
             className={`boxBackground borderRadiusAll ${styles.flex_box}`}>
             <Grid>
               <Grid.Col span={9}>
-                <Title order={6} pl={"6"}>
-                  {t("CreateNewBooking")}
+                <Title w={"max-content"} order={6} fz={{ xl: 16, lg: 13 }}>
+                  {t("NewBooking")}
                 </Title>
               </Grid.Col>
             </Grid>
 
-            <Box>
-              <TextInput placeholder={t("SearchForBed")} />
+            <Box mr={5}>
+              {/* <TextInput placeholder={t("SearchForBed")} /> */}
+              <ModalFilter filterArray={dropdownLists} />
             </Box>
 
+            {/* filters are here */}
+            {/* 
             <Box pos={"relative"}>
               <Button
                 className={styles.toggle_btn_style}
@@ -190,6 +218,8 @@ export default function BookingFormSection(props) {
                 })}
               </Box>
             </Box>
+             */}
+            {/* filters are here */}
           </Box>
           <Box bg={"white"}>
             <Box pl={"xs"} pr={"xs"} className={"borderRadiusAll"}>

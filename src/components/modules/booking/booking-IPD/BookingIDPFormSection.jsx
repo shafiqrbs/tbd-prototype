@@ -28,9 +28,10 @@ import InputForm from "../../../form-builders-filter/InputForm";
 import InputNumberForm from "../../../form-builders/InputNumberForm";
 import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
-import styles from "../../../../assets/css/BookingIDPIndex.module.css";
+import styles from "../../../../assets/css/BookingIndex.module.css";
 import NavTabs from "./NavTabs";
 import { IconDots } from "@tabler/icons-react";
+import ModalFilter from "../common/ModalFilter";
 
 export default function BookingIDPFormSection(props) {
   const { t } = useTranslation();
@@ -127,14 +128,38 @@ export default function BookingIDPFormSection(props) {
 
   const [bookingUDPDropdown, setBookingUDPDropdown] = useState(false);
   const dropdownLists = [
-    "IPD",
-    "OPD",
-    "Diagnostic",
-    "Doctor Visit",
-    "Billing",
-    "Accounts",
-    "Pharmacy",
-    "Human Resources",
+    {
+      name: "IPD",
+      href: "#",
+    },
+    {
+      name: "OPD",
+      href: "#",
+    },
+    {
+      name: "Diagnostic",
+      href: "#",
+    },
+    {
+      name: "Doctor Visit",
+      href: "#",
+    },
+    {
+      name: "Billing",
+      href: "#",
+    },
+    {
+      name: "Accounts",
+      href: "#",
+    },
+    {
+      name: "Pharmacy",
+      href: "#",
+    },
+    {
+      name: "Human Resources",
+      href: "#",
+    },
   ];
 
   return (
@@ -146,49 +171,27 @@ export default function BookingIDPFormSection(props) {
         <Box p={"xs"} pt={"0"} className={"borderRadiusAll"}>
           <Box
             pl={"xs"}
-            pb={"8"}
+            pb={"0.4rem"}
             pr={8}
-            pt={"8"}
+            pt={"0.4rem"}
             mb={"xs"}
             mt={"xs"}
             className={`boxBackground borderRadiusAll ${styles.flex_box}`}>
             <Grid>
               <Grid.Col span={9}>
-                <Title order={6} pl={"6"}>
-                  {t("CreateNewOTBooking")}
+                <Title
+                  w={"max-content"}
+                  order={6}
+                  pl={"6"}
+                  fz={{ xl: 16, lg: 12 }}>
+                  {t("OTBooking")}
                 </Title>
               </Grid.Col>
             </Grid>
 
             <Box>
-              <TextInput placeholder={t("SearchForBed")} />
-            </Box>
-
-            <Box pos={"relative"}>
-              <Button
-                className={styles.toggle_btn_style}
-                onClick={() => {
-                  setBookingUDPDropdown(!bookingUDPDropdown);
-                }}>
-                <IconDots />
-              </Button>
-
-              <Box
-                className={`${
-                  bookingUDPDropdown === false ? styles.d_none : styles.d_block
-                } ${styles.booking_udp_dropdown_buttons_box}`}>
-                {dropdownLists.map((data) => {
-                  return (
-                    <Box w={"100%"}>
-                      <Button
-                        className={`${styles.booking_udp_dropdown_buttons}`}
-                        w={"100%"}>
-                        {data}
-                      </Button>
-                    </Box>
-                  );
-                })}
-              </Box>
+              {/* <TextInput placeholder={t("SearchForBed")} /> */}
+              <ModalFilter filterArray={dropdownLists} />
             </Box>
           </Box>
 

@@ -31,6 +31,7 @@ import { DateInput } from "@mantine/dates";
 import SwitchForm from "../../../form-builders/SwitchForm";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 import NavTabs from "./NavTabs";
+import ModalFilter from "../common/ModalFilter";
 
 export default function BookingReferrelCommissionFormSection() {
   const { t } = useTranslation();
@@ -127,14 +128,38 @@ export default function BookingReferrelCommissionFormSection() {
 
   const [bookingUDPDropdown, setBookingUDPDropdown] = useState(false);
   const dropdownLists = [
-    "IPD",
-    "OPD",
-    "Diagnostic",
-    "Doctor Visit",
-    "Billing",
-    "Accounts",
-    "Pharmacy",
-    "Human Resources",
+    {
+      name: "IPD",
+      href: "#",
+    },
+    {
+      name: "OPD",
+      href: "#",
+    },
+    {
+      name: "Diagnostic",
+      href: "#",
+    },
+    {
+      name: "Doctor Visit",
+      href: "#",
+    },
+    {
+      name: "Billing",
+      href: "#",
+    },
+    {
+      name: "Accounts",
+      href: "#",
+    },
+    {
+      name: "Pharmacy",
+      href: "#",
+    },
+    {
+      name: "Human Resources",
+      href: "#",
+    },
   ];
 
   return (
@@ -146,49 +171,27 @@ export default function BookingReferrelCommissionFormSection() {
         <Box p={"xs"} pt={"0"} className={"borderRadiusAll"}>
           <Box
             pl={"xs"}
-            pb={"8"}
+            pb={"0.4rem"}
             pr={8}
-            pt={"8"}
+            pt={"0.4rem"}
             mb={"xs"}
             mt={"xs"}
             className={`boxBackground borderRadiusAll ${styles.flex_box}`}>
             <Grid>
               <Grid.Col span={9}>
-                <Title order={6} pl={"6"}>
-                  {t("CreateNewBooking")}
+                <Title
+                  w={"max-content"}
+                  order={6}
+                  pl={"6"}
+                  fz={{ xl: 16, lg: 13 }}>
+                  {t("NewBooking")}
                 </Title>
               </Grid.Col>
             </Grid>
 
             <Box>
-              <TextInput placeholder={t("SearchForBed")} />
-            </Box>
-
-            <Box pos={"relative"}>
-              <Button
-                className={styles.toggle_btn_style}
-                onClick={() => {
-                  setBookingUDPDropdown(!bookingUDPDropdown);
-                }}>
-                <IconDots />
-              </Button>
-
-              <Box
-                className={`${
-                  bookingUDPDropdown === false ? styles.d_none : styles.d_block
-                } ${styles.booking_udp_dropdown_buttons_box}`}>
-                {dropdownLists.map((data) => {
-                  return (
-                    <Box w={"100%"}>
-                      <Button
-                        className={`${styles.booking_udp_dropdown_buttons}`}
-                        w={"100%"}>
-                        {data}
-                      </Button>
-                    </Box>
-                  );
-                })}
-              </Box>
+              {/* <TextInput placeholder={t("SearchForBed")} /> */}
+              <ModalFilter filterArray={dropdownLists} />
             </Box>
           </Box>
           <Box bg={"white"}>
@@ -255,136 +258,4 @@ export default function BookingReferrelCommissionFormSection() {
       </form>
     </Box>
   );
-}
-
-{
-  /* <Box mt={"xs"}>
-                        <SelectForm
-                          tooltip={t("PaymentMode")}
-                          label={t("PaymentMode")}
-                          placeholder={t("ChoosePaymentMode")}
-                          required={true}
-                          nextField={"ledger_head"}
-                          name={"payment_mode"}
-                          form={form}
-                          dropdownValue={paymentModeData}
-                          mt={8}
-                          id={"payment_mode"}
-                          searchable={false}
-                          value={paymentMode}
-                          changeValue={(value) => {
-                            setPaymentMode(value);
-                            form.setFieldValue("payment_mode", value);
-                          }}
-                        />
-                      </Box>
-                      <Box mt={"xs"}>
-                        <SelectForm
-                          tooltip={t("LedgerHead")}
-                          label={t("LedgerHead")}
-                          placeholder={t("ChooseLedgerHead")}
-                          required={true}
-                          nextField={nextField}
-                          name={"ledger_head"}
-                          form={form}
-                          dropdownValue={categorizedOptions}
-                          mt={8}
-                          id={"ledger_head"}
-                          searchable={true}
-                          value={ledgerHead}
-                          changeValue={handleLedgerHeadChange}
-                        />
-                      </Box>
-                      {ledgerHead && ledgerHead.startsWith("bank_account") && (
-                        <>
-                          <Box mt={"xs"}>
-                            <_InputForm
-                              tooltip={t("ChequeNo")}
-                              label={t("ChequeNo")}
-                              placeholder={t("ChequeNo")}
-                              required={true}
-                              nextField={"pay_mode"}
-                              name={"cheque_no"}
-                              form={form}
-                              mt={0}
-                              id={"cheque_no"}
-                              ref={chequeNoInputRef}
-                            />
-                          </Box>
-                          <Box mt={"xs"}>
-                            <_SelectForm
-                              tooltip={t("PaymentMode")}
-                              label={t("PaymentMode")}
-                              placeholder={t("ChoosePaymentMode")}
-                              required={true}
-                              nextField={"bank_name"}
-                              name={"pay_mode"}
-                              form={form}
-                              dropdownValue={paymentModeData2}
-                              mt={8}
-                              id={"pay_mode"}
-                              searchable={false}
-                              value={paymentMode2}
-                              changeValue={(value) => {
-                                setPaymentMode2(value);
-                                form.setFieldValue("pay_mode", value);
-                              }}
-                              ref={payModeInputRef}
-                            />
-                          </Box>
-                          <Box mt={"xs"}>
-                            <_InputForm
-                              tooltip={t("BankName")}
-                              label={t("BankName")}
-                              placeholder={t("BankName")}
-                              required={true}
-                              nextField={"branch_name"}
-                              name={"bank_name"}
-                              form={form}
-                              mt={0}
-                              id={"bank_name"}
-                            />
-                          </Box>
-                          <Box mt={"xs"}>
-                            <_InputForm
-                              tooltip={t("BranchName")}
-                              label={t("BranchName")}
-                              placeholder={t("BranchName")}
-                              required={true}
-                              nextField={"received_from"}
-                              name={"branch_name"}
-                              form={form}
-                              mt={0}
-                              id={"branch_name"}
-                            />
-                          </Box>
-                          <Box mt={"xs"}>
-                            <_InputForm
-                              tooltip={t("ReceivedFrom")}
-                              label={t("ReceivedFrom")}
-                              placeholder={t("ReceivedFrom")}
-                              required={true}
-                              nextField={"narration"}
-                              name={"received_from"}
-                              form={form}
-                              mt={0}
-                              id={"received_from"}
-                            />
-                          </Box>
-                        </>
-                      )}
-                      <Box mt={"xs"}>
-                        <InputNumberForm
-                          tooltip={t("Amount")}
-                          label={t("Amount")}
-                          placeholder={t("Amount")}
-                          required={true}
-                          nextField={"EntityFormSubmit"}
-                          name={"amount"}
-                          form={form}
-                          mt={8}
-                          id={"amount"}
-                          ref={amountInputRef}
-                        />
-                      </Box> */
 }

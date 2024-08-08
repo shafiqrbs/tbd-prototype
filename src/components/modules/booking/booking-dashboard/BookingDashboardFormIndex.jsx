@@ -290,14 +290,14 @@ function BookingDashboardFormIndex(props) {
                 <SidebarLinks />
               </Box>
             </Grid.Col>
-            <Grid.Col span={{ xl: 6.5, lg: 6 }}>
+            <Grid.Col span={8}>
               <Box>
                 <Box bg={"white"}>
                   <BookingDashboardFormSection />
                 </Box>
               </Box>
             </Grid.Col>
-            <Grid.Col span={{ xl: 14, lg: 13.2 }}>
+            <Grid.Col span={{ xl: 12.5, lg: 11.2 }}>
               <Box p={"xs"} className={"borderRadiusAll"} bg={"white"}>
                 <Box className="borderRadiusAll">
                   <DataTable

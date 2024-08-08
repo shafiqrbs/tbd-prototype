@@ -57,23 +57,27 @@
 .free_bg {
   background-color: white;
   color: black;
+  border-radius: 7px;
 }
 .booked_bg {
   background-color: #ff6b6b;
   color: white;
+  border-radius: 7px;
 }
 .hold_bg {
   background-color: yellow;
   color: black;
+  border-radius: 7px;
 }
 .maintaince_bg {
   background-color: black;
   color: lightgray;
+  border-radius: 7px;
 }
 .reserved_bg {
   background-color: #2f9e44;
-  /* background-color: #1a4d2e; */
   color: white;
+  border-radius: 7px;
 }
 
 .flex_box {
@@ -96,7 +100,7 @@
   align-items: center;
   gap: 5px;
   text-align: left;
-  background-color: #ffeded;
+  background-color: #fcdfdf;
   text-decoration: none;
   width: 100%;
   padding: 5px;
@@ -160,8 +164,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 26px;
+  height: 26px;
   border-radius: 50px;
 
   &:hover {
@@ -247,9 +251,135 @@
   gap: 10px;
 }
 
-@media only screen and (max-width: 1600px) {
+.tab_grid_2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tab_button {
+  font-size: 14px;
+}
+
+.modal_anchor_style {
+  list-style: none;
+  background-color: #ffeded;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+
+  input {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #ff6b6b;
+    }
+    &:checked {
+      color: white;
+      background-color: #ff6b6b;
+      border: none;
+    }
+  }
+}
+
+.ul_p0 {
+  padding: 0;
+}
+
+/* Profile Offcanvas style start */
+.profile_border_b {
+  border-bottom: 2px dotted lightgray;
+  margin-bottom: 10px;
+}
+.profile_border_b_none {
+  border-bottom: none;
+  margin-bottom: 0px;
+}
+.profile_sidebar {
+  background-color: #fff;
+  box-shadow: 2px 2px 5px lightgray, -2px -2px 5px lightgray;
+}
+.profile_navtabs {
+  background-color: #fff;
+  box-shadow: 2px 2px 5px lightgray, -2px -2px 5px lightgray;
+  margin-top: 5px;
+}
+.profile_tabpanes {
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px lightgray, -2px -2px 5px lightgray;
+  background-color: #fff;
+}
+.profile_border {
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.border_top {
+  border-top: 1px solid #000;
+}
+
+.profile_img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.id_img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.profile_footer {
+  margin: 10px;
+  box-shadow: 2px 2px 5px lightgray, -2px -2px 5px lightgray;
+}
+.tab_icon {
+  button {
+    span {
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
+/* basic start */
+.id_card_download {
+  width: 100%;
+  display: inline-block;
+  padding: 7px 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: #fa5252;
+}
+.id_card_print {
+  width: 100%;
+  display: inline-block;
+  padding: 7px 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: #228be6;
+}
+/* basic end */
+/* Profile Offcanvas style end */
+
+@media only screen and (max-width: 1440px) {
   .grid_2 {
     grid-template-columns: repeat(2, auto);
+  }
+  .tab_grid_2 {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .toggle_btn_style {
@@ -272,5 +402,9 @@
 
   .cross_tabs {
     padding: 10px 30px 10px 10px;
+  }
+
+  .tab_button {
+    font-size: 11px;
   }
 }

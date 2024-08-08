@@ -59,7 +59,7 @@ export const DashboardCard = (props) => {
     <>
       <Box
         className={`${styles.dashboard_card_style}`}
-        h={{ xl: 230, lg: 190 }}>
+        h={{ xl: 230, lg: 230 }}>
         <Flex
           className={styles.dashboard_card_header}
           w={"100%"}
@@ -84,7 +84,7 @@ export const DashboardCard = (props) => {
           ta={"center"}
           c={"rgb(51 65 85)"}>
           Total Balance:{" "}
-          <Text fw={"bold"} fz={{ xl: "h2", lg: "h2" }}>
+          <Text fw={"bold"} fz={{ xl: "h3", lg: "h3" }}>
             {price} BDT
           </Text>
         </Text>

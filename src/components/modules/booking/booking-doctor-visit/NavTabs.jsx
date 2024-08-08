@@ -380,7 +380,7 @@ const NavTabs = () => {
         </Tabs.List>
 
         <Tabs.Panel value="free" mt={15}>
-          <Box className={styles.all_card_wrapper}>
+          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
             {bookingAllData
               .filter(
                 (data) => data.status === "Free" || data.status === "free"
@@ -526,7 +526,7 @@ export const TabButton = (props) => {
     <Tabs.Tab value={tabValue} m={0} p={3} fz={14}>
       <button
         type="button"
-        className={`${styles.button_style} ${conditionalStyle}`}>
+        className={`${styles.button_style} ${conditionalStyle} ${styles.tab_button}`}>
         {buttonValue}
       </button>
     </Tabs.Tab>

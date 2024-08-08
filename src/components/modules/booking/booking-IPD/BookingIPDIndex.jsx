@@ -27,7 +27,7 @@ import BookingIDPTableInProgress from "./BookingIDPTableInProgress.jsx";
 import BookingIDPTableApprove from "./BookingIDPTableApprove.jsx";
 import BookingIDPTableArchive from "./BookingIDPTableArchive.jsx";
 import { Tooltip } from "recharts";
-import styles from "../../../../assets/css/BookingIDPIndex.module.css";
+import styles from "../../../../assets/css/BookingIndex.module.css";
 import { IconX } from "@tabler/icons-react";
 function BookingIPDIndex() {
   const { t, i18n } = useTranslation();

@@ -130,7 +130,7 @@ export default function SidebarLinks() {
                 w={"max-content"}
                 pl={"6"}
                 fz={{ xl: "h6", lg: "15px" }}>
-                {t("BookingItems")}
+                {t("Menu")}
               </Title>
             </Grid.Col>
           </Grid>

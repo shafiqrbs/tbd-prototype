@@ -285,19 +285,19 @@ function BookingDiagnosticFormIndex(props) {
         })}>
         <Box>
           <Grid columns={24} gutter={{ base: 6 }}>
-            <Grid.Col span={2.5}>
+            <Grid.Col span={{ xl: 2.5, lg: 3.5 }}>
               <Box bg={"white"}>
                 <SidebarLinks />
               </Box>
             </Grid.Col>
-            <Grid.Col span={6.5}>
+            <Grid.Col span={8}>
               <Box>
                 <Box bg={"white"}>
                   <BookingDiagnosticFormSection />
                 </Box>
               </Box>
             </Grid.Col>
-            <Grid.Col span={14}>
+            <Grid.Col span={{ xl: 12.5, lg: 11.2 }}>
               <Box p={"xs"} className={"borderRadiusAll"} bg={"white"}>
                 <Box className="borderRadiusAll">
                   <DataTable
@@ -504,7 +504,7 @@ function BookingDiagnosticFormIndex(props) {
                 </Box>
               </Box>
             </Grid.Col>
-            <Grid.Col span={1}>
+            <Grid.Col span={{ xl: 1, lg: 1.3 }}>
               <Box className={"borderRadiusAll"} pt={"16"} bg={"white"}>
                 <ShortcutVoucher
                   form={form}
