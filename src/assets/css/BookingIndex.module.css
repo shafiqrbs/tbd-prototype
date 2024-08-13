@@ -90,6 +90,13 @@
   gap: 5px;
 }
 
+.flex_box_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
 .sticky_top_position {
   position: sticky;
   top: 0;
@@ -373,6 +380,35 @@
 }
 /* basic end */
 /* Profile Offcanvas style end */
+
+/* transaction details css start */
+.check_mark_style {
+  border-radius: 50px;
+  background-color: #40c057;
+  padding: 20px;
+}
+
+.transaction_form_to {
+  margin-top: 20px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.border_right {
+  border-right: 1px solid lightgray;
+}
+.border_b {
+  border-bottom: 1px solid lightgray;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.print_preview_border {
+  padding: 30px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+}
+/* transaction details css end */
 
 @media only screen and (max-width: 1440px) {
   .grid_2 {

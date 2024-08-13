@@ -12,6 +12,11 @@ const PatientInfo = () => {
     <>
       <Drawer
         className={`${styles.mantine_offcanvas} ${styles.mantine_header}`}
+        transitionProps={{
+          transition: "slide-left",
+          duration: 500,
+          timingFunction: "linear",
+        }}
         size={"85vw"}
         h={"100vh"}
         position="right"

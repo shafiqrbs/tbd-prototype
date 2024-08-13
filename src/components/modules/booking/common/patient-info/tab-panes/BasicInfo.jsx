@@ -36,8 +36,8 @@ const BasicInfo = () => {
   ];
 
   return (
-    <>
-      <Box>
+    <Box>
+      <form>
         {/* Personal Info */}
         <Box>
           <Flex
@@ -260,8 +260,8 @@ const BasicInfo = () => {
             </Grid.Col>
           </Grid>
         </Box>
-      </Box>
-    </>
+      </form>
+    </Box>
   );
 };
 

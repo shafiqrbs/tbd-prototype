@@ -116,7 +116,7 @@ const PatientSidebar = () => {
                 </Button>
               </Tooltip>
 
-              <Tooltip label="Inactive">
+              <Tooltip label="Message">
                 <Button px={5} py={0} bg={"none"} c={"black"}>
                   <IconMessages />
                 </Button>

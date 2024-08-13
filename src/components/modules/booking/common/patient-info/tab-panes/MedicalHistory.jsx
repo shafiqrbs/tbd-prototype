@@ -1,10 +1,20 @@
-import { Box, Button, Flex, Grid, Text, Textarea } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Group,
+  Radio,
+  Text,
+  Textarea,
+} from "@mantine/core";
 import React from "react";
 import SelectInput from "./form-tab/SelectInput";
 import { IconStethoscope } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import FormInput from "./form-tab/FormInput";
 import CheckBoxInput from "./form-tab/CheckBoxInput";
+import styles from "../../../../../../assets/css/BookingIndex.module.css";
 
 const MedicalHistory = () => {
   const { t, i18n } = useTranslation();
@@ -55,16 +65,58 @@ const MedicalHistory = () => {
     },
   ];
   const disease = [
-    { id: 1, name: "Heart disease" },
-    { id: 2, name: "Cancer" },
-    { id: 3, name: "Accidents (unintentional injuries)" },
-    { id: 4, name: "COVID-19" },
-    { id: 5, name: "Stroke (cerebrovascular diseases)" },
-    { id: 6, name: "Chronic lower respiratory diseases" },
-    { id: 7, name: "Alzheimer’s disease" },
-    { id: 8, name: "Diabetes" },
-    { id: 9, name: "Nephritis, nephrotic syndrome, and nephrosis" },
-    { id: 10, name: "Chronic liver disease and cirrhosis" },
+    { name: "Heart disease" },
+    { name: "Cancer" },
+    { name: "Accidents (unintentional injuries)" },
+    { name: "COVID-19" },
+    { name: "Stroke (cerebrovascular diseases)" },
+    { name: "Chronic lower respiratory diseases" },
+    { name: "Alzheimer’s disease" },
+    { name: "Diabetes" },
+    { name: "Nephritis, nephrotic syndrome, and nephrosis" },
+    { name: "Chronic liver disease and cirrhosis" },
+  ];
+
+  const healthyUnhealthyHabits = [
+    {
+      radioGroupName: "excercise",
+      mainLabel: "Excercise",
+      OptionA: "Never",
+      OptionB: "1-2 days",
+      OptionC: "3-4 days",
+      OptionD: "5+ days",
+    },
+    {
+      radioGroupName: "eating_following_a_diet",
+      mainLabel: "Eating following a diet",
+      OptionA: "I have a loose diet",
+      OptionB: "I have a strict diet",
+      OptionC: "I don't have a diet plan",
+    },
+    {
+      radioGroupName: "alcohol_onsumption",
+      mainLabel: "Alcohol Consumption",
+      OptionA: "I don't drink",
+      OptionB: "1-2 glasses/day",
+      OptionC: "3-4 glasses/day",
+      OptionD: "5+ glasses/day",
+    },
+    {
+      radioGroupName: "caffeine_consumption",
+      mainLabel: "Caffeine Consumption",
+      OptionA: "I don't use caffeine",
+      OptionB: "1-2 cups/day",
+      OptionC: "3-4 cups/day",
+      OptionD: "5+ cups/day",
+    },
+    {
+      radioGroupName: "do_you_smoke",
+      mainLabel: "Do you smoke",
+      OptionA: "No",
+      OptionB: "0-1 packs/day",
+      OptionC: "1-2 packs/day",
+      OptionD: "2+ packs/day",
+    },
   ];
 
   return (
@@ -90,9 +142,9 @@ const MedicalHistory = () => {
 
             <Grid>
               <Grid.Col span={6}>
-                {patientInfo.map((data) => {
+                {patientInfo.map((data, index) => {
                   return (
-                    <Box w={"100%"}>
+                    <Box key={index} w={"100%"}>
                       <SelectInput
                         label={t(data.label)}
                         inputPlaceholder={t(data.patientPlaceholder)}
@@ -122,39 +174,12 @@ const MedicalHistory = () => {
                     nameID={"weight"}
                   />
                 </Box>
-
-                <Box mt={"xl"}>
-                  <Box mb={"20px"}>
-                    <Text fw={"bold"} fz={"h3"}>
-                      Have you ever had (Please check all that apply)
-                    </Text>
-                  </Box>
-                  <Box>
-                    {disease?.map((data) => {
-                      return (
-                        <Box key={data.id}>
-                          <CheckBoxInput label={data.name} />
-                        </Box>
-                      );
-                    })}
-                  </Box>
-
-                  <Box w={"100%"}>
-                    <FormInput
-                      label={"Other Illness"}
-                      inputPlaceholder={"Enter Weight"}
-                      inputType={"Text"}
-                      inputWidth={"100%"}
-                      nameID={"weight"}
-                    />
-                  </Box>
-                </Box>
               </Grid.Col>
 
               <Grid.Col span={6}>
-                {patientInfoRightSide.map((data) => {
+                {patientInfoRightSide.map((data, index) => {
                   return (
-                    <Box w={"100%"}>
+                    <Box key={index} w={"100%"}>
                       <SelectInput
                         label={t(data.label)}
                         inputPlaceholder={t(data.patientPlaceholder)}
@@ -177,6 +202,102 @@ const MedicalHistory = () => {
                     />
                   </Box>
                 </Flex>
+              </Grid.Col>
+            </Grid>
+
+            <Grid>
+              <Grid.Col span={6}>
+                {/* Check boxes start */}
+                <Box mt={"xl"}>
+                  <Box mb={"20px"}>
+                    <Text fw={"bold"} fz={"h3"}>
+                      Have you ever had (Please check all that apply)
+                    </Text>
+                  </Box>
+
+                  <Box>
+                    {disease?.map((data, index) => {
+                      return (
+                        <Box key={index}>
+                          <CheckBoxInput label={data.name} />
+                        </Box>
+                      );
+                    })}
+                  </Box>
+
+                  <Box w={"100%"}>
+                    <FormInput
+                      withAsterisk
+                      label={"Other Illness"}
+                      inputPlaceholder={"Enter your Illness"}
+                      inputType={"text"}
+                      inputWidth={"100%"}
+                      nameID={"weight"}
+                    />
+                  </Box>
+                </Box>
+                {/* Check boxes end */}
+              </Grid.Col>
+
+              <Grid.Col span={6}>
+                {/* radio group option start */}
+                <Box mt={"xl"}>
+                  <Box>
+                    <Text fz={"h3"} fw={"bold"}>
+                      Please Fill this field
+                    </Text>
+                  </Box>
+                  {healthyUnhealthyHabits?.map((data, index) => {
+                    return (
+                      <Box key={index} mt={"10px"}>
+                        <Radio.Group
+                          name={data?.radioGroupName}
+                          label={`${index + 1}. ${data?.mainLabel}`}
+                          withAsterisk>
+                          <Group mt="xs" ml={"xl"}>
+                            <Flex
+                              w={"100%"}
+                              align={"center"}
+                              justify={"space-between"}
+                              gap={10}>
+                              <Radio
+                                display={
+                                  data?.OptionA == null || data?.OptionA == ""
+                                    ? "none"
+                                    : "block"
+                                }
+                                value={data?.OptionA}
+                                label={data?.OptionA}
+                              />
+                              <Radio
+                                display={
+                                  data?.OptionB == null ? "none" : "block"
+                                }
+                                value={data?.OptionB}
+                                label={data?.OptionB}
+                              />
+                              <Radio
+                                display={
+                                  data?.OptionC == null ? "none" : "block"
+                                }
+                                value={data?.OptionC}
+                                label={data?.OptionC}
+                              />
+                              <Radio
+                                display={
+                                  data?.OptionD == null ? "none" : "block"
+                                }
+                                value={data?.OptionD}
+                                label={data?.OptionD}
+                              />
+                            </Flex>
+                          </Group>
+                        </Radio.Group>
+                      </Box>
+                    );
+                  })}
+                </Box>
+                {/* radio group option end */}
               </Grid.Col>
             </Grid>
           </Box>
