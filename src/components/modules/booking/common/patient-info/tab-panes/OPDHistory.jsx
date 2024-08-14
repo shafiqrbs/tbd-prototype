@@ -13,6 +13,7 @@ import {
 import { IconChevronsRight, IconPlus, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../../../../../../assets/css/BookingIndex.module.css";
 import FormInput from "./form-tab/FormInput";
 
 const opdHistoryHeader = [
@@ -215,7 +216,16 @@ const OpdHistory = () => {
 
   return (
     <>
-      <Flex mb={20} justify={"space-between"} gap={10} align={"center"}>
+      <Flex
+        bg={"white"}
+        pos={"sticky"}
+        top={0}
+        className={styles.z10}
+        mb={20}
+        pb={10}
+        justify={"space-between"}
+        gap={10}
+        align={"center"}>
         <Box w={"100%"}>
           <Input
             w={"100%"}
@@ -295,10 +305,12 @@ const OpdHistory = () => {
         </Flex>
       </Flex>
 
-      <Table stickyHeader stickyHeaderOffset={0} captionSide="top">
-        <Table.Caption>Scroll page to see all data.</Table.Caption>
+      <Table
+        stickyHeader
+        stickyHeaderOffset={40}
+        className={`${styles.box_border}`}>
         <Table.Thead>
-          <Table.Tr>
+          <Table.Tr className={`${styles.table_header}`}>
             {opdHistoryHeader?.map((data, index) => {
               return <Table.Th key={index}>{data}</Table.Th>;
             })}
@@ -308,12 +320,12 @@ const OpdHistory = () => {
         <Table.Tbody>
           {filteredHistory?.map((data, index) => {
             return (
-              <Table.Tr key={index}>
+              <Table.Tr key={index} className={`${styles.table_row}`}>
                 <Table.Td>
                   <NavLink
                     py={7}
                     px={0}
-                    c={"cyan"}
+                    className={`${styles.patient_link_hover}`}
                     label={highlightText(data?.name, searchTerm)}
                     href={"#"}
                     active={index === active}
@@ -338,8 +350,7 @@ const OpdHistory = () => {
                 </Table.Td>
                 <Table.Td ta={"center"}>
                   <Button
-                    px={3}
-                    bg={"#FA5252"}
+                    className={styles.delete_btn_style}
                     onClick={() => handleDelete(data.patientID)}>
                     <IconTrash size={18} stroke={2.5} />
                   </Button>

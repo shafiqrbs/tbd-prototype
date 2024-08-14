@@ -42,7 +42,7 @@ const TransactionDetails = ({
     <>
       <Box>
         <Tooltip label="Show">
-          <Button px={3} bg={"#40C057"} onClick={open}>
+          <Button className={styles.show_btn_style} onClick={open}>
             <IconEye size={18} stroke={2.5} />
           </Button>
         </Tooltip>
@@ -88,7 +88,7 @@ const TransactionDetails = ({
                 </Text>
               </Box>
 
-              <Box className={styles.transaction_form_to}>
+              <Box className={`${styles.transaction_form_to}`}>
                 <Flex>
                   <Box
                     px={10}

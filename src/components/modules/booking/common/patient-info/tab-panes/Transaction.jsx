@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FormInput from "./form-tab/FormInput";
 import TransactionDetails from "./transaction/TransactionDetails";
-import styles from "/src/assets/css/BookingIndex.module.css";
+import styles from "../../../../../../assets/css/BookingIndex.module.css";
 
 const transactionHeader = [
   "Created Date",
@@ -35,6 +35,234 @@ const transactionHeader = [
 ];
 
 const initialTransactionData = [
+  {
+    created: "11-05-2023 01:15 AM",
+    createdBy: "Nur Mohammad",
+    invoiceNo: "DIA-23056930",
+    doctor: "Dr. Jannatul Ferdous (Runa) M.B.B.S, BCS (Health) DGO (BSMMU)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "2800",
+    payment: "0",
+    balance: "2800",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1500",
+    fromNumber: "01701-010299",
+    toNumber: "01901-010377",
+    fromName: "MD Foysal",
+    toName: "MD Asraf",
+  },
+  {
+    created: "11-05-2023 01:20 AM",
+    createdBy: "Nur Mohammad",
+    invoiceNo: "DIA-23056931",
+    doctor: "Dr. Jannatul Ferdous (Runa) M.B.B.S, BCS (Health) DGO (BSMMU)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "200",
+    payment: "0",
+    balance: "200",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1800",
+    fromNumber: "01301-010399",
+    toNumber: "01401-010277",
+    fromName: "MD Hassan",
+    toName: "MD Hridoy",
+  },
+  {
+    created: "11-05-2023 01:55 AM",
+    createdBy: "Nur Mohammad",
+    invoiceNo: "DIA-23056932",
+    doctor: "Dr. Jannatul Ferdous (Runa) M.B.B.S, BCS (Health) DGO (BSMMU)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "800",
+    payment: "800",
+    balance: "0",
+    status: "Paid",
+    report: "In-progress",
+    closed: "",
+    money: "600",
+    fromNumber: "01709-908879",
+    toNumber: "01901-666555",
+    fromName: "MD Himel",
+    toName: "MD Akib",
+  },
+  {
+    created: "29-05-2023 11:58 PM",
+    createdBy: "01732817101",
+    invoiceNo: "DIA-23056933",
+    doctor: "-Change Doctor-",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "3500",
+    payment: "3000",
+    balance: "500",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1200",
+    fromNumber: "01701-112233",
+    toNumber: "01901-445566",
+    fromName: "MD Nayeem",
+    toName: "MD Raju",
+  },
+  {
+    created: "29-05-2023 12:00 PM",
+    createdBy: "01732817101",
+    invoiceNo: "DIA-23056934",
+    doctor: "-Dr. AKM Azad (Bone Doctor)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "30-05-2023 12:00 PM",
+    netTotal: "3500",
+    payment: "3000",
+    balance: "500",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "3000",
+    fromNumber: "01701-009988",
+    toNumber: "01901-776655",
+    fromName: "MD Riaz",
+    toName: "MD Hridoy",
+  },
+  {
+    created: "29-05-2023 12:20 PM",
+    createdBy: "01732817101",
+    invoiceNo: "DIA-23056935",
+    doctor: "-Change Doctor-",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "3500",
+    payment: "3000",
+    balance: "500",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1000",
+    fromNumber: "01701-556677",
+    toNumber: "01901-776655",
+    fromName: "MD Shakhawat",
+    toName: "MD Sazzad",
+  },
+  {
+    created: "11-05-2023 01:15 AM",
+    createdBy: "Nur Mohammad",
+    invoiceNo: "DIA-23056930",
+    doctor: "Dr. Jannatul Ferdous (Runa) M.B.B.S, BCS (Health) DGO (BSMMU)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "2800",
+    payment: "0",
+    balance: "2800",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1500",
+    fromNumber: "01701-010299",
+    toNumber: "01901-010377",
+    fromName: "MD Foysal",
+    toName: "MD Asraf",
+  },
+  {
+    created: "11-05-2023 01:20 AM",
+    createdBy: "Nur Mohammad",
+    invoiceNo: "DIA-23056931",
+    doctor: "Dr. Jannatul Ferdous (Runa) M.B.B.S, BCS (Health) DGO (BSMMU)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "200",
+    payment: "0",
+    balance: "200",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1800",
+    fromNumber: "01301-010399",
+    toNumber: "01401-010277",
+    fromName: "MD Hassan",
+    toName: "MD Hridoy",
+  },
+  {
+    created: "11-05-2023 01:55 AM",
+    createdBy: "Nur Mohammad",
+    invoiceNo: "DIA-23056932",
+    doctor: "Dr. Jannatul Ferdous (Runa) M.B.B.S, BCS (Health) DGO (BSMMU)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "800",
+    payment: "800",
+    balance: "0",
+    status: "Paid",
+    report: "In-progress",
+    closed: "",
+    money: "600",
+    fromNumber: "01709-908879",
+    toNumber: "01901-666555",
+    fromName: "MD Himel",
+    toName: "MD Akib",
+  },
+  {
+    created: "29-05-2023 11:58 PM",
+    createdBy: "01732817101",
+    invoiceNo: "DIA-23056933",
+    doctor: "-Change Doctor-",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "3500",
+    payment: "3000",
+    balance: "500",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1200",
+    fromNumber: "01701-112233",
+    toNumber: "01901-445566",
+    fromName: "MD Nayeem",
+    toName: "MD Raju",
+  },
+  {
+    created: "29-05-2023 12:00 PM",
+    createdBy: "01732817101",
+    invoiceNo: "DIA-23056934",
+    doctor: "-Dr. AKM Azad (Bone Doctor)",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "30-05-2023 12:00 PM",
+    netTotal: "3500",
+    payment: "3000",
+    balance: "500",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "3000",
+    fromNumber: "01701-009988",
+    toNumber: "01901-776655",
+    fromName: "MD Riaz",
+    toName: "MD Hridoy",
+  },
+  {
+    created: "29-05-2023 12:20 PM",
+    createdBy: "01732817101",
+    invoiceNo: "DIA-23056935",
+    doctor: "-Change Doctor-",
+    referred: "Akhi (SKSH Cleaner)",
+    deliveryDate: "",
+    netTotal: "3500",
+    payment: "3000",
+    balance: "500",
+    status: "Due",
+    report: "In-progress",
+    closed: "",
+    money: "1000",
+    fromNumber: "01701-556677",
+    toNumber: "01901-776655",
+    fromName: "MD Shakhawat",
+    toName: "MD Sazzad",
+  },
   {
     created: "11-05-2023 01:15 AM",
     createdBy: "Nur Mohammad",
@@ -193,7 +421,16 @@ const Transaction = () => {
 
   return (
     <>
-      <Flex mb={20} justify={"space-between"} gap={10} align={"center"}>
+      <Flex
+        bg={"white"}
+        pos={"sticky"}
+        top={0}
+        className={styles.z10}
+        mb={20}
+        pb={10}
+        justify={"space-between"}
+        gap={10}
+        align={"center"}>
         <Box w={"100%"}>
           <Input
             w={"100%"}
@@ -273,10 +510,12 @@ const Transaction = () => {
         </Flex>
       </Flex>
 
-      <Table stickyHeader stickyHeaderOffset={0} captionSide="top">
-        <Table.Caption>Scroll page to see all data.</Table.Caption>
+      <Table
+        stickyHeader
+        stickyHeaderOffset={40}
+        className={`${styles.box_border}`}>
         <Table.Thead>
-          <Table.Tr>
+          <Table.Tr className={`${styles.table_header} ${styles.box_border}`}>
             {transactionHeader?.map((data, index) => (
               <Table.Th key={index}>
                 <Text w={"max-content"} fw={"bold"} fz={14}>
@@ -290,13 +529,13 @@ const Transaction = () => {
         <Table.Tbody>
           {filteredData.length > 0 ? (
             filteredData.map((data, index) => (
-              <Table.Tr key={index}>
+              <Table.Tr key={index} className={`${styles.table_row}`}>
                 <Table.Td>
                   <NavLink
                     fz={12}
                     py={7}
                     px={0}
-                    c={"cyan"}
+                    className={`${styles.patient_link_hover}`}
                     label={highlightText(data?.created)}
                     href={"#"}
                     active={index === active}
@@ -332,8 +571,7 @@ const Transaction = () => {
                     <Box>
                       <Tooltip label="Delete">
                         <Button
-                          px={3}
-                          bg={"#FA5252"}
+                          className={styles.delete_btn_style}
                           onClick={() => handleDelete(index)}>
                           <IconTrash size={18} stroke={2.5} />
                         </Button>

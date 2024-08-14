@@ -13,6 +13,7 @@ import {
 import { IconChevronsRight, IconPlus, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../../../../../../../src/assets/css/BookingIndex.module.css";
 import FormInput from "./form-tab/FormInput";
 
 const ipdHistoryHeader = [
@@ -27,7 +28,7 @@ const ipdHistoryHeader = [
   "Action",
 ];
 
-const ipdHistory = [
+const initialIpdHistory = [
   {
     ipdNo: "IPDN001",
     caseID: "caseID001",
@@ -233,6 +234,7 @@ const ipdHistory = [
 const IpdHistory = () => {
   const [active, setActive] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  const [ipdHistoryData, setIpdHistoryData] = useState(initialIpdHistory); // Initialize state with data
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
 
@@ -250,15 +252,30 @@ const IpdHistory = () => {
     );
   };
 
-  const filteredHistory = ipdHistory.filter((patient) =>
+  const filteredHistory = ipdHistoryData.filter((patient) =>
     Object.values(patient).some((value) =>
       value.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
+  const handleDelete = (indexToDelete) => {
+    setIpdHistoryData((prevData) =>
+      prevData.filter((_, index) => index !== indexToDelete)
+    );
+  };
+
   return (
     <>
-      <Flex mb={20} justify={"space-between"} gap={10} align={"center"}>
+      <Flex
+        bg={"white"}
+        pos={"sticky"}
+        top={0}
+        className={`${styles.z10}`}
+        mb={20}
+        pb={10}
+        justify={"space-between"}
+        gap={10}
+        align={"center"}>
         <Box w={"100%"}>
           <Input
             w={"100%"}
@@ -276,7 +293,7 @@ const IpdHistory = () => {
             </Button>
 
             {/* Add patient Modal start */}
-            <Modal opened={opened} onClose={close} title="Add Paient">
+            <Modal opened={opened} onClose={close} title="Add Patient">
               <form action="#">
                 <Box>
                   <Text>Name</Text>
@@ -339,10 +356,12 @@ const IpdHistory = () => {
         </Flex>
       </Flex>
 
-      <Table stickyHeader stickyHeaderOffset={0} captionSide="top">
-        <Table.Caption>Scroll page to see all data.</Table.Caption>
+      <Table
+        stickyHeader
+        stickyHeaderOffset={40}
+        className={`${styles.box_border}`}>
         <Table.Thead>
-          <Table.Tr>
+          <Table.Tr className={styles.table_header}>
             {ipdHistoryHeader?.map((data, index) => {
               return <Table.Th key={index}>{data}</Table.Th>;
             })}
@@ -352,12 +371,12 @@ const IpdHistory = () => {
         <Table.Tbody>
           {filteredHistory?.map((data, index) => {
             return (
-              <Table.Tr key={index}>
+              <Table.Tr key={index} className={`${styles.table_row}`}>
                 <Table.Td>
                   <NavLink
                     py={7}
                     px={0}
-                    c={"cyan"}
+                    className={`${styles.patient_link_hover}`}
                     label={highlightText(data?.ipdNo, searchTerm)}
                     href={"#"}
                     active={index === active}
@@ -379,8 +398,11 @@ const IpdHistory = () => {
                   {highlightText(data?.creditLimit, searchTerm)}
                 </Table.Td>
                 <Table.Td ta={"center"}>
-                  <Button px={3} bg={"#FA5252"}>
-                    <IconTrash size={18} stroke={2.5} />
+                  <Button
+                    className={styles.delete_btn_style}
+                    onClick={() => handleDelete(index)} // Delete button click
+                  >
+                    <IconTrash color={"#FA5252"} size={18} stroke={2.5} />
                   </Button>
                 </Table.Td>
               </Table.Tr>
@@ -391,7 +413,7 @@ const IpdHistory = () => {
         <Table.Tfoot>
           <Table.Tr c={"black"} fw={"bold"} fz={"h5"}>
             <Table.Td>
-              Total: {filteredHistory.length} / {ipdHistory.length}
+              Total: {filteredHistory.length} / {ipdHistoryData.length}
             </Table.Td>
           </Table.Tr>
         </Table.Tfoot>

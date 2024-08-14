@@ -27,14 +27,16 @@ const PatientInfo = () => {
         <Flex align={"flex-start"} gap={10} bg={"#F0F1F9"}>
           <Box
             w={"350px"}
-            h={"91.5vh"}
+            h={"91vh"}
             p={"15px"}
             mt={5}
             bg={"white"}
-            className={`${styles.profile_padding} ${styles.profile_sidebar}`}>
+            className={`${styles.profile_padding} ${styles.profile_sidebar} ${styles.box_border}`}>
             <PatientSidebar />
           </Box>
-          <Box w={"100%"} className={styles.profile_navtabs}>
+          <Box
+            w={"100%"}
+            className={`${styles.profile_navtabs} ${styles.box_border}`}>
             <PatientNavTabs />
           </Box>
         </Flex>

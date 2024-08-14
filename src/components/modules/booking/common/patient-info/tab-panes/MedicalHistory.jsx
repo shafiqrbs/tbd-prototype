@@ -122,10 +122,6 @@ const MedicalHistory = () => {
   return (
     <>
       <Box>
-        {/* <Text ta={"center"} fw={"bold"} fz={"h1"} td={"underline"}>
-          {t("Addmission")}
-        </Text> */}
-
         <form>
           {/* Patient Info */}
           <Box>
@@ -136,12 +132,13 @@ const MedicalHistory = () => {
               fz={"h3"}
               bg={"#40c057"}
               mb={"lg"}
-              c={"#fff"}>
+              c={"#fff"}
+              pl={10}>
               <IconStethoscope /> {t("PatientInformation")}
             </Flex>
 
             <Grid>
-              <Grid.Col span={6}>
+              <Grid.Col span={6} pl={20}>
                 {patientInfo.map((data, index) => {
                   return (
                     <Box key={index} w={"100%"}>
@@ -206,7 +203,7 @@ const MedicalHistory = () => {
             </Grid>
 
             <Grid>
-              <Grid.Col span={6}>
+              <Grid.Col span={6} pl={20}>
                 {/* Check boxes start */}
                 <Box mt={"xl"}>
                   <Box mb={"20px"}>

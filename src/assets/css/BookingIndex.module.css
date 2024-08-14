@@ -410,6 +410,58 @@
 }
 /* transaction details css end */
 
+.z10 {
+  z-index: 10;
+}
+.z20 {
+  z-index: 20;
+}
+.z30 {
+  z-index: 30;
+}
+
+/* table row style */
+.delete_btn_style {
+  background-color: transparent;
+  padding: 5px;
+  color: #fa5252;
+  &:hover {
+    background-color: #f8f9fa;
+    color: #fa5252;
+  }
+}
+.show_btn_style {
+  background-color: transparent;
+  padding: 5px;
+  color: #40c057;
+  &:hover {
+    background-color: #f8f9fa;
+    color: #40c057;
+  }
+}
+.box_border {
+  border: 1px solid #f4e7e7;
+}
+.table_header {
+  background-color: #f7f4f4;
+}
+.table_row {
+  /* background-color: #eaeaf0; */
+
+  &:hover {
+    background-color: #ffeded;
+  }
+}
+
+.patient_link_hover {
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+    color: #4c6ef5;
+  }
+}
+
 @media only screen and (max-width: 1440px) {
   .grid_2 {
     grid-template-columns: repeat(2, auto);

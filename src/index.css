@@ -196,26 +196,25 @@ input[type="radio"]:checked + label > img {
   font-size: 28px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.6);
-  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
-    0px -5px 35px rgba(255, 255, 255, 0.3);
 }
 .mantine-Drawer-header > .mantine-Drawer-close {
   width: 30px;
   height: 30px;
-  background-color: #fa5252;
+  background-color: #f8f9fa;
   border-radius: 5px;
 }
 
 .mantine-Drawer-close > svg {
   width: 100%;
   height: 100%;
+  font-weight: bold;
   border-radius: 5px;
   background-color: transparent;
-  color: white;
+  color: #ff6b6b;
 }
 
 .mantine-Drawer-header > .mantine-Drawer-close:hover {
   width: 30px;
   height: 30px;
-  background-color: #fcbdbd;
+  background-color: lightgray;
 }

@@ -108,8 +108,8 @@ const PatientNavTabs = () => {
   ];
   return (
     <>
-      <Tabs defaultValue="basic">
-        <Tabs.List grow className={styles.tab_icon}>
+      <Tabs defaultValue={tabPanel[0].value}>
+        <Tabs.List grow className={`${styles.tab_icon}`}>
           {tabList.map(({ index, value, text, icon }) => {
             return (
               <Tabs.Tab key={index} value={value} leftSection={icon}>
@@ -120,9 +120,9 @@ const PatientNavTabs = () => {
         </Tabs.List>
 
         <ScrollArea
-          h={"78vh"}
+          h={"77vh"}
           scrollbarSize={"0px"}
-          className={styles.profile_tabpanes}>
+          className={`${styles.profile_tabpanes} ${styles.box_border}`}>
           {tabPanel.map((data) => {
             return (
               <Tabs.Panel key={data.id} value={data?.value}>
@@ -133,7 +133,7 @@ const PatientNavTabs = () => {
         </ScrollArea>
       </Tabs>
 
-      <footer className={`${styles.profile_footer}`}>
+      <footer className={`${styles.profile_footer} ${styles.box_border}`}>
         <Flex
           align={"center"}
           justify={"flex-end"}

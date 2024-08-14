@@ -47,12 +47,13 @@ const BasicInfo = () => {
             fz={"h3"}
             bg={"#40c057"}
             mb={"lg"}
-            c={"#fff"}>
+            c={"#fff"}
+            pl={10}>
             <IconId /> {t("PersonalInformation")}
           </Flex>
 
           <Grid>
-            <Grid.Col span={6}>
+            <Grid.Col span={6} pl={20}>
               <Box w={"100%"}>
                 <FormInput
                   label={t("Name")}
@@ -86,15 +87,6 @@ const BasicInfo = () => {
                       dataArr={Years}
                     />
                   </Box>
-                  <Box w={"100%"}>
-                    <FormInput
-                      label={""}
-                      inputType={"date"}
-                      inputPlaceholder={t("EnterYourName")}
-                      nameID={"name"}
-                      inputWidth={"100%"}
-                    />
-                  </Box>
                 </Flex>
               </Flex>
 
@@ -124,11 +116,12 @@ const BasicInfo = () => {
               </Flex>
 
               <Box w={"100%"}>
-                <SelectInput
-                  label={t("BloodGroup")}
-                  inputPlaceholder={t("SelectYourBloodGroup")}
+                <FormInput
+                  label={"Date of Birth"}
+                  inputType={"date"}
+                  inputPlaceholder={t("EnterYourName")}
+                  nameID={"name"}
                   inputWidth={"100%"}
-                  dataArr={bloodGroup}
                 />
               </Box>
             </Grid.Col>
@@ -180,6 +173,15 @@ const BasicInfo = () => {
                   inputWidth={"100%"}
                 />
               </Box>
+
+              <Box w={"100%"}>
+                <SelectInput
+                  label={t("BloodGroup")}
+                  inputPlaceholder={t("SelectYourBloodGroup")}
+                  inputWidth={"100%"}
+                  dataArr={bloodGroup}
+                />
+              </Box>
             </Grid.Col>
           </Grid>
         </Box>
@@ -192,12 +194,13 @@ const BasicInfo = () => {
             fz={"h3"}
             bg={"#40c057"}
             mb={"lg"}
-            c={"#fff"}>
+            c={"#fff"}
+            pl={10}>
             <IconMapPins /> {t("Address")}
           </Flex>
 
           <Grid>
-            <Grid.Col span={4}>
+            <Grid.Col span={6} pl={20}>
               <Box w={"100%"}>
                 <FormInput
                   label={t("Religion")}
@@ -219,44 +222,34 @@ const BasicInfo = () => {
               </Box>
             </Grid.Col>
 
-            <Grid.Col span={8}>
-              <Flex w={"100%"} align={"center"}>
-                <Text fz={"14px"} w={"25%"}>
-                  {t("SelectLocation")}
-                </Text>
-                <Box w={"100%"}>
-                  <SelectInput
-                    label={t("")}
-                    inputPlaceholder={t("SelectLocation")}
-                    inputWidth={"100%"}
-                    dataArr={selectionData}
-                  />
-                </Box>
-              </Flex>
+            <Grid.Col span={6}>
+              <Box w={"100%"}>
+                <SelectInput
+                  label={t("SelectLocation")}
+                  inputPlaceholder={t("SelectLocation")}
+                  inputWidth={"100%"}
+                  dataArr={selectionData}
+                />
+              </Box>
 
-              <Flex w={"100%"}>
-                <Text fz={"14px"} w={"25%"}>
-                  {t("Address")}
-                </Text>
-                <Box w={"100%"}>
-                  <FormInput
-                    label={t("")}
-                    inputType={"text"}
-                    inputPlaceholder={t("PatientAddress")}
-                    nameID={"name"}
-                    inputWidth={"100%"}
-                  />
-                </Box>
-              </Flex>
+              <Box w={"100%"}>
+                <FormInput
+                  label={t("Address")}
+                  inputType={"text"}
+                  inputPlaceholder={t("PatientAddress")}
+                  nameID={"name"}
+                  inputWidth={"100%"}
+                />
+              </Box>
 
-              <Flex justify={"flex-end"} gap={10} my={10}>
+              {/* <Flex justify={"flex-end"} gap={10} my={10}>
                 <Button bg={"#FA5252"} type="reset">
                   {t("Reset")}
                 </Button>
                 <Button bg={"#228BE6"} type="submit">
                   {t("SaveAndContinue")}
                 </Button>
-              </Flex>
+              </Flex> */}
             </Grid.Col>
           </Grid>
         </Box>

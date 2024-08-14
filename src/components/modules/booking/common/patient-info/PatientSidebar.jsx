@@ -49,7 +49,7 @@ const PatientSidebar = () => {
   return (
     <>
       <ScrollArea h={"100%"} scrollbarSize={"0px"}>
-        <Box ta={"center"} py={"22px"}>
+        <Box ta={"center"} py={"18px"}>
           <img
             className={`${styles.profile_img}`}
             src="/images/karel-mistrik-_0LmQ_hVSV0-unsplash.jpg"
