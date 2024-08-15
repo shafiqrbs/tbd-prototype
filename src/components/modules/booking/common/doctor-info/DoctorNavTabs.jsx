@@ -4,8 +4,13 @@ import styles from "../../../../../assets/css/BookingIndex.module.css";
 import BasicInfo from "./tab-panes/BasicInfo";
 import FormTab from "./tab-panes/FormTab";
 import { useTranslation } from "react-i18next";
+import DoctorPayroll from "./tab-panes/DoctorPayroll";
+import DoctorLeaves from "./tab-panes/DoctorLeaves";
+import DoctorStaffAttendance from "./tab-panes/DoctorStaffAttendance";
+import DoctorDocument from "./tab-panes/DoctorDocument";
+import DoctorTimeline from "./tab-panes/DoctorTimeline";
 
-const ProfileNavTabs = () => {
+const DoctorNavTabs = () => {
   const { t, i18n } = useTranslation();
   const myService = [
     { id: 1, serviceName: "Cardiologist" },
@@ -37,18 +42,28 @@ const ProfileNavTabs = () => {
       icon: <IconPhoto />,
     },
     {
-      value: "doctor_info",
-      text: "Doctor info",
+      value: "payroll",
+      text: "Payroll",
       icon: <IconPhoto />,
     },
     {
-      value: "gallery",
-      text: "Gallery",
+      value: "leaves",
+      text: "Leaves",
       icon: <IconPhoto />,
     },
     {
-      value: "edit",
-      text: "Edit",
+      value: "staff_attendance",
+      text: "Staff Attendance",
+      icon: <IconPhoto />,
+    },
+    {
+      value: "document",
+      text: "Document",
+      icon: <IconPhoto />,
+    },
+    {
+      value: "timeline",
+      text: "Timeline",
       icon: <IconPhoto />,
     },
   ];
@@ -66,18 +81,28 @@ const ProfileNavTabs = () => {
     },
     {
       id: 3,
-      value: "doctor_info",
-      tabComponent: <BasicInfo services={myService} />,
+      value: "payroll",
+      tabComponent: <DoctorPayroll />,
     },
     {
       id: 4,
-      value: "gallery",
-      tabComponent: "Gallery",
+      value: "leaves",
+      tabComponent: <DoctorLeaves />,
     },
     {
       id: 5,
-      value: "edit",
-      tabComponent: "Edit",
+      value: "staff_attendance",
+      tabComponent: <DoctorStaffAttendance />,
+    },
+    {
+      id: 5,
+      value: "document",
+      tabComponent: <DoctorDocument />,
+    },
+    {
+      id: 5,
+      value: "timeline",
+      tabComponent: <DoctorTimeline />,
     },
   ];
   return (
@@ -129,4 +154,4 @@ const ProfileNavTabs = () => {
   );
 };
 
-export default ProfileNavTabs;
+export default DoctorNavTabs;

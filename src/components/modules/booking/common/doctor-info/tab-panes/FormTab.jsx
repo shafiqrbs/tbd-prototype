@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, Text, Textarea } from "@mantine/core";
 import React from "react";
 import FormInput from "./form-tab/FormInput";
 import SelectInput from "./form-tab/SelectInput";
-import { IconId, IconMenu2, IconStethoscope } from "@tabler/icons-react";
+import { IconId, IconStethoscope } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { IconMapPins } from "@tabler/icons-react";
 

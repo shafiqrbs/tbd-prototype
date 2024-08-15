@@ -14,10 +14,32 @@ import { Link } from "react-router-dom";
 import { IconCheck, IconEdit, IconRefresh, IconX } from "@tabler/icons-react";
 import { IconMessages } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
+import ProfilePictureUploader from "../ProfilePictureUploader";
 
-const ProfileSidebar = () => {
+const DoctorSidebar = () => {
   const [checked, setChecked] = useState(true);
   const { t, i18n } = useTranslation();
+
+  /* porfile image update logic start */
+  const [imageSrc, setImageSrc] = useState(
+    "/images/karel-mistrik-_0LmQ_hVSV0-unsplash.jpg"
+  );
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImageSrc(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleClick = () => {
+    document.getElementById("fileInput").click();
+  };
+  /* porfile image update logic end */
 
   const profileSidebarInfo = [
     {
@@ -49,12 +71,14 @@ const ProfileSidebar = () => {
   return (
     <>
       <ScrollArea h={"100%"} scrollbarSize={"0px"}>
-        <Box ta={"center"} py={"22px"}>
-          <img
-            className={`${styles.profile_img}`}
-            src="/images/karel-mistrik-_0LmQ_hVSV0-unsplash.jpg"
-            alt="Profile picture"
+        <Box ta={"center"} py={"16px"}>
+          {/* Edit profile picture */}
+          <ProfilePictureUploader
+            imageSrc={imageSrc}
+            handleClick={handleClick}
+            handleImageChange={handleImageChange}
           />
+          {/* Edit profile picture */}
         </Box>
 
         <Box mt={15}>
@@ -150,4 +174,4 @@ const ProfileSidebar = () => {
   );
 };
 
-export default ProfileSidebar;
+export default DoctorSidebar;

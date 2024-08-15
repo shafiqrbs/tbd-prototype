@@ -64,7 +64,7 @@ import BookingReferrelCommissionIndex from "./components/modules/booking/booking
 import BookingAssetsPurchaseIndex from "./components/modules/booking/booking-assets-purchase/BookingAssetsPurchaseIndex.jsx";
 import BookingReportsIndex from "./components/modules/booking/booking-reports/BookingReportsIndex.jsx";
 import BookingDashboardIndex from "./components/modules/booking/booking-dashboard/BookingDashboardIndex.jsx";
-import ProfileInfo from "./components/modules/booking/common/profile-info/ProfileInfo.jsx";
+import DoctorInfo from "./components/modules/booking/common/doctor-info/DoctorInfo.jsx";
 import PatientInfo from "./components/modules/booking/common/patient-info/PatientInfo.jsx";
 
 function AppRoute() {
@@ -181,7 +181,7 @@ function AppRoute() {
 
         {/* For testing ROUTE */}
         <Route path="/test" element={<TestIndex />} />
-        <Route path="/profile-info" element={<ProfileInfo />} />
+        <Route path="/doctor-info" element={<DoctorInfo />} />
         <Route path="/patient-info" element={<PatientInfo />} />
         {/* For testing ROUTE */}
       </Route>

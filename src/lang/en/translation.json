@@ -733,5 +733,6 @@
   "Surgeon": "Surgeon",
   "Anesthesiologist": "Anesthesiologist",
   "InternalMedicine": "Internal medicine",
-  "InfectiousDiseaseSpecialist": "Infectious Disease Specialist"
+  "InfectiousDiseaseSpecialist": "Infectious Disease Specialist",
+  "OtherIllness": "Other Illness"
 }

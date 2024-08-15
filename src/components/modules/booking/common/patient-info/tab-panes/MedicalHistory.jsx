@@ -5,6 +5,7 @@ import {
   Grid,
   Group,
   Radio,
+  TagsInput,
   Text,
   Textarea,
 } from "@mantine/core";
@@ -223,14 +224,18 @@ const MedicalHistory = () => {
                   </Box>
 
                   <Box w={"100%"}>
-                    <FormInput
-                      withAsterisk
-                      label={"Other Illness"}
-                      inputPlaceholder={"Enter your Illness"}
-                      inputType={"text"}
-                      inputWidth={"100%"}
-                      nameID={"weight"}
-                    />
+                    <Flex align={"center"}>
+                      <Text fz={"14px"} w={"35%"}>
+                        {t("OtherIllness")}
+                      </Text>
+
+                      <TagsInput
+                        w={"100%"}
+                        label={""}
+                        placeholder={"Enter your Illness"}
+                        clearable
+                      />
+                    </Flex>
                   </Box>
                 </Box>
                 {/* Check boxes end */}
@@ -299,14 +304,14 @@ const MedicalHistory = () => {
             </Grid>
           </Box>
 
-          <Flex justify={"flex-end"} gap={10} my={10}>
+          {/* <Flex justify={"flex-end"} gap={10} my={10}>
             <Button bg={"#FA5252"} type="reset">
               {t("Reset")}
             </Button>
             <Button bg={"#228BE6"} type="submit">
               {t("SaveAndContinue")}
             </Button>
-          </Flex>
+          </Flex> */}
         </form>
       </Box>
     </>
