@@ -1,7 +1,6 @@
 import { Box, Flex, Text } from "@mantine/core";
-import React from "react";
 
-const VisitingCardText = ({ justify, title, label }) => {
+const LeavesDetailsText = ({ justify, title, label }) => {
   return (
     <>
       <Box ta={"right"}>
@@ -13,4 +12,4 @@ const VisitingCardText = ({ justify, title, label }) => {
   );
 };
 
-export default VisitingCardText;
+export default LeavesDetailsText;

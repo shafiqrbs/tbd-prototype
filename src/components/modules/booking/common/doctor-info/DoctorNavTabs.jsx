@@ -9,6 +9,7 @@ import DoctorLeaves from "./tab-panes/DoctorLeaves";
 import DoctorStaffAttendance from "./tab-panes/DoctorStaffAttendance";
 import DoctorDocument from "./tab-panes/DoctorDocument";
 import DoctorTimeline from "./tab-panes/DoctorTimeline";
+import DoctorAppointment from "./tab-panes/DoctorAppointment";
 
 const DoctorNavTabs = () => {
   const { t, i18n } = useTranslation();
@@ -66,6 +67,11 @@ const DoctorNavTabs = () => {
       text: "Timeline",
       icon: <IconPhoto />,
     },
+    {
+      value: "appointment",
+      text: "Appointment",
+      icon: <IconPhoto />,
+    },
   ];
 
   const tabPanel = [
@@ -103,6 +109,11 @@ const DoctorNavTabs = () => {
       id: 5,
       value: "timeline",
       tabComponent: <DoctorTimeline />,
+    },
+    {
+      id: 5,
+      value: "appointment",
+      tabComponent: <DoctorAppointment />,
     },
   ];
   return (

@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 
 const FormInput = ({
   label,
+  disabled,
+  required,
   inputType,
   inputPlaceholder,
   nameID,
@@ -17,11 +19,12 @@ const FormInput = ({
             {t(label)}
           </Text>
           <Input
+            disabled={disabled}
+            required={required}
             fz={"14px"}
             w={inputWidth}
             type={inputType}
             placeholder={t(inputPlaceholder)}
-            required={false}
             validationMessage={t("InvalidEmailText")}
             form={"form"}
             name={nameID}

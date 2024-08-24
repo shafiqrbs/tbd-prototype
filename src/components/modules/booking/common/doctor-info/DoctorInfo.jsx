@@ -11,7 +11,6 @@ const DoctorInfo = () => {
   return (
     <>
       <Drawer
-        className={`${styles.mantine_offcanvas} ${styles.mantine_header}`}
         size={"85vw"}
         h={"100vh"}
         position="right"
@@ -21,12 +20,12 @@ const DoctorInfo = () => {
         title={t("DoctorInformation")}>
         <Flex align={"flex-start"} gap={10} bg={"#F0F1F9"}>
           <Box
+            className={`${styles.profile_sidebar} ${styles.print_d_none}`}
             w={"350px"}
             h={"91.5vh"}
             p={"15px"}
             mt={5}
-            bg={"white"}
-            className={`${styles.profile_padding} ${styles.profile_sidebar}`}>
+            bg={"white"}>
             <DoctorSidebar />
           </Box>
           <Box w={"100%"} className={styles.profile_navtabs}>

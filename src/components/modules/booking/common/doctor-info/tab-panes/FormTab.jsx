@@ -71,10 +71,6 @@ const FormTab = () => {
   return (
     <>
       <Box>
-        {/* <Text ta={"center"} fw={"bold"} fz={"h1"} td={"underline"}>
-          {t("Addmission")}
-        </Text> */}
-
         <form>
           {/* Personal Info */}
           <Box>
@@ -83,16 +79,19 @@ const FormTab = () => {
               gap={"5px"}
               fw={"bold"}
               fz={"h3"}
-              bg={"#40c057"}
+              bg={"#D7E8CD"}
               mb={"lg"}
-              c={"#fff"}>
+              px={10}
+              c={"#000"}>
               <IconId /> {t("PersonalInformation")}
             </Flex>
 
-            <Grid>
+            <Grid pl={10}>
               <Grid.Col span={6}>
                 <Box w={"100%"}>
                   <FormInput
+                    disabled={true}
+                    required={true}
                     label={t("Name")}
                     inputType={"text"}
                     inputPlaceholder={t("EnterYourName")}
@@ -101,23 +100,16 @@ const FormTab = () => {
                   />
                 </Box>
 
-                <Box w={"100%"}>
-                  <SelectInput
-                    label={t("CabinWardBed")}
-                    inputPlaceholder={t("SelectCabinWardNo")}
-                    inputWidth={"100%"}
-                    dataArr={selectionData}
-                  />
-                </Box>
-
                 <Flex justify={"flex-start"} align={"center"}>
                   <Text fz={"14px"} w={"35%"}>
-                    {t("AgeAndDateOfBirth")}
+                    {t("Age")}
                   </Text>
 
                   <Flex gap={5} w={"100%"}>
                     <Box w={"100%"}>
                       <FormInput
+                        disabled={true}
+                        required={true}
                         label={""}
                         inputType={"text"}
                         inputPlaceholder={t("EnterYourAge")}
@@ -127,23 +119,30 @@ const FormTab = () => {
                     </Box>
                     <Box w={"100%"}>
                       <SelectInput
+                        disabled={true}
+                        required={true}
                         label=""
                         inputPlaceholder={t("EnterYears")}
                         inputWidth={"100%"}
                         dataArr={Years}
                       />
                     </Box>
-                    <Box w={"100%"}>
-                      <FormInput
-                        label={""}
-                        inputType={"date"}
-                        inputPlaceholder={t("EnterYourName")}
-                        nameID={"name"}
-                        inputWidth={"100%"}
-                      />
-                    </Box>
                   </Flex>
                 </Flex>
+
+                <Box>
+                  <Box w={"100%"}>
+                    <FormInput
+                      disabled={true}
+                      required={true}
+                      label={t("DateOfBirth")}
+                      inputType={"date"}
+                      inputPlaceholder={t("EnterYourDateOfBirth")}
+                      nameID={"name"}
+                      inputWidth={"100%"}
+                    />
+                  </Box>
+                </Box>
 
                 <Flex justify={"flex-start"} align={"center"}>
                   <Text fz={"14px"} w={"35%"}>
@@ -153,6 +152,8 @@ const FormTab = () => {
                   <Flex gap={5} justify={"space-between"} w={"100%"}>
                     <Box w={"100%"}>
                       <SelectInput
+                        disabled={true}
+                        required={true}
                         label=""
                         inputPlaceholder={t("SelectAGender")}
                         inputWidth={"100%"}
@@ -161,6 +162,8 @@ const FormTab = () => {
                     </Box>
                     <Box w={"100%"}>
                       <SelectInput
+                        disabled={true}
+                        required={true}
                         label=""
                         inputPlaceholder={t("SelectMeritalStatus")}
                         inputWidth={"100%"}
@@ -172,10 +175,48 @@ const FormTab = () => {
 
                 <Box w={"100%"}>
                   <SelectInput
+                    disabled={true}
+                    required={true}
                     label={t("BloodGroup")}
                     inputPlaceholder={t("SelectYourBloodGroup")}
                     inputWidth={"100%"}
                     dataArr={bloodGroup}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("MobileNo")}
+                    inputType={"number"}
+                    inputPlaceholder={t("EnterYourMobileNumber")}
+                    nameID={"mobile"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("Email")}
+                    inputType={"email"}
+                    inputPlaceholder={t("EnterYourEmailAddress")}
+                    nameID={"email"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("Religion")}
+                    inputType={"text"}
+                    inputPlaceholder={t("Religion")}
+                    nameID={"name"}
+                    inputWidth={"100%"}
                   />
                 </Box>
               </Grid.Col>
@@ -183,10 +224,48 @@ const FormTab = () => {
               <Grid.Col span={6}>
                 <Box w={"100%"}>
                   <FormInput
-                    label={t("MobileNo")}
+                    disabled={true}
+                    required={true}
+                    label={t("Nationality")}
+                    inputType={"text"}
+                    inputPlaceholder={t("Nationality")}
+                    nameID={"nationality"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={"EmergencyContact"}
                     inputType={"number"}
-                    inputPlaceholder={t("EnterYourMobileNumber")}
-                    nameID={"mobile"}
+                    inputPlaceholder={t("EmergencyContact")}
+                    nameID={"emergency_contact"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={"Specialization"}
+                    inputType={"text"}
+                    inputPlaceholder={t("Specialization")}
+                    nameID={"guardian_name"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={"WorkExperience"}
+                    inputType={"text"}
+                    inputPlaceholder={t("WorkExperience")}
+                    nameID={"guardian_name"}
                     inputWidth={"100%"}
                   />
                 </Box>
@@ -199,6 +278,8 @@ const FormTab = () => {
                   <Flex gap={"sm"} justify={"space-between"} w={"100%"}>
                     <Box w={"100%"}>
                       <FormInput
+                        disabled={true}
+                        required={true}
                         label={""}
                         inputType={"text"}
                         inputPlaceholder={t("FatherHusbandName")}
@@ -208,6 +289,8 @@ const FormTab = () => {
                     </Box>
                     <Box w={"100%"}>
                       <FormInput
+                        disabled={true}
+                        required={true}
                         label={""}
                         inputType={"text"}
                         inputPlaceholder={t("MotherName")}
@@ -218,49 +301,38 @@ const FormTab = () => {
                   </Flex>
                 </Flex>
 
-                <Flex justify={"flex-start"} align={"center"}>
-                  <Text fz={"14px"} w={"35%"}>
-                    {t("GuardianAndMobile")}
-                  </Text>
-
-                  <Flex gap={"sm"} justify={"space-between"} w={"100%"}>
-                    <Box w={"100%"}>
-                      <FormInput
-                        label={""}
-                        inputType={"text"}
-                        inputPlaceholder={t("GuardianName")}
-                        nameID={"guardian_name"}
-                        inputWidth={"100%"}
-                      />
-                    </Box>
-                    <Box w={"100%"}>
-                      <FormInput
-                        label={""}
-                        inputType={"text"}
-                        inputPlaceholder={t("GuardianMobileNo")}
-                        nameID={"guardian_mobile"}
-                        inputWidth={"100%"}
-                      />
-                    </Box>
-                  </Flex>
-                </Flex>
-
                 <Box w={"100%"}>
                   <FormInput
-                    label={t("RelationWithPatient")}
+                    disabled={true}
+                    required={true}
+                    label={"Qualification"}
                     inputType={"text"}
-                    inputPlaceholder={t("RelationWithThePatient")}
-                    nameID={"patient_relation"}
+                    inputPlaceholder={t("Qualification")}
+                    nameID={"guardian_name"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box w={"100%"}>
                   <FormInput
+                    disabled={true}
+                    required={true}
                     label={t("Profession")}
                     inputType={"text"}
                     inputPlaceholder={t("EnterProfession")}
                     nameID={"profession"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("ReferenceContact")}
+                    inputType={"number"}
+                    inputPlaceholder={t("EnterYourReferenceContact")}
+                    nameID={"reference-Contact"}
                     inputWidth={"100%"}
                   />
                 </Box>
@@ -269,19 +341,20 @@ const FormTab = () => {
           </Box>
 
           {/* Patient Info */}
-          <Box>
+          {/* <Box>
             <Flex
               align={"center"}
               gap={"5px"}
               fw={"bold"}
               fz={"h3"}
-              bg={"#40c057"}
+              bg={"#D7E8CD"}
               mb={"lg"}
-              c={"#fff"}>
+              px={10}
+              c={"#000"}>
               <IconStethoscope /> {t("PatientInformation")}
             </Flex>
 
-            <Grid>
+            <Grid pl={10}>
               <Grid.Col span={6}>
                 {patientInfo.map((data) => {
                   return (
@@ -325,7 +398,7 @@ const FormTab = () => {
                 </Flex>
               </Grid.Col>
             </Grid>
-          </Box>
+          </Box> */}
 
           {/* Address Info */}
           <Box>
@@ -334,64 +407,120 @@ const FormTab = () => {
               gap={"5px"}
               fw={"bold"}
               fz={"h3"}
-              bg={"#40c057"}
+              bg={"#D7E8CD"}
               mb={"lg"}
-              c={"#fff"}>
+              px={10}
+              c={"#000"}>
               <IconMapPins /> {t("Address")}
             </Flex>
 
-            <Grid>
-              <Grid.Col span={4}>
+            <Grid pl={10}>
+              <Grid.Col span={6}>
                 <Box w={"100%"}>
                   <FormInput
-                    label={t("Religion")}
+                    disabled={true}
+                    required={true}
+                    label={t("PresentAddress")}
                     inputType={"text"}
-                    inputPlaceholder={t("Religion")}
-                    nameID={"name"}
-                    inputWidth={"100%"}
-                  />
-                </Box>
-
-                <Box w={"100%"}>
-                  <FormInput
-                    label={t("Nationality")}
-                    inputType={"text"}
-                    inputPlaceholder={t("Nationality")}
-                    nameID={"name"}
+                    inputPlaceholder={t("PresentAddress")}
+                    nameID={"present_address"}
                     inputWidth={"100%"}
                   />
                 </Box>
               </Grid.Col>
 
-              <Grid.Col span={8}>
-                <Flex w={"100%"} align={"center"}>
-                  <Text fz={"14px"} w={"25%"}>
-                    {t("SelectLocation")}
-                  </Text>
-                  <Box w={"100%"}>
-                    <SelectInput
-                      label={t("")}
-                      inputPlaceholder={t("SelectLocation")}
-                      inputWidth={"100%"}
-                      dataArr={selectionData}
-                    />
-                  </Box>
-                </Flex>
+              <Grid.Col span={6}>
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("PermanentAddress")}
+                    inputType={"text"}
+                    inputPlaceholder={t("PermanentAddress")}
+                    nameID={"permanent_address"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+              </Grid.Col>
+            </Grid>
+          </Box>
 
-                <Flex w={"100%"}>
-                  <Text fz={"14px"} w={"25%"}>
-                    {t("Address")}
-                  </Text>
-                  <Box w={"100%"}>
-                    <FormInput
-                      label={t("")}
-                      inputType={"text"}
-                      inputPlaceholder={t("PatientAddress")}
-                      nameID={"name"}
-                      inputWidth={"100%"}
-                    />
-                  </Box>
-                </Flex>
+          {/* Bank Account Info */}
+          <Box>
+            <Flex
+              align={"center"}
+              gap={"5px"}
+              fw={"bold"}
+              fz={"h3"}
+              bg={"#D7E8CD"}
+              mb={"lg"}
+              px={10}
+              c={"#000"}>
+              <IconMapPins /> {t("BankAccountDetails")}
+            </Flex>
+
+            <Grid pl={10}>
+              <Grid.Col span={6}>
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("AccountTitle")}
+                    inputType={"text"}
+                    inputPlaceholder={t("AccountTitle")}
+                    nameID={"account_title"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("BankName")}
+                    inputType={"text"}
+                    inputPlaceholder={t("BankName")}
+                    nameID={"bank_name"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("BankBranchName")}
+                    inputType={"text"}
+                    inputPlaceholder={t("BankBranchName")}
+                    nameID={"bank_branch_name"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+              </Grid.Col>
+
+              <Grid.Col span={6}>
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("BankAccountNumber")}
+                    inputType={"text"}
+                    inputPlaceholder={t("BankAccountNumber")}
+                    nameID={"bank_account_number"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
+                <Box w={"100%"}>
+                  <FormInput
+                    disabled={true}
+                    required={true}
+                    label={t("IFSCCode")}
+                    inputType={"text"}
+                    inputPlaceholder={t("IFSCCode")}
+                    nameID={"IFSC_code"}
+                    inputWidth={"100%"}
+                  />
+                </Box>
               </Grid.Col>
             </Grid>
           </Box>

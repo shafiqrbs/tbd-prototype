@@ -131,9 +131,9 @@ const MedicalHistory = () => {
               gap={"5px"}
               fw={"bold"}
               fz={"h3"}
-              bg={"#40c057"}
+              bg={"#d7e8cd"}
               mb={"lg"}
-              c={"#fff"}
+              c={"#000"}
               pl={10}>
               <IconStethoscope /> {t("PatientInformation")}
             </Flex>

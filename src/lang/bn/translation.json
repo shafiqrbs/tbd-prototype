@@ -547,7 +547,7 @@
   "SelectCabinWardNo": "কেবিন/ওয়ার্ড নম্বর নির্বাচন করুন",
   "AgeAndDateOfBirth": "বয়স ও জন্ম তারিখ",
   "EnterYourAge": "আপনার বয়স প্রবেশ",
-  "EnterYears": "বছর লিখুন",
+  "EnterYears": "বছর/মাস/দিন",
   "GenderAndMerital": "লিঙ্গ এবং বৈবাহিক",
   "SelectAGender": "একটি লিঙ্গ নির্বাচন করুন",
   "SelectMeritalStatus": "একটি বৈবাহিক অবস্থা নির্বাচন করুন",

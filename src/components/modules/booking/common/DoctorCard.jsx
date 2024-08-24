@@ -4,7 +4,7 @@ import styles from "../../../../assets/css/BookingIndex.module.css";
 const DoctorCard = ({ align, title, subTitle, subTitle2, icon }) => {
   return (
     <>
-      <Box className={styles.box_border} p={10} w={"100%"} bg={"#ffeded"}>
+      <Box className={styles.box_border} p={10} w={"100%"} bg={"#D7E8CD"}>
         <Flex align={align} justify={"space-between"} gap={10}>
           <Box>
             <Text fw={"bold"} fz={"h5"}>
@@ -20,22 +20,4 @@ const DoctorCard = ({ align, title, subTitle, subTitle2, icon }) => {
   );
 };
 
-const DoctorCardWithButton = ({ align, title, subTitle, subTitle2, icon }) => {
-  return (
-    <>
-      <Box>
-        <Flex align={align} justify={"space-between"} gap={10}>
-          <Box>
-            <Text>{title}</Text>
-            <Text>{subTitle}</Text>
-            <Text display={subTitle2 ? "block" : "none"}>{subTitle2}</Text>
-          </Box>
-          <Box>{icon}</Box>
-        </Flex>
-      </Box>
-    </>
-  );
-};
-
 export default DoctorCard;
-export { DoctorCardWithButton };

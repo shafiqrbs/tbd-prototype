@@ -438,6 +438,17 @@
     color: #40c057;
   }
 }
+
+/* staff attendance buttons style start */
+.button_hover {
+  button {
+    &:hover {
+      background-color: #ffeded;
+    }
+  }
+}
+/* staff attendance buttons style end */
+
 .box_border {
   border: 1px solid #f4e7e7;
 }
@@ -510,8 +521,68 @@
     object-fit: cover;
   }
 }
-
 /* Profile edit button css end */
+
+/* doctor information Document Tab start */
+.document_card_button {
+  color: black;
+  background-color: transparent;
+
+  &:hover {
+    color: black;
+    background-color: #e3e2e2;
+  }
+}
+/* doctor information Document Tab end */
+
+/* doctor information Timeline Tab start */
+.timeline_circle_list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  > div {
+    border-radius: 6px;
+  }
+
+  &::before {
+    content: "\262A";
+    /* color: #fa5252; */
+    color: white;
+    background-color: #40c057;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    z-index: 20;
+  }
+  &::after {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    content: "";
+    color: white;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #40c057;
+  }
+  &:last-child {
+    &::after {
+      height: 100%;
+    }
+  }
+}
+/* doctor information Timeline Tab end */
 
 @media only screen and (max-width: 1440px) {
   .grid_2 {
@@ -545,5 +616,19 @@
 
   .tab_button {
     font-size: 11px;
+  }
+}
+
+@media print {
+  .print_d_none {
+    display: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .print_flex_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

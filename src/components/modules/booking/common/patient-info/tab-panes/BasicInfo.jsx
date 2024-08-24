@@ -45,9 +45,9 @@ const BasicInfo = () => {
             gap={"5px"}
             fw={"bold"}
             fz={"h3"}
-            bg={"#40c057"}
+            bg={"#d7e8cd"}
             mb={"lg"}
-            c={"#fff"}
+            c={"#000"}
             pl={10}>
             <IconId /> {t("PersonalInformation")}
           </Flex>
@@ -192,9 +192,9 @@ const BasicInfo = () => {
             gap={"5px"}
             fw={"bold"}
             fz={"h3"}
-            bg={"#40c057"}
+            bg={"#d7e8cd"}
             mb={"lg"}
-            c={"#fff"}
+            c={"#000"}
             pl={10}>
             <IconMapPins /> {t("Address")}
           </Flex>
