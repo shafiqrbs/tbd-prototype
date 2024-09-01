@@ -548,11 +548,14 @@
 
   &::before {
     content: "\262A";
+    content: "\002B";
     /* color: #fa5252; */
     color: white;
-    background-color: #40c057;
+    /* background-color: #40c057; */
+    background-color: #fa5252;
     font-size: 25px;
     font-weight: bold;
+    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -564,17 +567,18 @@
   &::after {
     position: absolute;
     left: 15px;
-    top: 0;
+    top: 10px;
     content: "";
     color: white;
+    /* background-color: #40c057; */
+    background-color: #fa5252;
     font-size: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 5px;
-    height: 100%;
+    height: 110%;
     border-radius: 10px;
-    background-color: #40c057;
   }
   &:last-child {
     &::after {
@@ -583,6 +587,26 @@
   }
 }
 /* doctor information Timeline Tab end */
+
+.advanced_search_icon {
+  svg {
+    color: #feeaea;
+  }
+}
+
+.advanced_search_X_icon {
+  button {
+    background-color: transparent;
+    padding: 2px;
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
+
+.radius5 {
+  border-radius: 5px;
+}
 
 @media only screen and (max-width: 1440px) {
   .grid_2 {

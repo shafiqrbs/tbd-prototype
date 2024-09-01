@@ -1,6 +1,13 @@
 import { Box, Flex, Select, Text } from "@mantine/core";
 
-function SelectInput({ label, inputPlaceholder, dataArr, inputWidth }) {
+function SelectInput({
+  required,
+  disabled,
+  label,
+  inputPlaceholder,
+  dataArr,
+  inputWidth,
+}) {
   return (
     <>
       <Box mb={10}>
@@ -10,6 +17,8 @@ function SelectInput({ label, inputPlaceholder, dataArr, inputWidth }) {
           </Text>
           <Box w={inputWidth}>
             <Select
+              required={required}
+              disabled={disabled}
               fz={"14px"}
               w={"100%"}
               placeholder={inputPlaceholder}

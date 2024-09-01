@@ -1,7 +1,13 @@
-import { Button, Flex, ScrollArea, Tabs, rem } from "@mantine/core";
-import { IconPhoto } from "@tabler/icons-react";
+import { Button, Flex, ScrollArea, Tabs, Text, rem } from "@mantine/core";
+import {
+  IconActivity,
+  IconCurrencyDollar,
+  IconDeviceHeartMonitor,
+  IconEmergencyBed,
+  IconReport,
+  IconStethoscope,
+} from "@tabler/icons-react";
 import styles from "../../../../../assets/css/BookingIndex.module.css";
-import FormTab from "./tab-panes/MedicalHistory";
 import { useTranslation } from "react-i18next";
 import BasicInfo from "./tab-panes/BasicInfo";
 import MedicalHistory from "./tab-panes/MedicalHistory";
@@ -10,62 +16,52 @@ import OpdHistory from "./tab-panes/OPDHistory";
 import Transaction from "./tab-panes/Transaction";
 import Emr from "./tab-panes/EMR";
 import ActivityLog from "./tab-panes/ActivityLog";
+import { IconUserSquare } from "@tabler/icons-react";
 
-const PatientNavTabs = () => {
+const PatientNavTabs = ({ formEdit }) => {
   const { t, i18n } = useTranslation();
-  const myService = [
-    { id: 1, serviceName: "Cardiologist" },
-    { id: 2, serviceName: "Neurologist" },
-    { id: 3, serviceName: "FamilyMedicine" },
-    { id: 4, serviceName: "Ophthalmology" },
-    { id: 5, serviceName: "Psychiatrist" },
-    { id: 6, serviceName: "Oncologist" },
-    { id: 7, serviceName: "Pediatrician" },
-    { id: 8, serviceName: "ObstetricsAndGynaecology" },
-    { id: 9, serviceName: "Dermatologist" },
-    { id: 10, serviceName: "Radiologist" },
-    { id: 11, serviceName: "EmergencyPhysician" },
-    { id: 12, serviceName: "Surgeon" },
-    { id: 13, serviceName: "Anesthesiologist" },
-    { id: 14, serviceName: "InternalMedicine" },
-    { id: 15, serviceName: "InfectiousDiseaseSpecialist" },
-  ];
 
   const tabList = [
     {
       value: "basic",
       text: "Basic",
-      icon: <IconPhoto />,
+      icon: (
+        <IconUserSquare
+          color={"#FA5252"}
+          stroke={2.5}
+          className={styles.tab_icon}
+        />
+      ),
     },
     {
       value: "medical_history",
-      text: "Medical History",
-      icon: <IconPhoto />,
+      text: "MedicalHistory",
+      icon: <IconDeviceHeartMonitor color={"#FA5252"} stroke={2.5} />,
     },
     {
       value: "ipd_history",
-      text: "IPD History",
-      icon: <IconPhoto />,
+      text: "IPDHistory",
+      icon: <IconEmergencyBed color={"#FA5252"} stroke={2.5} />,
     },
     {
       value: "opd_history",
-      text: "OPD History",
-      icon: <IconPhoto />,
+      text: "OPDHistory",
+      icon: <IconStethoscope color={"#FA5252"} stroke={2.5} />,
     },
     {
       value: "transaction",
       text: "Transaction",
-      icon: <IconPhoto />,
+      icon: <IconCurrencyDollar color={"#FA5252"} stroke={2.5} />,
     },
     {
       value: "emr",
       text: "EMR",
-      icon: <IconPhoto />,
+      icon: <IconReport color="#fa5252" stroke={2.5} />,
     },
     {
       value: "activity_log",
-      text: "Activity Log",
-      icon: <IconPhoto />,
+      text: "ActivityLog",
+      icon: <IconActivity color="#FA5252" stroke={2.5} />,
     },
   ];
 
@@ -73,7 +69,7 @@ const PatientNavTabs = () => {
     {
       id: 1,
       value: "basic",
-      tabComponent: <BasicInfo services={myService} />,
+      tabComponent: <BasicInfo formEdit={formEdit} />,
     },
     {
       id: 2,
@@ -106,14 +102,22 @@ const PatientNavTabs = () => {
       tabComponent: <ActivityLog />,
     },
   ];
+
+  const print = () => {
+    window.print();
+  };
   return (
     <>
       <Tabs defaultValue={tabPanel[0].value}>
         <Tabs.List grow className={`${styles.tab_icon}`}>
           {tabList.map(({ index, value, text, icon }) => {
             return (
-              <Tabs.Tab key={index} value={value} leftSection={icon}>
-                {text}
+              <Tabs.Tab
+                key={index}
+                value={value}
+                leftSection={icon}
+                color="#FA5252">
+                <Text>{t(text)}</Text>
               </Tabs.Tab>
             );
           })}
@@ -143,7 +147,7 @@ const PatientNavTabs = () => {
           <Button c={"#fff"} bg={"#40C057"}>
             {t("Save")}
           </Button>
-          <Button c={"#fff"} bg={"blue"}>
+          <Button c={"#fff"} bg={"blue"} onClick={print}>
             {t("Print")}
           </Button>
           <Button c={"#fff"} bg={"#FA5252"}>

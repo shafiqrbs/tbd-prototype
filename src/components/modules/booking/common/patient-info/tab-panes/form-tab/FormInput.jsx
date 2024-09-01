@@ -2,6 +2,8 @@ import { Box, Flex, Input, Text } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 
 const FormInput = ({
+  required,
+  disabled,
   label,
   inputType,
   inputPlaceholder,
@@ -17,11 +19,12 @@ const FormInput = ({
             {t(label)}
           </Text>
           <Input
+            required={required}
+            disabled={disabled}
             fz={"14px"}
             w={inputWidth}
             type={inputType}
             placeholder={t(inputPlaceholder)}
-            required={false}
             validationMessage={t("InvalidEmailText")}
             form={"form"}
             name={nameID}

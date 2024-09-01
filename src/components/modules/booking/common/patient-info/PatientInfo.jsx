@@ -4,10 +4,17 @@ import styles from "../../../../../assets/css/BookingIndex.module.css";
 import { useTranslation } from "react-i18next";
 import PatientSidebar from "./PatientSidebar";
 import PatientNavTabs from "./PatientNavTabs";
+import { useState } from "react";
 
 const PatientInfo = () => {
   const { t, i18n } = useTranslation();
   const [opened, { open, close }] = useDisclosure(false);
+
+  const [isEditable, setIsEditable] = useState(false);
+
+  const handleEditClick = () => {
+    setIsEditable((prev) => !prev);
+  };
   return (
     <>
       <Drawer
@@ -31,13 +38,13 @@ const PatientInfo = () => {
             p={"15px"}
             mt={5}
             bg={"white"}
-            className={`${styles.profile_padding} ${styles.profile_sidebar} ${styles.box_border}`}>
-            <PatientSidebar />
+            className={`${styles.print_d_none} ${styles.profile_padding} ${styles.profile_sidebar} ${styles.box_border}`}>
+            <PatientSidebar onEdit={handleEditClick} />
           </Box>
           <Box
             w={"100%"}
             className={`${styles.profile_navtabs} ${styles.box_border}`}>
-            <PatientNavTabs />
+            <PatientNavTabs formEdit={isEditable} />
           </Box>
         </Flex>
       </Drawer>

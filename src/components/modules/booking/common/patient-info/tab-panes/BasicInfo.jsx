@@ -1,11 +1,11 @@
-import { Box, Button, Flex, Grid, Text } from "@mantine/core";
+import { Box, Flex, Grid, Text } from "@mantine/core";
 import styles from "../../../../../../assets/css/BookingIndex.module.css";
 import { useTranslation } from "react-i18next";
 import { IconId, IconMapPins } from "@tabler/icons-react";
 import FormInput from "./form-tab/FormInput";
 import SelectInput from "./form-tab/SelectInput";
 
-const BasicInfo = () => {
+const BasicInfo = ({ formEdit }) => {
   const { t, i18n } = useTranslation();
 
   const selectionData = [
@@ -56,6 +56,8 @@ const BasicInfo = () => {
             <Grid.Col span={6} pl={20}>
               <Box w={"100%"}>
                 <FormInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("Name")}
                   inputType={"text"}
                   inputPlaceholder={t("EnterYourName")}
@@ -66,12 +68,14 @@ const BasicInfo = () => {
 
               <Flex justify={"flex-start"} align={"center"}>
                 <Text fz={"14px"} w={"35%"}>
-                  {t("AgeAndDateOfBirth")}
+                  {t("Age")}
                 </Text>
 
                 <Flex gap={5} w={"100%"}>
                   <Box w={"100%"}>
                     <FormInput
+                      required={true}
+                      disabled={!formEdit}
                       label={""}
                       inputType={"text"}
                       inputPlaceholder={t("EnterYourAge")}
@@ -81,6 +85,8 @@ const BasicInfo = () => {
                   </Box>
                   <Box w={"100%"}>
                     <SelectInput
+                      required={true}
+                      disabled={!formEdit}
                       label=""
                       inputPlaceholder={t("EnterYears")}
                       inputWidth={"100%"}
@@ -98,6 +104,8 @@ const BasicInfo = () => {
                 <Flex gap={5} justify={"space-between"} w={"100%"}>
                   <Box w={"100%"}>
                     <SelectInput
+                      required={true}
+                      disabled={!formEdit}
                       label=""
                       inputPlaceholder={t("SelectAGender")}
                       inputWidth={"100%"}
@@ -106,6 +114,8 @@ const BasicInfo = () => {
                   </Box>
                   <Box w={"100%"}>
                     <SelectInput
+                      required={true}
+                      disabled={!formEdit}
                       label=""
                       inputPlaceholder={t("SelectMeritalStatus")}
                       inputWidth={"100%"}
@@ -117,7 +127,9 @@ const BasicInfo = () => {
 
               <Box w={"100%"}>
                 <FormInput
-                  label={"Date of Birth"}
+                  required={true}
+                  disabled={!formEdit}
+                  label={t("DateOfBirth")}
                   inputType={"date"}
                   inputPlaceholder={t("EnterYourName")}
                   nameID={"name"}
@@ -129,6 +141,8 @@ const BasicInfo = () => {
             <Grid.Col span={6}>
               <Box w={"100%"}>
                 <FormInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("MobileNo")}
                   inputType={"number"}
                   inputPlaceholder={t("EnterYourMobileNumber")}
@@ -145,6 +159,8 @@ const BasicInfo = () => {
                 <Flex gap={"sm"} justify={"space-between"} w={"100%"}>
                   <Box w={"100%"}>
                     <FormInput
+                      required={true}
+                      disabled={!formEdit}
                       label={""}
                       inputType={"text"}
                       inputPlaceholder={t("FatherHusbandName")}
@@ -154,6 +170,8 @@ const BasicInfo = () => {
                   </Box>
                   <Box w={"100%"}>
                     <FormInput
+                      required={true}
+                      disabled={!formEdit}
                       label={""}
                       inputType={"text"}
                       inputPlaceholder={t("MotherName")}
@@ -166,6 +184,8 @@ const BasicInfo = () => {
 
               <Box w={"100%"}>
                 <FormInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("Profession")}
                   inputType={"text"}
                   inputPlaceholder={t("EnterProfession")}
@@ -176,6 +196,8 @@ const BasicInfo = () => {
 
               <Box w={"100%"}>
                 <SelectInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("BloodGroup")}
                   inputPlaceholder={t("SelectYourBloodGroup")}
                   inputWidth={"100%"}
@@ -203,6 +225,8 @@ const BasicInfo = () => {
             <Grid.Col span={6} pl={20}>
               <Box w={"100%"}>
                 <FormInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("Religion")}
                   inputType={"text"}
                   inputPlaceholder={t("Religion")}
@@ -213,6 +237,8 @@ const BasicInfo = () => {
 
               <Box w={"100%"}>
                 <FormInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("Nationality")}
                   inputType={"text"}
                   inputPlaceholder={t("Nationality")}
@@ -225,6 +251,8 @@ const BasicInfo = () => {
             <Grid.Col span={6}>
               <Box w={"100%"}>
                 <SelectInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("SelectLocation")}
                   inputPlaceholder={t("SelectLocation")}
                   inputWidth={"100%"}
@@ -234,6 +262,8 @@ const BasicInfo = () => {
 
               <Box w={"100%"}>
                 <FormInput
+                  required={true}
+                  disabled={!formEdit}
                   label={t("Address")}
                   inputType={"text"}
                   inputPlaceholder={t("PatientAddress")}

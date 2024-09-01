@@ -21,16 +21,16 @@ const MedicalHistory = () => {
   const { t, i18n } = useTranslation();
 
   const selectionData = [
-    "Cabin - 201",
-    "Cabin - 202",
-    "Cabin - 203",
-    "Cabin - 204",
-    "Cabin - 205",
-    "Cabin - 206",
-    "Cabin - 207",
-    "Cabin - 208",
-    "Cabin - 209",
-    "Cabin - 210",
+    "XYZ - 201",
+    "XYZ - 202",
+    "XYZ - 203",
+    "XYZ - 204",
+    "XYZ - 205",
+    "XYZ - 206",
+    "XYZ - 207",
+    "XYZ - 208",
+    "XYZ - 209",
+    "XYZ - 210",
   ];
   const patientInfo = [
     {
@@ -155,8 +155,8 @@ const MedicalHistory = () => {
 
                 <Box w={"100%"}>
                   <FormInput
-                    label={"Height"}
-                    inputPlaceholder={"Enter Height"}
+                    label={t("Height")}
+                    inputPlaceholder={t("EnterHeight")}
                     inputType={"Text"}
                     inputWidth={"100%"}
                     nameID={"height"}
@@ -165,8 +165,8 @@ const MedicalHistory = () => {
 
                 <Box w={"100%"}>
                   <FormInput
-                    label={"Weight"}
-                    inputPlaceholder={"Enter Weight"}
+                    label={t("Weight")}
+                    inputPlaceholder={t("EnterWeight")}
                     inputType={"Text"}
                     inputWidth={"100%"}
                     nameID={"weight"}

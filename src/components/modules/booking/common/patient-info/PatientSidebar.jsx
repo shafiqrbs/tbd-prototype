@@ -17,7 +17,7 @@ import { IconMessages } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import ProfilePictureUploader from "../ProfilePictureUploader";
 
-const PatientSidebar = () => {
+const PatientSidebar = ({ onEdit }) => {
   const [checked, setChecked] = useState(true);
   const icon = (
     <IconEdit style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
@@ -104,7 +104,7 @@ const PatientSidebar = () => {
             <Flex justify={"flex-start"} gap={"8px"} align={"center"}>
               <Text fz={"h4"}>{t("Actions")}: </Text>
               <Tooltip label="Edit">
-                <Button px={5} py={0} bg={"none"} c={"black"}>
+                <Button px={5} py={0} bg={"none"} c={"black"} onClick={onEdit}>
                   <IconEdit color="#228BE6" />
                 </Button>
               </Tooltip>
@@ -166,7 +166,7 @@ const PatientSidebar = () => {
                 {t("DownloadID")}
               </Link>
             </Box>
-            <Box w={"50%"} mt={"sm"} ta={"center"}>
+            <Box w={"50%"} mt={"sm"} ta={"center"} h={"100%"}>
               <Link className={styles.id_card_print} to={"#"}>
                 {t("PrintID")}
               </Link>

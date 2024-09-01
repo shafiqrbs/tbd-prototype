@@ -17,15 +17,16 @@ import { useNavigate } from "react-router-dom";
 import FormInput from "./form-tab/FormInput";
 import TransactionDetails from "./transaction/TransactionDetails";
 import styles from "../../../../../../assets/css/BookingIndex.module.css";
+import { useTranslation } from "react-i18next";
 
 const transactionHeader = [
-  "Created Date",
-  "Created By",
-  "Invoice No",
+  "CreatedDate",
+  "CreatedBy",
+  "InvoiceNo",
   "Doctor",
   "Referred",
-  "Delivery Date",
-  "Net Total",
+  "DeliveryDate",
+  "NetTotal",
   "Payment",
   "Balance",
   "Status",
@@ -380,6 +381,7 @@ const initialTransactionData = [
 ];
 
 const Transaction = () => {
+  const { t, i18n } = useTranslation();
   const [active, setActive] = useState(0);
   const [transactionData, setTransactionData] = useState(
     initialTransactionData
@@ -434,7 +436,7 @@ const Transaction = () => {
         <Box w={"100%"}>
           <Input
             w={"100%"}
-            placeholder="Search any keyword"
+            placeholder={t("SearchAnyKeyword")}
             type="text"
             value={searchKeyword}
             onChange={handleSearch}
@@ -443,50 +445,50 @@ const Transaction = () => {
         <Flex justify={"flex-end"} gap={10} align={"center"}>
           <Box>
             <Button bg={"#40C057"} onClick={open}>
-              <IconPlus size={16} /> Create Invoice
+              <IconPlus size={16} /> {t("CreateInvoice")}
             </Button>
 
             {/* Add patient Modal start */}
-            <Modal opened={opened} onClose={close} title="Create Invoice">
+            <Modal opened={opened} onClose={close} title={t("CreateInvoice")}>
               <form action="#">
                 <Box>
-                  <Text>Name</Text>
+                  <Text>{t("Name")}</Text>
                   <FormInput
                     label={""}
                     inputType={"text"}
-                    inputPlaceholder={"Enter Your Name"}
+                    inputPlaceholder={t("EnterYourName")}
                     nameID={"name"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box>
-                  <Text>Mobile</Text>
+                  <Text>{t("Mobile")}</Text>
                   <FormInput
                     label={""}
                     inputType={"number"}
-                    inputPlaceholder={"Enter Your Number"}
+                    inputPlaceholder={t("EnterYourNumber")}
                     nameID={"mobile"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box>
-                  <Text>Bed Number</Text>
+                  <Text>{t("BedNumber")}</Text>
                   <FormInput
                     label={""}
                     inputType={"text"}
-                    inputPlaceholder={"Bed number"}
+                    inputPlaceholder={t("BedNumber")}
                     nameID={"bed_number"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box>
-                  <Text>Gender</Text>
+                  <Text>{t("Gender")}</Text>
                   <Select
                     label=""
-                    placeholder="Select your Gender"
+                    placeholder={t("SelectYourGender")}
                     data={["Male", "Female", "Other"]}
                     allowDeselect
                   />
@@ -494,7 +496,7 @@ const Transaction = () => {
 
                 <Box ta={"right"} mt={10}>
                   <Button onClick={(e) => e.preventDefault()} type="submit">
-                    Add
+                    {t("Add")}
                   </Button>
                 </Box>
               </form>
@@ -504,7 +506,7 @@ const Transaction = () => {
 
           <Box>
             <Button onClick={() => navigate("/")} bg={"#FA5252"}>
-              Discharged Patient
+              {t("DischargedPatient")}
             </Button>
           </Box>
         </Flex>
@@ -519,7 +521,7 @@ const Transaction = () => {
             {transactionHeader?.map((data, index) => (
               <Table.Th key={index}>
                 <Text w={"max-content"} fw={"bold"} fz={14}>
-                  {data}
+                  {t(data)}
                 </Text>
               </Table.Th>
             ))}
@@ -569,7 +571,7 @@ const Transaction = () => {
                     </Box>
 
                     <Box>
-                      <Tooltip label="Delete">
+                      <Tooltip label={t("Delete")}>
                         <Button
                           className={styles.delete_btn_style}
                           onClick={() => handleDelete(index)}>

@@ -15,16 +15,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../../../../../assets/css/BookingIndex.module.css";
 import FormInput from "./form-tab/FormInput";
+import { useTranslation } from "react-i18next";
 
 const opdHistoryHeader = [
   "Name",
-  "Patient ID",
-  "Guardian Name",
+  "PatientID",
+  "GuardianName",
   "Gender",
   "Phone",
   "Consultant",
-  "Last Visit",
-  "Total Recheckup",
+  "LastVisit",
+  "TotalRecheckup",
   "Action",
 ];
 
@@ -196,6 +197,7 @@ const highlightText = (text, searchTerm) => {
 };
 
 const OpdHistory = () => {
+  const { t, i18n } = useTranslation();
   const [active, setActive] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [opdHistoryData, setOpdHistoryData] = useState(initialOpdHistoryData);
@@ -229,7 +231,7 @@ const OpdHistory = () => {
         <Box w={"100%"}>
           <Input
             w={"100%"}
-            placeholder="Search any keyword"
+            placeholder={t("SearchAnyKeyword")}
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -238,50 +240,50 @@ const OpdHistory = () => {
         <Flex justify={"flex-end"} gap={10} align={"center"}>
           <Box>
             <Button bg={"#40C057"} onClick={open}>
-              <IconPlus size={16} /> Add Patient
+              <IconPlus size={16} /> {t("AddPatient")}
             </Button>
 
             {/* Add patient Modal start */}
-            <Modal opened={opened} onClose={close} title="Add Patient">
+            <Modal opened={opened} onClose={close} title={t("AddPatient")}>
               <form action="#">
                 <Box>
-                  <Text>Name</Text>
+                  <Text>{t("Name")}</Text>
                   <FormInput
                     label={""}
                     inputType={"text"}
-                    inputPlaceholder={"Enter Your Name"}
+                    inputPlaceholder={t("EnterYourName")}
                     nameID={"name"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box>
-                  <Text>Mobile</Text>
+                  <Text>{t("Mobile")}</Text>
                   <FormInput
                     label={""}
                     inputType={"number"}
-                    inputPlaceholder={"Enter Your Number"}
+                    inputPlaceholder={t("EnterYourNumber")}
                     nameID={"mobile"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box>
-                  <Text>Bed Number</Text>
+                  <Text>{t("BedNumber")}</Text>
                   <FormInput
                     label={""}
                     inputType={"text"}
-                    inputPlaceholder={"Bed number"}
+                    inputPlaceholder={t("BedNumber")}
                     nameID={"bed_number"}
                     inputWidth={"100%"}
                   />
                 </Box>
 
                 <Box>
-                  <Text>Gender</Text>
+                  <Text>{t("Gender")}</Text>
                   <Select
                     label=""
-                    placeholder="Select your Gender"
+                    placeholder={t("SelectYourGender")}
                     data={["Male", "Female", "Other"]}
                     allowDeselect
                   />
@@ -289,7 +291,7 @@ const OpdHistory = () => {
 
                 <Box ta={"right"} mt={10}>
                   <Button onClick={(e) => e.preventDefault()} type="submit">
-                    Add
+                    {t("Add")}
                   </Button>
                 </Box>
               </form>
@@ -299,7 +301,7 @@ const OpdHistory = () => {
 
           <Box>
             <Button onClick={() => navigate("/")} bg={"#FA5252"}>
-              Discharged Patient
+              {t("DischargedPatient")}
             </Button>
           </Box>
         </Flex>
@@ -312,7 +314,7 @@ const OpdHistory = () => {
         <Table.Thead>
           <Table.Tr className={`${styles.table_header}`}>
             {opdHistoryHeader?.map((data, index) => {
-              return <Table.Th key={index}>{data}</Table.Th>;
+              return <Table.Th key={index}>{t(data)}</Table.Th>;
             })}
           </Table.Tr>
         </Table.Thead>

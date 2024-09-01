@@ -1,22 +1,10 @@
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import * as XLSX from "xlsx";
-import {
-  Box,
-  Button,
-  Drawer,
-  Flex,
-  Grid,
-  NavLink,
-  Select,
-  Table,
-  Text,
-  Tooltip,
-} from "@mantine/core";
+import { Box, Button, Flex, Grid, Table, Text, Tooltip } from "@mantine/core";
 import DoctorCard from "../../DoctorCard";
 import {
   IconCheckbox,
-  IconChevronsRight,
   IconColumns2,
   IconCopy,
   IconFileSpreadsheet,
@@ -26,13 +14,11 @@ import {
 } from "@tabler/icons-react";
 import styles from "../../../../../../assets/css/BookingIndex.module.css";
 import { useState } from "react";
-import { useDisclosure } from "@mantine/hooks";
 import { useTranslation } from "react-i18next";
 import ViewAppointmentDetails from "./doctor-appointment/ViewAppointmentDetails";
 
 const DoctorAppointment = () => {
   const { t, i18n } = useTranslation();
-  const [opened, { open, close }] = useDisclosure(false);
   const [toggle, setToggle] = useState(false);
   const [visibleColumns, setVisibleColumns] = useState({
     PatientName: true,
