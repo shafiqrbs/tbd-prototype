@@ -675,5 +675,8 @@
   "IPDHistory": "আইপিডি ইতিহাস",
   "OPDHistory": "ওপিডি ইতিহাস",
   "EMR": "ইএমআর",
-  "ActivityLog": "কার্যকলাপ লগ"
+  "ActivityLog": "কার্যকলাপ লগ",
+
+  "AdvancedSearch": "এডভান্স সার্চ",
+  "AddDocument": "ডকুমেন্ট যুক্ত করুন"
 }

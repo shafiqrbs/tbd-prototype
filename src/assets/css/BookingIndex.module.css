@@ -549,9 +549,7 @@
   &::before {
     content: "\262A";
     content: "\002B";
-    /* color: #fa5252; */
     color: white;
-    /* background-color: #40c057; */
     background-color: #fa5252;
     font-size: 25px;
     font-weight: bold;

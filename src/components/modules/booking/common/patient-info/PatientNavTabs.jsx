@@ -124,7 +124,7 @@ const PatientNavTabs = ({ formEdit }) => {
         </Tabs.List>
 
         <ScrollArea
-          h={"77vh"}
+          h={"76vh"}
           scrollbarSize={"0px"}
           className={`${styles.profile_tabpanes} ${styles.box_border}`}>
           {tabPanel.map((data) => {

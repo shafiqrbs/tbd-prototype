@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Box, Button, Flex, Grid, Text } from "@mantine/core";
 import styles from "../../../../../../assets/css/BookingIndex.module.css";
 import { IconFileInfo, IconDownload, IconX } from "@tabler/icons-react";
+import AddDocument from "./doctor-document/AddDocument";
 
 const DoctorDocument = () => {
   const documentCardArr = [
@@ -20,6 +21,10 @@ const DoctorDocument = () => {
   return (
     <>
       <Box>
+        <Box pb={15} ta={"right"}>
+          <AddDocument />
+        </Box>
+
         <Grid>
           {documentCards.map((data, index) => (
             <Grid.Col span={3} key={index}>
@@ -47,6 +52,7 @@ const DoctorDocument = () => {
                       </Flex>
                     </Box>
                   </Box>
+
                   <Box>
                     <IconFileInfo size={30} />
                   </Box>

@@ -1,11 +1,8 @@
-import { useState } from "react";
-
 import { useDisclosure } from "@mantine/hooks";
 import {
   Drawer,
   Button,
   Box,
-  Text,
   Input,
   Textarea,
   FileInput,
@@ -13,8 +10,10 @@ import {
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { IconCloudUpload, IconPlus } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
-const AddDoctor = () => {
+const AddDocument = () => {
+  const { t, i18n } = useTranslation();
   const [opened, { open, close }] = useDisclosure(false);
   const uploadIcon = <IconCloudUpload />;
   return (
@@ -63,10 +62,10 @@ const AddDoctor = () => {
       </Drawer>
 
       <Button onClick={open} bg={"#40c057"} px={10}>
-        <IconPlus /> Add
+        <IconPlus /> {t("AddDocument")}
       </Button>
     </>
   );
 };
 
-export default AddDoctor;
+export default AddDocument;
