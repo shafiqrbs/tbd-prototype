@@ -8,38 +8,24 @@ import {
   Text,
   Flex,
   ScrollArea,
-  Tabs,
-  TextInput,
 } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useOutletContext } from "react-router-dom";
-import {
-  IconDeviceFloppy,
-  IconCalendar,
-  IconHospital,
-  IconDots,
-} from "@tabler/icons-react";
+import { IconDeviceFloppy } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
-import SelectForm from "../../../form-builders/SelectForm";
 import _SelectForm from "../../../form-builders/_SelectForm";
 import _InputForm from "../../../form-builders/_InputForm";
-import TextAreaForm from "../../../form-builders/TextAreaForm";
-import InputForm from "../../../form-builders-filter/InputForm";
 import InputNumberForm from "../../../form-builders/InputNumberForm";
-import { DateInput } from "@mantine/dates";
-import SwitchForm from "../../../form-builders/SwitchForm";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 import NavTabs from "./NavTabs";
 import ModalFilter from "../common/ModalFilter";
 
-export default function BookingFormSection(props) {
+export default function BookingFormSection() {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
   const height = mainAreaHeight - 200;
   const [saveCreateLoading, setSaveCreateLoading] = useState(false);
-  const [paymentMode, setPaymentMode] = useState("");
   const [ledgerHead, setLedgerHead] = useState("");
   const [paymentMode2, setPaymentMode2] = useState("");
   const [nextField, setNextField] = useState("amount");
@@ -62,41 +48,6 @@ export default function BookingFormSection(props) {
     },
   });
 
-  const paymentModeData = ["Debit", "Credit"];
-  const paymentModeData2 = ["Cheque", "Cash", "Transfer"];
-  const categorizedOptions = [
-    {
-      group: t("Arms&Ammunition"),
-      items: [
-        { value: "arms_ammunition_32", label: ".32 Bore Cartridges" },
-        { value: "arms_ammunition_7", label: "7 mm Cartridges" },
-      ],
-    },
-    {
-      group: t("AccountReceivable"),
-      items: [
-        {
-          value: "account_receivable_asian",
-          label: "15th Asian Airgun Championship, Daegu Korea",
-        },
-        {
-          value: "account_receivable_shooting",
-          label: "15th Asian Shooting Championship, Korea 2023",
-        },
-      ],
-    },
-    {
-      group: t("BankAccount"),
-      items: [
-        {
-          value: "bank_account_sonali",
-          label: "Sonali Bank, Gulshan Branch (00115633005315)",
-        },
-        { value: "bank_account_agrani", label: "Agrani Bank" },
-      ],
-    },
-  ];
-
   const amountInputRef = useRef(null);
   const chequeNoInputRef = useRef(null);
   const payModeInputRef = useRef(null);
@@ -115,18 +66,6 @@ export default function BookingFormSection(props) {
     }
   }, [nextField]);
 
-  const handleLedgerHeadChange = (value) => {
-    form.setFieldValue("ledger_head", value);
-    setLedgerHead(value);
-    setPaymentMode2("");
-    if (value && value.startsWith("bank_account")) {
-      setNextField("cheque_no");
-    } else {
-      setNextField("amount");
-    }
-  };
-
-  const [bookingUDPDropdown, setBookingUDPDropdown] = useState(false);
   const dropdownLists = [
     {
       name: "IPD",
@@ -164,10 +103,7 @@ export default function BookingFormSection(props) {
 
   return (
     <Box>
-      <form
-        onSubmit={form.onSubmit((values) => {
-          console.log(values);
-        })}>
+      <form>
         <Box p={"xs"} pt={"0"} className={"borderRadiusAll"}>
           <Box
             pl={"xs"}
@@ -189,37 +125,6 @@ export default function BookingFormSection(props) {
               {/* <TextInput placeholder={t("SearchForBed")} /> */}
               <ModalFilter filterArray={dropdownLists} />
             </Box>
-
-            {/* filters are here */}
-            {/* 
-            <Box pos={"relative"}>
-              <Button
-                className={styles.toggle_btn_style}
-                onClick={() => {
-                  setBookingUDPDropdown(!bookingUDPDropdown);
-                }}>
-                <IconDots />
-              </Button>
-
-              <Box
-                className={`${
-                  bookingUDPDropdown === false ? styles.d_none : styles.d_block
-                } ${styles.booking_udp_dropdown_buttons_box}`}>
-                {dropdownLists.map((data) => {
-                  return (
-                    <Box w={"100%"}>
-                      <Button
-                        className={`${styles.booking_udp_dropdown_buttons}`}
-                        w={"100%"}>
-                        {data}
-                      </Button>
-                    </Box>
-                  );
-                })}
-              </Box>
-            </Box>
-             */}
-            {/* filters are here */}
           </Box>
           <Box bg={"white"}>
             <Box pl={"xs"} pr={"xs"} className={"borderRadiusAll"}>

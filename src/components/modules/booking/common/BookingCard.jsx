@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Text } from "@mantine/core";
+import { Box, Button, Text } from "@mantine/core";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 
 const BookingCard = (props) => {
-  const { title, icon, price, desc, status } = props;
+  const { title, icon, price, desc, status, onclick, button_bg, disabled } =
+    props;
   return (
     <>
       <Box
@@ -15,15 +16,17 @@ const BookingCard = (props) => {
         <Text fw={"bold"} fz={"md"} mt={5}>
           {price}
         </Text>
-        <Text
+        <Button
+          disabled={disabled}
+          onClick={onclick}
           fw={"bold"}
           fz={"xs"}
           mt={5}
-          bg={"rgb(100 116 139)"}
+          bg={button_bg}
           c={"white"}
-          p={"2px 10px"}>
+          p={"2px 20px"}>
           {status}
-        </Text>
+        </Button>
       </Box>
     </>
   );

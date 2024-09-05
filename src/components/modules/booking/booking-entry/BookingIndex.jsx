@@ -1,18 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Grid,
-  Progress,
-  Title,
-  Group,
-  Burger,
-  Menu,
-  rem,
-  ActionIcon,
-  Tabs,
-  Divider,
-} from "@mantine/core";
+import { Box, Button, Progress, Group, Tabs } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setInsertType } from "../../../../store/inventory/crudSlice.js";

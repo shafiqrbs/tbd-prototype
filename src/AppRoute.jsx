@@ -115,6 +115,8 @@ function AppRoute() {
           <Route path="modalIndex" element={<SampleModalIndex />} />
         </Route>
         <Route path="sitemap" element={<Sitemap />} />
+
+        {/* Health routes start */}
         <Route path="/health/">
           <Route path="pathology-test" element={<PathologyTestIndex />} />
           <Route path="doctor" element={<DoctorIndex />} />
@@ -132,6 +134,7 @@ function AppRoute() {
           <Route path="commission" element={<ComissionIndex />} />
           <Route path="configuration" element={<HealthConfigurationIndex />} />
         </Route>
+        {/* Health routes end */}
 
         {/* booking routes start */}
         <Route path="/booking/">
