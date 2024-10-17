@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import {
-  Group,
-  Box,
-  Grid,
-  ActionIcon,
-  Text,
-  Title,
-  Stack,
-} from "@mantine/core";
+import { Group, Box, ActionIcon, Text } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { IconEye, IconEdit, IconTrash } from "@tabler/icons-react";
 import { DataTable } from "mantine-datatable";
@@ -19,17 +11,13 @@ import {
   setFetching,
   setFormLoading,
   setInsertType,
-  showEntityData,
 } from "../../../../store/accounting/crudSlice.js";
-import KeywordSearch from "../../filter/KeywordSearch.jsx";
 import { modals } from "@mantine/modals";
 import { deleteEntityData } from "../../../../store/core/crudSlice.js";
-import ShortcutInvoice from "../../shortcut/ShortcutInvoice.jsx";
-import Shortcut from "../../shortcut/Shortcut.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
 import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 
-function BookingIDPTable(props) {
+function BookingIDPTable() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -41,17 +29,12 @@ function BookingIDPTable(props) {
   const fetching = useSelector((state) => state.crudSlice.fetching);
   const searchKeyword = useSelector((state) => state.crudSlice.searchKeyword);
   const indexData = useSelector((state) => state.crudSlice.indexEntityData);
-  const customerFilterData = useSelector(
-    (state) => state.crudSlice.customerFilterData
-  );
 
   useEffect(() => {
     const value = {
       url: "accounting/transaction-mode",
       param: {
         term: searchKeyword,
-        // name: customerFilterData.name,
-        // mobile: customerFilterData.mobile,
         page: page,
         offset: perPage,
       },

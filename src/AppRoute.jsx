@@ -66,6 +66,7 @@ import BookingReportsIndex from "./components/modules/booking/booking-reports/Bo
 import BookingDashboardIndex from "./components/modules/booking/booking-dashboard/BookingDashboardIndex.jsx";
 import DoctorInfo from "./components/modules/booking/common/doctor-info/DoctorInfo.jsx";
 import PatientInfo from "./components/modules/booking/common/patient-info/PatientInfo.jsx";
+import Invoice from "./components/modules/booking/invoice/invoice.jsx";
 
 function AppRoute() {
   return (

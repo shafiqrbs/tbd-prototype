@@ -1,31 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import { Group, Box, ActionIcon, Text, Menu, rem, Anchor } from "@mantine/core";
+import { Group, Box, ActionIcon, Menu, rem } from "@mantine/core";
 import { useTranslation } from "react-i18next";
-import {
-  IconEye,
-  IconEdit,
-  IconTrash,
-  IconInfoCircle,
-  IconSettings,
-  IconEyeEdit,
-  IconTrashX,
-  IconPencil,
-  IconDotsVertical,
-} from "@tabler/icons-react";
+import { IconTrashX, IconDotsVertical } from "@tabler/icons-react";
 import { DataTable } from "mantine-datatable";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  editEntityData,
   getIndexEntityData,
   setFetching,
-  setFormLoading,
-  setInsertType,
-  showEntityData,
 } from "../../../../store/core/crudSlice.js";
-import KeywordSearch from "../../filter/KeywordSearch.jsx";
-import { modals } from "@mantine/modals";
-import { deleteEntityData } from "../../../../store/core/crudSlice.js";
 import CustomerViewModel from "../../core/customer/CustomerViewModel.jsx";
 import tableCss from "../../../../assets/css/Table.module.css";
 import BookingIDPSearch from "./BookingIDPSearch.jsx";

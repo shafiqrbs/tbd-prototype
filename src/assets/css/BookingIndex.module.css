@@ -606,6 +606,23 @@
   border-radius: 5px;
 }
 
+.idp_option {
+  width: 100%;
+  > div:last-child {
+    display: none;
+  }
+
+  &:hover {
+    div:last-child {
+      display: block;
+    }
+  }
+}
+
+.blue_border_all {
+  border: 1px solid blue;
+}
+
 @media only screen and (max-width: 1440px) {
   .grid_2 {
     grid-template-columns: repeat(2, auto);

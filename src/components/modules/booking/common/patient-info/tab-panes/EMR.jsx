@@ -1,6 +1,3 @@
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-import * as XLSX from "xlsx";
 import {
   Autocomplete,
   Box,
@@ -23,20 +20,23 @@ import {
   IconPdf,
   IconPrinter,
   IconTrash,
-  IconTriangle,
-  IconX,
 } from "@tabler/icons-react";
 import styles from "../../../../../../assets/css/BookingIndex.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ViewEmrDetails from "./patient-emr/ViewEmrDetails";
-import { IconTriangleFilled } from "@tabler/icons-react";
-
+import { IconTriangleFilled, IconX } from "@tabler/icons-react";
+import {
+  handlePrint,
+  handleCopy,
+  handlePdf,
+  handleExcel,
+  handleCsv,
+} from "../../CopyPrintExcelCsvPdf";
 const Emr = () => {
   const { t, i18n } = useTranslation();
   const [toggle, setToggle] = useState(false);
   const [filterToggle, setFilterToggle] = useState(false);
-  // const filterBoxRef = useRef(null);
   const [filters, setFilters] = useState([{ id: Date.now() }]);
 
   const [visibleColumns, setVisibleColumns] = useState({
@@ -196,42 +196,38 @@ const Emr = () => {
     }));
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
+  // const handleCopy = () => {
+  //   const table = document.querySelector("#emrTable");
+  //   const range = document.createRange();
+  //   range.selectNode(table);
+  //   window.getSelection().removeAllRanges();
+  //   window.getSelection().addRange(range);
+  //   document.execCommand("copy");
+  //   window.getSelection().removeAllRanges();
+  //   alert("Table copied to clipboard!");
+  // };
 
-  const handleCopy = () => {
-    const table = document.querySelector("#emrTable");
-    const range = document.createRange();
-    range.selectNode(table);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-    alert("Table copied to clipboard!");
-  };
+  // const handlePdf = () => {
+  //   const input = document.getElementById("emrTable");
+  //   html2canvas(input).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/png");
+  //     const pdf = new jsPDF();
+  //     pdf.addImage(imgData, "JPEG", 0, 0);
+  //     pdf.save("emr.pdf");
+  //   });
+  // };
 
-  const handlePdf = () => {
-    const input = document.getElementById("emrTable");
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "JPEG", 0, 0);
-      pdf.save("emr.pdf");
-    });
-  };
+  // const handleExcel = () => {
+  //   const table = document.getElementById("emrTable");
+  //   const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet JS" });
+  //   XLSX.writeFile(wb, "emr.xlsx");
+  // };
 
-  const handleExcel = () => {
-    const table = document.getElementById("emrTable");
-    const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet JS" });
-    XLSX.writeFile(wb, "emr.xlsx");
-  };
-
-  const handleCsv = () => {
-    const table = document.getElementById("emrTable");
-    const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet JS" });
-    XLSX.writeFile(wb, "emr.csv", { bookType: "csv" });
-  };
+  // const handleCsv = () => {
+  //   const table = document.getElementById("emrTable");
+  //   const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet JS" });
+  //   XLSX.writeFile(wb, "emr.csv", { bookType: "csv" });
+  // };
 
   const handleDelete = (index) => {
     const updatedEmrData = [...emrData];
@@ -441,7 +437,10 @@ const Emr = () => {
               {/* Tools are here */}
               <Flex align={"center"}>
                 <Tooltip label="Copy">
-                  <Button p={5} bg={"none"} onClick={handleCopy}>
+                  <Button
+                    p={5}
+                    bg={"none"}
+                    onClick={() => handleCopy("#emrTable")}>
                     <IconCopy size={"20"} stroke={1} color="black" />
                   </Button>
                 </Tooltip>
@@ -451,17 +450,26 @@ const Emr = () => {
                   </Button>
                 </Tooltip>
                 <Tooltip label="PDF">
-                  <Button p={5} bg={"none"} onClick={handlePdf}>
+                  <Button
+                    p={5}
+                    bg={"none"}
+                    onClick={() => handlePdf("emrTable")}>
                     <IconPdf size={"20"} stroke={1} color="black" />
                   </Button>
                 </Tooltip>
                 <Tooltip label="Excel">
-                  <Button p={5} bg={"none"} onClick={handleExcel}>
+                  <Button
+                    p={5}
+                    bg={"none"}
+                    onClick={() => handleExcel("emrTable")}>
                     <IconFileSpreadsheet size={"20"} stroke={1} color="black" />
                   </Button>
                 </Tooltip>
                 <Tooltip label="CSV">
-                  <Button p={5} bg={"none"} onClick={handleCsv}>
+                  <Button
+                    p={5}
+                    bg={"none"}
+                    onClick={() => handleCsv("emrTable")}>
                     <IconFileTypeCsv size={"20"} stroke={1} color="black" />
                   </Button>
                 </Tooltip>

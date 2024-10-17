@@ -1,8 +1,7 @@
 import { Box, Tabs } from "@mantine/core";
-import React from "react";
 import BookingCard from "../common/BookingCard";
 import styles from "../../../../assets/css/BookingIndex.module.css";
-import { IconBed, IconFirstAidKit, IconHospital } from "@tabler/icons-react";
+import { IconBed, IconFirstAidKit } from "@tabler/icons-react";
 import { IconAmbulance } from "@tabler/icons-react";
 import { IconActivityHeartbeat } from "@tabler/icons-react";
 import { IconReportMedical } from "@tabler/icons-react";
@@ -354,13 +353,13 @@ const NavTabs = () => {
     <>
       <Tabs keepMounted={false} defaultValue="free">
         <Tabs.List
-          className={`${styles.flex_box} ${styles.sticky_top_position}`}>
+          className={`${styles.flex_box} ${styles.sticky_top_position} ${styles.z20}`}>
           {tabName.map((tabData) => {
             return (
               <TabButton
                 key={tabData.index}
                 tabValue={tabData.tabValue}
-                buttonValue={t(tabData.buttonValue)}
+                buttonValue={t(`${tabData.buttonValue}`)}
                 conditionalStyle={
                   tabData.tabValue === "free"
                     ? styles.free_bg
@@ -379,142 +378,41 @@ const NavTabs = () => {
           })}
         </Tabs.List>
 
-        <Tabs.Panel value="free" mt={15}>
-          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
-            {bookingAllData
-              .filter(
-                (data) => data.status === "Free" || data.status === "free"
-              )
-              .map((data) => (
-                <Box className={styles.free_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                    status={data.status}
-                  />
-                </Box>
-              ))}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="booked" mt={15}>
-          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
-            {bookingAllData
-              .filter(
-                (data) => data.status === "Booked" || data.status === "booked"
-              )
-              .map((data) => {
-                return (
-                  <Box key={data.index} className={styles.booked_bg}>
-                    <BookingCard
-                      title={data.title}
-                      icon={data.icon}
-                      price={data.price}
-                      desc={data.desc}
-                      status={data.status}
-                    />
-                  </Box>
-                );
-              })}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="hold" mt={15}>
-          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
-            {bookingAllData
-              .filter(
-                (data) => data.status === "Hold" || data.status === "hold"
-              )
-              .map((data) => (
-                <Box className={styles.hold_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                    status={data.status}
-                  />
-                </Box>
-              ))}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="maintaince" mt={15}>
-          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
-            {bookingAllData
-              .filter(
-                (data) =>
-                  data.status === "Maintaince" || data.status === "maintaince"
-              )
-              .map((data) => (
-                <Box className={styles.maintaince_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                    status={data.status}
-                  />
-                </Box>
-              ))}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="reserved" mt={15}>
-          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
-            {bookingAllData
-              .filter(
-                (data) =>
-                  data.status === "Reserved" || data.status === "reserved"
-              )
-              .map((data) => (
-                <Box className={styles.reserved_bg} key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                    status={data.status}
-                  />
-                </Box>
-              ))}
-          </Box>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="all" mt={15}>
-          <Box className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
-            {bookingAllData.map((data) => {
-              return (
-                <Box
-                  className={
-                    data.status == "Free" || data.status === "free"
-                      ? styles.free_bg
-                      : data.status == "Booked" || data.status === "booked"
-                      ? styles.booked_bg
-                      : data.status == "Hold" || data.status === "hold"
-                      ? styles.hold_bg
-                      : data.status == "Maintaince" ||
-                        data.status === "maintaince"
-                      ? styles.maintaince_bg
-                      : data.status == "Reserved" || data.status === "reserved"
-                      ? styles.reserved_bg
-                      : ""
-                  }
-                  key={data.index}>
-                  <BookingCard
-                    title={data.title}
-                    icon={data.icon}
-                    price={data.price}
-                    desc={data.desc}
-                    status={data.status}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Tabs.Panel>
+        {/* Render room cards based on selected tab */}
+        {["free", "booked", "hold", "maintaince", "reserved", "all"].map(
+          (tabValue) => (
+            <Tabs.Panel key={tabValue} value={tabValue} mt={15}>
+              <Box
+                className={`${styles.all_card_wrapper} ${styles.tab_grid_2}`}>
+                {bookingAllData
+                  .filter((data) =>
+                    tabValue === "all"
+                      ? true
+                      : data.status.toLowerCase() === tabValue
+                  )
+                  .map((data, index) => (
+                    <Box
+                      className={styles[data.status.toLowerCase() + "_bg"]}
+                      key={index}
+                      style={{
+                        cursor:
+                          data.status === "Free" ? "pointer" : "not-allowed",
+                      }}>
+                      <BookingCard
+                        title={data.title}
+                        icon={data.icon}
+                        price={data.price}
+                        desc={data.desc}
+                        status={data.status}
+                        button_bg={data.status === "Free" ? "#FF6B6B" : "gray"}
+                        disabled={data.status !== "Free"}
+                      />
+                    </Box>
+                  ))}
+              </Box>
+            </Tabs.Panel>
+          )
+        )}
       </Tabs>
     </>
   );

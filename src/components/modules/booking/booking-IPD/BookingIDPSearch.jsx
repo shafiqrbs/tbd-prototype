@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
-import {
-  rem,
-  Grid,
-  Tooltip,
-  TextInput,
-  ActionIcon,
-  Select,
-  Button,
-  Input,
-} from "@mantine/core";
+import { rem, Grid, Tooltip, TextInput, ActionIcon } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import {
-  IconBrandOkRu,
   IconCalendar,
   IconFilter,
   IconInfoCircle,
@@ -22,7 +11,6 @@ import {
 } from "@tabler/icons-react";
 import { useHotkeys } from "@mantine/hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchKeyword } from "../../../../store/core/crudSlice.js";
 import FilterModel from "../../filter/FilterModel.jsx";
 import {
   setFetching,
@@ -33,10 +21,8 @@ import { DateInput } from "@mantine/dates";
 function BookingIDPSearch(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { isOnline } = useOutletContext();
 
   const [searchKeywordTooltip, setSearchKeywordTooltip] = useState(false);
-  const [customerTooltip, setCustomerTooltip] = useState(false);
   const [startDateTooltip, setStartDateTooltip] = useState(false);
   const [endDateTooltip, setEndDateTooltip] = useState(false);
   const [filterModel, setFilterModel] = useState(false);

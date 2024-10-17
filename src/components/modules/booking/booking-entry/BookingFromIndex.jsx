@@ -20,7 +20,7 @@ import BookingFormSection from "./BookingFormSection.jsx";
 import FormInput from "./common/FormInput.jsx";
 import { IconX } from "@tabler/icons-react";
 
-function BookingFormIndex({ selectedRoom, onClose }) {
+const BookingFormIndex = ({ selectedRoom, onClose }) => {
   const { t, i18n } = useTranslation();
   const { mainAreaHeight, isOnline } = useOutletContext();
   const height = mainAreaHeight - 215;
@@ -121,6 +121,7 @@ function BookingFormIndex({ selectedRoom, onClose }) {
                 className={"borderRadiusAll"}
                 bg={"white"}>
                 {/* Form input are here start */}
+
                 {/* Display the room number at the top start */}
                 <Box h={"100%"} className="borderRadiusAll" p={10}>
                   <Box>
@@ -411,6 +412,6 @@ function BookingFormIndex({ selectedRoom, onClose }) {
       </form>
     </Box>
   );
-}
+};
 
 export default BookingFormIndex;

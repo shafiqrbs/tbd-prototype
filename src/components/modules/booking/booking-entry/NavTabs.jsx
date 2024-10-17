@@ -433,12 +433,12 @@ const NavTabs = () => {
         )}
       </Tabs>
       {/* Conditionally render the booking form if a room is selected */}
-      {/* {selectedRoom && (
+      {selectedRoom && (
         <BookingFormIndex
           selectedRoom={selectedRoom}
           onClose={() => setSelectedRoom(null)}
         />
-      )} */}
+      )}
     </>
   );
 };

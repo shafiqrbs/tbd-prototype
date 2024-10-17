@@ -1,40 +1,11 @@
-import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Grid,
-  Progress,
-  Title,
-  Group,
-  Burger,
-  Menu,
-  rem,
-  ActionIcon,
-  Text,
-  NavLink,
-} from "@mantine/core";
-import {
-  getHotkeyHandler,
-  useDisclosure,
-  useHotkeys,
-  useToggle,
-} from "@mantine/hooks";
+import { Group, Menu, rem, ActionIcon, Text } from "@mantine/core";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 import classes from "../../../assets/css/HeaderSearch.module.css";
-import {
-  IconInfoCircle,
-  IconTrash,
-  IconSearch,
-  IconSettings,
-} from "@tabler/icons-react";
+import { IconInfoCircle, IconSettings } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
-function BookingHeaderNavbar(props) {
-  const { pageTitle, roles, currancySymbol, allowZeroPercentage } = props;
+function BookingHeaderNavbar({ pageTitle }) {
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
-  const [opened, { toggle }] = useDisclosure(false);
   const navigate = useNavigate();
   const links = [
     { link: "/booking/voucher-entry", label: t("BookingEntry") },

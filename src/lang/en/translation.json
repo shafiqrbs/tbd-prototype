@@ -815,5 +815,11 @@
 
   "AdvancedSearch": "Advanced Search",
   "AddDocument": "Add Document",
-  "DiseasesDescription": "Disease Description"
+  "DiseasesDescription": "Disease Description",
+  "Diseases": "Diseases",
+  "NewInvoice": "New Invoice",
+
+  "AddFilter": "Add Filter",
+  "ClearFilter": "Clear Filter",
+  "ApplyFilter": "Apply Filter"
 }

@@ -678,5 +678,11 @@
   "ActivityLog": "কার্যকলাপ লগ",
 
   "AdvancedSearch": "এডভান্স সার্চ",
-  "AddDocument": "ডকুমেন্ট যুক্ত করুন"
+  "AddDocument": "ডকুমেন্ট যুক্ত করুন",
+  "Diseases": "রোগ",
+  "NewInvoice": "নতুন ইনভয়েস",
+
+  "AddFilter": "ফিল্টার যুক্ত করুন",
+  "ClearFilter": "ফিল্টার মুছুন",
+  "ApplyFilter": "ফিল্টার এপ্লাই করুন"
 }

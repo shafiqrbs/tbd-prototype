@@ -2,58 +2,39 @@ import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import {
   Button,
-  rem,
   Flex,
   Grid,
   Box,
   ScrollArea,
-  Group,
   Text,
   Title,
-  Alert,
-  List,
   Stack,
   Tooltip,
   SimpleGrid,
   Image,
 } from "@mantine/core";
 import { useTranslation } from "react-i18next";
-import {
-  IconCheck,
-  IconDeviceFloppy,
-  IconInfoCircle,
-  IconPlus,
-} from "@tabler/icons-react";
+import { IconDeviceFloppy } from "@tabler/icons-react";
 import { useDisclosure, useHotkeys } from "@mantine/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { hasLength, isNotEmpty, useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
-import { notifications } from "@mantine/notifications";
 
 import {
-  getExecutiveDropdown,
-  getLocationDropdown,
-} from "../../../../store/core/utilitySlice.js";
-import {
-  setEntityNewData,
-  setFetching,
   setFormLoading,
   setValidationData,
-  storeEntityData,
 } from "../../../../store/accounting/crudSlice.js";
 
 import Shortcut from "../../shortcut/Shortcut.jsx";
 import InputForm from "../../../form-builders/InputForm.jsx";
 import SelectForm from "../../../form-builders/SelectForm.jsx";
-import TextAreaForm from "../../../form-builders/TextAreaForm.jsx";
 import InputNumberForm from "../../../form-builders/InputNumberForm.jsx";
-import { storeEntityDataWithFile } from "../../../../store/accounting/crudSlice.js";
 import getTransactionMethodDropdownData from "../../../global-hook/dropdown/getTransactionMethodDropdownData.js";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import getSettingAuthorizedTypeDropdownData from "../../../global-hook/dropdown/getSettingAuthorizedTypeDropdownData.js";
 import getSettingAccountTypeDropdownData from "../../../global-hook/dropdown/getSettingAccountTypeDropdownData.js";
 
-function BookingIDPUpdateFrom(props) {
+function BookingIDPUpdateFrom() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { isOnline, mainAreaHeight } = useOutletContext();
@@ -61,21 +42,6 @@ function BookingIDPUpdateFrom(props) {
   const [opened, { open, close }] = useDisclosure(false);
 
   const [saveCreateLoading, setSaveCreateLoading] = useState(false);
-  const [customerGroupData, setCustomerGroupData] = useState(null);
-  const [locationData, setLocationData] = useState(null);
-  const [marketingExeData, setMarketingExeData] = useState(null);
-
-  const locationDropdownData = useSelector(
-    (state) => state.utilitySlice.locationDropdownData
-  );
-  const executiveDropdownData = useSelector(
-    (state) => state.utilitySlice.executiveDropdownData
-  );
-  const validationMessage = useSelector(
-    (state) => state.crudSlice.validationMessage
-  );
-  const validation = useSelector((state) => state.crudSlice.validation);
-  const entityNewData = useSelector((state) => state.crudSlice.entityNewData);
 
   const entityEditData = useSelector((state) => state.crudSlice.entityEditData);
   const formLoading = useSelector((state) => state.crudSlice.formLoading);

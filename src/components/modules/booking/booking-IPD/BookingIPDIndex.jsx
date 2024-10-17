@@ -1,43 +1,22 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Grid,
-  Progress,
-  Title,
-  Group,
-  Burger,
-  Menu,
-  rem,
-  ActionIcon,
-  Tabs,
-  Divider,
-} from "@mantine/core";
+import { Box, Button, Progress, Tabs } from "@mantine/core";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setInsertType } from "../../../../store/inventory/crudSlice.js";
 import { setSearchKeyword } from "../../../../store/core/crudSlice.js";
-import getConfigData from "../../../global-hook/config-data/getConfigData.js";
 import { getLoadingProgress } from "../../../global-hook/loading-progress/getLoadingProgress.js";
 import BookingIDPFormIndex from "./BookingIDPFromIndex.jsx";
 import BookingIDPTableNew from "./BookingIDPTableNew.jsx";
 import BookingHeaderNavbar from "../BookingHeaderNavbar.jsx";
-import { useOutletContext } from "react-router-dom";
 import BookingIDPTableInProgress from "./BookingIDPTableInProgress.jsx";
 import BookingIDPTableApprove from "./BookingIDPTableApprove.jsx";
 import BookingIDPTableArchive from "./BookingIDPTableArchive.jsx";
-import { Tooltip } from "recharts";
 import styles from "../../../../assets/css/BookingIndex.module.css";
 import { IconX } from "@tabler/icons-react";
 function BookingIPDIndex() {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const insertType = useSelector((state) => state.crudSlice.insertType);
-
-  const configData = getConfigData();
   const progress = getLoadingProgress();
-  const { isOnline, mainAreaHeight } = useOutletContext();
-  const height = mainAreaHeight - 500;
 
   const [activeTab, setActiveTab] = useState("");
   useEffect(() => {
@@ -48,22 +27,6 @@ function BookingIPDIndex() {
     dispatch(setInsertType("create"));
     dispatch(setSearchKeyword(""));
   }, []);
-
-  const rightButtons = (
-    <Group pos="absolute" right={0} gap={0}>
-      <Tooltip
-        label={t("Tooltip")}
-        px={20}
-        py={3}
-        color={"red.6"}
-        offset={2}
-        transtionProps={{ transition: "pop-bottom-left", duration: 500 }}>
-        <Button size="sm" variant="filled" color="red.6">
-          {t("NewBooking")}
-        </Button>
-      </Tooltip>
-    </Group>
-  );
 
   return (
     <>
